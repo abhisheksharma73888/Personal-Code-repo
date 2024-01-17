@@ -1,0 +1,1 @@
+nd_control_rep:action=get_bci_agents_info:|^^Golang|GoSer|GoInst|/home/cavisson/cavGoAgent/|4.8.0.101|1652944183949|1652944184026|1652944184034|1608707|go|Inactive|10.10.70.39|LinuxEx^^

@@ -1,0 +1,266 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#  Auther :- Rajesh Kumar                                                                         #
+#  Feature :- Flowpath                                                                            #
+#  Modified Date :- 16th Sept 2020                                                                #
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+HOTSPOT_THREAD_FILE="${PARTITION_PATH}/nd/csv/NDAutoSensorHotSpotThreads.csv"      
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"            
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "NETJS-003-001") handle_netjs_003_001_case ;;
+    "NETJS-003-002") handle_netjs_003_002_case ;;
+    "NETJS-003-003") handle_netjs_003_003_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function log_status_int() {
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}" 
+}
+
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+function handle_netjs_003_001_case()  {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then  
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Hotspot_Thread $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot data is coming with keyword enableHSLongStack=0 along with ASSampleInterval & ASThresholdMatchCount"
+        fi
+    done
+}
+
+
+Hotspot_Thread() {
+    RAW_DATA_FILE=$1
+    hotspot_thread_name=$(grep "Event Dispatch Thread" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_state=$(grep "Running" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_id=$(cut -d ',' -f4 ${HOTSPOT_THREAD_FILE} | head -1 )
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ ! -s $HOTSPOT_THREAD_FILE ]; then                                                      
+        log_status_int "${tier}" "FAIL" "Autosensor  hotspot file is not present in testrun or might have 0 data"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Autosensor hotspot file is present in testrun."
+    fi
+    if [ -z  == "${hotspot_thread_name}" ];then
+        log_status_int "${tier}" "FAIL" "Actual thread name not detected; Actual thread name should ${hotspot_thread_name}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Actual thread name is detected; Actual thread name is ${hotspot_thread_name}"
+    fi
+
+    if [ -z "${hotspot_thread_state}" ];then
+        log_status_int "${tier}" "FAIL" "Actual thread state not detected; Actual thread state should ${hotspot_thread_state}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Actual thread state is detected; Actual thread state is ${hotspot_thread_state}"
+    fi
+ 
+    if [  -z "${hotspot_thread_id}" ];then
+        log_status_int "${tier}" "FAIL" "Thread id should not be different in Nodejs  ${hotspot_thread_id}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Thread id is different in Nodejs  ${hotspot_thread_id}"
+    fi
+    return 0  
+}
+
+
+function handle_netjs_003_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Actual_Thread_State $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot data is coming with keyword enableHSLongStack=1 along with keyword ASSampleInterval and ASThresholdMatchCount"
+        fi
+    done
+
+}
+
+
+Actual_Thread_State() {
+    RAW_DATA_FILE=$1
+    hotspot_thread_name=$(grep "Event Dispatch Thread" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_state=$(grep "Running" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_id=$(cut -d ',' -f4 ${HOTSPOT_THREAD_FILE} | head -1 )
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ ! -s $HOTSPOT_THREAD_FILE ]; then                                                      
+        log_status_int  "${tier}" "FAIL" "Autosensor hotspot file is not present in testrun or might have 0 data"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Autosensor hotspot file is present in testrun & is of Non Zero size"
+    fi
+    if [ -z  == "${hotspot_thread_name}" ];then
+        log_status_int  "${tier}" "FAIL" "Actual thread name not  detected; Actual thread name should be ${hotspot_thread_name}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Actual thread name is detected; Actual thread name is ${hotspot_thread_name}"
+    fi
+    if [ -z "${hotspot_thread_state}" ];then
+        log_status_int  "${tier}" "FAIL" "Actual thread state not detected; Actual thread state should be ${hotspot_thread_state}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Actual thread state is detected; Actual thread state is ${hotspot_thread_state}"
+    fi
+    if [ -z "${hotspot_thread_id}" ];then
+        log_status_int  "${tier}" "FAIL" "Thread id should not be different in Nodejs ${hotspot_thread_id}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Thread id is different in Nodejs ${hotspot_thread_id}"
+    fi
+    return 0
+}
+
+
+function handle_netjs_003_003_case(){
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Hotspot_Data $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot data is coming with keyword enableHSLongStack=2 along with Keyword ASSampleInterval and ASThresholdMatchCount"
+        fi
+    done
+}
+   
+
+Hotspot_Data() {
+    RAW_DATA_FILE=$1
+    hotspot_thread_name=$(grep "Event Dispatch Thread" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_state=$(grep "Running" $HOTSPOT_THREAD_FILE)
+    hotspot_thread_id=$(cut -d ',' -f4 ${HOTSPOT_THREAD_FILE} | head -1 )
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ ! -s $HOTSPOT_THREAD_FILE ]; then                                                      
+        log_status_int  "${tier}" "FAIL" "Autosensor  hotspot file is not present in testrun or might have 0 data"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Autosensor  hotspot file is present in testrun."
+    fi
+    if [ -z == "${hotspot_thread_name}" ];then
+        log_status_int  "${tier}" "FAIL" "Actual thread name not detected; Actual thread name should be ${hotspot_thread_name}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Actual thread name is detected; Actual thread name should be ${hotspot_thread_name}"
+    fi
+    if [ -z "${hotspot_thread_state}" ];then
+        log_status_int  "${tier}" "FAIL" "Actual thread state not detected; Actual thread state should be ${hotspot_thread_state}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Actual thread state is detected; Actual thread state should be ${hotspot_thread_state}"
+    fi
+    if [ -z "${hotspot_thread_id}" ];then
+        log_status_int  "${tier}" "FAIL" "Thread id should not be different in Nodejs ${hotspot_thread_id}"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Thread id is different in Nodejs ${hotspot_thread_id}"
+    fi
+    return 0
+}
+
+main

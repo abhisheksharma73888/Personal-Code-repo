@@ -1,0 +1,61 @@
+--Request 
+POST http://10.10.30.5:7000/auth/password/register
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Content-Length: 58
+Cache-Control: max-age=0
+Origin: http://10.10.30.5:7000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/auth/register
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; _session=MTYxNzgxNzUyOXxEdi1CQkFFQ180SUFBUkFCRUFBQUpQLUNBQUVHYzNSeWFXNW5EQXNBQ1hKbGRIVnlibDkwYndaemRISnBibWNNQXdBQkx3PT18ZTIusnjgQ0_cQ6LJySytcGlCqihUkYygJVkazaUQOUc=
+----
+ POSTDATA [key: "login"
+value: "abhi@gmail.com"
+, key: "password"
+value: "abhi"
+, key: "confirm_password"
+value: "abhi"
+]
+--Response 
+HTTP/1.1 303 See Other
+Access-Control-Allow-Origin: *
+Location: /
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Set-Cookie: _session=MTYxNzgxNzU1MXxEdi1CQkFFQ180SUFBUkFCRUFBQWZ2LUNBQUlHYzNSeWFXNW5EQXNBQ1hKbGRIVnlibDkwYndaemRISnBibWNNQXdBQkx3WnpkSEpwYm1jTUNnQUlYMlpzWVhOb1pYTUdjM1J5YVc1bkRENEFQRnQ3SWsxbGMzTmhaMlVpT2lKUWJHVmhjMlVnWTI5dVptbHliU0I1YjNWeUlHRmpZMjkxYm5RaUxDSlVlWEJsSWpvaWMzVmpZMlZ6Y3lKOVhRPT18MTEBmzyo_8Ic0SRIxXKfisHMHVCVNWA0CM7cHeJVSWo=; Path=/; Expires=Fri, 07 May 2021 17:45:51 GMT; Max-Age=2592000
+Set-Cookie: _session=MTYxNzgxNzU1MnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nR0tfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3REFBRXZCbk4wY21sdVp3d0tBQWhmWm14aGMyaGxjd1p6ZEhKcGJtY01QZ0E4VzNzaVRXVnpjMkZuWlNJNklsQnNaV0Z6WlNCamIyNW1hWEp0SUhsdmRYSWdZV05qYjNWdWRDSXNJbFI1Y0dVaU9pSnpkV05qWlhOekluMWRCbk4wY21sdVp3d1BBQTFmWVhWMGFGOXpaWE56YVc5dUJuTjBjbWx1Wnd6XzZnRF81MlY1U21oaVIyTnBUMmxLU1ZWNlNURk9hVWx6U1c1U05XTkRTVFpKYTNCWVZrTktPUzVsZVVwM1kyMDVNbUZYVW14amFVazJTVzVDYUdNelRqTmlNMHByU1dsM2FXUllUbXhqYld4clNXcHZhVTVxUVhsSmFYZHBZa2RHZW1SR09YTmlNbVJ3WW1sSk5rbHFTWGROYWtWMFRVUlJkRTFFWkZWTmFrMDJUVlJWTms1VVNYVk5SRkV6VFhwak0wMUVhM2hMZWtFeFQycE5kMGxwZDJsaGJsSndTV3B2YVZsWFNtOWhWVUp1WWxkR2NHSkROV3BpTWpCcFpsRXVZWGh0VTJ0RVJ6QTNNMDlEVEZSWU5HNURha0ZHZVRac2NHaDJkMWhXY1RaWVMxSm1SSEE1U0haNlRRPT18IzBoQLPTbJfhsrvikgWl4JJ965CXlNaPHyHGYxJicZ8=; Path=/; Expires=Fri, 07 May 2021 17:45:52 GMT; Max-Age=2592000
+Date: Wed, 07 Apr 2021 17:45:52 GMT
+Content-Length: 0
+----
+--Request 
+GET http://10.10.30.5:7000/
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/auth/register
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; _session=MTYxNzgxNzU1MnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nR0tfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3REFBRXZCbk4wY21sdVp3d0tBQWhmWm14aGMyaGxjd1p6ZEhKcGJtY01QZ0E4VzNzaVRXVnpjMkZuWlNJNklsQnNaV0Z6WlNCamIyNW1hWEp0SUhsdmRYSWdZV05qYjNWdWRDSXNJbFI1Y0dVaU9pSnpkV05qWlhOekluMWRCbk4wY21sdVp3d1BBQTFmWVhWMGFGOXpaWE56YVc5dUJuTjBjbWx1Wnd6XzZnRF81MlY1U21oaVIyTnBUMmxLU1ZWNlNURk9hVWx6U1c1U05XTkRTVFpKYTNCWVZrTktPUzVsZVVwM1kyMDVNbUZYVW14amFVazJTVzVDYUdNelRqTmlNMHByU1dsM2FXUllUbXhqYld4clNXcHZhVTVxUVhsSmFYZHBZa2RHZW1SR09YTmlNbVJ3WW1sSk5rbHFTWGROYWtWMFRVUlJkRTFFWkZWTmFrMDJUVlJWTms1VVNYVk5SRkV6VFhwak0wMUVhM2hMZWtFeFQycE5kMGxwZDJsaGJsSndTV3B2YVZsWFNtOWhWVUp1WWxkR2NHSkROV3BpTWpCcFpsRXVZWGh0VTJ0RVJ6QTNNMDlEVEZSWU5HNURha0ZHZVRac2NHaDJkMWhXY1RaWVMxSm1SSEE1U0haNlRRPT18IzBoQLPTbJfhsrvikgWl4JJ965CXlNaPHyHGYxJicZ8=
+----
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/html
+Set-Cookie: _session=MTYxNzgxNzU1MnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSHRfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3REFBRXZCbk4wY21sdVp3d0tBQWhmWm14aGMyaGxjd1p6ZEhKcGJtY01QZ0E4VzNzaVRXVnpjMkZuWlNJNklsQnNaV0Z6WlNCamIyNW1hWEp0SUhsdmRYSWdZV05qYjNWdWRDSXNJbFI1Y0dVaU9pSnpkV05qWlhOekluMWRCbk4wY21sdVp3d1BBQTFmWVhWMGFGOXpaWE56YVc5dUJuTjBjbWx1Wnd6LUFVd0FfZ0ZJWlhsS2FHSkhZMmxQYVVwSlZYcEpNVTVwU1hOSmJsSTFZME5KTmtscmNGaFdRMG81TG1WNVNuZGpiVGt5WVZkU2JHTnBTVFpKYmtKb1l6Tk9NMkl6U210SmFYZHBaRmhPYkdOdGJHdEphbTlwVG1wQmVVbHBkMmxpUjBaNlpFWTVjMkl5WkhCaWFVazJTV3BKZDAxcVJYUk5SRkYwVFVSa1ZVMXFUVFpOVkZVMlRsUkpkVTFFVVROTmVtTXpUVVJyZUV0NlFURlBhazEzU1dsM2FXSkhSbnBrUmpsb1dUTlNjR1J0VldsUGFVbDVUVVJKZUV4VVFUQk1WRUV6VmtSSmVrOXFSVEZQYWxWNVRHcEJNMDU2UlROT1JFRXdUWGx6ZDA1VWIzcE5RMGx6U1cxU2NHTXpVbmxaVjA0d1lWYzVkVmd6VW5CaVYxVnBUMnBCYzBsdGNEQmhVMGsyU1cxR2FXRkhiRUZhTWpGb1lWZDNkVmt5T1hSSmJqQXVkVUZTYmtNNU1XVk5aSGN5ZEc5NmNsSXRVbUkzT0dKbU1UZGhWRFpTU2pWemRrTTVUVVZmYlVSeE9BPT18tjVrqBk3xhirLxlWuPRZzQwWXRgFlPwss9UumLYKnhk=; Path=/; Expires=Fri, 07 May 2021 17:45:52 GMT; Max-Age=2592000
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Set-Cookie: _session=MTYxNzgxNzU1NHxEdi1CQkFFQ180SUFBUkFCRUFBQV9nR1RfNElBQWdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZNQVA0QlNHVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeFQycFZlVXhxUVROT2VrVXpUa1JCTUUxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVFYTkpiWEF3WVZOSk5rbHRSbWxoUjJ4QldqSXhhR0ZYZDNWWk1qbDBTVzR3TG5WQlVtNURPVEZsVFdSM01uUnZlbkpTTFZKaU56aGlaakUzWVZRMlVrbzFjM1pET1UxRlgyMUVjVGdHYzNSeWFXNW5EQXNBQ1hKbGRIVnlibDkwYndaemRISnBibWNNQXdBQkx3PT18jJaKaGi6JPIeJikvIKLd6KjEoNDC3GDIcuJ_77sLzvM=; Path=/; Expires=Fri, 07 May 2021 17:45:54 GMT; Max-Age=2592000
+Date: Wed, 07 Apr 2021 17:45:54 GMT
+Transfer-Encoding: chunked
+----
+

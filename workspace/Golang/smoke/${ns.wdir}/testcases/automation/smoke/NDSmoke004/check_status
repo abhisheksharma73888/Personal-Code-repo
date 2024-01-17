@@ -1,0 +1,262 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Flowpath                                                                           #
+#   Developer :- Sonali Mishra/Rajesh Kumar                                                       #
+#   Modified Date :- 22th Jan 2021                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"            
+AVAILABLE_TIERS=$Project
+
+function main()
+{
+	case $(get_test_name) in
+    "NETJS-004-001") handle_netjs_004_001_case ;;
+    "NETJS-004-002") handle_netjs_004_002_case ;;
+    "NETJS-004-003") handle_netjs_004_003_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+    esac
+}
+
+
+function log_status_int(){
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+
+function handle_unknown_case(){
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+
+function handle_netjs_004_001_case(){
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        CorelateEventCallback_1  $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "19 record detected with corelateEventCallback=1"
+        fi
+    done
+}
+
+
+CorelateEventCallback_1(){
+    RAW_DATA_FILE=$1
+    custom_record=$(grep "^19,"  ${RAW_DATA_FILE})
+    event2=$(grep "^2," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 2)
+    custom_flowpathid=$(grep "^19," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 2)
+    custom_methodargu=$(grep "^19," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 3|cut -d ':' -f 1)
+    custom_methodid=$(grep "^19," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 3|cut -d ':' -f 2)
+    custom_sequenceid=$(grep "^19," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 3|cut -d ':' -f 3)
+    seqsearch="${custom_methodid}_0:${custom_sequenceid}"
+    event4=$(grep "^4," ${RAW_DATA_FILE} |tail -1|cut -d ',' -f 7|grep ${seqsearch})
+    local Record2=$(grep -c "^2," $RAW_DATA_FILE)
+    local Record4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $Record2 -lt 1 ] && [ $Record4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $Record2 -ne $Record4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${Record4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${Record4}"
+    fi
+    if [ -z ${custom_record} ]; then 
+        log_status_int  "${tier}" "FAIL" "Event ID 19 not detected for corelateEventCallback"
+        return 1
+    else
+        log_status_int  "${tier}" "PASS" "Event ID 19 is detected for corelateEventCallback"
+    fi
+    if [ ${custom_methodargu} != 1 ]; then  
+        log_status_int "${tier}" "FAIL" " Sequence Id not captured of Event."
+        return 1
+    else
+        log_status_int "${tier}" "PASS" " Sequence Id is captured of Event."
+    fi
+    if [ -z ${seqsearch}]; then
+        log_status_int "${tier}" "FAIL" "SequenceID of event not detected with Sequence blob ${seqsearch} "
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "SequenceID of event is detected with Sequence blob ${seqsearch} "
+    fi  
+    return 0
+}
+
+function handle_netjs_004_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        CorelateEventCallback_11 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "19 record detected with  CorelateEventCallback=1%1"
+        fi
+    done
+}
+
+
+
+CorelateEventCallback_11(){
+    RAW_DATA_FILE=$1
+    custom_record=$(grep "^19," ${RAW_DATA_FILE})
+    event2=$(grep "^2," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 2)
+    custom_flowpathid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 2)
+    custom_methodargu=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 1)
+    custom_methodid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 2)
+    custom_sequenceid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 3)
+    seqsearch="${custom_methodid}_0:${custom_sequenceid}"
+    event4=$(grep "^4," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 7|grep ${seqsearch})
+    local Record2=$(grep -c "^2," $RAW_DATA_FILE)
+    local Record4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $Record2 -lt 1 ] && [ $Record4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $Record2 -ne $Record4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${Record4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${Record4}"
+    fi
+    if [ -z ${custom_record}]; then
+        log_status_int "${tier}" "FAIL" "Event ID 19 not detected for corelateEventCallback"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 19 is detected for corelateEventCallback"
+    fi
+    if [ ${event2} -ne ${custom_flowpathid} ]; then
+        log_status_int "${tier}" "FAIL" "corelateEventCallback not detected for flowpath id ${event2}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "corelateEventCallback is detected for flowpath id ${event2}"
+    fi
+    if [ ${custom_methodargu} != 1 ]; then
+        log_status_int "${tier}" "FAIL" " Sequence Id not captured of Event."
+        return 1
+    else
+        log_status_int "${tier}" "PASS" " Sequence Id is captured of Event."
+    fi
+    if [ -z ${seqsearch}]; then
+        log_status_int "${tier}" "FAIL" "SequenceID of event not detected with Sequence blob ${seqsearch} "
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "SequenceID of event is detected with Sequence blob ${seqsearch} "
+    fi
+    return 0
+}
+
+
+function handle_netjs_004_003_case(){
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+             DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        CorelateEventCallback_No_Asyn_Fun $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+             log_status_int "${tier}" "PASS" "19 record detected with  CorelateEventCallback=1 with No Asynchronous Function"
+        fi
+    done
+}
+
+
+CorelateEventCallback_No_Asyn_Fun(){
+    RAW_DATA_FILE=$1
+    custom_record=$(grep "^19,"  ${RAW_DATA_FILE})
+    custom_flowpathid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 2)
+    event2=$(grep "^2," ${RAW_DATA_FILE} |grep "$custom_flowpathid"|head -1|cut -d ',' -f 2)
+    custom_methodargu=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 1)
+    custom_methodid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 2)
+    custom_sequenceid=$(grep "^19," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 3|cut -d ':' -f 3)
+    seqsearch="${custom_methodid}_0:${custom_sequenceid}"
+    event4=$(grep "^4," ${RAW_DATA_FILE} |head -1|cut -d ',' -f 7|grep ${seqsearch})
+    local Record2=$(grep -c "^2," $RAW_DATA_FILE)
+    local Record4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $Record2 -lt 1 ] && [ $Record4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $Record2 -ne $Record4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${Record4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ -z ${custom_record} ]; then
+        log_status_int "${tier}" "FAIL" "Event ID 19 not detected for corelateEventCallback"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 19 is detected for corelateEventCallback"
+    fi
+    if [ ${event2} -ne ${custom_flowpathid} ]; then
+        log_status_int  "${tier}" "FAIL" "19 record not detected for flowpath id ${event2} and URL does not contain asynchronous functions "
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "19 record is detected for flowpath id ${event2} and URL does contain asynchronous functions "
+    fi
+    return 0
+}
+
+main

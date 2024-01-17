@@ -1,0 +1,899 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- HTTP Req/Resp Header                                                               #
+#   Developer :- Sonali Mishra/Rajesh Kumar                                                       #
+#   Modified Date :- 22th Jan 2021                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="${PARTITION_PATH}/nd/raw_data/"
+AVAILABLE_TIERS=$Project
+
+function main(){
+    case $(get_test_name) in
+        "SMOKE-025-001") handle_smoke_001_case ;;
+        "SMOKE-025-002") handle_smoke_002_case ;;
+        "SMOKE-025-003") handle_smoke_003_case ;;
+        "SMOKE-025-004") handle_smoke_004_case ;;
+        "SMOKE-025-005") handle_smoke_005_case ;;
+        "SMOKE-025-006") handle_smoke_006_case ;;
+        "SMOKE-025-007") handle_smoke_007_case ;;
+        "SMOKE-025-008") handle_smoke_008_case ;;
+        "SMOKE-025-009") handle_smoke_009_case ;;
+        "SMOKE-025-010") handle_smoke_010_case ;;
+        "SMOKE-025-011") handle_smoke_011_case ;;
+        "SMOKE-025-012") handle_smoke_012_case ;;
+        *) handle_unknown_case ;; 
+        ?) handle_unknown_case ;;
+    esac
+}
+
+function log_status_int(){
+	agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+
+function handle_unknown_case(){
+    error "Testcase name not found"
+    log_status_int "FAIL" "Testcase not found"
+}
+
+function handle_smoke_001_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+		captureHTTPReqFullFp_0 $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "Pass" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPReqFullFp_0(){
+	RAW_DATA_FILE=$1
+	event12_count=$(grep "^12," ${RAW_DATA_FILE} | wc -l)
+	event13_count=$(grep "^13," ${RAW_DATA_FILE} | wc -l)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [ $event12_count -ne 0 ];then
+		log_status_int "$tier" "FAIL" "Failed for event 12 Records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 Records not found."
+	fi
+	if [ $event13_count -ne 0 ];then
+		log_status_int "$tier" "FAIL" "Failed for event 13 Records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 Records not found."
+	fi
+	return 0
+}
+
+
+function handle_smoke_002_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+		captureHTTPReqFullFp_3 $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=3%20ALL%200 and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPReqFullFp_3(){
+	RAW_DATA_FILE=$1
+	count=0
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed as no event 12 records were found"
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed as event 12 records were found"
+	fi
+
+	for header_id in $(grep "^6," ${RAW_DATA_FILE}| grep -v "GET" | grep -v "POST"  | grep -v '[0-9]' | cut -d , -f 3);do  
+		if [[ ! $(grep "^12," ${RAW_DATA_FILE} | grep "[,|]${header_id}:") ]];then
+			log_status_int "$tier" "FAIL" "Failed for header id $header_id not found in 12 records"
+			return 1
+		else
+			((count++))
+		fi
+	done
+	
+    if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for header id $header_id found in 12 records"
+	fi
+	if [[ $(grep "^13," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed for event 13 records found when not expected"
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records not found"
+	fi
+	return 0
+}
+
+
+function handle_smoke_003_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+		captureHTTPRespFullFp $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=3%20ALL%201%203 and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp(){
+	RAW_DATA_FILE=$1
+	count=0
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed as no event 12 records were found ."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed as event 12 records were found"
+	fi
+	for header_val in $(grep "^12," ${RAW_DATA_FILE} | grep -o "[,|][0-9]*:<[a-zA-Z0-9]*>|" | cut -d '<' -f 2 | cut -d '>' -f 1);do
+		if [ ${#header_val} -gt 3 ];then
+			log_status_int "$tier" "FAIL" "Failed for length of header value ${header_val} greater than specified in the rule."
+			return 1
+		else
+			((count++))
+		fi
+	done
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for length of header value ${header_val} less than specified in the rule."
+	fi
+	if [[ $(grep "^13," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 13 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records not found."
+	fi
+	return 0
+
+}
+
+
+function handle_smoke_004_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+		HeaderData_Captured $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=3%20Host%200 and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+HeaderData_Captured(){
+	RAW_DATA_FILE=$1
+	count=0
+	value=0
+	host_hdr_id=$(grep "^6," ${RAW_DATA_FILE} | grep "host" | cut -d , -f 3)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed as no event 12 records were found ."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed as event 12 records were found"
+	fi
+	for record12 in $(grep "^12," ${RAW_DATA_FILE});do
+		if [[ $(echo $record12 | grep -o "|" | wc -l) -gt 1 ]];then
+			log_status_int "$tier" "FAIL" "More than one header's data was captured in 12 records."
+			return 1
+		else
+			((count++))
+		fi
+		if [[ ! $(echo $record12 | grep "$host_hdr_id:") ]];then
+			log_status_int "$tier" "FAIL" "Failed for Host header data not found in 12 records."
+			return 1
+		else
+			((value++))
+		fi
+	done
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "More than one header's data was not captured in 12 records."
+	fi
+	if [ $value -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for Host header data found in 12 records."
+	fi
+	if [[ $(grep "^13," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 13 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records found."
+	fi
+	return 0
+}
+
+
+function handle_smoke_005_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+		Host_Header $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp for host and cookie header and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+Host_Header(){
+	RAW_DATA_FILE=$1
+	count=0
+	value=0
+	host_hdr_id=$(grep "^6," ${RAW_DATA_FILE} | grep "host" | cut -d , -f 3)
+	cookie_hdr_id=$(grep "^6," ${RAW_DATA_FILE} | grep "cookie" | cut -d , -f 3)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed as no event 12 records were found ."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed as event 12 records were found"
+	fi
+	if [ $(grep "^12," ${RAW_DATA_FILE} |head -1 | grep -o "|" | wc -l ) -gt 5 ];then
+		log_status_int "$tier" "PASS" "More than one header's data was captured in 12 records."
+	fi
+    if [[ ! $(grep "^12," ${RAW_DATA_FILE} | grep "$host_hdr_id:") ]];then
+		log_status_int "$tier" "FAIL" "Failed for Host header data not found in 12 records."    
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for Host header data found in 12 records."
+    fi 
+    if [[ $(grep "^12," ${RAW_DATA_FILE} | grep "$cookie_hdr_id:") ]];then                                   
+		log_status_int "$tier" "PASS" "Passed for Cookie header data found in 12 records."
+    fi
+	for header_val in $(grep "^12," ${RAW_DATA_FILE} | grep -o '[,|][0-9][0-9][:][<][a-zA-Z0-9%]*[>]'|cut -d '<' -f 2 | cut -d '>' -f 1|cut -d "-" -f1|cut -d "%" -f2|grep -o '[a-z]*');do
+		if [ ${#header_val} -gt 5 ];then
+			log_status_int "$tier" "FAIL" "Failed for length of header value ${header_val} greater than specified in the rule."
+			return 1
+		else
+			log_status_int "$tier" "PASS" "Passed for length of header value ${header_val} Less than specified in the rule."
+			return 0
+		fi                                                                                         
+	done
+	if [[ $(grep "^13," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 13 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records not found ."
+	fi
+	return 0
+}
+
+
+function handle_smoke_006_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		Cookie_Header $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "CaptureHTTPReqFullFp for host and cookie header with max length 5 and captureHTTPRespFullFp=0."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+Cookie_Header(){
+	RAW_DATA_FILE=$1
+	count=0
+	host_hdr_id=$(grep "^6," ${RAW_DATA_FILE} | grep "host" | cut -d , -f 3)                     
+	cookie_hdr_id=$(grep "^6," ${RAW_DATA_FILE} | grep "cookie" | cut -d , -f 3)                 
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed as no event 12 records were found ."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed as event 12 records were found"
+	fi                                                                                           
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Not More than one header's data was captured in 12 records."
+	fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE} | grep "$host_hdr_id:") ]];then
+		log_status_int "$tier" "FAIL" "Failed for Host header data not found in 12 records."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for Host header data found in 12 records."
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE} | grep "$cookie_hdr_id:") ]];then
+		log_status_int "$tier" "PASS" "Passed for Cookie header data found in 12 records."
+	fi                                                                                         
+	if [[ $(grep "^13," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 13 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records not found."
+    fi
+    return 0
+
+}
+
+function handle_smoke_007_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		captureHTTPRespFullFp_201 $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20ALL%200."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp_201(){
+	RAW_DATA_FILE=$1
+	count=0
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records captured in raw data."
+	fi
+	for hdr_id in $(grep "^13," ${RAW_DATA_FILE} | cut -d , -f 4 | grep -o "[0-9]*:" | cut -d ':' -f 1 | sort | uniq);do
+		if [[ ! $(grep "^6," ${RAW_DATA_FILE} | grep ",${hdr_id}$") ]];then
+			log_status_int "$tier" "FAIL" "Failed for header id ${hdr_id} not found in 6 records"
+			return 1
+		else
+			((count++))
+		fi
+	done
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for header id ${hdr_id} found in 6 records"
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE}) ]];then
+		log_status_int "$tier" "FAIL" "Failed for event 12 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records not found."
+	fi
+    return 0
+}
+
+
+function handle_smoke_008_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		captureHTTPRespFullFp_203 $DATA_FILE 
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20ALL%201%203."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp_203(){
+	RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "	Passed for event 13 records is captured in raw data."
+	fi
+	for header_val in $(grep "^13," ${RAW_DATA_FILE} | grep -o "[,|][0-9]*:<[a-zA-Z0-9]*>|" | cut -d '<' -f 2 | cut -d '>' -f 1);do
+		if [ ${#header_val} -gt 3 ];then                                                           
+			log_status_int "$tier" "FAIL" "Failed for length of header value ${header_val} greater than specified in the rule."
+			return 1
+		else
+			((count++))
+		fi                                                                                         
+	done  
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for length of header value ${header_val} less than specified in the rule."
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 12 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records not found."
+	fi
+    return 0
+}
+
+
+function handle_smoke_009_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		captureHTTPRespFullFp_Content $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20Content-Type%200."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp_Content(){
+	RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records captured in raw data."
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 12 records found when not expected."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records not found ."
+	fi
+    return 0
+
+}
+
+function handle_smoke_010_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		Multiple_Header $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp for multiple specified headers."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+Multiple_Header(){
+	RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records captured in raw data."
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 12 records found when not expected."
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records Not found ."
+	fi
+    return 0
+}
+
+
+function handle_smoke_011_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		captureHTTPRespFullFp_Multiple $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp for multiple specified headers with max length 5."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp_Multiple(){
+	RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records captured in raw data."
+	fi                                                                                           
+	for header_val in $(grep "^13," ${RAW_DATA_FILE} | grep -o "[,|][0-9]*:<[a-zA-Z0-9]*>|" | cut -d '<' -f 2 | cut -d '>' -f 1);do
+		if [ ${#header_val} -gt 7 ];then                                                           
+			log_status_int "$tier" "FAIL" "Failed for length of header value ${header_val} greater than specified in the rule."
+			return 1
+		else
+			((count++))
+		fi                                                                                         
+	done 
+	if [ $count -gt 0 ];then
+		log_status_int "$tier" "PASS" "Passed for length of header value ${header_val} less than specified in the rule."
+	fi
+	if [[ $(grep "^12," ${RAW_DATA_FILE}) ]];then                                                
+		log_status_int "$tier" "FAIL" "Failed for event 12 records found when not expected."               
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records not found ."
+	fi
+    return 0
+}
+
+function handle_smoke_012_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME|grep "^$tier" |grep agg_data|head -1)
+		captureHTTPRespFullFp_ALL $DATA_FILE
+		RC=$?
+		    if [ $RC -eq 0 ];then
+			    log_status_int "$tier" "PASS" "Passed for captureHTTPReqFullFp=3%20ALL%200 and captureHTTPRespFullFp=2%20ALL%200."
+		    fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+	done
+}
+
+captureHTTPRespFullFp_ALL(){
+	RAW_DATA_FILE=$1
+	event12_count=$(grep "^12," ${RAW_DATA_FILE} | wc -l)
+	event13_count=$(grep "^13," ${RAW_DATA_FILE} | wc -l)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+	if [[ ! $(grep "^13," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 13 records not captured in raw data."
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 13 records captured in raw data."
+	fi
+	if [[ ! $(grep "^12," ${RAW_DATA_FILE}) ]];then                                              
+		log_status_int "$tier" "FAIL" "Failed for event 12 records not captured in raw data."              
+		return 1
+	else
+		log_status_int "$tier" "PASS" "Passed for event 12 records captured in raw data."
+	fi
+	if [ ${event12_count} -le ${event13_count} ];then
+		log_status_int "$tier" "PASS" "Passed as  event 12 ($event12_count) and event 13 ($event13_count) count Matched."
+	else
+		log_status_int "$tier" "FAIL" "Failed for mismatch between event 12 ($event12_count) and event 13 ($event13_count) count."
+		return 1
+	fi
+    return 0
+}
+
+main

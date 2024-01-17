@@ -1,0 +1,657 @@
+{
+	"flows": [
+		{
+			"orgID": "01388c43be91e8d9",
+			"id": "0aa5d7126c5cf000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2023-01-25T05:20:34.225779571Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [
+							{
+								"id": "airSensor",
+								"name": "Air Sensor Data",
+								"type": "sample"
+							}
+						],
+						"id": "local_461c7b96-4b7f-4f5b-a08b-41c3d2006632",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_0728a6c6-5a30-440a-9b97-15376cccdcaf",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_a9465552-9681-447a-b701-d0295cefb3f1",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "ccdb1d82-38bb-4a54-b648-5423ea901c9e",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "de97d869-4fd3-4c72-a236-de387d1e62a7",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "d081f8f3-f2a4-4a44-b0db-ab1e2d830b75",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2023-01-25T06:15:16.287571226Z"
+			},
+			"createdAt": "2023-01-25T05:20:34.225779571Z",
+			"updatedAt": "2023-01-25T06:34:21.971314303Z"
+		},
+		{
+			"orgID": "01388c43be91e8d9",
+			"id": "0aa5e3b1abd39000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2023-01-25T06:15:43.023937006Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [
+							{
+								"id": "airSensor",
+								"name": "Air Sensor Data",
+								"type": "sample"
+							}
+						],
+						"id": "local_d70786d6-f8b3-4acb-ae91-258915e5c10b",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_e30879a6-724b-4edd-8e23-66f74b177da0",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_124c3a4d-24c1-4e6a-86dd-8b7a73806097",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "8e4fb209-d655-4da3-a197-e95edd260d4f",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "79f92bf6-6b0e-4ffa-8278-842cdde0dfd4",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "25944f88-c810-4e96-aaea-43cfe4a77819",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2023-01-25T06:15:43.023937006Z"
+			},
+			"createdAt": "2023-01-25T06:15:43.023937006Z",
+			"updatedAt": "2023-01-25T06:15:48.442583142Z"
+		},
+		{
+			"orgID": "01388c43be91e8d9",
+			"id": "0aa5e7e4abd39000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2023-01-25T06:34:03.823636548Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [],
+						"id": "local_d90b2bbd-0bdb-44e2-992c-66245a7f469a",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_87d9a2a2-18a7-4ec2-92a1-80dee8eca092",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_92655a85-fd0e-43a6-a001-9f1db2741dce",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "2077342d-25d9-41f8-afee-9ef1016b7c95",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "aa15ec24-6495-41af-b0c0-f31b4887df2c",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "bb3317ce-56c2-41aa-886e-2b2537f2a32f",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2023-01-25T06:34:03.823636548Z"
+			},
+			"createdAt": "2023-01-25T06:34:03.823636548Z",
+			"updatedAt": "2023-01-25T06:34:04.74359985Z"
+		},
+		{
+			"orgID": "01388c43be91e8d9",
+			"id": "0aa5ed353f381000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [],
+						"id": "local_ac7f6f2c-9a48-465c-8a05-851c65ba5ad4",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_441b2ba1-545a-4734-9b15-6144de7076c3",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_cf21816b-f701-4958-9ac6-b24241dae0a6",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "1399e35d-70e4-46c9-8dcd-f80974c5eedb",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "3fb6579c-f3c4-43af-bfbb-065b01753f7d",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "5f850be4-7cdf-4248-a5c8-3ac2fb8dc868",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				}
+			},
+			"createdAt": "2023-01-25T06:57:17.052605103Z",
+			"updatedAt": "2023-01-25T06:57:17.052605103Z"
+		}
+	]
+}

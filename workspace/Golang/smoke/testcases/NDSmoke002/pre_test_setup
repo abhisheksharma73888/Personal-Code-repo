@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#source /home/cavisson/work/etc/netstorm.env
+/etc/init.d/ndc restart
+sleep 10
+exit 0

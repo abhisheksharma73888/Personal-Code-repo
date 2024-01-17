@@ -1,0 +1,525 @@
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/html
+Date: Wed, 07 Apr 2021 17:46:36 GMT
+----
+--Request 
+GET https://c.disquscdn.com/js/dist/prebid.4.30.0-zeta-ssp.js
+Host: c.disquscdn.com
+Host: c.disquscdn.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://tempest.services.disqus.com/ads-iframe/survey/?position=lightbox&shortname=qor&experiment=network_default_hidden&variant=fallthrough&service=dynamic&anchorColor=%230277bd&colorScheme=light&sourceUrl=https%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&typeface=sans-serif&disqus_version=bb0e8f2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 1d35678c5edbb639ab7aa5cce0856f57
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Date: Wed, 07 Apr 2021 17:46:36 GMT
+x-amz-id-2: 5+Jz9Tn0n+o0RHixGS5bdm3qau+ot4jFyHcTBVaN/4xtWpwxoF8Yr9aXjg2nO5sHBdfGh/k7q1o=
+x-amz-request-id: QQY3BTCSHDK5DTZ5
+Last-Modified: Thu, 03 Aug 2017 06:56:25 GMT
+Server: NetDNA-cache/2.2
+Cache-Control: max-age=0, private, must-revalidate
+X-Cache: HIT
+Content-Type: text/css
+ETag: W/\"32adbef3fe8dffb60afd89d1dcd537e5\"
+Content-Encoding: gzip
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 1a741b3e7fad832815e6e2f6b0e270ff
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:54 GMT
+Content-Length: 388
+----
+--Request 
+GET https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Host: fonts.googleapis.com
+Host: fonts.googleapis.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: http://10.10.30.5:7000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: text/css; charset=utf-8
+access-control-allow-origin: *
+timing-allow-origin: *
+link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin
+strict-transport-security: max-age=31536000
+expires: Wed, 07 Apr 2021 17:46:46 GMT
+date: Wed, 07 Apr 2021 17:46:46 GMT
+cache-control: private, max-age=86400, stale-while-revalidate=604800
+last-modified: Wed, 07 Apr 2021 17:46:46 GMT
+cross-origin-resource-policy: cross-origin
+content-encoding: gzip
+server: ESF
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 2326d9cbac91d96103b2df4baeb0b288
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:54 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: cd1fcb568f802b72ed7294f5e32a5368
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:54 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 68b63c678cac3a08f97f3149fa2277a4
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:54 GMT
+Content-Length: 1046
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 713a5d55fb669e19047d11696c912724
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 4284dc87e21935cd3f88279b4b22c731
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: e3c7d1320a392d2cdb323b261f90d85c
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 404 Not Found
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset=utf-8
+X-Content-Type-Options: nosniff
+Date: Wed, 07 Apr 2021 17:46:36 GMT
+Content-Length: 19
+----
+
+--Response 
+HTTP/1.1 404 Not Found
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset=utf-8
+X-Content-Type-Options: nosniff
+Date: Wed, 07 Apr 2021 17:46:36 GMT
+Content-Length: 19
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 61248
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:52 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 68709
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 139188
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 60940
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 133238
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 86952
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 53642
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:57 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 91934
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 139314
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 55629
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 161764
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 8a4c9528a970e51e6036910dd6cf3464
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+Content-Length: 1962
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 5d814cc48aebe600199ad4f8b3710e4c
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+Content-Length: 571
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 01b94498a02f34e62a898e595f339996
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 46fd436889f03ae636f24b4cb755fc1a
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+Content-Type: text/css
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+Access-Control-Max-Age: 3000
+Last-Modified: Tue, 25 Oct 2016 17:21:58 GMT
+ETag: W/\"36082410df2ef7f83932219089dc1443\"
+Cache-Control: max-age=31556926
+Server: NetDNA-cache/2.2
+Vary: Access-Control-Request-Headers, Access-Control-Request-Method, Accept-Encoding
+X-Cache: HIT
+Content-Encoding: gzip
+----
+--Request 
+GET https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2
+Host: fonts.gstatic.com
+Host: fonts.gstatic.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+accept-ranges: bytes
+content-type: font/woff2
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 15948
+date: Thu, 01 Apr 2021 20:24:30 GMT
+expires: Fri, 01 Apr 2022 20:24:30 GMT
+last-modified: Tue, 15 Sep 2020 18:10:32 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 0
+age: 508936
+cache-control: public, max-age=31536000
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2
+Host: fonts.gstatic.com
+Host: fonts.gstatic.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+accept-ranges: bytes
+content-type: font/woff2
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 16112
+date: Tue, 06 Apr 2021 15:22:13 GMT
+expires: Wed, 06 Apr 2022 15:22:13 GMT
+last-modified: Tue, 15 Sep 2020 18:10:09 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 0
+cache-control: public, max-age=31536000
+age: 95073
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+--Response 
+HTTP/1.1 200 OK
+Date: Wed, 07 Apr 2021 17:44:59 GMT
+Content-Type: application/font-woff2
+Content-Length: 77160
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+Access-Control-Max-Age: 3000
+Last-Modified: Mon, 17 Jul 2017 16:24:59 GMT
+ETag: \"af7ae505a9eed503f8b8e6982036873e\"
+Cache-Control: max-age=31556926
+Server: NetDNA-cache/2.2
+Vary: Access-Control-Request-Headers, Access-Control-Request-Method, Accept-Encoding
+X-Cache: HIT
+Accept-Ranges: bytes
+----
+--Request 
+GET https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdu.woff2
+Host: fonts.gstatic.com
+Host: fonts.gstatic.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+accept-ranges: bytes
+content-type: font/woff2
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 15824
+date: Fri, 02 Apr 2021 00:28:18 GMT
+expires: Sat, 02 Apr 2022 00:28:18 GMT
+last-modified: Tue, 15 Sep 2020 18:09:45 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 0
+age: 494308
+cache-control: public, max-age=31536000
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2
+Host: fonts.gstatic.com
+Host: fonts.gstatic.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+accept-ranges: bytes
+content-type: font/woff2
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 15764
+date: Tue, 06 Apr 2021 15:22:16 GMT
+expires: Wed, 06 Apr 2022 15:22:16 GMT
+last-modified: Tue, 15 Sep 2020 18:10:17 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 0
+cache-control: public, max-age=31536000
+age: 95070
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: fa2562d6b8fc21fe8c75f005935ea62d
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:44:58 GMT
+Content-Length: 558
+----
+--Request 
+GET https://fonts.gstatic.com/s/playfairdisplay/v22/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2
+Host: fonts.gstatic.com
+Host: fonts.gstatic.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+accept-ranges: bytes
+content-type: font/woff2
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 28568
+date: Thu, 01 Apr 2021 23:24:13 GMT
+expires: Fri, 01 Apr 2022 23:24:13 GMT
+last-modified: Thu, 28 Jan 2021 20:30:38 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 0
+age: 498153
+cache-control: public, max-age=31536000
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+

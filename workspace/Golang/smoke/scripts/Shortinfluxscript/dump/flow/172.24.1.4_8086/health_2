@@ -1,0 +1,1 @@
+{"name":"influxdb", "message":"ready for queries and writes", "status":"pass", "checks":[], "version": "dev", "commit": "f78f9eda9c"}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+rm -rf /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Disable
+rm -rf /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Enable
+
+cp -r /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Disable_bkp /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Disable
+cp -r /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Enable_bkp /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke027/Topo_Enable
+
+exit 0

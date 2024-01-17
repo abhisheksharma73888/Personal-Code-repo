@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+#------------------------------------------------
+#Purpose : Skype conversation for automated tasks
+#Author  : Asheesh Tivaree
+#Date    : 08/Nov/2019
+#-----------------------------------------------
+
+try:
+    from skpy import Skype
+    from skpy import SkypeChats
+    import skpy
+    import re
+except ImportError:
+    exit('Skype client is not installed. Try installing with "pip install skpy --user"')
+
+import argparse
+from os import path
+
+parser = argparse.ArgumentParser(description='Python client to send skype message', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('-u', '--username', help='user name to connect to skype', required=True)
+parser.add_argument('-p', '--password', help='password', required=True)
+parser.add_argument('-g', '--group', help='group name to send message to, multiple groups has to be separated via :', required=True)
+parser.add_argument('-m', '--message', help='the message to send')
+opts = parser.parse_args()
+
+if path.exists("/home/cavisson/.skypeGroups.conf"):
+    pass
+else:
+    print('Configuration file ".skypeGroups.conf" does not exist on path "/home/cavisson", Please create it !!')
+    exit(0)
+
+
+SKYPE_GROUP_DICT = {}
+with open('/home/cavisson/.skypeGroups.conf') as f:
+    for line in f:
+        (key,val) = line.rstrip().split('|')
+        SKYPE_GROUP_DICT[str(key)]=val
+    #print(SKYPE_GROUP_DICT)
+
+sk = Skype(opts.username, opts.password) ##Connecting with skype.
+
+skc = SkypeChats(sk) ##Creating object with the help of object sk.
+
+groups = opts.group.split(':')
+
+for group in groups:
+    try:
+       #message = re.sub('\n', '<br/>', opts.message)
+       #print(message)
+       skc.chat(SKYPE_GROUP_DICT[group]).sendMsg(opts.message, rich=True) ##Sending message to groups
+    except KeyError:
+       print('Group/contact({0}) does not exist in Directory, Please make an entry for this group/contact in file "/home/cavisson/.skypeGroups.conf"'.format(group))

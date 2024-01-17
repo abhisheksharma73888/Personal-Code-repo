@@ -1,0 +1,1 @@
+{"query":"import \"regexp\"\n  \n  from(bucket: \"influxdata\")\n  |> range(start: -1h, stop: now())\n  |> filter(fn: (r) => true)\n  |> keep(columns: [\"_measurement\"])\n  |> group()\n  |> distinct(column: \"_measurement\")\n  |> limit(n: 200)\n  |> sort()","dialect":{"annotations":["group","datatype","default"]}}

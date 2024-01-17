@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+host=10.10.70.38
+user=cavisson
+passwd=cavisson
+
+cmd_stop_node="/home/cavisson/local/node_10.13.0/bin/pm2 stop all"
+echo "[RMON] Stop Agent 70.38"
+rmon -h $host -u $user -p $passwd -c "$cmd_stop_node"
+
+cmd_clear_logs="rm -rf /root/.pm2/logs/www-out-0.log"
+echo "[RMON] Clearing Logs in 70.38"
+rmon -h $host -u $user -p $passwd -c "$cmd_clear_logs"
+
+cmd_start_node="/home/cavisson/local/node_10.13.0/bin/pm2 start /root/scripts/webapp/nsecom/bin/www -i 1"
+echo "[RMON] Start Agent 70.38"
+rmon -h $host -u $user -p $passwd -c "$cmd_start_node"
+
+exit 0

@@ -1,0 +1,43 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>
+  Go Application | HOME
+</title>
+      
+      <script
+        src="./../code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    </head>
+    <body style='color:red;'>
+      
+        
+        <h1 class="hello" style='color:red;'>Sample Application !!!!!</h1>
+        <header >
+        <link rel="stylesheet" type="text/css" href="./../172.24.1.4_1323/static/css/main.css">
+        <img src="./../172.24.1.4_1323/static/image/goimg.png" alt ="Gopher">
+        <b style='color:red; !important;'>Cavisson System </b>
+        </header>
+        <nav>
+        <ul>
+            <li style='color:red;'><a href="/"; style='color:lightyellow;'> Home </a></li>
+            <li style='color:red;'><a href="/page"; style='color:lightyellow;'>Content </a></li>
+            <li style='color:red;'><a href="/about"; style='color:lightyellow;'>About</a></li>
+        </ul>
+        </nav> 
+        <hr>
+    <p style='color:red;'> <b> Normalcall <a href="/hello" ; style='color:lightyellow;'>Page render</a> </p>
+    <p style='color:red;'> <b> Mysql     <a href="/mysql"; style='color:lightyellow;'>Mysql Page </a></p>
+    <p style='color:red;'> <b> Cats      <a href="/cats?name=Abhi&type=da<a b>"; style='color:lightyellow;'>cat Page </a></p>
+    <p style='color:red;'> <b> Json      <a href="/json/abhi/karan/abhay"; style='color:lightyellow;'>json Page </a></p>
+    <p style='color:red;'> <b>  Mongodb   <a href="/mongodb"; style='color:lightyellow;'>Mongodb Page </a></p>
+    <p style='color:red;'> <b> Cassandra <a href="/cassandra"; style='color:lightyellow;'>cassandra Page </a></p>
+    <p style='color:red;'> <b> Postgres  <a href="/postgres"; style='color:lightyellow;'>postgres Page </a></p>
+    <p style='color:red;'> <b> Postpg    <a href="/postpg"; style='color:lightyellow;'>postgpg Page </a></p>
+    <p style='color:red;'> <b> gorilla <a href="/mux/"; style='color:lightyellow;'>Gorilla Page </a></p>
+    <p style='color:red;'> <b> http callout   <a href="/httpcall"; style='color:lightyellow;'>http_callout</a></p>
+
+    </body>
+  </html>

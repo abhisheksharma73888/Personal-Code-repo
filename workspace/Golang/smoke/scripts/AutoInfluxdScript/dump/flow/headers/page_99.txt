@@ -1,0 +1,20 @@
+--Request 
+POST https://stats.g.doubleclick.net/j/collect?t=dc&aip=1&_r=3&v=1&_v=j99&tid=UA-45024174-4&cid=1412212591.1682316317&jid=808105915&gjid=1287526570&_gid=2029417635.1682316317&_u=aGDAAEABQAAAACAAI~&z=389800663
+Host: stats.g.doubleclick.net
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Content-Type: text/plain
+Accept: */*
+Origin: https://docs.influxdata.com
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA 
+
+

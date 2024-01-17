@@ -1,0 +1,856 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Flowpath                                                                           #
+#   Developer :- Sonali Mishra/Rajesh Kumar                                                       #
+#   Modified Date :- 22th Jan 2021                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"            
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "GOLANG-001-001") handle_golang_001_001_case ;;
+    "GOLANG-001-002") handle_golang_001_002_case ;;
+    "GOLANG-001-003") handle_golang_001_003_case ;;
+    "GOLANG-001-004") handle_golang_001_004_case ;;
+    "GOLANG-001-005") handle_golang_001_005_case ;;
+    "GOLANG-001-006") handle_golang_001_006_case ;;
+    "GOLANG-001-007") handle_golang_001_007_case ;;
+    "GOLANG-001-008") handle_golang_001_008_case ;;
+    "GOLANG-001-009") handle_golang_001_009_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function log_status_int() {
+     agentID="$1"
+     status="$2"
+     why="${3}"
+     log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+# Flowpath vaildation for bci%=0
+
+function handle_golang_001_001_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Verify_Data_Records_0 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% = 0"
+        fi
+    done
+    
+    }
+
+
+Verify_Data_Records_0(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)                                                   
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)                                                   
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)                                                   
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)                                                   
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)                                                   
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}" 
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+                                                                                               
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else 
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+
+    
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${eventId5}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${eventId5}"
+    fi 
+
+    if [ $eventId99 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 not detected: ${eventId99}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 is detected: ${eventId99}"
+    fi 
+
+    if [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 detected more then once: ${eventId99}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 detected once: ${eventId99}"
+    fi 
+
+    if [ $eventId11 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 not detected: ${eventId11}"
+        return 1
+    else     
+        log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+    fi 
+
+    if [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 detected more then once: ${eventId11}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 detected  once: ${eventId11}"
+    fi 
+
+    debug "eventId2=$eventId2, eventId4=$eventId4"                                             
+    if [ $eventId2 -lt 1 ] || [ $eventId4 -lt 1 ];then                                                        
+        log_status_int "${tier}" "FAIL" "No Event ID 2 and 4 are detected with bci%=0. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are detected with bci%=0. Number of flowpaths: ${eventId4}"
+    fi
+
+    if [ $eventId2 -ne $eventId4 ];then                                                        
+        log_status_int "${tier}" "FAIL" "EventsID 2 and 4 are not equal for bci% = 0. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+         log_status_int "${tier}" "PASS" "EventsID 2 and 4 are equal for bci% = 0. Number of flowpaths: ${eventId4}"
+    fi    
+    return 0
+
+}
+
+# Flowpath validation for bci%=25
+
+function handle_golang_001_002_case() {
+    
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+             DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Verify_Data_Records_25 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% 25"
+        fi
+    done
+}
+
+Verify_Data_Records_25(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"        
+    fi
+
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${eventId5}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is present: ${eventId5}"
+    fi
+
+    if [ $eventId99 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 not detected: ${eventId99}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 is detected: ${eventId99}"
+    fi
+
+    if [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 detected more then once: ${eventId99}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 detected  once: ${eventId99}"
+    fi
+
+    if [ $eventId11 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 not detected: ${eventId11}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+    fi
+
+    if [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 detected more then once: ${eventId11}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 detected once: ${eventId11}"
+    fi
+    
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -lt 20 ] && [ $eventId2 -gt 40 ];then                                                     
+        log_status_int "${tier}" "FAIL" "EventsID 2 and 4 are not detected for bci% 50. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "EventsID 2 and 4 are detected for bci% 50. Number of flowpaths: ${eventId4}" 
+    fi
+    
+    if [ $eventId2 -ne $eventId4 ];then                                                        
+        log_status_int "${tier}" "FAIL" "EventsID 2 and 4 are not equal for bci% 50. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "EventsID 2 and 4 are equal for bci% 50. Number of flowpaths: ${eventId4}"
+    fi    
+ 
+    btTag=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f4)          
+    debug "btTag=$btTag"                                                                   
+    if [ $btTag -lt 10 ] && [ $btTag -gt 13 ]; then
+        log_status_int "${tier}" "FAIL" "Unknown BT category detected for bci% 50"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "BT category detected for bci% 50"
+    fi
+
+    cputime=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f5)
+    debug "cputime=$cputime"
+
+    if [ "XX$cputime" != "XX-" ];then
+        log_status_int "${tier}" "FAIL" "5th filed not detected appropiate for Eventid 4 with bci% 50"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "5th file detected appropiate for Eventid 4 with bci% 50"
+    fi
+    return 0
+}
+
+
+#Flowpath validation for bci%=50
+
+function handle_golang_001_003_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Verify_Data_Records_50 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% 50"
+        fi
+    done
+}
+
+Verify_Data_Records_50(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId11 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 is detected: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected for bci% 100"
+    fi
+
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not same for bci% 100. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are same for bci% 100. Number of flowpaths: ${eventId4}"
+    fi
+      
+   btTag=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f4)
+   debug "btTag=$btTag"
+
+    if [ $btTag -lt 10 ] && [ $btTag -gt 13 ]; then
+        log_status_int "${tier}" "FAIL" "Unknown BT category detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "BT category detected for bci% 100"
+    fi   
+    
+   cputime=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f5)
+   debug "cputime=$cputime"
+   if [ "XX$cputime" != "XX-" ];then
+        log_status_int "${tier}" "FAIL" "5th filed not detected appropiate for Eventid 4 with bci% 50"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "5th filed is detected appropiate for Eventid 4 with bci% 50"
+   fi
+    return 0
+ 
+}
+
+#Flowpath validation for bci%=75
+
+function handle_golang_001_004_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Verify_Data_Records_75 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% 75"
+        fi
+    done
+}
+
+Verify_Data_Records_75(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId11 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 is detected: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected for bci% 100"
+    fi
+
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not same for bci% 100. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are same for bci% 100. Number of flowpaths: ${eventId4}"
+    fi
+      
+   btTag=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f4)
+   debug "btTag=$btTag"
+
+    if [ $btTag -lt 10 ] && [ $btTag -gt 13 ]; then
+        log_status_int "${tier}" "FAIL" "Unknown BT category detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "BT category detected for bci% 100"
+    fi   
+    
+   cputime=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f5)
+   debug "cputime=$cputime"
+   if [ "XX$cputime" != "XX-" ];then
+        log_status_int "${tier}" "FAIL" "5th filed not detected appropiate for Eventid 4 with bci% 50"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "5th filed is detected appropiate for Eventid 4 with bci% 50"
+   fi
+    return 0
+ 
+}
+
+#Flowpath validation for bci%=100
+
+function handle_golang_001_005_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Verify_Data_Records_100 $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% 100"
+        fi
+    done
+}
+
+Verify_Data_Records_100(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 is detected: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 99 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 99 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId11 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 not detected: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 is detected: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event id 11 detected more then once: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event id 11 detected once: ${RAW_DATA_FILE}"
+    fi
+
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected for bci% 100"
+    fi
+
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not same for bci% 100. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are same for bci% 100. Number of flowpaths: ${eventId4}"
+    fi
+      
+   btTag=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f4)
+   debug "btTag=$btTag"
+
+    if [ $btTag -lt 10 ] && [ $btTag -gt 13 ]; then
+        log_status_int "${tier}" "FAIL" "Unknown BT category detected for bci% 100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "BT category detected for bci% 100"
+    fi   
+    
+   cputime=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f5)
+   debug "cputime=$cputime"
+   if [ "XX$cputime" != "XX-" ];then
+        log_status_int "${tier}" "FAIL" "5th filed not detected appropiate for Eventid 4 with bci% 50"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "5th filed is detected appropiate for Eventid 4 with bci% 50"
+   fi
+    return 0
+ 
+}
+
+# Status code validation with flowpath
+
+function handle_golang_001_006_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        StatusCode_Validation $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Business transaction status code within expected range" 
+        fi
+    done
+
+}
+
+StatusCode_Validation(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)                                                   
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)                                                   
+    local statusCodeRange=$(grep "^4," $RAW_DATA_FILE | cut -d, -f3)
+    count=0
+    debug "eventId2=$eventId2, eventId4=$eventId4"                                             
+    #debug "[$($statusCodeRange | xargs)]"                                                      
+    debug "[$(echo $statusCodeRange | xargs)]"
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+
+    for code in $statusCodeRange; do                                                           
+        flag=0                                                                                 
+        case $code in                                                                          
+            200);;
+            302);;
+            301);;
+            404);;
+            500);;
+            501);;
+            502);;
+              0)flag=1;;                                                                       
+              *)flag=1;;                                                                       
+              ?)flag=1;;                                                                       
+        esac                                                                                   
+        if [ $flag -eq 1 ]; then                                                               
+            debug "code=$code, flag=$flag"                                                     
+            log_status_int "${tier}" "FAIL" "Unknown status code $code found"                            
+            #break
+            return 1
+        else
+            ((count++))
+        fi                                                                                     
+    done          
+    if [ $count -gt 0 ];then
+        log_status_int "${tier}" "PASS" "Known Status code observed for the Flowpaths"
+    fi
+}
+
+# checking for timestamp validations
+function handle_golang_001_007_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Timestamp_Validation $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Succesfully Validated TimeStamp for NDE Mode"
+        fi
+    done
+
+}
+
+Timestamp_Validation(){
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    configType=$(grep "^CONFIG" /home/cavisson/etc/cav_NodeJS.conf |cut -d ' ' -f2)                                   
+    local timeStampTest                                                                        
+    local absTimeStampTest                                                                     
+    local bciTimeStamp                                                                         
+    local absTimeInSecs                                                                        
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ "X$configType" != "XNDE" ]; then                                                      
+        log_status_int "${tier}" "FAIL" "Config type is not NDE. Not checking for timestamp validations" 
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Config type is NDE. Checking for timestamp validations"
+    fi                                                                                                
+                                                                                               
+    timeStampTest=$(cat $SUMMARY_TOP_FILE | cut -d '|' -f3)                                    
+    absTimeStampTest=$(date -d"$timeStampTest" +%s)                                            
+                                                                                               
+    bciTimeStamp=$(grep '^11,' $RAW_DATA_FILE | cut -d, -f2)                                   
+    length=${#bciTimeStamp}                                                                    
+    offset=$((length - 3))                                                                     
+                                                                                               
+    bciTimeStamp=${bciTimeStamp:0:$offset}                                                     
+    absTimeInSecs=$((1388534400 + bciTimeStamp))                                               
+                                                                                               
+    diff=$((absTimeStampTest - absTimeInSecs))                                                 
+    diff=${diff/-/}                        
+    debug "absTimeStampTest=$absTimeStampTest, bciTimeStamp=$bciTimeStamp, absTimeInSecs=$absTimeInSecs, diff=$diff"
+                                                                                               
+    if [ $diff -ge 60 ];then                                                                   
+        log_status_int "${tier}" "FAIL" "BCI start time($bciTimeStamp) is greater than expected test start time($absTimeInSecs)"
+        return 1
+    else                                                                                       
+        log_status_int "${tier}" "PASS" "BCI start time is as per the cavepoch 1388534400; NS start time = $absTimeStampTest; BCI start time=$absTimeInSecs"
+    fi
+    return 0
+}
+
+function handle_golang_001_008_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        EntryPoint_Validation $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Succesfully Validated TimeStamp for NDE Mode"
+        fi
+    done
+
+}
+
+EntryPoint_Validation(){
+    RAW_DATA_FILE=$1
+    local  eventId2=$(grep -c "^2," $RAW_DATA_FILE)                                                   
+    local  eventId4=$(grep -c "^4," $RAW_DATA_FILE)                                                   
+    local  sequenceBlob=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d, -f10)       
+    entryMethodId=$(echo $sequenceBlob | cut -d '_' -f1)                                       
+    actualEntryPoint=$(grep "^5,.*.,$entryMethodId$" $RAW_DATA_FILE | cut -d, -f2)
+    debug "eventId2=$eventId2, eventId4=$eventId4, sequenceBlob=$sequenceBlob, entryMethodId=$entryMethodId, actualEntryPoint=$actualEntryPoint"
+    expectedEntryPoint="nsecom._http_server.HTTPParser_parserOnIncoming(IncomingMessage;ServerResponse;)"
+    
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ -z $sequenceBlob ];then
+        log_status_int "${tier}" "FAIL" "Sequence blob not found for bciPct=100"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Sequence blob Found for bciPct=100"
+    fi                                                                                               
+    if [ ${actualEntryPoint} == ${expectedEntryPoint} ];then                                   
+        log_status_int "${tier}" "PASS" "Entrypoint match. Expected entry point(HTTPParser_parserOnIncoming); found($actualEntryPoint)"       
+    else                                                                                       
+        log_status_int "${tier}" "FAIL" "Entrypoint mismatch. Expected entry point(HTTPParser_parserOnIncoming); found($actualEntryPoint)"
+        return 1
+    fi                    
+    return 0
+}
+
+function handle_golang_001_009_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        verify_bt_chategory $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "$tier" "PASS" "L1 flowpath is detected only for category greater than normal ;btTag=$btTag;BCIPct=0;L1=True;DiscardFlowpath=True"
+        fi
+    done
+
+}
+
+verify_bt_chategory(){
+    RAW_DATA_FILE=$1
+    eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    sequenceBlob=$(grep "^4," $RAW_DATA_FILE | sort --random-sort|tail -1 | cut -d , -f10)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+    fi
+    if [ -s $RAW_DATA_FILE ];then
+        log_status_int "$tier" "PASS" "RawData File Exist with non Zero File Size"
+    fi
+    if [ $eventId2 -ne $eventId4 ]; then
+        log_status_int "$tier" "FAIL" "Event id 2/4 detected for bciPct=0;logLevelOneFpMethod=1 are not equal"
+        return 1
+    else
+        log_status_int "$tier" "PASS" "Event id 2/4 detected for bciPct=0;logLevelOneFpMethod=1 are Equal"
+    fi
+    if [ $eventId2 -gt 0 ] && [ $eventId4 -gt 0 ];then
+        log_status_int "$tier" "PASS" "Event id 2/4 detected for bciPct=0;logLevelOneFpMethod=1 are Equal"
+        btRecord=$(grep "^4," $RAW_DATA_FILE | tail -1)
+        btTag=$(echo $btRecord | cut -d , -f 4)
+        btStatus=$(echo $btRecord | cut -d , -f 3)
+        debug "btTag=$btTag"
+        if [ $btTag -le 10 ] && [ $btTag -gt 13 ];then
+            log_status_int "$tier" "FAIL" "L1 flowpath is detected only for category greater than normal;btTag=$btTag;BCIPct=0;L1=True;DiscardFlowpath=True"
+            return 1
+        else
+            log_status_int "$tier" "PASS" "Flow path is osberved for Normal Slow & Very Slow BT category "
+        fi
+        if [[  $(echo $btStatus | grep '-') ]];then
+            log_status_int "$tier" "FAIL" "Unknown category btTag=$btTag;BCIPct=0;L1=True;DiscardFlowpath=True"
+            return 1
+        else
+            log_status_int "$tier" "PASS" "Known category btTag=$btTag;BCIPct=0;L1=True;DiscardFlowpath=True"
+        fi
+    fi
+    return 0
+
+}
+
+main

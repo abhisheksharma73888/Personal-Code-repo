@@ -1,0 +1,4 @@
+|cavlib.conn.QueryContext|SQL_CALLOUT|1|||||#44|PDO.query|false|SQL Callout
+|cavwrapperlib.github.commandMonitor.started|SQL_CALLOUT|1|||||#74|PDO.query|false|SQL Callout
+|cavlib.queryHook.BeforeQuery|SQL_CALLOUT|1|||||#73|PDO.query|false|SQL Callout
+|http.RoundTripper.RoundTrip|HTTP_CALLOUT|1|||||#49|.curl_exec|false|HTTP_CALLOUT Backend

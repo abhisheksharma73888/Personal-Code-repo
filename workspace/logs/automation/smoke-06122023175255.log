@@ -1,0 +1,71 @@
+Buildfile: /home/cavisson/workspace/Golang/build.xml
+
+agent-build-info:
+     [echo] Current Build: R4.13.0.B82
+
+get-build-info:
+     [echo] Current Build: R4.13.0.B87
+
+smoke:
+
+clean:
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+   [delete] Deleting directory /home/cavisson/work/lib
+
+create-workbench:
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+    [mkdir] Created dir: /home/cavisson/work/lib
+
+copy-workbench-files:
+     [copy] Copying 1698 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+     [copy] Copying 12 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+     [copy] Copying 1 file to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+     [copy] Copying 74 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+     [copy] Copying 16 files to /home/cavisson/work/lib
+
+calc-start-time:
+     [echo] Test started at: 12/06/23 05:53:02 PM
+
+run-smoke:
+     [echo] Running Smoke...
+     [exec] #TierName|Enable/Disable(1/0)
+     [exec] Golang,1
+     [exec] IP_ADDR = https://0.0.0.0:7901
+     [exec] Controller = /home/cavisson/work
+     [exec] Test Cycle Number = 231206_175313
+     [exec] Test Suite Run Number = 1034
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec

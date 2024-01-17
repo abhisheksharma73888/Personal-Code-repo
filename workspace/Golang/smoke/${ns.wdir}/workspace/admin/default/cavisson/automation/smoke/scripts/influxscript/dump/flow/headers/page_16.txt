@@ -1,0 +1,67 @@
+--Request 
+GET http://10.10.70.39:8086/api/v2/telegrafs?orgID=cc2b46247a491c7e
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/cc2b46247a491c7e/load-data/buckets
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=3B1-5v6_KGewIuuNTf_cPNV2Ygn2ol98Q-HMq7wNU-t0cP3WTLP87hBSOrmymwbtO9QXiAB_TISAdZJSAd5AsA==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:57 GMT
+Content-Length: 22
+----
+--Request 
+GET https://dns.google/dns-query?dns=AAABAAABAAAAAAABBGRvY3MKaW5mbHV4ZGF0YQNjb20AAAEAAQAAKRAAAAAAAABQAAwATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Host: dns.google
+Accept: application/dns-message
+Accept-Language: *
+User-Agent: Chrome
+Accept-Encoding: identity
+----
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:36 GMT
+expires: Mon, 10 Jan 2022 11:34:36 GMT
+cache-control: private, max-age=60
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://dns.google/dns-query?dns=AAABAAABAAAAAAABBGRvY3MKaW5mbHV4ZGF0YQNjb20AABwAAQAAKRAAAAAAAABQAAwATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Host: dns.google
+Accept: application/dns-message
+Accept-Language: *
+User-Agent: Chrome
+Accept-Encoding: identity
+----
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:36 GMT
+expires: Mon, 10 Jan 2022 11:34:36 GMT
+cache-control: private, max-age=60
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+
+

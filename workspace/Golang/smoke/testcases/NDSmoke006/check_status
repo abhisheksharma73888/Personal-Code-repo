@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Correlation ID & Thread ID                                                         #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 14 Aug 2022                                                                  # 
+#                                                                                                 #
+###################################################################################################
+
+# Source out required files
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"            
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "GOLANG-006-001") handle_golang_006_001_case ;;
+    "GOLANG-006-002") handle_golang_006_002_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+    esac
+}
+
+function log_status_int()
+{
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+
+function handle_golang_006_001_case() {
+    for tier in $AVAILABLE_TIERS;do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        CorrelationID $DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "2 record is detected"
+            fi
+        else
+              log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi  
+    done
+}
+
+CorrelationID(){
+    RAW_DATA_FILE=$1
+    local url_filed=$(grep  "^2," $RAW_DATA_FILE|head -1 | cut -d ',' -f7 )
+    local correlation_filed=$(grep  "^2," $RAW_DATA_FILE|head -1 | cut -d ',' -f8 )
+    debug "url_filed: $url_filed and correlation_filed: $correlation_filed"
+    eventId4Count=$(grep -c ^4, $RAW_DATA_FILE)
+    eventId2Count=$(grep -c ^2, $RAW_DATA_FILE)
+    countR=0
+    count=0
+    if [ $eventId2Count -lt 1 ] && [ $eventId4Count -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+         
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2Count -ne $eventId4Count ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+         
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [[ $(echo $url_filed | grep "^/api") ]];then
+        if [[ $(echo $correlation_filed | grep "^api") ]] || [[ $(echo $correlation_filed | grep "^{corrID}") ]]; then 
+            log_status_int "${tier}" "PASS" "URL Name and CorrelationID detected with eventID 2"
+        else
+            log_status_int "${tier}" "FAIL" "Only URL Name is detected and CorrelationID is not detected"
+             
+        fi
+    fi
+    return 0
+}
+
+
+function handle_golang_006_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        ThreadID $DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "2 record is detected"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+}            
+    
+ThreadID(){
+    RAW_DATA_FILE=$1
+    local threadID=$(grep  "^2," $RAW_DATA_FILE|head -1 | cut -d ',' -f4)
+    local threadseq=$(grep  "^2," $RAW_DATA_FILE|head -1 | cut -d ',' -f5)
+    eventId4Count=$(grep -c ^4, $RAW_DATA_FILE)
+    eventId2Count=$(grep -c ^2, $RAW_DATA_FILE)
+    countR=0
+    if [ $eventId2Count -lt 1 ] && [ $eventId4Count -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+         
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2Count -ne $eventId4Count ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+         
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ ! -z ${threadID} ];then
+        if [ ! -z ${threadseq} ];then
+            log_status_int "${tier}" "PASS" "ThreadID and ThreadSeq is detected with 2 records threadID is ${threadID} and threadseq is ${threadseq}"
+        else
+            log_status_int "${tier}" "FAIL" "Only Thread ID is detetected ${threadID} but threadseq is not detected with 2 record"
+             
+        fi
+    fi
+    return 0
+}
+
+main

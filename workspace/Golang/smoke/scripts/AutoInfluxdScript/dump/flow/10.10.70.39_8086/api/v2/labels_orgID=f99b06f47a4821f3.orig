@@ -1,0 +1,6 @@
+{
+	"links": {
+		"self": "/api/v2/labels"
+	},
+	"labels": []
+}

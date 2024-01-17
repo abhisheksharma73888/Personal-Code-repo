@@ -1,0 +1,572 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+<meta name="description" content=" - Default Description">
+<meta name="keywords" content=" - Default Keywords">
+<meta property="og:description" name="og:description" content=" - Default Description">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0"/>
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/dist/home_products.css" />
+    <link type="text/css" rel="stylesheet" href="/vendors/flexslider.css" />
+    <link rel="stylesheet" media="all" href="/dist/qor.css">
+    <script src="/vendors/jquery.js"></script>
+    <link href="//use.fontawesome.com/6a90f27203.css" media="all" rel="stylesheet">
+  </head>
+
+  <body>
+    
+      
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/admin/assets/stylesheets/action_bar.css?theme=action_bar">
+
+  <div class="qor-actionbar">
+    <div class="qor-actionbar--container">
+      
+      
+        <div class="qor-actionbar__left">
+    <div class="qor-actionbar__logo"><img src="/admin/assets/images/logo-qor.png?theme=action_bar" width="45px" /></div>
+  </div>
+
+
+  <script type='text/javascript'>
+    $(function (){
+      $('.qor-actionbar__module-edit').on('click', function (){
+        $('.qor-actionbar__module-checkbox').prop('checked',true).trigger('change');
+      });
+
+      $('.qor-actionbar__module-preview').on('click', function (){
+        $('.qor-actionbar__module-checkbox').prop('checked',false).trigger('change');
+      });
+
+      $('.qor-actionbar__module-checkbox').on('change', function (){
+        setTimeout(function (){
+          window.location.href = "/admin" + "/action_bar/switch_mode?checked=" + $('.qor-actionbar__module-checkbox').prop('checked');
+        },800)
+      });
+    })
+  </script>
+
+  
+    <div class="qor-actionbar__left">
+      <div class="qor-actionbar__module">
+        <a class="qor-actionbar__module-preview">PREVIEW</a>
+        <input class='qor-actionbar__module-checkbox' id='cb2' type='checkbox' >
+        <label class='qor-actionbar__module-button' for='cb2' ></label>
+        <a class="qor-actionbar__module-edit">EDIT</a>
+      </div>
+    </div>
+  
+
+
+<style>
+  .qor-inline-actions {
+    float: left;
+  }
+  .qor-inline-actions .qor-action {
+    margin-right: 10px;
+    display: inline;
+  }
+  .qor-inline-actions a {
+    line-height: 32px;
+  }
+</style>
+
+
+  <div class="qor-inline-actions">
+    
+  </div>
+
+
+  <script src="/admin/assets/javascripts/datetimepicker.js"></script>
+  <script src="/admin/assets/javascripts/publish2_inline_edit.js?theme=publish2"></script>
+  <link type="text/css" rel="stylesheet" href="/admin/assets/stylesheets/datetimepicker.css" />
+  <link type="text/css" rel="stylesheet" href="/admin/assets/stylesheets/publish2_inline_edit.css?theme=publish2" />
+
+
+
+
+<div class="qor-actions qor-actions__filter-time" data-toggle="qor.filter.time">
+  <div class="qor-selector left-aligned">
+    <a href="javascript://" class="qor-selector-toggle qor-filter-toggle">
+      <span >TIME TRAVEL/PUBLISH STATE…</span>
+
+      <span class=" qor-actions__filter-item" style="display: none;">
+        <i class="material-icons qor-selector-clear" data-type="publishready">clear</i>
+        <span class="qor-publishready-label">
+          
+        </span>
+      </span>
+
+      <span class="qor-actions__filter-item" style="display: none;">
+        <i class="material-icons qor-selector-clear">clear</i>
+        <span class="qor-selector-label"></span>
+      </span>
+    </a>
+  </div>
+
+  <div class="qor-filter__block qor-filter__dropdown clearfix" style="display: none;">
+
+    <div class="qor-field__edit qor-field__publishready" data-search-param="publish_draft_content">
+      <label>
+        <input type="checkbox" name="QorResource.PublishReady" id="qor-publishready__off"  data-label="Include content that is not Publish-ready" /> 
+        Include content that is not Publish-ready
+      </label>
+    </div>
+
+    <div class="qor-field__edit qor-field__datetimepicker" data-picker-type="datetime">
+      <label class="qor-field__label">Time Travel</label>
+      <input class="qor-datetimepicker__input qor-filter__scheduled-time" placeholder="YYYY-MM-DD" data-search-param="publish_scheduled_time" type="text" value="" />
+      <div class="qor-field__datetimepicker-button">
+        <button data-toggle="qor.datepicker" class="qor-action__datepicker" type="button">
+          <i class="material-icons">date_range</i>
+        </button>
+
+        <button data-toggle="qor.timepicker" class="qor-action__timepicker" type="button">
+          <i class="material-icons">access_time</i>
+        </button>
+      </div>
+    </div>
+
+    <button type="button" class="mdl-button mdl-button--colored mdl-button--raised mdl-js-button qor-filter__button-search">Done</button>
+  </div>
+</div>
+
+
+  
+    <div class="qor-actionbar__right">
+      <div class="qor-actionbar__info">
+        <span>Logged in as abhi@gmail.com</span>
+        <a href="/auth/logout">LOGOUT</a>
+      </div>
+
+      
+        <div class="qor-actionbar__menu">
+          <label for="qor-actionbar__menu-checkbox">
+            <i class="material-icons">more_vert</i>
+            <ul style="display:none;">
+              
+                <li><a target="_blank" href="/admin" class="qor-actionbar-button">Admin Dashboard</a></li>
+              
+                <li><script data-prefix="/admin/" src="/admin//assets/javascripts/action_bar_check.js?theme=action_bar"></script><a target="_blank" data-iframe-url="/admin//action_bar/inline_edit" data-url="/admin/seo_setting/!seo_setting?name=%2Fhelp" href="#" class="qor-actionbar-button">Edit SEO</a></li>
+              
+            </ul>
+          </label>
+        </div>
+      
+    </div>
+      
+    </div>
+  </div>
+
+
+    
+
+    <div class="header">
+      <header class="container">
+        <div class="grid">
+          <input type="checkbox" id="header-menustate" class="header__menustate" style="display: none" />
+          <label class="header__mobileicon" for="header-menustate">
+            <i class="material-icons">&#xE3C7;</i>
+          </label>
+
+          <div class="grid__col is-2 header__logo">
+            <a href="/" class="logo"><img src="/images/logo.png" /></a>
+          </div>
+
+          <a href="#" class="header__mobilemenu-cart">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </a>
+
+          <div class="header__mobilemenu grid__col is-10">
+            <div class="header__menu">
+              <a href="/">Home</a>
+              <a href="/men">men</a>
+              <a href="/women">women</a>
+              <a href="/kids">kids</a>
+            </div>
+
+            <div class="header__func header__func-login">
+              
+                <a href="/account">MY ACCOUNT</a>
+              
+
+              <a href="/cart" class="header__menu-cart">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        
+      </div>
+    </div>
+
+    <link type="text/css" rel="stylesheet" href="/vendors/flexslider.css" />
+<link type="text/css" rel="stylesheet" href="/dist/home_products.css" />
+
+<div class="container products__details">
+  
+      <div class="grid">
+        <div class="grid__col is-5 products__gallery">
+
+          <div class="swiper-container products__gallery--top">
+            <ul class="slides">
+              
+                <li style="background-image:url(/system/product_images/1/file.jpg)"></li>
+              
+            </ul>
+          </div>
+
+          <div class="swiper-container products__gallery--thumbs">
+            <ul class="slides">
+              
+                <li style="background-image:url(/system/product_images/1/file.jpg)"></li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid__col is-7 products__meta">
+          <form id="products__addtocart" action="/cart">
+            <input name="product_id" type="hidden" value="1"/>
+            <input name="color_variation_id" type="hidden" value="1"/>
+
+            <h1>Multicolor Shirt</h1>
+            <p class="products__meta--price">$98</p>
+            <div class="products__meta--divider"></div>
+            <ul>
+              <li>
+                <strong>COLOR:</strong>
+                <div class="products__meta--color">
+                  <span class="selected" style="background: #F6841C"></span>
+                  <span style="background: #25A5DF"></span>
+                  <span style="background: #80DA7A"></span>
+                  <span style="background: #FFD322"></span>
+                  <span style="background: #77969E"></span>
+                  <span style="background: #2F2F2F"></span>
+                </div>
+              </li>
+
+              <li>
+                <strong>SIZE:</strong>
+                <select name="size_variation_id" style="display: none;">
+                  
+                    <option value="1" selected>S</option>
+                  
+                    <option value="2" >M</option>
+                  
+                    <option value="3" >L</option>
+                  
+                </select>
+                <ul class="products__meta--size">
+                    
+                    <li value="1" class="current selected">S</li>
+                  
+                    <li value="2" >M</li>
+                  
+                    <li value="3" >L</li>
+                  
+                </ul>
+                
+              </li>
+
+              <li>
+                <strong>QTY:</strong>
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </li>
+              <li>
+                <button type="submit" class="button button__primary">+ ADD TO CART</button>
+                <a href="#"><img src="/images/icon-fav.png" height="24px" /> <span>TO WISHLIST</span></a>
+              </li>
+            </ul>
+            <div class="products__details--share">
+              <span>SHARE:</span>
+              <a href="#"><img src="/images/facebook-grey.png" height="24px" /></a>
+              <a href="#"><img src="/images/twitter-grey.png" height="24px" /></a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="grid products__info">
+
+        <div class="grid__col is-12">
+          <h6>DESCRIPTION:</h6>
+          <p>QOR t-shirt, basic but versatile: you can lie on it on the brilliant marble-sanded beaches of Santraginus V, inhaling the heady sea vapours; you can sleep under it beneath the stars which shine so redly on the desert world of Kakrafoon; use it to sail a miniraft down the slow heavy River Moth; wet it for use in hand-to-hand-combat; wrap it round your head to ward off noxious fumes or avoid the gaze of the Ravenous Bugblatter Beast of Traal.</p>
+        </div>
+
+        <div class="grid__col is-12">
+          <h6>SPECS:</h6>
+          <div>
+            <p>Made in: Japan</p>
+          </div>
+          <div>
+            <p>Materials: Rubber soles, fabric uppers, plastic & metal zipper</p>
+          </div>
+        </div>
+
+        <div class="grid__col is-12">
+          <div>
+            <h6>Framistan:</h6>
+            <p>Me non paenitet nullum festiviorem excogitasse ad hoc. Etiam habebis sem dicantur magna mollis euismod.</p>
+          </div>
+        </div>
+      </div>
+    
+  
+
+
+
+  
+  <div class="row products__featured">
+    <h3>RECOMMENDATIONS</h3>
+    <p>Products you might also like based on other products you viewed</p>
+    <div class="products__featured--slider" id="featured-product">
+      <ul class="products__list slides">
+        
+          <li>
+            <a href="/products/printed-short-shirt_w" class="products__list--img"><img src="/system/product_images/10/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/printed-short-shirt_w">Printed short T-shirt</a>
+            <p class="products__list--price" href="/products/printed-short-shirt_w"><span class="item_price">$43</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/boy-cotton-shirt_w" class="products__list--img"><img src="/system/product_images/9/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/boy-cotton-shirt_w">Cotton T-shirt</a>
+            <p class="products__list--price" href="/products/boy-cotton-shirt_w"><span class="item_price">$24</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/crossover-back_w" class="products__list--img"><img src="/system/product_images/8/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/crossover-back_w">Crossover Back</a>
+            <p class="products__list--price" href="/products/crossover-back_w"><span class="item_price">$98</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/shirts-variations_w" class="products__list--img"><img src="/system/product_images/7/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/shirts-variations_w">Shirt Variation - v1</a>
+            <p class="products__list--price" href="/products/shirts-variations_w"><span class="item_price">$22.9</span></p>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+
+  
+  <div class="row products__featured">
+    <h3>WHAT OTHER PEOPLE BOUGHT</h3>
+    <p>People who bought this products, also bought the following products</p>
+    <div class="products__featured--slider" id="also-bought">
+      <ul class="products__list slides">
+        
+          <li>
+            <a href="/products/cropped-bell-top_gr-ch" class="products__list--img"><img src="/system/product_images/2/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/cropped-bell-top_gr-ch">Cropped Bell Top</a>
+            <p class="products__list--price" href="/products/cropped-bell-top_gr-ch"><span class="item_price">$45</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/white-t-shirt_nvy-bl" class="products__list--img"><img src="/system/product_images/3/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/white-t-shirt_nvy-bl">White T-Shirt</a>
+            <p class="products__list--price" href="/products/white-t-shirt_nvy-bl"><span class="item_price">$48.95</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/patterned-top-in-blue_b" class="products__list--img"><img src="/system/product_images/4/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/patterned-top-in-blue_b">Patterned Top in Blue</a>
+            <p class="products__list--price" href="/products/patterned-top-in-blue_b"><span class="item_price">$24.95</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/crossover-blue_b" class="products__list--img"><img src="/system/product_images/5/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/crossover-blue_b">Crossover Blue</a>
+            <p class="products__list--price" href="/products/crossover-blue_b"><span class="item_price">$32.45</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/slogan-t-shirt_blue-light" class="products__list--img"><img src="/system/product_images/6/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/slogan-t-shirt_blue-light">Slogan T-Shirt</a>
+            <p class="products__list--price" href="/products/slogan-t-shirt_blue-light"><span class="item_price">$134.12</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/shirts-variations_w" class="products__list--img"><img src="/system/product_images/7/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/shirts-variations_w">Shirt Variation - v1</a>
+            <p class="products__list--price" href="/products/shirts-variations_w"><span class="item_price">$22.9</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/crossover-back_w" class="products__list--img"><img src="/system/product_images/8/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/crossover-back_w">Crossover Back</a>
+            <p class="products__list--price" href="/products/crossover-back_w"><span class="item_price">$98</span></p>
+          </li>
+        
+          <li>
+            <a href="/products/boy-cotton-shirt_w" class="products__list--img"><img src="/system/product_images/9/file.main.jpg" /></a>
+            <a class="products__list--title" href="/products/boy-cotton-shirt_w">Cotton T-shirt</a>
+            <p class="products__list--price" href="/products/boy-cotton-shirt_w"><span class="item_price">$24</span></p>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</div>
+
+<script src="/vendors/jquery.flexslider-min.js"></script>
+
+
+    <footer class="footer">
+      <div class="container">
+
+        <div class="grid">
+          <div class="grid__col is-8">
+            <h4>CONNECT</h4>
+            <div class="society">
+              <a href="#"><img src="/images/twitter.png" /></a>
+              <a href="#"><img src="/images/facebook.png" /></a>
+              <a href="#"><img src="/images/gplus.png" /></a>
+              <a href="#"><img src="/images/youtube.png" /></a>
+            </div>
+
+            <p>QOR is Open Source software brought to you by <a href="https://theplant.jp/">The Plant</a> under an MIT license.</p><p>The name “QOR” is a trademark of The Plant and <a href="https://theplant.jp/">subject to trademark restrictions</a>.</p>
+
+            
+            <div class="footer__change-language">
+              <select>
+                <option selected value="/switch_locale?locale=en-US">English</option>
+                <option  value="/switch_locale?locale=zh-CN">简体中文</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid__col is-4">
+            <h4>SUPPORT & INFO</h4>
+
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+    </footer>
+
+    <script src="/dist/app.js"></script>
+    <script type="text/javascript">
+  var amazonMerchantId = "";
+  var amazonOrderReferenceId = null;
+  var amazonOrderReference = null;
+
+  window.onAmazonLoginReady = function() {
+    amazon.Login.setClientId('');
+  };
+
+  window.onAmazonPaymentsReady = function() {
+    $(function() {
+      if (location.pathname == "/cart") {
+        if ($("#amazon_login_widget").length > 0) {
+          showAmazonButton();
+        }
+      }
+
+      if (location.pathname == "/cart/checkout") {
+        showAmazonAddress();
+      }
+    })
+  };
+
+  function showAmazonButton(){
+    var authRequest;
+    OffAmazonPayments.Button("amazon_login_widget", amazonMerchantId, {
+      type:  "PwA",
+      color: "Gold",
+      size:  "medium",
+      authorization: function() {
+        loginOptions = {
+          scope: "profile payments:widget payments:shipping_address",
+          popup: "false"
+        };
+        authRequest = amazon.Login.authorize (loginOptions, "/cart/checkout");
+      }
+    });
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function showAmazonAddress(){
+    new OffAmazonPayments.Widgets.AddressBook({
+      sellerId : amazonMerchantId,
+      onOrderReferenceCreate: function(orderReference) {
+        $("#amazon_login_widget").hide()
+        amazonOrderReference = orderReference
+        amazonOrderReferenceId = orderReference.getAmazonOrderReferenceId();
+        console.log(orderReference)
+
+        $('#checkout-access-token').val(getParameterByName('access_token'))
+        $('#checkout-referenceid').val(amazonOrderReferenceId)
+        showAmazonWallet()
+      },
+      design : {
+        designMode: 'smartphoneCollapsible'
+      },
+      onAddressSelect : function(orderReference) {
+      },
+      onError : function(error) {
+      }
+    }).bind("amazon_addressbook_widget");
+  }
+
+  function showAmazonWallet(){
+    new OffAmazonPayments.Widgets.Wallet({
+      sellerId: amazonMerchantId,
+      amazonOrderReferenceId: amazonOrderReferenceId,
+      onPaymentSelect: function(orderReference) {
+        
+        
+
+        
+        
+      },
+      design: {
+        designMode: 'responsive'
+      },
+      onError: function(error) {
+        console.log(error.getErrorCode() + ': ' + error.getErrorMessage());
+      }
+    }).bind("amazon_wallet_widget");
+  }
+</script>
+
+<script async="async" src='https://static-fe.payments-amazon.com/OffAmazonPayments/jp/sandbox/lpa/js/Widgets.js'></script>
+
+  </body>
+</html>

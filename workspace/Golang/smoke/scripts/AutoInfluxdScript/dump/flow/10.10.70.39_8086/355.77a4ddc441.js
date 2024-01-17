@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[355],{1253:function(e,n,a){"use strict";a.r(n);var c=a(2),i=a.n(c);n.default=({image:e})=>i.a.createElement("img",{src:e})}}]);
+//# sourceMappingURL=355.77a4ddc441.js.map

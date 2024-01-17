@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#echo "Loggedin with root user"
+#sudo su
+#password=cavisson39
+#read -s $password
+#cd /home/cavisson/cavGoAgent
+#export LD_PRELOAD=/home/cavisson/cavGoAgent/lib/libunwind.so:/home/cavisson/cavGoAgent/lib/libdyninstAPI_RT.so;
+#echo "libunwind.so & libdyninstAPI_RT.so started"
+#nohup ./bin/goAgent &
+#echo "Goagent started"
+#cd /home/cavisson/cavGoAgent/goApp
+#export LD_PRELOAD=/usr/lib/libcavwrapperlib.so;
+#echo "libcavwrapperlib.so started"
+#nohup ./influxd &
+#echo "Application started"
+
+
+#host=10.10.70.39
+#user=root
+#passwd=cavisson39
+#user_Cav=cavisson
+#passwd_Cav=cavisson
+
+#cmd_stop_node=""
+#cmd_stop_node_5="pkill -9 -f pm2"
+#sleep 5
+
+#echo "[RMON] Stop Agent 70.38"
+#rmon -h $host -u $user_Cav -p $passwd_Cav -c "$cmd_stop_node"
+#sleep 5
+#\
+
+
+#source /home/cavisson/work/etc/netstorm.env
+#/etc/init.d/ndc forcerestart
+#sleep 60 
+exit 0

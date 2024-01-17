@@ -1,0 +1,59 @@
+body{
+	background-image: url('/static/image/o.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+	width: 90% auto;
+	margin: 30px;
+}
+img{
+
+	width: 100px;
+	height: 50px;
+	float: left;
+}
+header b{
+	margin-left: 80px;
+	margin-top: 50px;
+	float: left;
+	font-size: 30px;
+
+
+}
+nav {
+	clear: both;
+}
+nav ul{
+/*	background-color: black;*/
+	height: 60px;
+}
+nav ul li {
+	display: inline-block;
+	text-decoration: none;
+	color: white;
+	padding: 20px;
+}
+nav ul li a{
+	color: white;
+	font-size:30px;
+	text-decoration: none;
+}
+
+nav ul li a:hover{
+	background-color: powderblue;
+	color: black;
+}
+
+nav ul li:hover{
+	background-color: powderblue;
+	color: black;
+}
+
+#form-result{
+	
+	color:snow;
+}
+#list p{
+	background-color: yellow ;
+	color:snow;
+}

@@ -1,0 +1,24 @@
+--Request 
+POST http://10.10.70.39:8086/api/v2/query?orgID=d4246aa7c059a2de
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://10.10.70.39:8086
+Referer: http://10.10.70.39:8086/orgs/d4246aa7c059a2de/notebooks/08ffaf82de3d6000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=IfI3SvKhor-8GIrkbzo3hdNS-VJMKJ2ZbFZblDI6fHYZpzMRXTXUFGJb8mwJkNVxB_3sX9yhKFecoP0Vq1fvew==
+----
+ POSTDATA {"query":"import \"influxdata/influxdb/sample\"\n\noption v = {timeRangeStart: -1h, timeRangeStop: now()}\n\nsample.data(set: \"airSensor\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n    |> filter(fn: (r) => r[\"_measurement\"] == \"airSensors\")\n    |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\n    |> limit(n: 100)","dialect":{"annotations":["group","datatype","default"]}}
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://10.10.70.39:8086
+Content-Type: text/csv; charset=utf-8
+Vary: Accept-Encoding
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 07 Mar 2022 12:11:42 GMT
+Transfer-Encoding: chunked
+----
+

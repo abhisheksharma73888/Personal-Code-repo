@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html lang="en" dir="ltr" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" dir="ltr" class="ie9"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" dir="ltr"><!--<![endif]-->
+
+<head>
+    <title>Disqus Comments</title>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <style>
+        .alert--warning {
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #FFE070;
+            color: #A47703;
+        }
+
+        .alert--warning a,
+        .alert--warning a:hover,
+        .alert--warning strong {
+            color: #A47703;
+            font-weight: bold;
+        }
+
+        .alert--error p,
+        .alert--warning p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        </style>
+    
+    <style>
+        
+        html {
+            overflow: hidden;
+        }
+        
+
+        #error {
+            display: none;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    
+
+    
+    <div id="error" class="alert--error">
+        <p>We were unable to load Disqus. If you are a moderator please see our <a href="https://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+    </div>
+
+    
+    <script type="text/json" id="disqus-forumData">{"session":{"canModerate":false,"audienceSyncVerified":false,"mustVerify":false,"canReply":true,"mustVerifyEmail":false},"forum":{"aetBannerConfirmation":null,"founder":"185173855","twitterName":null,"commentsLinkOne":"1 Comment","guidelines":null,"favicon":{"permalink":"https://disqus.com/api/forums/favicons/qor.jpg","cache":"//a.disquscdn.com/1617742046/images/favicon-default.png"},"commentsLinkZero":"0 Comments","disableDisqusBranding":false,"id":"qor","createdAt":"2015-12-01T02:15:35.174054","category":"Tech","aetBannerEnabled":false,"aetBannerTitle":null,"raw_guidelines":null,"initialCommentCount":null,"votingType":null,"installCompleted":true,"moderatorBadgeText":"","commentPolicyText":null,"aetEnabled":false,"channel":null,"sort":4,"description":null,"newPolicy":true,"raw_description":null,"customFont":null,"language":"en","adsReviewStatus":0,"commentsPlaceholderTextEmpty":null,"daysAlive":0,"forumCategory":{"date_added":"2016-01-28T01:54:31","id":8,"name":"Tech"},"colorScheme":"auto","pk":"3908466","commentsPlaceholderTextPopulated":null,"permissions":{},"commentPolicyLink":null,"aetBannerDescription":null,"name":"QOR","commentsLinkMultiple":"{num} Comments","settings":{"threadRatingsEnabled":false,"adsDRNativeEnabled":false,"adsPositionSidebarEnabled":false,"disable3rdPartyTrackers":false,"adsVideoEnabled":false,"adsProductVideoEnabled":false,"adsPositionTopEnabled":false,"ssoRequired":false,"unapproveLinks":false,"adsPositionRecommendationsEnabled":false,"linkAffiliationEnabled":true,"adsProductLinksThumbnailsEnabled":false,"hasCustomAvatar":false,"organicDiscoveryEnabled":false,"adsProductDisplayEnabled":false,"adsProductLinksEnabled":false,"threadReactionsEnabled":false,"adsEnabled":false,"disableSocialShare":false,"allowAnonPost":false,"adsProductStoriesEnabled":false,"adultContent":false,"allowAnonVotes":false,"gifPickerEnabled":true,"mustVerify":true,"badgesEnabled":false,"mustVerifyEmail":true,"audienceSyncEnabled":false,"behindClickEnabled":false,"mediaembedEnabled":true,"adsPositionBottomEnabled":false,"discoveryLocked":false,"validateAllPosts":false,"adsSettingsLocked":false,"isVIP":false,"adsPositionInthreadEnabled":false},"organizationId":2823647,"typeface":"auto","url":"","daysThreadAlive":0,"avatar":{"small":{"permalink":"https://disqus.com/api/forums/avatars/qor.jpg?size=32","cache":"//a.disquscdn.com/1617742046/images/noavatar32.png"},"large":{"permalink":"https://disqus.com/api/forums/avatars/qor.jpg?size=92","cache":"//a.disquscdn.com/1617742046/images/noavatar92.png"}},"signedUrl":""}}</script>
+
+    <script type="text/json" id="disqus-threadData">{"cursor":{"hasPrev":false,"prev":null,"total":1,"hasNext":false,"next":"1:0:0"},"code":0,"response":{"lastModified":1616531934,"posts":[{"editableUntil":"2018-08-24T07:26:19","dislikes":0,"thread":"5431023092","numReports":0,"likes":0,"message":"\u003cp>hello, test comment.\u003c/p>","id":"4044846978","createdAt":"2018-08-17T07:26:19","author":{"username":"disqus_WmEf2Gjoui","about":"","name":"dejing","disable3rdPartyTrackers":false,"isPowerContributor":false,"joinedAt":"2018-08-06T06:00:51","profileUrl":"https://disqus.com/by/disqus_WmEf2Gjoui/","url":"","location":"","isPrivate":false,"signedUrl":"","isPrimary":true,"isAnonymous":false,"id":"293878256","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/disqus_WmEf2Gjoui.jpg","cache":"//a.disquscdn.com/1617742046/images/noavatar32.png"},"isCustom":false,"permalink":"https://disqus.com/api/users/avatars/disqus_WmEf2Gjoui.jpg","cache":"//a.disquscdn.com/1617742046/images/noavatar92.png","large":{"permalink":"https://disqus.com/api/users/avatars/disqus_WmEf2Gjoui.jpg","cache":"//a.disquscdn.com/1617742046/images/noavatar92.png"}}},"media":[],"isSpam":false,"hasMore":false,"isDeleted":false,"isDeletedByAuthor":false,"parent":null,"isApproved":true,"isFlagged":false,"raw_message":"hello, test comment.","isAtFlagLimit":false,"isHighlighted":false,"canVote":false,"forum":"qor","depth":0,"points":0,"moderationLabels":[],"isEdited":false,"sb":false}],"thread":{"feed":"https://qor.disqus.com/2017_01_03t091426348608z/latest.rss","clean_title":"New, Better QOR Documentation released!","dislikes":0,"likes":0,"message":"","ratingsEnabled":false,"isSpam":false,"isDeleted":false,"category":"4217594","adsDisabled":false,"author":"185173855","id":"5431023092","signedLink":"http://disq.us/?url=http%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&key=hTdaNp22brTP_HAM4awp2w","createdAt":"2017-01-03T09:17:59","hasStreaming":false,"raw_message":"","isClosed":false,"link":"http://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released","slug":"2017_01_03t091426348608z","forum":"qor","identifiers":["2017-01-03T09:17:24.155665Z","2017-01-03T09:14:26.348608Z","8-en"],"posts":1,"moderators":[185173855],"validateAllPosts":false,"title":"New, Better QOR Documentation released!","highlightedPost":null}},"order":"popular"}</script>
+
+
+    <div id="fixed-content"></div>
+
+
+    
+        
+            
+<script type="text/json" id="disqus-urls">{
+    "root":"//disqus.com",
+    "next":"https://c.disquscdn.com/next/current"
+}</script>
+
+        
+        
+        <script>!function () {
+            var d = document;
+            var toH = d.head.appendChild.bind(d.head);
+
+            var v = window.location.href.match(/[#&?]version=([0-9a-f]{32})/);
+            var src = 'https://c.disquscdn.com/next/embed/lounge.load';
+            if (v)
+                src += '.' + v[1];
+            src += '.js';
+
+            var s = d.createElement('script');
+            s.crossOrigin = 'anonymous';
+            s.id = 'bootstrap-script';
+            s.setAttribute('data-app', 'lounge');
+            s.src = src;
+            toH(s);
+
+            var m = d.createElement('meta');
+            m.setAttribute('http-equiv', 'Content-Security-Policy');
+            m.setAttribute('content', "script-src https:;");
+            toH(m);
+        }();</script>
+    
+</body>
+</html>

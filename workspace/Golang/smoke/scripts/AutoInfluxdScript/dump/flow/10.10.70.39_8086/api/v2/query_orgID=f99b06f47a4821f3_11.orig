@@ -1,0 +1,8 @@
+#group,false,false,false
+#datatype,string,long,string
+#default,_result,,
+,result,table,_value
+,,0,_field
+,,0,_measurement
+,,0,sensor_id
+

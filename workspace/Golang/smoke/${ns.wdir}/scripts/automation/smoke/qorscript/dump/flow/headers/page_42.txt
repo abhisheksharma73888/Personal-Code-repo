@@ -1,0 +1,41 @@
+
+--Response 
+HTTP/1.1 200
+status: 200
+last-modified: Mon, 05 Apr 2021 23:22:30 GMT
+cache-control: public, max-age=315360000
+content-type: text/html; charset=utf-8
+etag: \"dab7ee9ff99366614e06e117bab5e542+gzip\"
+content-encoding: gzip
+access-control-allow-methods: GET
+access-control-allow-origin: *
+p3p: CP=\"CAO DSP LAW CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR BUS IND UNI COM NAV INT\"
+accept-ranges: bytes
+date: Wed, 07 Apr 2021 17:46:42 GMT
+x-served-by: cache-bwi5128-BWI, cache-sin18033-SIN
+x-cache: HIT, HIT
+vary: Accept-Encoding
+tw-cdn: FT
+content-length: 105298
+----
+
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: text/html
+content-length: 684
+date: Tue, 30 Mar 2021 16:10:32 GMT
+accept-ranges: bytes
+cache-control: max-age=31536000
+content-encoding: br
+etag: \"4e332edbbc3b46800c87f197cc7d3bb6\"
+last-modified: Tue, 30 Mar 2021 14:48:51 GMT
+x-robots-tag: none
+vary: Accept-Encoding
+x-cache: Hit from cloudfront
+via: 1.1 1d6770d4464cfbe59377b9fde853a856.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-C1
+x-amz-cf-id: 7orphbu7gNkduyoqhdNyPs7rRWwiPPokJoatOT6WM1mZaqC6WBET7A==
+age: 696969
+----
+

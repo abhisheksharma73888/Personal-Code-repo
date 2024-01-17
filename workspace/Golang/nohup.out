@@ -1,0 +1,303 @@
+Buildfile: /home/cavisson/workspace/Golang/build.xml
+
+agent-build-info:
+     [echo] Current Build: R4.8.0.B3
+
+get-build-info:
+     [echo] Current Build: R4.8.0.B100
+
+smoke:
+
+clean:
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+   [delete] Deleting directory /home/cavisson/work/ndprof/smoke
+   [delete] Deleting directory /home/cavisson/work/topology/smoke
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+   [delete] Deleting directory /home/cavisson/work/lib
+
+create-workbench:
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+    [mkdir] Created dir: /home/cavisson/work/ndprof/smoke
+    [mkdir] Created dir: /home/cavisson/work/topology/smoke
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+    [mkdir] Created dir: /home/cavisson/work/lib
+
+copy-workbench-files:
+     [copy] Copying 1037 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+     [copy] Copying 8 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+     [copy] Copying 10 files to /home/cavisson/work/topology/smoke
+     [copy] Copying 107 files to /home/cavisson/work/ndprof/smoke
+     [copy] Copying 1 file to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+     [copy] Copying 33 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+     [copy] Copying 14 files to /home/cavisson/work/lib
+
+calc-start-time:
+     [echo] Test started at: 05/11/22 08:01:05 PM
+
+run-smoke:
+     [echo] Running Smoke...
+     [exec] Creating /home/cavisson/workspace/Golang/results/4.8.0/100
+     [exec] #TierName|Enable/Disable(1/0)
+     [exec] Golang,1
+     [exec] IP_ADDR = 10.10.70.39:80
+     [exec] Controller = /home/cavisson/work
+     [exec] Test Cycle Number = 220511_200105
+     [exec] Test Suite Run Number = 1127
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke003
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke003
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke005
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke005
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] /home/cavisson/work/bin/ts_run: line 1159: [: -eq: unary operator expected
+     [exec] Test Suite execution is completed!!!
+     [exec] Result File: /home/cavisson/workspace/Golang/results/4.8.0/100/result.051122.200105.txt
+     [exec] Total: 105, Success: 89, Failures: 16
+     [exec] Processing result file and formatting to XML
+     [exec] Automation failed
+     [exec] Result: 1
+
+calc-end-time:
+     [echo] Test ended at: 05/11/22 09:51:36 PM
+
+update-email-config:
+     [echo] Result file is: /home/cavisson/workspace/Golang/results/4.8.0/100/result.051122.200105.txt
+     [echo] Generated HTML Report in /home/cavisson/workspace/Golang/smoke/etc/mail/.out/Smoke.mail.body.html
+
+gen-reports:
+     [echo] Copy HTML report file to mailing server
+      [scp] Connecting to 10.10.30.205:22
+      [scp] done.
+     [echo] Copy mailing config file to mailing server
+     [echo] Executing the mailing pyscript with all configs
+  [sshexec] Connecting to 10.10.30.205:22
+  [sshexec] cmd : python3 /home/cavisson/Go_Mailing/mail_with_html.py -A Smoke -R 4.8.0 -B 100 -r 4.8.0 -b 3
+  [sshexec] send: 'ehlo cavdev-30.205\r\n'
+  [sshexec] reply: b'250-smtp.gmail.com at your service, [182.71.119.212]\r\n'
+  [sshexec] reply: b'250-SIZE 35882577\r\n'
+  [sshexec] reply: b'250-8BITMIME\r\n'
+  [sshexec] reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+  [sshexec] reply: b'250-ENHANCEDSTATUSCODES\r\n'
+  [sshexec] reply: b'250-PIPELINING\r\n'
+  [sshexec] reply: b'250-CHUNKING\r\n'
+  [sshexec] reply: b'250 SMTPUTF8\r\n'
+  [sshexec] reply: retcode (250); Msg: b'smtp.gmail.com at your service, [182.71.119.212]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+  [sshexec] send: 'AUTH PLAIN AG5kdGVhbS5jYXZpc3NvbkBnbWFpbC5jb20AU2VwdEAyMDE5\r\n'
+  [sshexec] reply: b'235 2.7.0 Accepted\r\n'
+  [sshexec] reply: retcode (235); Msg: b'2.7.0 Accepted'
+  [sshexec] send: 'mail FROM:<ndteam.cavisson@gmail.com> size=6392\r\n'
+  [sshexec] reply: b'250 2.1.0 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (250); Msg: b'2.1.0 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] send: 'rcpt TO:<abhishek.sharma@cavisson.com>\r\n'
+  [sshexec] reply: b'250 2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (250); Msg: b'2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] send: 'rcpt TO:<akriti.kumari@cavisson.com>\r\n'
+  [sshexec] reply: b'250 2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (250); Msg: b'2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] send: 'rcpt TO:<sonali.mishra@cavisson.com>\r\n'
+  [sshexec] reply: b'250 2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (250); Msg: b'2.1.5 OK h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] send: 'data\r\n'
+  [sshexec] reply: b'354  Go ahead h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (354); Msg: b'Go ahead h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] data: (354, b'Go ahead h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp')
+  [sshexec] send: b'Content-Type: multipart/alternative; boundary="===============0463805873909238260=="\r\nMIME-Version: 1.0\r\nSubject: [GoAGENT] NetDiagnostics Smoke results for NS- R4.8.0.B100 | Agent- R4.8.0.B3\r\nFrom: ndteam.cavisson@gmail.com\r\nTo: abhishek.sharma@cavisson.com, akriti.kumari@cavisson.com\r\nCc: sonali.mishra@cavisson.com\r\n\r\n--===============0463805873909238260==\r\nContent-Type: text/html; charset="us-ascii"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<!DOCTYPE html>\r\n<html lang="en">\r\n<head>\r\n<title>smoke Report</title>\r\n</head>\r\n<body>\r\n<div class="container">\r\n<table style="width: 92% !important; border: 0px;">\r\n<tr>\r\n<td width="30%" style="border: 0px!important; padding: 0px!important">\r\n<h2 class="lead">Smoke Test Report</h2>\r\n</td>\r\n<td width="70%" style="border: 0px!important; padding: 0px!important">\r\n<table>\r\n<tr>\r\n<th>Status</th>\r\n<th>Start Time</th>\r\n<th>End Time</th>\r\n</tr>\r\n<tr>\r\n<td style="background-color: #FFCCCC">Fail
+  [sshexec] ed</td>\r\n<td>05/11/22 08:01:05 PM</td>\r\n<td>05/11/22 09:51:36 PM</td>\r\n</tr>\r\n</table>\r\n</td>\r\n</tr>\r\n</table>\r\n<br />\r\n<div class="divider">\r\n<br />\r\n<table>\r\n<caption class="lead">Test Results</caption>\r\n<tr>\r\n<th>Category</th>\r\n<th>Total</th>\r\n<th>Passed</th>\r\n<th>Failed</th>\r\n</tr>\r\n<tr>\r\n<td>smoke</td>\r\n<td>106</td>\r\n<td>89</td>\r\n<td>16</td>\r\n</tr>\r\n</table>\r\n<br />\r\n<br />\r\n<br />\r\n<table>\r\n<tr>\r\n<th>\r\n<th colspan="3">Golang</th>\r\n<th colspan="3">FAIL</th>\r\n</tr>\r\n<tr>\r\n<th>Feature</th>\r\n<th>Total</th>\r\n<th width="10%">Passed</th>\r\n<th style="margin:15px;">Failed</th>\r\n<th>Total</th>\r\n<th width="10%">Passed</th>\r\n<th style="margin:15px;">Failed</th>\r\n</tr>\r\n<tr>\r\n<td>Flowpath</td>\r\n<td style="color: blue; font-weight: bold">85</td>\r\n<td style="color: green; font-weight: bold">85</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n<td style="color: blue; font-weight: bold">0</td>\r\n<td style="color: gree
+  [sshexec] n; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n</tr>\r\n<td>BT</td>\r\n<td style="color: blue; font-weight: bold">7</td>\r\n<td style="color: green; font-weight: bold">4</td>\r\n<td style="color: red; font-weight: bold">3</td>\r\n<td style="color: blue; font-weight: bold">0</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n</tr>\r\n<td>ThreadDump & HeapDump</td>\r\n<td style="color: blue; font-weight: bold">0</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n<td style="color: blue; font-weight: bold">1</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n</tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td style="color: blue; font-weight: bold">12</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">12</td>\r\n<td style="color: blue; font-weight:
+  [sshexec]  bold">0</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n</tr>\r\n<td>DB Callout</td>\r\n<td style="color: blue; font-weight: bold">1</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">1</td>\r\n<td style="color: blue; font-weight: bold">0</td>\r\n<td style="color: green; font-weight: bold">0</td>\r\n<td style="color: red; font-weight: bold">0</td>\r\n</tr>\r\n</table>\r\n<br />\r\n<br />\r\n<br />\r\n<table>\r\n<caption class="lead">Failed Cases:- Golang</caption>\r\n<tr>\r\n<th>Feature</th>\r\n<th>CaseId</th>\r\n<th width="10%">TestRun</th>\r\n<th>Description</th>\r\n</tr>\r\n<tr>\r\n<td>BT</td>\r\n<td>GOLANG-002-001</td>\r\n<td>1710</td>\r\n<td>Numbers varied  between BTs and transactions for complete URI match with TSDB Count= 0 and BT Count= 11</td>\r\n</tr>\r\n<tr>\r\n<td>BT</td>\r\n<td>GOLANG-002-002</td>\r\n<td>1711</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<
+  [sshexec] tr>\r\n<td>BT</td>\r\n<td>GOLANG-002-003</td>\r\n<td>1712</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-001</td>\r\n<td>1714</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-002</td>\r\n<td>1715</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-003</td>\r\n<td>1716</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-004</td>\r\n<td>1717</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-005</td>\r\n<td>1718</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-006</td>\r\n<td>1719</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Hea
+  [sshexec] der</td>\r\n<td>GOLANG-004-007</td>\r\n<td>1720</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-008</td>\r\n<td>1721</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-009</td>\r\n<td>1722</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-010</td>\r\n<td>1723</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-011</td>\r\n<td>1724</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>HTTP Req-Res Header</td>\r\n<td>GOLANG-004-012</td>\r\n<td>1725</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n<tr>\r\n<td>DB Callout</td>\r\n<td>GOLANG-005-001</td>\r\n<td>1726</td>\r\n<td>Raw data has not formed for Tier=Golang</td>\r\n</tr>\r\n</table>\r\n<br />\r\n<br />\r\n<br />\r\n<br /
+  [sshexec] >\r\n<br />\r\n<br />\r\n<a href="http://10.10.30.37/reports/graphs/netjsagent/smoke/4.8.0/B100" style="text-decoration: none; color: #263238;">Click to see online reports</a>\r\n<br />\r\n<br />\r\n<div class="signature">Automation Team <br/>Cavisson Systems Inc.</div>\r\n</div>\r\n<style>.container,table,td,th{border:1px solid #e0e0e0}body,th{color:#333}body{font-size:.9rem}.container{width:90%;padding:50px}table{border-collapse:collapse;width:80%}table,td,th{padding:10px;font-size:1em}th{background-color:#f5f5f5;text-align:left}.divider{border-top:1px solid #e0e0e0}.signature{color:#607d8b}.lead{font-size:1.68rem;color:#616161;font-weight:300}</style>\r\n</body>\r\n</html>\r\n--===============0463805873909238260==--\r\n.\r\n'
+  [sshexec] 
+  [sshexec] reply: b'250 2.0.0 OK  1652286103 h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (250); Msg: b'2.0.0 OK  1652286103 h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+  [sshexec] data: (250, b'2.0.0 OK  1652286103 h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp')
+  [sshexec] send: 'quit\r\n'
+  [sshexec] reply: b'221 2.0.0 closing connection h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp\r\n'
+  [sshexec] reply: retcode (221); Msg: b'2.0.0 closing connection h13-20020a170902f54d00b0015e8d4eb2e4sm2212179plf.302 - gsmtp'
+
+smoke:
+
+BUILD SUCCESSFUL
+Total time: 110 minutes 43 seconds

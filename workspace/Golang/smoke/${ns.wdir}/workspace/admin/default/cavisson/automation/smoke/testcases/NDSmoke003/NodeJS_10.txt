@@ -1,0 +1,1 @@
+nd_control_rep:action=get_bci_agents_info:|^^NodeJS10|Cav-30-48|cav-nsecom-01|/root/scripts/webapp/nsecom|4.3.0.77|1621233930434|1621233942056|1621233942067|21823|NodeJS|Inactive|10.10.70.38|LinuxEx^^

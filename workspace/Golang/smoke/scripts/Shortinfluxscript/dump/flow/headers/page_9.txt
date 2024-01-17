@@ -1,0 +1,41 @@
+--Request 
+GET http://172.24.1.4:8086/api/v2/dashboards?orgID=6dc474be0df93348&limit=100
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://172.24.1.4:8086/orgs/6dc474be0df93348
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=Bi16hjOM1cLpauAEGocr-4oRjFcQnILZ4rluC89Nwy3Pq5VMjACpGLXoqJjzD3Nr5n8P9YzmeI4KJdwRHWZ8yA==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Fri, 13 Jan 2023 09:47:39 GMT
+Content-Length: 142
+----
+--Request 
+GET http://172.24.1.4:8086/e3937801e3.woff2
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Origin: http://172.24.1.4:8086
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://172.24.1.4:8086/6515f0452e.woff2
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Origin: http://172.24.1.4:8086
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+

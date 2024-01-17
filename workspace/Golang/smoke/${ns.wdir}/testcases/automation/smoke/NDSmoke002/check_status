@@ -1,0 +1,381 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Flowpath                                                                           #
+#   Developer :- Sonali Mishra/Rajesh Kumar                                                       #
+#   Modified Date :- 22th Jan 2021                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+RTITION_PATH}/nd/csv/NDAutoSensorHotSpotThreads.csv
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+HOTSPOT_THREAD_FILE="${PARTITION_PATH}/nd/csv/NDAutoSensorHotSpotThreads.csv"      
+HOTSPOT_THREADCOUNT_FILE="${PARTITION_PATH}/nd/csv/NDAutoSensorThreadsCount.csv"      
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"            
+AVAILABLE_TIERS=$Project
+
+function main() {
+    case $(get_test_name) in
+    "NETJS-002-001") handle_netjs_002_001_case ;;
+    "NETJS-002-002") handle_netjs_002_002_case ;;
+    "NETJS-002-003") handle_netjs_002_003_case ;;
+    "NETJS-002-004") handle_netjs_002_004_case ;;
+    "NETJS-002-005") handle_netjs_002_005_case ;;
+    "NETJS-002-006") handle_netjs_002_006_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+
+}
+
+function log_status_int() {
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+function handle_netjs_002_001_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Thread_count_csv $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Thread Count for csv file is Present"
+        fi
+    done
+}
+
+Thread_count_csv() {
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi    
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ -e ${HOTSPOT_THREADCOUNT_FILE} ];then
+        log_status_int "${tier}" "PASS" "NDAutoSensorThreadsCount.csv file is present."
+    else
+        log_status_int "${tier}" "FAIL" "NDAutoSensorThreadsCount.csv file is not present."
+        return 1
+    fi
+    return 0
+}
+
+
+function handle_netjs_002_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+                DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Hotspot_Thread_csv $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot Thread Count for csv file is observed"
+        fi
+    done
+}
+
+Hotspot_Thread_csv() {
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ -e $HOTSPOT_THREAD_FILE ];then
+        log_status_int "${tier}" "PASS" "Autosensor  hotspot file NDAutoSensorHotSpotThreads.csv is present in testrun."
+    else
+        log_status_int "${tier}" "FAIL" "Autosensor  hotspot file NDAutoSensorHotSpotThreads.csv is not present in testrun."
+        return 1
+    fi
+    return 0
+}
+
+
+function handle_netjs_002_003_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Hotspot_File $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot file Data is present in testrun.gdf "
+        fi
+    done
+}
+
+Hotspot_File() {
+    RAW_DATA_FILE=$1
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}" 
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ -s $HOTSPOT_THREAD_FILE ]; then                                                      
+        log_status_int "${tier}" "PASS" "Autosensor  hotspot file is present in testrun with hotspot entries."
+    else                                                                                       
+        log_status_int "${tier}" "FAIL" "Autosensor  hotspot file is not present in testrun or might have 0 data."
+        return 1
+    fi
+    return 0
+}
+
+
+
+function handle_netjs_002_004_case() {
+     for tier in $AVAILABLE_TIERS; do
+         if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+             DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+         fi
+         Event_Thread_Name $DATA_FILE
+         RC=$?
+         if [ $RC -eq 0 ];then
+             log_status_int "${tier}" "PASS" "Event Thread Name is detected."
+         fi
+    done
+}
+
+
+Event_Thread_Name() {
+    RAW_DATA_FILE=$1
+    count=0
+    threadname="Event Dispatch Thread"
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+
+    fi
+    for hotspot_thread_name  in "$(cut -d ',' -f5 $HOTSPOT_THREAD_FILE|tail -1)";do
+        debug "hotspot_thread_name: $hotspot_thread_name and threadname: $threadname"
+        if [ "$hotspot_thread_name" != "$threadname" ];then
+            log_status_int "${tier}" "FAIL" "Actual thread name not  detected; Actual thread name should EventDispatchThread"
+            return 1
+        else
+            ((count++))
+        fi
+    done
+    if [ $count -gt 0 ];then
+        log_status_int "${tier}" "PASS" "Actual thread name gets Detected { EventDispatchThread }"
+    fi
+    return 0
+
+}
+
+
+function handle_netjs_002_005_case(){
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Thread_State $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Actual Thread State detected as running"
+        fi
+    done
+
+}
+
+
+Thread_State() {
+    RAW_DATA_FILE=$1
+    threadstate="Running"
+    count=0
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    for hotspot_thread_state in $(cut -d ',' -f9 $HOTSPOT_THREAD_FILE|tail -1);do
+    #for hotspot_thread_state in $(cut -d ',' -f9 $HOTSPOT_THREAD_FILE);do
+        debug "hotspot_thread_state: $hotspot_thread_state and threadstate: $threadstate"
+        if [ "$hotspot_thread_state" != "$threadstate" ];then
+            log_status_int "${tier}" "FAIL" "Actual thread state not  detected; Actual thread state should be Running"
+            return 1
+        else
+            ((count++))
+        fi
+    done
+    if [ $count -gt 0 ];then
+        log_status_int "${tier}" "PASS" "Actual thread state detected; Actual thread state is Running"
+    fi
+    return 0
+}
+
+
+function handle_netjs_002_006_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|head -1)
+        fi
+        Hotspot_Thread_Id $DATA_FILE
+        RC=$?
+        if [ $RC -eq 0 ];then
+            log_status_int "${tier}" "PASS" "Hotspot Thread id of Nodejs is similar."
+        fi
+    done
+}
+
+
+
+Hotspot_Thread_Id() {
+    RAW_DATA_FILE=$1
+    hotspot_thread_id=$(cut -d ',' -f4 ${HOTSPOT_THREAD_FILE} | head -1 )
+    hotspot_thread_id2=$(cut -d ',' -f4 ${HOTSPOT_THREAD_FILE} | tail -1 )
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+    if [ "${hotspot_thread_id}" -ne "${hotspot_thread_id2}" ] || [ "${hotspot_thread_id}" -eq "${hotspot_thread_id2}" ];then
+        log_status_int "${tier}" "PASS" "Two differnt version with different ThreadIDs ${hotspot_thread_id}"
+    fi
+    return 0
+}
+
+main

@@ -1,0 +1,8 @@
+{
+	"links": {
+		"self": "/api/v2/users/0b18743673680000"
+	},
+	"id": "0b18743673680000",
+	"name": "cavisson",
+	"status": "active"
+}

@@ -1,0 +1,146 @@
+Golang,Flowpath,GOLANG-001-001,1705,1000,1000,pass,BT Category i.e 12 Detected for bciPct=0: /home/cavisson/work/logs/TR1705/20231212155433/nd/raw_data//Golang_ServerwithProxy_influxd.txt
+Golang,Flowpath,GOLANG-001-001,1705,1000,1000,pass,Passed For bciPct=0 All eventIDs; BT Tag; HTTP StatusCode
+Golang,Flowpath,GOLANG-001-002,1706,1000,1000,pass,BT category detected for bciPct%=25 as BT category found is: 12
+Golang,Flowpath,GOLANG-001-002,1706,1000,1000,pass,Event ID 2 and 4 are detected with bciPct%=25.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-002,1706,1000,1000,pass,EventsID 2 and 4 are equal for bciPct%=25.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-002,1706,1000,1000,pass,5th filed is detected appropiate for Eventid 4 with bciPct%=25
+Golang,Flowpath,GOLANG-001-002,1706,1000,1000,pass,Flowpath validation PASS for bciPct%=25
+Golang,Flowpath,GOLANG-001-003,1707,1000,1000,pass,BT category detected for bciPct%=50 as BT category found is: 10
+Golang,Flowpath,GOLANG-001-003,1707,1000,1000,pass,Event ID 2 and 4 are detected with bciPct%=50.No of flowpath of eventId2: 4 and No of fps of eventId4: 4
+Golang,Flowpath,GOLANG-001-003,1707,1000,1000,pass,EventsID 2 and 4 are equal for bciPct%=50.No of flowpath of eventId2: 4 and No of fps of eventId4: 4
+Golang,Flowpath,GOLANG-001-003,1707,1000,1000,pass,5th filed is detected appropiate for Eventid 4 with bciPct%=50
+Golang,Flowpath,GOLANG-001-003,1707,1000,1000,pass,Flowpath validation PASS for bciPct%=50
+Golang,Flowpath,GOLANG-001-004,1708,1000,1000,pass,BT category detected for bciPct%=75 as BT category found is: 10
+Golang,Flowpath,GOLANG-001-004,1708,1000,1000,pass,Event ID 2 and 4 are detected with bciPct%=75.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-004,1708,1000,1000,pass,EventsID 2 and 4 are equal for bciPct%=75.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-004,1708,1000,1000,pass,5th filed is detected appropiate for Eventid 4 with bciPct%=75
+Golang,Flowpath,GOLANG-001-004,1708,1000,1000,pass,Flowpath validation PASS for bciPct%=75
+Golang,Flowpath,GOLANG-001-005,1709,1000,1000,pass,BT category detected for bciPct%=100 as BT category found is: 10
+Golang,Flowpath,GOLANG-001-005,1709,1000,1000,pass,Event ID 2 and 4 are detected with bciPct%=100.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-005,1709,1000,1000,pass,EventsID 2 and 4 are equal for bciPct%=100.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-005,1709,1000,1000,pass,5th filed is detected appropiate for Eventid 4 with bciPct%=100
+Golang,Flowpath,GOLANG-001-005,1709,1000,1000,pass,Flowpath validation PASS for bciPct%=100
+Golang,Flowpath,GOLANG-001-006,1710,1000,1000,pass,Flowpath detected in RawData File.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-006,1710,1000,1000,pass,Event ID 2 and 4 are equal.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-006,1710,1000,1000,pass,All Expected status codes were found for bciPct=
+Golang,Flowpath,GOLANG-001-006,1710,1000,1000,pass,Business transaction status code within expected range
+Golang,Flowpath,GOLANG-001-007,1711,1000,1000,pass,Flowpath detected in RawData File.No of flowpath of eventId2: 8 and No of fps of eventId4: 8
+Golang,Flowpath,GOLANG-001-007,1711,1000,1000,pass,Event ID 2 and 4 are equal.No of flowpath of eventId2: 8 and No of fps of eventId4: 8
+Golang,Flowpath,GOLANG-001-007,1711,1000,1000,fail,Config type is not NDE. Not checking for timestamp validations
+Golang,Flowpath,GOLANG-001-007,1711,1000,1000,fail,BCI start time= 56 is greater than expected test start time= 1388534456 
+Golang,Flowpath,GOLANG-001-007,1711,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,Flowpath,GOLANG-001-008,1712,1000,1000,pass,Flowpath detected in RawData File.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-008,1712,1000,1000,pass,Event ID 2 and 4 are equal.No of flowpath of eventId2: 7 and No of fps of eventId4: 7
+Golang,Flowpath,GOLANG-001-008,1712,1000,1000,pass,Sequence blob Found for bciPct=100
+Golang,Flowpath,GOLANG-001-008,1712,1000,1000,pass,Entrypoint match. Expected entry point HTTPParser_parserOnIncoming; found 
+Golang,Flowpath,GOLANG-001-008,1712,1000,1000,pass,Succesfully Validated TimeStamp for NDE Mode
+Golang,Flowpath,GOLANG-001-009,1713,1000,1000,pass,Event id 2/4 detected for bciPct=0;logLevelOneFpMethod=1 are Equal
+Golang,Flowpath,GOLANG-001-009,1713,1000,1000,pass,Event id 2/4 detected for bciPct=0;logLevelOneFpMethod=1 are Equal
+Golang,Flowpath,GOLANG-001-009,1713,1000,1000,pass,Flow path is osberved for Normal Slow & Very Slow BT category 
+Golang,Flowpath,GOLANG-001-009,1713,1000,1000,pass,Known category btTag= $btTag BCIPct=0;L1=True;DiscardFlowpath=True 
+Golang,Flowpath,GOLANG-001-009,1713,1000,1000,pass,L1 flowpath is detected only for category greater than normal ;btTag=10 ;BCIPct=0;L1=True;DiscardFlowpath=True
+Golang,Business Trx,GOLANG-002-002,1715,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,Business Trx,GOLANG-002-003,1716,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,ThreadDump,GOLANG-003-001,1717,1000,1000,pass,Able to Take ThreadDump and file been dumped in given Path
+Golang,ThreadDump,GOLANG-003-001,1717,1000,1000,fail,Unable to Take Thread Dump for the mentioned Build
+Golang,ThreadDump,GOLANG-003-001,1717,1000,1000,pass,Passed for Successfully Dumping Thread Dump File
+Golang,HTTP Req-Res Header,GOLANG-004-001,1718,1000,1000,pass,Passed for event 12 records not found.
+Golang,HTTP Req-Res Header,GOLANG-004-001,1718,1000,1000,pass,Passed for event 13 records not found.
+Golang,HTTP Req-Res Header,GOLANG-004-001,1718,1000,1000,pass,Passed Htpp Req/Resp feature for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=0.
+Golang,HTTP Req-Res Header,GOLANG-004-002,1719,1000,1000,pass,Passed as event 12 records were found.
+Golang,HTTP Req-Res Header,GOLANG-004-003,1720,1000,1000,pass,Passed as event 12 records were found
+Golang,HTTP Req-Res Header,GOLANG-004-003,1720,1000,1000,pass,Passed for length of header value gzi less than specified in the rule.
+Golang,HTTP Req-Res Header,GOLANG-004-004,1721,1000,1000,pass,Passed as event 12 records were found
+Golang,HTTP Req-Res Header,GOLANG-004-004,1721,1000,1000,pass,More than one header's data was not captured in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-004,1721,1000,1000,pass,Passed for Host header data found in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-004,1721,1000,1000,pass,Passed for event 13 records found.
+Golang,HTTP Req-Res Header,GOLANG-004-004,1721,1000,1000,pass,Passed Htpp Req/Resp feature for captureHTTPReqFullFp=3%20Host%200 and captureHTTPRespFullFp=0.
+Golang,HTTP Req-Res Header,GOLANG-004-005,1722,1000,1000,pass,Passed as event 12 records were found
+Golang,HTTP Req-Res Header,GOLANG-004-005,1722,1000,1000,fail,Failed for Host header data not found in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-005,1722,1000,1000,pass,Passed for Cookie header data found in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-005,1722,1000,1000,pass,Passed for event 13 records not found .
+Golang,HTTP Req-Res Header,GOLANG-004-005,1722,1000,1000,pass,Passed Http Req/Resp feature for captureHTTPReqFullFp=3%20Accepti Accept%200 for Connection & Accept header and captureHTTPRespFullFp=0.
+Golang,HTTP Req-Res Header,GOLANG-004-006,1723,1000,1000,pass,Passed as event 12 records were found
+Golang,HTTP Req-Res Header,GOLANG-004-006,1723,1000,1000,pass,Passed for Host header data found in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-006,1723,1000,1000,pass,Passed for Cookie header data found in 12 records.
+Golang,HTTP Req-Res Header,GOLANG-004-006,1723,1000,1000,pass,Passed for event 13 records not found.
+Golang,HTTP Req-Res Header,GOLANG-004-006,1723,1000,1000,pass,Passed for captureHTTPReqFullFp=3%20Host Cookie%201%205 for host and cookie header with max length 5 and captureHTTPRespFullFp=0.
+Golang,HTTP Req-Res Header,GOLANG-004-007,1724,1000,1000,pass,Passed for event 13 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-007,1724,1000,1000,pass,Passed for header id 9 found in 6 records
+Golang,HTTP Req-Res Header,GOLANG-004-007,1724,1000,1000,pass,Passed for event 12 records not found.
+Golang,HTTP Req-Res Header,GOLANG-004-007,1724,1000,1000,pass,Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20ALL%200.
+Golang,HTTP Req-Res Header,GOLANG-004-008,1725,1000,1000,pass,Passed for event 13 records is captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-008,1725,1000,1000,pass,Passed for length of header value tex less than specified in the rule.
+Golang,HTTP Req-Res Header,GOLANG-004-008,1725,1000,1000,pass,Passed for event 12 records not found.
+Golang,HTTP Req-Res Header,GOLANG-004-008,1725,1000,1000,pass,Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20ALL%201%203.
+Golang,HTTP Req-Res Header,GOLANG-004-009,1726,1000,1000,pass,Passed for event 13 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-009,1726,1000,1000,pass,Passed for event 12 records not found .
+Golang,HTTP Req-Res Header,GOLANG-004-009,1726,1000,1000,pass,Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20Cache-Control%200.
+Golang,HTTP Req-Res Header,GOLANG-004-010,1727,1000,1000,pass,Passed for event 13 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-010,1727,1000,1000,pass,Passed for event 12 records Not found .
+Golang,HTTP Req-Res Header,GOLANG-004-010,1727,1000,1000,pass,Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp for multiple specified headers.
+Golang,HTTP Req-Res Header,GOLANG-004-011,1728,1000,1000,pass,Passed for event 13 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-011,1728,1000,1000,pass,Passed for event 12 records not found .
+Golang,HTTP Req-Res Header,GOLANG-004-011,1728,1000,1000,pass,Passed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp for multiple specified headers with max length 5.
+Golang,HTTP Req-Res Header,GOLANG-004-012,1729,1000,1000,pass,Passed for event 13 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-012,1729,1000,1000,pass,Passed for event 12 records captured in raw data.
+Golang,HTTP Req-Res Header,GOLANG-004-012,1729,1000,1000,pass,Passed as  event 12 (7) and event 13 (7) count Matched.
+Golang,HTTP Req-Res Header,GOLANG-004-012,1729,1000,1000,pass,Passed for captureHTTPReqFullFp=3%20ALL%200 and captureHTTPRespFullFp=2%20ALL%200.
+Golang,DB & HTTP CALLOUT,GOLANG-005-001,1730,1000,1000,pass,MYSQL Method is captured in 5 record
+Golang,DB & HTTP CALLOUT,GOLANG-005-001,1730,1000,1000,pass,MYSQL call is captured with sqlID 10
+Golang,DB & HTTP CALLOUT,GOLANG-005-001,1730,1000,1000,pass,MYSQL call is participating in flowpath seqence blob. Method id:10
+13
+77 and Participating Method id in seq blob: 13
+Golang,DB & HTTP CALLOUT,GOLANG-005-001,1730,1000,1000,pass,Mysql call is captured successfuly
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,fail,HTTP Method is not captured in 5 record
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Rawdata file exists: /home/cavisson/work/logs/TR1731/20231212173022/nd/raw_data//Golang_ServerwithProxy_influxd.txt
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Rawdata file is not zero size: 12K
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Event id 0 detected: 1
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Event id 99  detected: 1
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Event id 11 is detected: 1
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Event id 5 is  detected: 77
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Flowpath detected in RawData File
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,pass,Event ID 2 and 4 are equal. No of flowpath of eventId2: 7 and No of fps of eventId4: 7}
+Golang,DB & HTTP CALLOUT,GOLANG-005-002,1731,1000,1000,fail,Bug 135309-GoAgent|HTTP Callouts are not dumping in rawdata for GoAgent
+Golang,Correlation ID & Thread ID,GOLANG-006-001,1732,1000,1000,pass,Flowpath detected in RawData File
+Golang,Correlation ID & Thread ID,GOLANG-006-001,1732,1000,1000,pass,Event ID 2 and 4 are equal. Number of flowpaths: 
+Golang,Correlation ID & Thread ID,GOLANG-006-001,1732,1000,1000,pass,2 record is detected
+Golang,Correlation ID & Thread ID,GOLANG-006-002,1733,1000,1000,pass,Flowpath detected in RawData File
+Golang,Correlation ID & Thread ID,GOLANG-006-002,1733,1000,1000,pass,Event ID 2 and 4 are equal. Number of flowpaths: 
+Golang,Correlation ID & Thread ID,GOLANG-006-002,1733,1000,1000,pass,ThreadID and ThreadSeq is detected with 2 records threadID is 21 and threadseq is 21.1
+Golang,Correlation ID & Thread ID,GOLANG-006-002,1733,1000,1000,pass,2 record is detected
+Golang,BT Monitor,GOLANG-007-001,1734,1000,1000,pass,Passed for cm_init monitor request sent to NDC from NS for BT and found logs in ndc_trace.log file.
+Golang,BT Monitor,GOLANG-007-001,1734,1000,1000,pass,Passed for Accepting new connection message sent from NS to NDC in ndc_trace.log file.
+Golang,BT Monitor,GOLANG-007-001,1734,1000,1000,fail,Failed as Requests per sec is not coming in tsdb_metrics file.
+Golang,BT Monitor,GOLANG-007-001,1734,1000,1000,fail,Failed for validaiton of ND BT Monitor
+Golang,BT Monitor,GOLANG-007-002,1735,1000,1000,pass,TestRun GDF File Exist with non Zero File Size
+Golang,BT Monitor,GOLANG-007-002,1735,1000,1000,pass,BTMonitor are observed in Testrun Gdf File
+Golang,BT Monitor,GOLANG-007-002,1735,1000,1000,pass,Passed for observing Data for Backend Calls in Aggregate File
+Golang,BT Monitor,GOLANG-007-002,1735,1000,1000,pass,Passed for Business Transaction graphs found when BT Monitoring is enabled.
+Golang,BT Monitor,GOLANG-007-002,1735,1000,1000,pass,Passed for enableBTMonitor=1.
+Golang,IP Monitor,GOLANG-007-003,1736,1000,1000,pass,TestRun GDF File Exist with non Zero File Size
+Golang,IP Monitor,GOLANG-007-003,1736,1000,1000,pass,BTMonitor are observed in Testrun Gdf File
+Golang,IP Monitor,GOLANG-007-003,1736,1000,1000,pass,Passed for observing Data for Backend Calls in Aggregate File
+Golang,IP Monitor,GOLANG-007-003,1736,1000,1000,pass,Passed for Business Transaction graphs found when BT Monitoring is enabled.
+Golang,IP Monitor,GOLANG-007-003,1736,1000,1000,pass,Passed for enableBTMonitor=1.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed for ND Method Stats Monitor . ND Method Stats Monitor is available in tsdb_metrics.txt file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed for cm_init monitor request sent to NDC from NS for BT and found logs in ndc_trace.log file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed for Accepting new connection message sent from NS to NDC in ndc_trace.log file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,fail,Passed for graphCount is not  coming
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed as Total Method Invocations is coming in tsdb_metrics file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed as Method Invocations/Sec is coming in tsdb_metrics file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed as Method Execution Time(ms) is coming in tsdb_metrics file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,fail,Failed as Method CPU Time(ms) is not coming in tsdb_metrics file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed as ND Method Stats is coming in tsdb_metrics file.
+Golang,Method Monitor,GOLANG-008-001,1737,1000,1000,pass,Passed  NDMethodMonAsList for GoAgent
+Golang,Method Monitor,GOLANG-008-002,1738,1000,1000,fail,61 Records are not observed in Aggregate File
+Golang,Method Monitor,GOLANG-008-002,1738,1000,1000,pass,TestRun TSDB File Exist with non Zero File Size
+Golang,Method Monitor,GOLANG-008-002,1738,1000,1000,pass,Passed  NDMethodMonAsList 61 Record for agg_data
+Golang,AutoDiscovery,GOLANG-009-001,1739,1000,1000,fail,AutoDiscovery file doesnot exist
+FAIL,Metadata Recovery,GOLANG-009-001,1740,1000,1000,testcase,name
+FAIL,Metadata Recovery,GOLANG-009-001,1741,1000,1000,testcase,name
+Golang,OTEL,GOLANG-011-001,1742,1000,1000,pass,Event ID 0 is detected: 1
+Golang,OTEL,GOLANG-011-001,1742,1000,1000,pass,Event ID 99 is detected: 1
+Golang,OTEL,GOLANG-011-001,1742,1000,1000,pass,Event ID 11 is detected: 1
+Golang,OTEL,GOLANG-011-001,1742,1000,1000,fail,Event ID 2 and 4 are not detected. Number of flowpaths: 0
+Golang,OTEL,GOLANG-011-001,1742,1000,1000,pass,Event ID 2 and 4 are equal. Number of flowpaths: 0

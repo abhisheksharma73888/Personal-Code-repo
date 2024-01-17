@@ -1,0 +1,204 @@
+{
+	"links": {
+		"self": "/api/v2/dashboards?descending=false\u0026limit=100\u0026offset=0\u0026orgID=cc2b46247a491c7e"
+	},
+	"dashboards": [
+		{
+			"id": "08b795267ff63000",
+			"orgID": "cc2b46247a491c7e",
+			"name": "InfluxDB 2.0 OSS Metrics",
+			"description": "A collection of useful visualizations for monitoring your local InfluxDB 2.0 OSS instance.",
+			"meta": {
+				"createdAt": "2022-01-06T01:42:54.463609483-06:00",
+				"updatedAt": "2022-01-06T01:42:55.583725043-06:00"
+			},
+			"cells": [
+				{
+					"id": "08b79526edf63000",
+					"x": 0,
+					"y": 5,
+					"w": 12,
+					"h": 4,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b79526edf63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b79526edf63000/view"
+					}
+				},
+				{
+					"id": "08b79526ef363000",
+					"x": 0,
+					"y": 9,
+					"w": 12,
+					"h": 4,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b79526ef363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b79526ef363000/view"
+					}
+				},
+				{
+					"id": "08b79526f1b63000",
+					"x": 6,
+					"y": 3,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b79526f1b63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b79526f1b63000/view"
+					}
+				},
+				{
+					"id": "08b7952726363000",
+					"x": 0,
+					"y": 4,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952726363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952726363000/view"
+					}
+				},
+				{
+					"id": "08b7952744363000",
+					"x": 3,
+					"y": 4,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952744363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952744363000/view"
+					}
+				},
+				{
+					"id": "08b795274bb63000",
+					"x": 0,
+					"y": 3,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b795274bb63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b795274bb63000/view"
+					}
+				},
+				{
+					"id": "08b795274e363000",
+					"x": 6,
+					"y": 4,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b795274e363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b795274e363000/view"
+					}
+				},
+				{
+					"id": "08b7952751f63000",
+					"x": 9,
+					"y": 3,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952751f63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952751f63000/view"
+					}
+				},
+				{
+					"id": "08b7952752363000",
+					"x": 3,
+					"y": 3,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952752363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952752363000/view"
+					}
+				},
+				{
+					"id": "08b7952775363000",
+					"x": 9,
+					"y": 4,
+					"w": 3,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952775363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952775363000/view"
+					}
+				},
+				{
+					"id": "08b7952779f63000",
+					"x": 0,
+					"y": 1,
+					"w": 3,
+					"h": 2,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952779f63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952779f63000/view"
+					}
+				},
+				{
+					"id": "08b795277b363000",
+					"x": 3,
+					"y": 1,
+					"w": 9,
+					"h": 2,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b795277b363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b795277b363000/view"
+					}
+				},
+				{
+					"id": "08b795277db63000",
+					"x": 0,
+					"y": 13,
+					"w": 4,
+					"h": 3,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b795277db63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b795277db63000/view"
+					}
+				},
+				{
+					"id": "08b795277e363000",
+					"x": 4,
+					"y": 13,
+					"w": 4,
+					"h": 3,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b795277e363000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b795277e363000/view"
+					}
+				},
+				{
+					"id": "08b7952788f63000",
+					"x": 8,
+					"y": 13,
+					"w": 4,
+					"h": 3,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952788f63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952788f63000/view"
+					}
+				},
+				{
+					"id": "08b7952797f63000",
+					"x": 0,
+					"y": 0,
+					"w": 12,
+					"h": 1,
+					"links": {
+						"self": "/api/v2/dashboards/08b795267ff63000/cells/08b7952797f63000",
+						"view": "/api/v2/dashboards/08b795267ff63000/cells/08b7952797f63000/view"
+					}
+				}
+			],
+			"labels": [],
+			"links": {
+				"self": "/api/v2/dashboards/08b795267ff63000",
+				"members": "/api/v2/dashboards/08b795267ff63000/members",
+				"owners": "/api/v2/dashboards/08b795267ff63000/owners",
+				"cells": "/api/v2/dashboards/08b795267ff63000/cells",
+				"labels": "/api/v2/dashboards/08b795267ff63000/labels",
+				"org": "/api/v2/orgs/cc2b46247a491c7e"
+			}
+		}
+	]
+}

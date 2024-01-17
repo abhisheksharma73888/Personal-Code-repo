@@ -1,0 +1,388 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Business Transaction                                                               #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 10th August 2022                                                             # 
+#                                                                                                 #
+###################################################################################################
+
+# Source out required files
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+TSDB_FILE="$NS_WDIR/logs/TR$(get_test_idx)/tsdb/tsdb_metrics.txt"
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "GOLANG-002-001") handle_golang_002_001_case ;;
+    "GOLANG-002-002") handle_golang_002_002_case ;;
+    "GOLANG-002-003") handle_golang_002_003_case ;;
+    "GOLANG-002-004") handle_golang_002_004_case ;;
+    "GOLANG-002-005") handle_golang_002_005_case ;;
+    "GOLANG-002-006") handle_golang_002_006_case ;;
+    "GOLANG-002-007") handle_golang_002_007_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+    esac
+}
+
+function log_status_int() {
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}" 
+}
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+function raw_data_val(){
+        eventId0=$(grep -c "^0," $RAW_DATA_FILE)
+        eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+        eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+        eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+        eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+        eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+        eventId10=$(grep -c "^10," $RAW_DATA_FILE)
+        if [ ! -e $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+        fi
+
+        if [ ! -s $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${RAW_DATA_FILE}"
+        fi
+
+        if [ $eventId0 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 0 detected: ${eventId0}"
+        else
+                log_status_int "${tier}" "FAIL" "Event id 0 is not detected: ${eventId0}"
+        fi
+       if [ $eventId99 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 99  detected: ${eventId99}"
+        else
+                log_status_int "${tier}" "FAIL" "Event id 99 is not detected: ${eventId99}"
+        fi
+
+        if [ $eventId11 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+        else
+                log_status_int "${tier}" "FAIL" "Event id 11 is not detected: ${eventId11}"
+        fi
+
+        if [ $eventId5 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "Event id 5 is not  detected: ${eventId5}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Event id 5 is  detected: ${eventId5}"
+        fi
+
+
+        if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+        fi
+        if [ $eventId2 -ne $eventId4 ];then
+                log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+
+        else
+                log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        fi
+        return 0
+}
+
+
+function handle_golang_002_001_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+        Global_Default_BT $RAW_DATA_FILE
+        RC=$?
+   	 if [ $countR -gt 0 ];then
+          raw_data_val $RAW_DATA_FILE
+    	 fi
+
+     if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "PASS Business Transaction is captured  with default Configuration."  
+        else
+            log_status_int "${tier}" "FAIL" "FAIL Business Transaction is not captured with default Configuration =${tier}"
+        fi
+       fi
+    done
+}
+
+Global_Default_BT(){
+         RC=$?   
+  	 tsdb_count=$(grep "Golang" $TSDB_FILE | grep "Business" | cut -d , -f3 | cut -d : -f7 | sort | uniq | wc -l)
+   	 bt_count=$(grep -c "^7," $RAW_DATA_FILE)
+	 eventId7=$(grep -c "^7," $RAW_DATA_FILE)
+	 fieldcount7=$(grep "^7," $RAW_DATA_FILE | head -1 |  awk -F ',' "{print NF}")
+	 countR=0
+	
+	if [ -f $TSDB_FILE ];then
+		log_status_int "${tier}" "PASS" "tsdb metrics file = ${TSDB_FILE}  present at respective path"
+	else
+		log_status_int "${tier}" "FAIL" "tsdb metrics file = ${TSDB_FILE} is not present at respective path"
+		((countR++))
+                return 1
+
+	fi
+		
+        if [ $eventId7 -eq 0 ];then
+                log_status_int "${tier}" "FAIL" "Failed for Business Transaction not found."
+                ((countR++))
+                return 1
+       	else
+                log_status_int "${tier}" "PASS" "Passed for Business Transaction found."
+        fi
+
+	if [ $fieldcount7 -eq 3 ];then
+                log_status_int "${tier}" "PASS" " Passed  for business Transaction filed is equal to three=${fieldcount7}"
+	else
+                log_status_int "${tier}" "FAIL" "Failed for Business Transaction field is ${fieldcount7}  more or less than three."
+		 ((countR++))
+		 return 1
+        fi
+
+        if [ $bt_count -le $tsdb_count ];then
+        log_status_int  "${tier}" "PASS" "Same number of BTs and transactions found for complete URI match with TSDB Count= ${tsdb_count} and BT Count= ${bt_count}"
+        else                                                                                       
+        log_status_int  "${tier}" "FAIL" "Numbers varied  between BTs and transactions for complete URI match with TSDB Count= ${tsdb_count} and BT Count= ${bt_count}"
+        fi         
+	return 0
+}
+
+function handle_golang_002_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+        All_Trans $RAW_DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Business transactions matches with start 3 pattern in BT rule file"
+            fi  
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+}
+
+All_Trans(){
+
+	tier=$(grep "^0," $RAW_DATA_FILE | head -1 | cut -d "," -f2)
+        server=$(grep "^0," $RAW_DATA_FILE | head -1 | cut -d "," -f3)
+        instance=$(grep "^0," $RAW_DATA_FILE | head -1 | cut -d "," -f4)
+
+    	AllTrans=$(egrep -c "Tier:$tier>Server:$server>Instance:$instance>Business Transactions:AllTransactions" $TSDB_FILE)
+    	local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    	local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+
+    if [ -f $TSDB_FILE ]; then
+        log_status_int "${tier}" "PASS" "tsdb metrics file = ${TSDB_FILE}  present at respective path"
+    else
+        log_status_int "${tier}" "FAIL" "tsdb metrics file = ${TSDB_FILE} is not present at respective path"
+    fi
+    
+    if [ $AllTrans -eq 0 ];then
+	log_status_int "${tier}" "FAIL" "Business Transaction is not captured for $tier"
+         
+    else
+	log_status_int "${tier}" "PASS" "Business Transaction is captured for $tier"
+    fi
+
+    return 0
+}
+
+function handle_golang_002_003_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+        BT_TSDB $RAW_DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Business transactions Monitor captured in tsdb_matrics.txt file"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+     done
+ }
+
+BT_TSDB(){
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    tsdb_bt=$(grep "$tier" $TSDB_FILE | grep "MGroup:Business Transactions" |cut -d , -f4 |cut -d '>' -f2|wc -l)
+
+    if [ -f $TSDB_FILE ]; then
+        log_status_int "${tier}" "PASS" "tsdb metrics file = ${TSDB_FILE}  present at respective path"
+    else
+        log_status_int "${tier}" "FAIL" "tsdb metrics file = ${TSDB_FILE} is not present at respective path"
+    fi
+    
+    if [ $tsdb_bt -eq 0 ]; then	  
+        log_status_int "${tier}" "FAIL" "Failed for Business Transactions Monitor. Business Transactions Monitor is not available in tsdb_metrics.txt file."
+         
+    else
+         log_status_int "${tier}" "PASS" "Passed for Business Transactions Monitor. Business Transactions Monitor is available in tsdb_metrics.txt file."
+    fi
+
+    return 0
+}
+
+function handle_golang_002_004_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+        IPStats_TSDB $RAW_DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Integration Point Stats Monitor captured in tsdb_matrics.txt file"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+}
+
+IPStats_TSDB(){
+    RC=$?
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    tsdb_IPStats=$(grep "$tier" $TSDB_FILE | grep "MGroup:IntegrationPoint Stats" | cut -d , -f4 | cut -d '>' -f2 | wc -l)
+
+    if [ -f $TSDB_FILE ]; then
+        log_status_int "${tier}" "PASS" "tsdb metrics file = ${TSDB_FILE}  present at respective path"
+    else
+        log_status_int "${tier}" "FAIL" "tsdb metrics file = ${TSDB_FILE} is not present at respective path"
+    fi
+
+    if [ $tsdb_IPStats -eq 0 ]; then
+        log_status_int "${tier}" "FAIL" "Failed for IntegrationPoint Stats Monitor. IntegrationPoint Stats Monitor is not available in tsdb_metrics.txt file."
+         
+    else
+         log_status_int "${tier}" "PASS" "Passed for IntegrationPoint Stats Monitor. IntegrationPoint Stats Monitor is available in tsdb_metrics.txt file."
+    fi
+
+    return 0
+}
+
+
+function handle_golang_002_005_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+            BTPattern_Include $RAW_DATA_FILE
+            RC=$?
+                if [ $RC -eq 0 ];then
+                    log_status_int "${tier}" "PASS" "$bt_count numbers of BT found in case of start and include pattern"
+                fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+ }
+
+BTPattern_Include(){
+    RC=$?
+    get_bt_count
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+
+    if [ $bt_count -eq 13 ] && [ $RC -eq 0 ]; then
+        log_status_int "${tier}" "PASS" "$bt_count numbers of BT found in case of start and include pattern"
+    else
+        log_status_int "${tier}" "FAIL" "No(BT count=$bt_count) BT found in case of start and include pattern"
+         
+    fi
+    return 0
+}
+
+
+function handle_golang_002_006_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+            if [ $tier == "NodeJS14" ] || [ $tier == "NodeJS10" ];then
+                BTComplete_Match_Include $RAW_DATA_FILE
+                RC=$?
+                if [ $RC -eq 0 ];then
+                    log_status_int "${tier}" "PASS" "$bt_count numbers of BT found in case of complete match url and include pattern"
+                fi
+            elif [ $tier == "Kube_NodeJS_10" ] || [ $tier == "Kube_NodeJS_12" ] || [ $tier == "Kube_NodeJS_14" ];then
+                continue
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+}
+
+BTComplete_Match_Include(){
+    RAW_DATA_FILE=$1
+    RC=$?
+
+    bt_count=$(get_bt_count)
+
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+
+    if [ $bt_count -eq 13 ] && [ $RC -eq 0 ]; then
+        log_status_int "${tier}" "PASS" "$bt_count numbers of BT found in case of complete match url and Include pattern"
+    else
+        log_status_int "${tier}" "FAIL" "No(BT count=$bt_count) found in case of complete match url and Include pattern"
+         
+    fi
+    return 0
+}
+
+
+function handle_golang_002_007_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            RAW_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+        BTComplete_Match_Exclude $RAW_DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "$bt_count numbers of BT found in case of complete match url and exclude pattern"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+}
+
+BTComplete_Match_Exclude(){
+    RAW_DATA_FILE=$1
+    RC=$?
+
+    get_bt_count
+    debug "exclude_btrules=$exclude_btrules"
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+
+    if [ $bt_count -eq 0 ] && [ $RC -eq 0 ]; then
+        log_status_int "${tier}" "PASS" "No(BT count=$bt_count) found in case of complete match url and exclude pattern"
+    else
+        log_status_int "${tier}" "FAIL" "$bt_count numbers of BT found in case of complete match url and exclude pattern"
+         
+    fi
+    return 0
+}
+
+main

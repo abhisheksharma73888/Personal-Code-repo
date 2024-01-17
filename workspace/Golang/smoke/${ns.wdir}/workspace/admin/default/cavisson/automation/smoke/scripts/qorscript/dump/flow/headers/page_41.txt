@@ -1,0 +1,35 @@
+--Request 
+POST https://www.google-analytics.com/j/collect?v=1&_v=j89&a=569897298&t=pageview&_s=1&dl=https%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&dr=http%3A%2F%2F10.10.30.5%3A7000%2F&ul=en-us&de=UTF-8&dt=QOR%20Go%20(Golang)%20SDK%20%3A%20New%2C%20Better%20QOR%20Documentation%20released!&sd=24-bit&sr=1366x768&vp=1349x607&je=0&_u=AACAAEABAAAAAC~&jid=&gjid=&cid=1230909809.1617817601&tid=UA-389151-11&_gid=1544911875.1617817601&_slc=1&z=103420154
+Host: www.google-analytics.com
+Host: www.google-analytics.com
+Connection: keep-alive
+Content-Length: 0
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Content-Type: text/plain
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA 
+--Response 
+HTTP/1.1 200
+status: 200
+access-control-allow-origin: https://getqor.com
+date: Wed, 07 Apr 2021 17:46:45 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+access-control-allow-credentials: true
+x-content-type-options: nosniff
+content-type: text/plain
+cross-origin-resource-policy: cross-origin
+server: Golfe2
+content-length: 2
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+

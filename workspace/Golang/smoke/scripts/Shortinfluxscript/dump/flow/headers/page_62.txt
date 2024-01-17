@@ -1,0 +1,19 @@
+--Request 
+GET http://172.24.1.4:8086/api/v2/buckets?orgID=6dc474be0df93348&limit=100
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://172.24.1.4:8086/orgs/6dc474be0df93348/notebooks/0a969ec2e9380000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=Bi16hjOM1cLpauAEGocr-4oRjFcQnILZ4rluC89Nwy3Pq5VMjACpGLXoqJjzD3Nr5n8P9YzmeI4KJdwRHWZ8yA==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Fri, 13 Jan 2023 09:48:19 GMT
+Transfer-Encoding: chunked
+----
+

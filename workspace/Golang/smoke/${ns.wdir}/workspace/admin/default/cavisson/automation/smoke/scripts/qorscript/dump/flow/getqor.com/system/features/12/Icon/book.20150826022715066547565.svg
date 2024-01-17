@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="37px" height="30px" viewBox="0 0 37 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.4 (14861) - http://www.bohemiancoding.com/sketch -->
+    <title>book</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="QOR3" sketch:type="MSArtboardGroup" transform="translate(-1010.000000, -1229.000000)">
+            <g id="Features-Summaries" sketch:type="MSLayerGroup" transform="translate(137.000000, 857.000000)">
+                <g id="Doc" transform="translate(777.000000, 372.000000)" sketch:type="MSShapeGroup">
+                    <g id="book" transform="translate(96.000000, 0.000000)">
+                        <path d="M17.3191489,3.33333333 C17.3191489,3.33333333 22.0709982,0.833333333 27.5531915,0.833333333 C33.0353848,0.833333333 37,3.33333333 37,3.33333333 L37,30 C37,30 33.1779941,27.5 27.5531915,27.5 C21.9283889,27.5 17.3191489,30 17.3191489,30 L17.3191489,3.33333333 Z" id="Rectangle-97" stroke="#FF4081" fill="#FFFFFF"></path>
+                        <path d="M0,2.5 C0,2.5 6.14949717,-1.2952602e-15 12.2893846,0 C18.4292719,1.20274161e-15 17.3191489,3.33333333 17.3191489,3.33333333 L17.3191489,30 C17.3191489,30 18.1409782,26.6666667 12.3877888,26.6666667 C6.6345994,26.6666667 0,29.1666667 0,29.1666667 L0,2.5 Z" id="Rectangle-97" fill="#FF4081"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

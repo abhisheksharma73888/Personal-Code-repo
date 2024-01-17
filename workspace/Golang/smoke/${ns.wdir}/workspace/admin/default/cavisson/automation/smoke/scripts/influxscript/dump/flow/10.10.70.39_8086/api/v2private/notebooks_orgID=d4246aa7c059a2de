@@ -1,0 +1,360 @@
+{
+	"flows": [
+		{
+			"orgID": "d4246aa7c059a2de",
+			"id": "08f6bb0c90095000",
+			"name": "abhimanyu",
+			"spec": {
+				"createdAt": "2022-02-24T08:52:47.808561692Z",
+				"name": "abhimanyu",
+				"pipes": [
+					{
+						"buckets": [
+							{
+								"id": "noaa",
+								"name": "NOAA National Buoy Data",
+								"type": "sample"
+							}
+						],
+						"id": "local_917ee67b-4498-41ee-a732-3f3377266cf2",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": [
+									"ndbc"
+								]
+							},
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_field",
+								"values": [
+									"lat"
+								]
+							},
+							{
+								"aggregateFunctionType": "filter",
+								"key": "station_id",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_d28d701b-9721-4c6b-9481-86305f0ff207",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_2620bf50-b781-4476-8ad4-4dc0bb1aebc3",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "f793ca6c-01db-47cf-8b81-356f0e614ad8",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "b13edfa4-cc15-48e3-b1c5-af523125f488",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "695a2fda-5aba-4904-884e-310a2599d2fa",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2022-02-24T12:52:32.985973536Z"
+			},
+			"createdAt": "2022-02-24T08:52:47.808561692Z",
+			"updatedAt": "2022-02-25T09:37:04.591450257Z"
+		},
+		{
+			"orgID": "d4246aa7c059a2de",
+			"id": "08ffaf82de3d6000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2022-03-03T07:48:43.000056193Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [],
+						"id": "local_928898e6-8251-4a59-b2f6-18ce78956bc8",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Query Builder 1",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"buckets": [],
+						"id": "local_a5d10589-1c9c-497a-ab69-9971d8896005",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_7fc9042b-41a1-4ce0-bf0c-6c3f346e9e0c",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_41e825dd-ba55-4c27-99d9-db920ec8b7a3",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "f9be3064-8b78-48f9-a32c-411a4f2c8b8f",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "8ff93519-306c-421d-9f45-c282bef6518f",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "3d50718d-da51-4a3d-a048-644e7502e443",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2022-03-03T07:48:43.000056193Z"
+			},
+			"createdAt": "2022-03-03T07:48:43.000056193Z",
+			"updatedAt": "2022-03-03T07:48:54.932226805Z"
+		}
+	]
+}

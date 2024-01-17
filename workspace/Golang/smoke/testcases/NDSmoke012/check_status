@@ -1,0 +1,558 @@
+#!/usr/bin/env bash
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"                           
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "SMOKE-008-001") handle_smoke_012_001_case ;;
+    "SMOKE-008-002") handle_smoke_012_002_case ;;
+    "SMOKE-008-003") handle_smoke_012_003_case ;;
+    "SMOKE-008-004") handle_smoke_012_004_case ;;
+    "SMOKE-008-005") handle_smoke_012_005_case ;;
+    "SMOKE-008-006") handle_smoke_012_006_case ;;
+    "SMOKE-008-007") handle_smoke_012_007_case ;;
+    "SMOKE-008-008") handle_smoke_012_008_case ;;
+    "SMOKE-008-009") handle_smoke_012_009_case ;;
+    "SMOKE-008-010") handle_smoke_012_010_case ;;
+    "SMOKE-008-011") handle_smoke_012_011_case ;;
+    "SMOKE-008-012") handle_smoke_012_012_case ;;
+    "SMOKE-008-013") handle_smoke_012_013_case ;;
+    "SMOKE-008-014") handle_smoke_012_014_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+    esac
+}
+
+function log_status_int()
+{
+    agentID="$1"
+    status="$2"
+    why="${3}"
+    log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+function raw_data_validation(){
+        RAW_DATA_FILE=$1
+    local eventId0=$(grep -c "^0," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ $eventId0 -eq 1 ] ;then
+        log_status_int "${tier}" "FAIL" "Event ID 0  detected: ${eventId0}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 0  not detected: ${eventId0}"
+    fi
+    if [ $eventId99 -eq 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 99  detected: ${eventId99}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 99 not detected: ${eventId99}"
+    fi
+    if [ $eventId11 -eq 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 11  detected: ${eventId11}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 11 not detected: ${eventId11}"
+    fi
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -eq 1 ] || [ $eventId4 -eq 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are  detected.Number of flowpath of eventId2: ${eventId2} Number of flowpaths of eventId4: ${eventId4}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are not detected.Number of flowpath of eventId2: ${eventId2} Number of flowpaths of eventId4: ${eventId4}"
+    fi
+    if [ $eventId2 -eq $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are equal.Number of flowpath of eventId2: ${eventId2} Number of flowpaths of eventId4: ${eventId4}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are not equal.Number of flowpath of eventId2: ${eventId2} Number of flowpaths of eventId4: ${eventId4}"
+    fi
+}
+
+function handle_smoke_012_001_case() {
+    for tier in $AVAILABLE_TIERS;do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        CavNVCookies_Disable $DATA_FILE
+        RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+	    if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is Disabled"
+            fi
+        else
+              log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi  
+    done
+}
+
+CavNVCookies_Disable(){
+    RAW_DATA_FILE=$1
+    count=0;
+    header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+        flowpath_NdSessionId=$(grep ^2, $RAW_DATA_FILE |head -1|cut -d ',' -f 9)
+	NdSessionId=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[1]}')
+	if [ $flowpath_NdSessionId == $NdSessionId ];then
+	        log_status_int "${tier}" "FAIL" "CavNVCookies is captured when CavNVCookies is Disable and NdSessionId $NdSessionId is equal to flowpath_NdSessionId $flowpath_NdSessionId"
+	else
+        	log_status_int "${tier}" "PASS" "CavNVCookies is NOT captured when CavNVCookies is Disable or NdSessionId $NdSessionId is not equal to flowpath_NdSessionId $flowpath_NdSessionId"
+	fi
+    	return 0
+}
+
+function handle_smoke_012_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        	CavNVCookie_Enable $DATA_FILE
+        	RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+	    if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavNVCookie_Enable(){
+    RAW_DATA_FILE=$1
+    count=0;
+    header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+        flowpath_NdSessionId=$(grep ^2, $RAW_DATA_FILE |head -6|tail -1|cut -d ',' -f 9)
+        NdSessionId=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[1]}' )
+	if [ $flowpath_NdSessionId == $NdSessionId ];then
+        	log_status_int "${tier}" "PASS" "NDSesssionId is Captured  and NdSessionId $NdSessionId is equal to flowpath_NdSessionId $flowpath_NdSessionId"
+	else
+        	log_status_int "${tier}" "FAIL" "NDSesssionId is Not Captured or NdSessionId $NdSessionId is not equal to flowpath_NdSessionId $flowpath_NdSessionId"
+		((count++))
+         	return 1
+	fi
+	return 0
+}
+function handle_smoke_012_003_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                CavNVTierNumber $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavNVTierNumber(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	TrNum=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[2]}')
+        if [ $(get_test_idx) == $TrNum ];then
+                log_status_int "${tier}" "PASS" "Test Number is Captured and CavNVTestRun $TrNum is equal to  Test Number $(get_test_idx)"
+        else
+                log_status_int "${tier}" "FAIL" "Test Number is not Captured or CavNVTestRun $TrNum is not equal to  Test Number $(get_test_idx)"
+		((count++))
+                return 1
+        fi
+	return 0
+}	
+function handle_smoke_012_004_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                CavPreFPstartTime $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavPreFPstartTime(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+
+	cavPreFPstartTime=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[3]}')
+	if [ $cavPreFPstartTime -gt 0 ];then
+		log_status_int "${tier}" "PASS" "cavPreFP StartTime  is Captured and cavPreFPstartTime $cavPreFPstartTime is greater than "0" "
+	else
+        	log_status_int "${tier}" "FAIL" "cavPreFP StartTime is Not Captured or cavPreFPstartTime $cavPreFPstartTime is less than or equal to "0""
+		((count++))
+        	return 1
+	fi
+	return 0
+}
+function handle_smoke_012_005_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                Flag $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+	    
+        fi
+    done
+}
+Flag(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+
+	InstrumentedFlag=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[4]}')
+        if [ $InstrumentedFlag == 1 ];then
+                log_status_int "${tier}" "PASS" "InstrumentedFlag is Captured and InstrumentedFlag $InstrumentedFlag is equal to "1" "
+        else
+                log_status_int "${tier}" "FAIL" "InstrumentedFlag is Not Captured or InstrumentedFlag $InstrumentedFlag is not equal to "1""
+		((count++))
+	        return 1
+        fi
+	return 0 
+}
+function handle_smoke_012_006_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                BT_Category $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+BT_Category(){
+    RAW_DATA_FILE=$1
+    count=0;
+        header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	Flowpath_BTcategory=$(grep ^4, $RAW_DATA_FILE|head -1|cut -d ',' -f 4)
+	cavNVBtcategory=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[5]}')
+
+        if [ $cavNVBtcategory == $Flowpath_BTcategory ];then
+                log_status_int "${tier}" "PASS" "cavNVBtcategory is Captured and  cavNVBtcategory $cavNVBtcategory is equal to Flowpath_BTcategory $Flowpath_BTcategory "
+        else
+                log_status_int "${tier}" "FAIL" "cavNVBtcategory is Not Captured or cavNVBtcategory $cavNVBtcategory is not equal to Flowpath_BTcategory $Flowpath_BTcategory"
+		((count++))
+                return 1
+        fi
+	return 0
+}
+function handle_smoke_012_007_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                Exception $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+Exception(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	Excetion_recd=$(grep -c ^38, $RAW_DATA_FILE) 
+	ExceptionCount=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[6]}')
+        if [ $ExceptionCount == $Excetion_recd ];then
+                log_status_int "${tier}" "PASS" "Exception Count is Captured  and ExceptionCount $ExceptionCount is equal to Excetion_recd $Excetion_recd "
+        else
+                log_status_int "${tier}" "FAIL" "Exception Count is Not Captured or ExceptionCount $ExceptionCount is not equal to Excetion_recd $Excetion_recd "
+	 	((count++))
+                 return 1
+        fi
+	return 0
+}
+ function handle_smoke_012_008_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                PageID $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+PageID(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )      
+	page_id=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[7]}')
+        if [ $page_id -gt 0 ];then
+                log_status_int "${tier}" "PASS" "page_id is Captured "
+        else
+                log_status_int "${tier}" "FAIL" "page_id is Not Captured"
+		((count++))
+    	         return 1
+        fi
+	return 0
+}
+function handle_smoke_012_009_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                CavNVTier $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavNVTier(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	tierID=$(grep ^0, $RAW_DATA_FILE |cut -d ',' -f 5)
+	CavNVTierId=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[8]}')
+        if [ $CavNVTierId == $tierID ];then
+                log_status_int "${tier}" "PASS" "CavNVTierId is Captured  and CavNVTierId $CavNVTierId is equal to tierID $tierID"
+        else
+                log_status_int "${tier}" "FAIL" "CavNVTierId is Not Captured or CavNVTierId $CavNVTierId is not equal to tierID $tierID"
+		((count++))
+                 return 1
+        fi
+	return 0
+}
+ function handle_smoke_012_010_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                CavNVServer $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavNVServer(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )      	
+	serverID=$(grep ^0, $RAW_DATA_FILE |cut -d ',' -f 6)
+        CavNVServerId=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[9]}')
+        if [ $CavNVServerId == $serverID ];then
+               log_status_int "${tier}" "PASS" "CavNVServerId is Captured and  CavNVServerId $CavNVServerId is equal to serverID $serverID "
+        else
+               log_status_int "${tier}" "FAIL" "CavNVServerId is Not Captured or CavNVServerId $CavNVServerId is not equal to serverID $serverID"
+	       ((count++))
+ 	       return 1
+        fi
+	return 0
+}
+function handle_smoke_012_011_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+                CavNVInstance $DATA_FILE
+                RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is enabled."
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+CavNVInstance(){
+    RAW_DATA_FILE=$1
+    count=0;
+         header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	instanceID=$(grep ^0, $RAW_DATA_FILE |cut -d ',' -f 7)	 
+        CavNVInstanceId=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|head -1|awk -F'=' '{split($2, a, "-"); print a[10]}')
+        if [ $CavNVInstanceId == $instanceID ];then
+                log_status_int "${tier}" "PASS" "CavNVInstanceId is Captured and CavNVInstanceId $CavNVInstanceId is equal to instanceID $instanceID "
+        else
+                log_status_int "${tier}" "FAIL" "CavNVInstanceId is Not Captured or CavNVInstanceId $CavNVInstanceId is not equal to instanceID $instanceID"
+		((count++))
+ 	        return 1
+        fi
+	return 0
+}
+
+function handle_smoke_012_012_case() {
+    for tier in $AVAILABLE_TIERS;do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+            Enable_Cookie_at_Method_Entry $DATA_FILE
+            RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is Disabled"
+            fi
+        else
+              log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+Enable_Cookie_at_Method_Entry(){
+    RAW_DATA_FILE=$1
+    count=0;
+    	header_id=$(grep ^6,Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+	resp_header_id=$(grep ^6,Set-Cookie $RAW_DATA_FILE |cut -d ',' -f 3 )
+ 	cavNV_TRN=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|tail -1|awk -F'=' '{split($2, a, "-"); print a[2]}')
+	if [ "(get_test_idx)"== "cavNV_TRN"];then
+       		 log_status_int "${tier}" "PASS" "CavNVCookies MethodEntry is Captured and cavNV_TRN $cavNV_TRN is equal to TestRun_number $(get_test_idx)"
+	else
+        	 log_status_int "${tier}" "FAIL" "CavNVCookies MethodEntry is Not Captured cavNV_TRN $cavNV_TRN is not equal to TestRun_number $(get_test_idx)"
+		 ((count++))
+                 return 1
+	fi
+        
+	Respon_cavNV_TRN=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$resp_header_id:.*|"|tail -1|awk -F'=' '{split($2, a, "-"); print a[2]}')
+        if [ $(get_test_idx)=="$Respon_cavNV_TRN"];then
+                 log_status_int "${tier}" "PASS" "Respon_cavNV on MethodEntry is Captured and Respon_cavNV_TRN $Respon_cavNV_TRN is equal to TestRun_number $(get_test_idx)"
+        else
+                 log_status_int "${tier}" "FAIL" "Respon_cavNV on MethodEntry  Not Captured or Respon_cavNV_TRN $Respon_cavNV_TRN is not equal to TestRun_number $(get_test_idx) "
+		 ((count++))
+	         return 1
+        fi
+    return 0
+}
+
+function handle_smoke_012_013_case() {
+    for tier in $AVAILABLE_TIERS;do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_FILE |grep "^$tier"|head -1)
+            Enable_Cookie_at_Method_Exit $DATA_FILE
+            RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "CavNVCookies is successfully validated when it is Disabled"
+            fi
+        else
+              log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+Enable_Cookie_at_Method_Exit(){
+    RAW_DATA_FILE=$1
+    count=0;
+    	header_id=$(grep ^6,Cookie $RAW_DATA_HOME |cut -d ',' -f 3 )
+	cavNV_TRN=$(grep ^12, $RAW_DATA_FILE|egrep -o "|$header_id:.*|"|tail -1|awk -F'=' '{split($2, a, "-"); print a[2]}')
+	if [ $(get_test_idx) == $cavNV_TRN ];then
+       		 log_status_int "${tier}" "PASS" "Enable_Cookie_at_Method_Exit CavNV_TRN is Captured and CavNV_TRN $CavNV_TRN is equal to TestRun_Number $(get_test_idx) "
+	else
+        	 log_status_int "${tier}" "FAIL" "Enable_Cookie_at_Method_Exit CavNV_TRN is Not Captured or CavNV_TRN $CavNV_TRN is not equal to TestRun_Number $(get_test_idx)"
+		 ((count++))
+                 return 1
+	fi
+        
+	CavNVC=$(grep ^12, $RAW_DATA_FILE|grep $header_id:|tail -1|egrep -o "|$header_id:.*|"|cut -d '|' -f 1| cut -d '<' -f 2| cut -d '>' -f 1|cut -d ';' -f 5|cut -d '-' -f 5|cut -b  1-6)
+	if [ CavSF == $CavNVC ];then
+	       	log_status_int "${tier}" "PASS" "Enable_Cookie_at_Method_Exit, CavNVC is Captured  and CavSF $CavSF equal to CavNVC $CavNVC"
+	else
+        	log_status_int "${tier}" "FAIL" "Enable_Cookie_at_Method_Exit, CavNVC is Not Captured and CavSF $CavSF does not equal to CavNVC $CavNVC "
+		((count++))
+	          return 1
+	fi
+    return 0
+}
+
+function handle_smoke_012_014_case() {
+    for tier in $AVAILABLE_TIERS;do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+            Enable_X_CavNV_Header $DATA_FILE
+            RC=$?
+            if [ $count -gt 0 ];then
+                raw_data_validation $DATA_FILE
+            fi
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "X-CavNV Header is successfully validated when it is Disabled"
+            fi
+        else
+              log_status_int "${tier}" "FAIL" "Raw data has not created for Tier=${tier}"
+        fi
+    done
+}
+
+Enable_X_CavNV_Header(){
+    RAW_DATA_FILE=$1
+    count=0;
+	header_id=$(grep ^6,X-Cav $RAW_DATA_FILE |cut -d ',' -f 3 )
+	X_CavNV_TRN=$(grep ^13, $RAW_DATA_FILE|grep $header_id:|tail -1|egrep -o "|$header_id:.*|"|cut -d '|' -f 1| cut -d '<' -f 2| cut -d '>' -f 1|cut -d ';' -f 6|cut -d '-' -f 2)
+        
+	if [ "$(get_test_idx)" == "$X_CavNV_TRN" ];then
+                log_status_int "${tier}" "PASS" "X-CavNV Header is Coming when it is enable  "
+        else
+                log_status_int "${tier}" "FAIL" " X-CavNV Header is Not Coming"
+        fi
+}
+
+main
+ 

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#export NS_WDIR=/home/cavisson/work
+#
+#source /home/cavisson/work/etc/netstorm.env
+#
+#/etc/init.d/ndc restart
+#
+#sleep 60
+
+exit 0

@@ -1,0 +1,212 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- DB Callout , HTTP Callout                                                          #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 04 April   2022                                                              # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/" 
+tsdb_file="$(ls $NS_WDIR/logs/TR$(get_test_idx)/$(get_test_partition)/testrun.gdf* | tail -1)"
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+    "GOLANG-005-001") handle_golang_005_001_case ;;
+    "GOLANG-005-002") handle_golang_005_002_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function log_status_int() {
+     agentID="$1"
+     status="$2"
+     why="${3}"
+     log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+function handle_golang_005_001_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        handle_mysql_Callout $DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% = 100"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi 
+    done
+    }
+
+handle_mysql_Callout(){
+    RAW_DATA_FILE=$1
+    url="/api/v2private/notebooks"
+    method="cavlib.conn.QueryContext"
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)                                                   
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)                                                   
+    local eventId5=$(grep -c "^5," $RAW_DATA_FILE)                                                   
+    local sqlMID=$(grep "^5,$method" $RAW_DATA_FILE | cut -d ',' -f3)
+    local fpid2=$(grep "^2," ${RAW_DATA_FILE} |grep "$url" |cut -d ',' -f 2 |head -1)
+    local fpid4=$(grep "^4,$fpid2," $RAW_DATA_FILE | cut -d ',' -f 9 |egrep -o "T[0-9]+:[0-9]+[0-9]+:[0-9]+:[0-9]+[0-9]+:[0-9]+"|cut -d ':' -f4)
+    local sqlTRec=$(egrep -o "T[0-9]+:$sqlMID:[0-9]+:10:[0-9]+" $RAW_DATA_FILE | cut -d ':' -f2|head -1)
+
+    if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}" 
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+                                                                                               
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else 
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+
+    if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${eventId5}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${eventId5}"
+    fi 
+
+    debug "eventId2=$eventId2, eventId4=$eventId4"                                             
+    if [ $eventId2 -lt 1 ] || [ $eventId4 -lt 1 ];then                                                        
+        log_status_int "${tier}" "FAIL" "No Event ID 2 and 4 are detected with bci%=100. Number of flowpaths: ${eventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are detected with bci%=100. Number of flowpaths: ${eventId4}"
+    fi
+
+    if [ $eventId2 -ne $eventId4 ];then                                                        
+        log_status_int "${tier}" "FAIL" "EventsID 2 and 4 are not equal for bci% = 100. Number of flowpaths: ${eventId4}"
+	return 1
+      else
+         log_status_int "${tier}" "PASS" "EventsID 2 and 4 are equal for bci% = 100. Number of flowpaths: ${eventId4}"
+    fi    
+
+     if [ -z $sqlMID ];then
+                log_status_int "$tier" "FAIL" "MYSQL Method is not captured in 5 record"    
+	       	return 1
+     else
+            log_status_int "$tier" "PASS" "MYSQL Method is captured in 5 record"
+     fi
+
+    if [ $fpid4 -ne 10 ];then
+            log_status_int "$tier" "FAIL" "MYSQL call is not captured with sqlID 10"
+	    return 1
+    else
+            log_status_int "$tier" "PASS" "MYSQL call is captured with sqlID 10"
+    fi
+
+     if [ $sqlTRec -ne $sqlMID ];then
+            log_status_int "$tier" "FAIL" "MYSQL call is not captured with backend id- $sqlTRec"
+	    return 1
+    	else
+            log_status_int "$tier" "PASS" "MYSQL call is captured with backend id- $sqlTRec"
+     fi
+        log_status_int "$tier" "PASS" "MYSQL call captured successfully"
+
+    return 0
+
+}
+
+':function handle_golang_005_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        handle_http_Callout $DATA_FILE
+        RC=$?
+            if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Flowpath validation pass for bci% = 100"
+            fi
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi
+    done
+
+    }
+
+
+function handle_http_Callout(){
+	RAW_DATA_FILE=$1
+	url="/api/v2/variables"
+        method="cavwrapperlib.github.httphandler.ServeHTTP"
+	local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+        local eventId4=$(grep -c "^4," $RAW_DATA_FILE) 
+        local eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+        local httpMID=$(grep "^5,$method" $RAW_DATA_FILE | cut -d ',' -f3)
+        local fpid2=$(grep "^2," ${RAW_DATA_FILE} |grep "$url" |cut -d ',' -f 2 |head -1)
+        local fpid4=$(grep "^4,$fpid2," $RAW_DATA_FILE | cut -d ',' -f 9 |egrep -o "T[0-9]+:[0-9]+[0-9]+:[0-9]+:[0-9]+[0-9]+:[0-9]+"|cut -d ':' -f4)
+        local httpTRec=$(egrep -o "T[0-9]+:$httpMID:[0-9]+:10:[0-9]+" $RAW_DATA_FILE | cut -d ':' -f2|head -1)
+	
+         if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+           	return 1
+	else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+         fi
+
+         if [ $eventId5 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "MetaData Event id 5 not detected: ${eventId5}"
+           	 return 1	 
+	else
+        log_status_int "${tier}" "PASS" "MetaData Event id 5 is detected: ${eventId5}"
+         fi
+
+         debug "eventId2=$eventId2, eventId4=$eventId4"
+         if [ $eventId2 -lt 1 ] || [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Event ID 2 and 4 are detected with bci%=0. Number of flowpaths: ${eventId4}"
+	  	 return 1
+        else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are detected with bci%=0. Number of flowpaths: ${eventId4}"
+        fi
+
+        if  [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "EventsID 2 and 4 are not equal for bci% = 0. Number of flowpaths: ${eventId4}"
+		return 1
+	else
+         log_status_int "${tier}" "PASS" "EventsID 2 and 4 are equal for bci% = 0. Number of flowpaths: ${eventId4}"
+        fi
+
+        if [ -z $httpMID ];then
+      	log_status_int "$tier" "FAIL" "HTTP Method is not captured in 5 record"
+            	return 1
+	else
+            log_status_int "$tier" "PASS" "HTTP Method is captured in 5 record"
+        fi
+        if [ $fpid4 -ne 1 ];then
+            log_status_int "$tier" "FAIL" "HTTP call is not captured with ID 1"
+        	return 1
+	    else
+            log_status_int "$tier" "PASS" "HTTP call is captured with ID 1"
+        fi
+        if [ $httpTRec -ne $httpMID ];then
+            log_status_int "$tier" "FAIL" "HTTP call is not captured with backend id- $httpTRec"
+       		return 1
+   	    else
+            log_status_int "$tier" "PASS" "HTTP call is captured with backend id- $httpTRec"
+        fi
+
+       log_status_int "$tier" "PASS" "HTTP call captured successfully"
+       return 0
+}
+'
+main

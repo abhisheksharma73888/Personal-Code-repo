@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- AutoDiscovery                                                                      #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 20th Feb 2023                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data"
+NDC_LOG="$PARTITION_PATH/nd/logs/ndc_trace.log"
+AGENT_LOG="/tmp/cavisson/logs"
+AutoInst_Logs="/home/cavisson/workspace/Golang/smoke/testcases/NDSmoke009/AutoInstr_Logs"
+Node10_File_Name=$(nsu_server_admin -s 10.10.70.38 -z 0 -c "ls -ltr /tmp/cavisson/logs/"|grep "debug" |head -1|awk {'print $9'})
+AVAILABLE_TIERS=$Project
+
+	                        ########## Download Agent logs for GoAgent #########
+
+nsu_server_admin -s 10.10.70.38 -z 0 -G "$AGENT_LOG/${Node10_File_Name}" -f "$AutoInst_Logs/NodeJS_10"
+
+				#####################################################
+
+function main(){
+    	case $(get_test_name) in
+        	"GOLANG-009-001") handle_golang_009_001_case ;;
+        	*) handle_unknown_case ;; 
+        	?) handle_unknown_case ;;
+    	esac
+}
+
+function log_status_int(){
+	agentID="$1"
+    	status="$2"
+    	why="${3}"
+    	log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+function handle_unknown_case(){
+    	error "Testcase name not found"
+    	log_status_int "FAIL" "Testcase not found"
+}
+
+function raw_data_val(){
+        RAW_DATA_FILE=$1
+        eventId0=$(grep -c "^0," $RAW_DATA_FILE)
+        eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+        eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+        eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+        eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+        eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+        eventId10=$(grep -c "^10," $RAW_DATA_FILE)
+        filesize=$(ls -ltrh $RAW_DATA_FILE | cut -d ' ' -f5)
+        if [ ! -e $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+        fi
+
+        if [ ! -s $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${filesize}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${filesize}"
+        fi
+
+        if [ $eventId0 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 0 detected: ${eventId0}"
+        else
+                log_status_int "${tier}" "Fail" "Event id 0 is not detected: ${eventId0}"
+        fi
+
+        if [ $eventId99 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 99  detected: ${eventId99}"
+        else
+                log_status_int "${tier}" "FAIL" "Event id 99 is not detected: ${eventId99}"
+        fi
+
+        if [ $eventId11 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+        else
+                log_status_int "${tier}" "FAIL" "Event id 11 is not detected: ${eventId11}"
+        fi
+
+        if [ $eventId5 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "Event id 5 is not  detected: ${eventId5}"
+        else
+                log_status_int "${tier}" "PASS" "Event id 5 is  detected: ${eventId5}"
+        fi
+
+        debug "eventId2=$eventId2, eventId4=$eventId4"
+        if [ $eventId2 -lt 1 ] || [ $eventId4 -lt 1 ];then
+                 log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not detected with bciPct%=${bcipct}.No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        else
+                 log_status_int "${tier}" "PASS" "Event ID 2 and 4 are detected with bciPct%=${bcipct}.No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        fi
+
+        if [ $eventId2 -ne $eventId4 ];then
+                log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not eqaul with bciPct%=${bcipct}.No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+
+        else
+                log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal with bciPct%=${bcipct}.No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        fi
+        return 0
+}
+
+function handle_golang_009_001_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|tail -1)
+			AGGR_DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "agg_data_$tier"|head -1)
+            		if [ $tier == "Golang" ];then
+		        	Auto_Discovery $DATA_FILE
+            			RC=$?
+				if [ $count -gt 0 ];then
+			                verify_rawdata $DATA_FILE
+            			fi
+                		if [ $RC -eq 0 ];then
+                    			log_status_int "$tier" "PASS" "Passed for AutoDiscovery successfully done for ALL Frameworks"
+                		fi
+			fi
+        	else
+            		log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        	fi
+    done
+}
+
+Auto_Discovery(){
+	RAW_DATA_FILE=$1
+	count=0;
+	if [ $tier == "Golang" ];then
+	#	AD_METHOD="/root/scripts/webapp/nsecom/nodeInstr.json"
+		AD_File="/home/cavisson/work/instrprof/.auto_discover/.raw_data/.nodeJS/NodeJS10_Cav-30-48_cav-nsecom-01.adr"
+		LogFIle="$AutoInst_Logs/$tier"
+    	fi
+    	if [ ! -e $AD_File ];then
+       	 	log_status_int "$tier" "fail" "AutoDiscovery file doesnot exist"
+		((count++))
+		return 1
+	else
+		log_status_int "$tier" "pass" "AutoDiscovery file does exist"
+    	fi
+    	if [ ! -s $AD_File ];then
+        	log_status_int "$tier" "fail" "AutoDiscovery file observed to be of zero(0) size"
+		((count++))
+		return 1
+	else
+		log_status_int "$tier" "pass" "AutoDiscovery file succesfully dumped with non zero(0) size"
+    	fi
+    	if [ ! $(grep "^$tier" $NDC_LOG |grep "Response sent successfully"|grep -o "dump_data_in_file"|head -1) ];then
+        	log_status_int "$tier" "fail" "AutoDiscovered Done messsage is not observed in NDC logs"
+		((count++))
+		return 1
+	else
+		log_status_int "$tier" "pass" "Succesfully observed AutoDiscovered Done messsage in NDC logs"
+    	fi
+    	if [ ! $(grep "^$tier" ${LogFIle} |grep -o "agent_post_data_req") ];then
+		log_status_int "$tier" "pass" "Successful in Observing AutoDiscovery Message from AgentSide"
+    	fi
+    	if [ ! $(grep -o $AD_METHOD $AD_File|head -1) ];then
+        	log_status_int "$tier" "fail" "Unable to find the Method Name in AutoDiscovery file"
+		((count++))
+		return 1
+	else
+		log_status_int "$tier" "pass" "Succesfully Observed the searched Method in AI file"
+    	fi
+    	return 0
+
+}
+
+main

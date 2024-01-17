@@ -1,0 +1,25 @@
+{
+	"links": {
+		"self": "/api/v2/orgs"
+	},
+	"orgs": [
+		{
+			"links": {
+				"buckets": "/api/v2/buckets?org=Cavisson",
+				"dashboards": "/api/v2/dashboards?org=Cavisson",
+				"labels": "/api/v2/orgs/01388c43be91e8d9/labels",
+				"logs": "/api/v2/orgs/01388c43be91e8d9/logs",
+				"members": "/api/v2/orgs/01388c43be91e8d9/members",
+				"owners": "/api/v2/orgs/01388c43be91e8d9/owners",
+				"secrets": "/api/v2/orgs/01388c43be91e8d9/secrets",
+				"self": "/api/v2/orgs/01388c43be91e8d9",
+				"tasks": "/api/v2/tasks?org=Cavisson"
+			},
+			"id": "01388c43be91e8d9",
+			"name": "Cavisson",
+			"description": "",
+			"createdAt": "2023-01-25T05:18:58.314143002Z",
+			"updatedAt": "2023-01-25T05:18:58.314143137Z"
+		}
+	]
+}

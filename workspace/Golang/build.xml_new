@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<project name="Golang" basedir=".">
+  <description>Go Agent automation suite</description>
+<!--Property definition here-->
+  <property name="bash" value="/bin/bash"/>
+  <property name="ns.wdir" value="/home/cavisson/work"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+  <property name="include.dir" value="${basedir}/include"/>  
+  <property name="results.dir" value="/home/cavisson/workspace/Golang/results"/>
+  <property name="project.name" value="Golang"/> 
+  <property name="script.multi.gen.report" value="${basedir}/bin/generate_report.py"/> 
+  <property name="script.gen.report.new" value="${basedir}/bin/generate_report"/> 
+  <property name="template" value="${basedir}/bin/tmpl.go.html"/> 
+  <property name="script.db.upload" value="${basedir}/bin/suite_db_uploader.py"/>
+  <property name="script.suite.runner" value="${basedir}/bin/suite_runner.sh"/>
+  <property name="script.get.latest.file" value="${basedir}/bin/get_latest_file.rb"/>
+  <property name="smoke.ant.file" value="${basedir}/smoke/build.xml"/>
+ 
+  <!-- Performance property Start -->
+  <property name="nd.ts.run.shell" value="${basedir}/bin/nd_ts_run.sh"/>
+  <property name="nd.comp.report.script" value="${basedir}/bin/gen_compare_report_int.rb"/>
+  <property name="comp.report.script" value="${basedir}/bin/generate_performance_report.rb"/>
+  <property name="performance.ant.file" value="${basedir}/performance/build.xml"/>
+  <property name="nd.report.script" value="${basedir}/bin/nd_generate_report.py"/>
+  <property name="nd.db.upload.script" value="${basedir}/bin/remote_db_upload.py"/>
+  <property name="nsu.start.test.shell" value="${include.dir}/nsu_start_test"/>
+  <!-- Property end -->
+
+  <!-- Properties for mailing server -->
+  <property name="mailing.server.user" value="cavisson"/>
+  <property name="mailing.server.passwd" value="cavisson@21"/>
+  <property name="mailing.server.host" value="10.10.30.205"/>
+  <property name="mailing.server.dir" value="/home/cavisson/Go_Mailing"/>
+  <property name="mailing.server.perf.dir" value="/home/cavisson/Go_Mailing/Performance"/>
+  <property name="mailing.server.smoke.dir" value="/home/cavisson/Go_Mailing/Smoke"/>
+  <property name="mailing.server.script" value="/home/cavisson/Go_Mailing/mail_with_html.py"/>
+  <!-- End of mailing server Properties -->
+  
+<!-- Single server smoke -->
+  <target name="smoke" depends="agent-build-info, get-build-info" description="Run Go Smoke testsuite with single server">
+      <ant antfile="${smoke.ant.file}" target="smoke" useNativeBasedir="true"/>
+  </target>
+  
+<!--    Start of Performance   -->
+  <target name="performance" depends="agent-build-info, get-build-info" description="Run Go performance testsuite">
+      <ant antfile="${performance.ant.file}" target="performance" useNativeBasedir="true"/>
+  </target>
+
+  <target name="performance-dbg" depends="agent-build-info, get-build-info" description="Run NetDiagnostics performance testsuite">
+      <ant antfile="${performance.ant.file}" target="performance.dbg" useNativeBasedir="true"/>
+  </target>
+
+  <target name="test" depends="get-build-info">
+      <ant antfile="${performance.ant.file}" target="trigger-email" useNativeBasedir="true"/>
+  </target>
+<!--   End of Performance   -->
+
+  <target name="default">
+    <echo message="Running default target"/>
+  </target>
+
+  <target name="install-jars" description="Install ANT optional jars">
+    <mkdir dir="${user.home}/.ant/lib"/>
+    <get 
+      dest="${user.home}/.ant/lib/mail.jar" 
+      src="https://repo1.maven.org/maven2/javax/mail/mail/1.4.4/mail-1.4.4.jar"/>
+    <get 
+      dest="${user.home}/.ant/lib/activation.jar" 
+      src="https://repo1.maven.org/maven2/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </target>
+
+  <!-- To check NS Build info -->
+  <target name="get-build-info" description="Get release and build information">
+    <exec executable="bash" outputproperty="release.info">
+      <arg value="-c"/>
+      <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+    </exec>
+    <exec executable="bash" outputproperty="build.info">
+      <arg value="-c"/>
+      <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+    </exec>
+    <echo message="Current Build: R${release.info}.B${build.info}"/>
+  </target>
+
+  <!-- To Check Agent Build Info -->
+  <target name="agent-build-info" description="Get Agent build Info">
+    <exec executable="bash" outputproperty="agent.release.info">
+      <arg value="-c"/>
+      <arg value="cat /home/cavisson/workspace/Golang/bin/releaseDetail.sh|head -1 | awk '{print $2}'"/>
+    </exec>
+    <exec executable="bash" outputproperty="agent.build.info">
+      <arg value="-c"/>
+      <arg value="cat /home/cavisson/workspace/Golang/bin/releaseDetail.sh|tail -1 | awk '{print $2}'"/>
+    </exec>
+    <echo message="Current Build: R${agent.release.info}.B${agent.build.info}"/>
+  </target>
+
+</project>

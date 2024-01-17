@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Heap & Thread Dump                                                                 #
+#   Developer :- Sonali Mishra/Rajesh Kumar                                                       #
+#   Modified Date :- 22th Jan 2021                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="/home/cavisson/work/logs/TR$(get_test_idx)"
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"
+RAW_DATA_HOME="${PARTITION_PATH}/nd/raw_data"
+AVAILABLE_TIERS=$Project
+
+function main(){
+	case $(get_test_name) in
+		"SMOKE-017-001") handle_smoke_017_001_case ;;
+		*) handle_unknown_case ;; 
+		?) handle_unknown_case ;;
+	esac
+}
+
+function log_status_int(){
+	agentID="$1"
+	status="$2"
+	why="${3}"
+	log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+function handle_unknown_case(){
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase not found"
+}
+
+function handle_smoke_017_001_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+			RAW_FILE=$(ls $RAW_DATA_HOME |egrep "^$tier"|tail -1)
+			Server=$(echo "${RAW_FILE//$tier}"|cut -d  "_" -f2)
+			Instance=$(echo "${RAW_FILE//$tier}"|cut -d  "_" -f3|cut -d "." -f1)
+            		if [ $tier == "NodeJS10" ] || [ $tier == "NodeJS14" ];then
+		        Thread_Heap_Dump_Analysis $Server $Instance
+                	RC=$?
+        	    		if [ $RC -eq 0 ];then
+		    	    		log_status_int "$tier" "PASS" "Passed for Successfully Dumping Thread Dump File"
+		    	    		log_status_int "$tier" "PASS" "Passed for Successfully Dumping Heap Dump File"
+                    			log_status_int "$tier" "PASS" "Passed for Successfully Dumping Process Dump File"
+		        	fi
+            		elif [ $tier == "Kube_NodeJS_10" ] || [ $tier == "Kube_NodeJS_12" ] || [ $tier == "Kube_NodeJS_14" ] || [ $tier == "Kube_Hapi_12" ];then
+                	continue
+            		fi
+        	else
+            		log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        	fi
+	done
+}
+
+Thread_Heap_Dump_Analysis(){
+    	server_name=$1
+	instance_name=$2
+	TestRunHome="/home/cavisson/work/logs/"
+	cd $TestRunHome
+    	#TR=$(ls -ltr $TestRunHome|grep "TR"|tail -2|head -1|awk {'print $9'}|tr -d "TR")
+    	TR=$(ls -ltr $TestRunHome|grep "TR"|tail -2|head -1|awk {'print $9'}|tr -d "TR")
+    	TRPD=$(ls -ltr $TestRunHome|grep "TR"|tail -1|awk {'print $9'}|tr -d "TR")
+	Partition=$(ls -ltr $TestRunHome/TR$TR/|awk {'print $9'}|grep -o [0-9]*)
+	PartitionPD=$(ls -ltr $TestRunHome/TR$TRPD/|awk {'print $9'}|grep -o [0-9]*)
+    	ThreadDumpHome="/home/cavisson/work/logs/TR$TR/$Partition/server_logs/thread_dumps/${tier}/${server_name}/${instance_name}/"
+	TDFile=$(ls -ltr $ThreadDumpHome|awk {'print $9'}|tail -1)
+	ThreadDumpFile="${ThreadDumpHome}/$TDFile"	
+	HeapDumpHome="/home/cavisson/work/logs/TR$TR/$Partition/server_logs/heap_dumps/${tier}/${server_name}/${instance_name}/"
+	HDFile=$(ls -ltr $HeapDumpHome|awk {'print $9'}|tail -1)
+	HeapDump_File="${HeapDumpHome}/$HDFile"
+    	ProcessDumpHome="/home/cavisson/work/logs/TR$TRPD/$PartitionPD/server_logs/process_dumps/${tier}/${server_name}/${instance_name}/"
+    	PDFile=$(ls -ltr $ProcessDumpHome|awk {'print $9'}|tail -1)
+    	ProcessDump_File="${ProcessDumpHome}/$PDFile"
+	
+	##Thread-Dump Validation
+	if [ -n $(ls -ltr ${ThreadDumpHome}|awk {'print $9'}) ];then
+		log_status_int "$tier" "pass" "Able to Take ThreadDump and file been dumped in given Path"
+	else
+		log_status_int "$tier" "fail" "Unable to Take Thread Dump for the mentioned Build"
+		return 1
+	fi
+	if [ -s ${ThreadDumpFile} ];then
+		log_status_int "$tier" "pass" "Thread Dump File Exist with non Zero size"
+	else
+		log_status_int "$tier" "fail" "Unable to Take Thread Dump for the mentioned Build"
+		return 1
+	fi
+
+	##Heap-Dump Analysis
+	if [ -e $(ls -ltr ${HeapDump_File}|awk {'print $9'}) ];then
+		log_status_int "$tier" "pass" "Able to Take HeapDump and file been dumped in given Path"
+	else
+		log_status_int "$tier" "fail" "Unable to Take Heap Dump for the mentioned Build"
+		return 1
+	fi
+	if [ -s ${HeapDump_File} ];then
+		log_status_int "$tier" "pass" "Heap Dump File Exist with non Zero size"
+	else
+		log_status_int "$tier" "fail" "Unable to Take Heap Dump for the mentioned Build"
+		return 1
+	fi
+
+    ##Process-Dump Analysis
+    	if [ -e $(ls -ltr ${ProcessDump_File}|awk {'print $9'}) ];then
+        	log_status_int "$tier" "pass" "Able to Take ProcessDump and file been dumped in given Path"
+    	else
+        	log_status_int "$tier" "fail" "Unable to Take Process Dump for the mentioned Build"
+        	return 1
+    	fi
+    	if [ -s ${ProcessDump_File} ];then
+        	log_status_int "$tier" "pass" "Process Dump File Exist with non Zero size"
+    	else
+        	log_status_int "$tier" "fail" "Unable to Take Process Dump for the mentioned Build"
+        	return 1
+    	fi
+    	return 0
+}
+
+main

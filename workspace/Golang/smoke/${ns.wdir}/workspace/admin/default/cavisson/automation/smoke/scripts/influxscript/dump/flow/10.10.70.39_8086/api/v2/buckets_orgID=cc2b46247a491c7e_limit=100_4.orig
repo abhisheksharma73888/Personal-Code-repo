@@ -1,0 +1,81 @@
+{
+	"links": {
+		"self": "/api/v2/buckets?descending=false\u0026limit=100\u0026offset=0\u0026orgID=cc2b46247a491c7e"
+	},
+	"buckets": [
+		{
+			"id": "049e78d2d090a89d",
+			"orgID": "cc2b46247a491c7e",
+			"type": "system",
+			"description": "System bucket for monitoring logs",
+			"name": "_monitoring",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 604800,
+					"shardGroupDurationSeconds": 86400
+				}
+			],
+			"createdAt": "2022-01-06T07:42:46.1068278Z",
+			"updatedAt": "2022-01-06T07:42:46.106827934Z",
+			"links": {
+				"labels": "/api/v2/buckets/049e78d2d090a89d/labels",
+				"members": "/api/v2/buckets/049e78d2d090a89d/members",
+				"org": "/api/v2/orgs/cc2b46247a491c7e",
+				"owners": "/api/v2/buckets/049e78d2d090a89d/owners",
+				"self": "/api/v2/buckets/049e78d2d090a89d",
+				"write": "/api/v2/write?org=cc2b46247a491c7e\u0026bucket=049e78d2d090a89d"
+			},
+			"labels": []
+		},
+		{
+			"id": "30820ed48a373c04",
+			"orgID": "cc2b46247a491c7e",
+			"type": "system",
+			"description": "System bucket for task logs",
+			"name": "_tasks",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 259200,
+					"shardGroupDurationSeconds": 86400
+				}
+			],
+			"createdAt": "2022-01-06T07:42:46.102747655Z",
+			"updatedAt": "2022-01-06T07:42:46.102747785Z",
+			"links": {
+				"labels": "/api/v2/buckets/30820ed48a373c04/labels",
+				"members": "/api/v2/buckets/30820ed48a373c04/members",
+				"org": "/api/v2/orgs/cc2b46247a491c7e",
+				"owners": "/api/v2/buckets/30820ed48a373c04/owners",
+				"self": "/api/v2/buckets/30820ed48a373c04",
+				"write": "/api/v2/write?org=cc2b46247a491c7e\u0026bucket=30820ed48a373c04"
+			},
+			"labels": []
+		},
+		{
+			"id": "435a1af5a5b3947b",
+			"orgID": "cc2b46247a491c7e",
+			"type": "user",
+			"name": "influxdata",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 0,
+					"shardGroupDurationSeconds": 604800
+				}
+			],
+			"createdAt": "2022-01-06T07:42:46.119416228Z",
+			"updatedAt": "2022-01-06T07:42:46.119416366Z",
+			"links": {
+				"labels": "/api/v2/buckets/435a1af5a5b3947b/labels",
+				"members": "/api/v2/buckets/435a1af5a5b3947b/members",
+				"org": "/api/v2/orgs/cc2b46247a491c7e",
+				"owners": "/api/v2/buckets/435a1af5a5b3947b/owners",
+				"self": "/api/v2/buckets/435a1af5a5b3947b",
+				"write": "/api/v2/write?org=cc2b46247a491c7e\u0026bucket=435a1af5a5b3947b"
+			},
+			"labels": []
+		}
+	]
+}

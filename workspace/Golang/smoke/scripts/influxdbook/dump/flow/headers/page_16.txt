@@ -1,0 +1,656 @@
+--Request 
+GET http://172.24.1.4:8086/4ba575f55e.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 2069
+Content-Type: image/svg+xml
+Etag: \"206930225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/58696ffaf6.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 2044
+Content-Type: image/svg+xml
+Etag: \"204430225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/af99ebacc0.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 4036
+Content-Type: image/svg+xml
+Etag: \"403630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+
+
+--Request 
+GET http://172.24.1.4:8086/99cd4bcb0e.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 8006
+Content-Type: image/svg+xml
+Etag: \"800630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/fa714175dd.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 21400
+Content-Type: image/svg+xml
+Etag: \"2140030225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+
+
+--Request 
+GET http://172.24.1.4:8086/ee8354c1b1.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 978
+Content-Type: image/svg+xml
+Etag: \"97830225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/09271a32a2.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1475
+Content-Type: image/svg+xml
+Etag: \"147530225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/f11b83d401.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3262
+Content-Type: image/svg+xml
+Etag: \"326230225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/70f2c0d968.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 817
+Content-Type: image/svg+xml
+Etag: \"81730225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/42ab28d0bc.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 806
+Content-Type: image/svg+xml
+Etag: \"80630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/2ffe2ccff5.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 2070
+Content-Type: image/svg+xml
+Etag: \"207030225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/9afaef5b4f.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 6847
+Content-Type: image/svg+xml
+Etag: \"684730225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:06 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/4496973677.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1929
+Content-Type: image/svg+xml
+Etag: \"192930225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/8e6336e716.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1325
+Content-Type: image/svg+xml
+Etag: \"132530225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/80498d29ec.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3566
+Content-Type: image/svg+xml
+Etag: \"356630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/9508221c37.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 5016
+Content-Type: image/svg+xml
+Etag: \"501630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/5c23880d6c.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1105
+Content-Type: image/svg+xml
+Etag: \"110530225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/b5d0f62d88.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 4053
+Content-Type: image/svg+xml
+Etag: \"405330225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/ec1f844187.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3810
+Content-Type: image/svg+xml
+Etag: \"381030225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/b4ed2bd8f1.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 30527
+Content-Type: image/svg+xml
+Etag: \"3052730225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/ba2b4c974f.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3067
+Content-Type: image/svg+xml
+Etag: \"306730225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/1f16734c1d.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1958
+Content-Type: image/svg+xml
+Etag: \"195830225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/9b75438e96.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3598
+Content-Type: image/svg+xml
+Etag: \"359830225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/d92e2d897a.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3670
+Content-Type: image/svg+xml
+Etag: \"367030225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/f97512804e.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 11864
+Content-Type: image/svg+xml
+Etag: \"1186430225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/5f7fe9c4b5.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 4902
+Content-Type: image/svg+xml
+Etag: \"490230225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/4addfd8db2.svg
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/load-data/sources
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 725106
+Content-Type: image/svg+xml
+Etag: \"72510630225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/29.9e34b1b7f5.js
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/notebooks
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 813435
+Content-Type: text/javascript; charset=utf-8
+Etag: \"81343530225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/8efb94a2b3.png
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/notebooks
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 43462
+Content-Type: image/png
+Etag: \"4346230225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/25a355b51e.png
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/notebooks
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 47771
+Content-Type: image/png
+Etag: \"4777130225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/9763d95516.png
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:8086/orgs/01388c43be91e8d9/notebooks
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 67913
+Content-Type: image/png
+Etag: \"6791330225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Wed, 25 Jan 2023 06:57:07 GMT
+----
+

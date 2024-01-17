@@ -1,0 +1,46 @@
+#version=1.0
+#pageName|urlType|inlineUrlId|Url|dumpFileName|ContentType|redirectionDepth|redirectUrl|UrlHost|urlFilePath|rootPath|statusCode|time(Sec.)|bytesRecieved|bodySize|method|SnapShotBeforAction|SnapShotAfterAction|snapShotClickAction|clickAPIName|future1|future2|future3|future4|future5|future6|comments
+
+index|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|0.527|0.815|NA|NA|NA|NA|NA
+index|Inline|1|https://code.jquery.com/jquery-3.3.1.min.js|code.jquery.com/jquery-3.3.1.min.js|application/javascript; charset=utf-8|0|NA|code.jquery.com|/|./|200|0.002|0|86927|GET|NA|NA|NA|NA|0.866|3.268|NA|NA|NA|NA|NA
+index|Inline|2|http://172.24.1.4:1323/static/css/main.css|172.24.1.4_1323/static/css/main.css|text/css; charset=utf-8|0|NA|172.24.1.4:1323|/static/css/|./../../|200|0|0|774|GET|NA|NA|NA|NA|0.88|0.926|NA|NA|NA|NA|NA
+index|Inline|3|http://172.24.1.4:1323/static/image/goimg.png|172.24.1.4_1323/static/image/goimg.png|image/png|0|NA|172.24.1.4:1323|/static/image/|./../../|200|0|0|38678|GET|NA|NA|NA|NA|0.947|0.959|NA|NA|NA|NA|NA
+index|Inline|4|http://172.24.1.4:1323/static/image/o.jpg|172.24.1.4_1323/static/image/o.jpg|image/jpeg|0|NA|172.24.1.4:1323|/static/image/|./../../|200|0|0|134062|GET|NA|NA|NA|NA|3.364|3.483|NA|NA|NA|NA|NA
+index_2|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|5.08|5.115|NA|NA|NA|NA|NA
+hello|Main|0|http://172.24.1.4:1323/hello|172.24.1.4_1323/hello|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|962|GET|NA|NA|NA|NA|6.357|6.418|NA|NA|NA|NA|NA
+index_3|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_3|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|7.556|7.767|NA|NA|NA|NA|NA
+postpg|Main|0|http://172.24.1.4:1323/postpg|172.24.1.4_1323/postpg|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|967|GET|NA|NA|NA|NA|9.706|9.777|NA|NA|NA|NA|NA
+index_4|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_4|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|11.064|11.166|NA|NA|NA|NA|NA
+httpcall|Main|0|http://172.24.1.4:1323/httpcall|172.24.1.4_1323/httpcall|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.003|0|834|GET|NA|NA|NA|NA|12.581|15.761|NA|NA|NA|NA|NA
+index_5|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_5|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|17.543|17.608|NA|NA|NA|NA|NA
+index_6|Main|0|http://172.24.1.4:1323/mux/|172.24.1.4_1323/mux/index|text/html; charset=utf-8|0|NA|172.24.1.4:1323|/mux/|./../|200|0|0|922|GET|NA|NA|NA|NA|19.234|19.347|NA|NA|NA|NA|NA
+index_7|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_6|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|20.615|20.686|NA|NA|NA|NA|NA
+index_7|Inline|1|https://code.jquery.com/jquery-3.3.1.min.js|code.jquery.com/jquery-3.3.1.min.js_2|application/javascript; charset=utf-8|0|NA|code.jquery.com|/|./|200|0|0|86927|GET|NA|NA|NA|NA|20.735|20.752|NA|NA|NA|NA|NA
+abhay|Main|0|http://172.24.1.4:1323/json/abhi/karan/abhay|172.24.1.4_1323/json/abhi/karan/abhay|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/json/abhi/karan/|./../../../|200|0|0|964|GET|NA|NA|NA|NA|22.065|22.306|NA|NA|NA|NA|NA
+index_8|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_7|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|23.434|23.551|NA|NA|NA|NA|NA
+mysql|Main|0|http://172.24.1.4:1323/mysql|172.24.1.4_1323/mysql|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|987|GET|NA|NA|NA|NA|25.052|25.286|NA|NA|NA|NA|NA
+index_9|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_8|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|29.972|30.198|NA|NA|NA|NA|NA
+mongodb|Main|0|http://172.24.1.4:1323/mongodb|172.24.1.4_1323/mongodb|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.001|0|967|GET|NA|NA|NA|NA|33.237|34.499|NA|NA|NA|NA|NA
+mongodb_2|Main|0|http://172.24.1.4:1323/mongodb|172.24.1.4_1323/mongodb_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.001|0|967|GET|NA|NA|NA|NA|35.661|36.853|NA|NA|NA|NA|NA
+mongodb_3|Main|0|http://172.24.1.4:1323/mongodb|172.24.1.4_1323/mongodb_3|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.001|0|967|GET|NA|NA|NA|NA|37.601|38.815|NA|NA|NA|NA|NA
+page_2|Main|0|http://172.24.1.4:1323/page|172.24.1.4_1323/page|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|1226|GET|NA|NA|NA|NA|43.109|43.213|NA|NA|NA|NA|NA
+page|Main|0|http://172.24.1.4:1323/static/image/requrired.txt|172.24.1.4_1323/static/image/requrired.txt|NA|0|NA|172.24.1.4:1323|/static/image/|./../../|0|0|0|-1|null|NA|NA|NA|NA|0.0|0.0|NA|NA|NA|NA|NA
+page|Inline|1|http://172.24.1.4:1323/static/image/requrired.txt|172.24.1.4_1323/static/image/requrired.txt|text/plain; charset=utf-8|0|NA|172.24.1.4:1323|/static/image/|./../../|200|0|0|1502|GET|NA|NA|NA|NA|43.321|43.33|NA|NA|NA|NA|NA
+about|Main|0|http://172.24.1.4:1323/about|172.24.1.4_1323/about|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2026|GET|NA|NA|NA|NA|44.042|44.217|NA|NA|NA|NA|NA
+index_10|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_9|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|46.607|46.711|NA|NA|NA|NA|NA
+index_11|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_10|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|48.486|48.534|NA|NA|NA|NA|NA
+index_12|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_11|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|50.71|50.729|NA|NA|NA|NA|NA
+hello_2|Main|0|http://172.24.1.4:1323/hello|172.24.1.4_1323/hello_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|962|GET|NA|NA|NA|NA|52.788|52.839|NA|NA|NA|NA|NA
+index_13|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_12|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|54.104|54.123|NA|NA|NA|NA|NA
+mysql_2|Main|0|http://172.24.1.4:1323/mysql|172.24.1.4_1323/mysql_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|987|GET|NA|NA|NA|NA|55.969|56.197|NA|NA|NA|NA|NA
+index_14|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_13|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|57.397|57.444|NA|NA|NA|NA|NA
+cats|Main|0|http://172.24.1.4:1323/cats?name=Abhi&type=da%3Ca%20b%3E|172.24.1.4_1323/cats_name=Abhi_type=da_3Ca_b_3E|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|969|GET|NA|NA|NA|NA|59.024|59.1|NA|NA|NA|NA|NA
+index_15|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_14|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|60.603|60.721|NA|NA|NA|NA|NA
+mongodb_4|Main|0|http://172.24.1.4:1323/mongodb|172.24.1.4_1323/mongodb_4|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.001|0|967|GET|NA|NA|NA|NA|62.427|63.58|NA|NA|NA|NA|NA
+index_16|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_15|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|66.073|66.145|NA|NA|NA|NA|NA
+postpg_2|Main|0|http://172.24.1.4:1323/postpg|172.24.1.4_1323/postpg_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|967|GET|NA|NA|NA|NA|69.757|69.838|NA|NA|NA|NA|NA
+index_17|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_16|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|72.938|73.202|NA|NA|NA|NA|NA
+index_18|Main|0|http://172.24.1.4:1323/mux/|172.24.1.4_1323/mux/index_2|text/html; charset=utf-8|0|NA|172.24.1.4:1323|/mux/|./../|200|0|0|922|GET|NA|NA|NA|NA|74.684|74.746|NA|NA|NA|NA|NA
+index_19|Main|0|http://172.24.1.4:1323/|172.24.1.4_1323/index_17|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0|0|2149|GET|NA|NA|NA|NA|77.988|78.022|NA|NA|NA|NA|NA
+httpcall_2|Main|0|http://172.24.1.4:1323/httpcall|172.24.1.4_1323/httpcall_2|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.004|0|834|GET|NA|NA|NA|NA|79.937|83.643|NA|NA|NA|NA|NA
+httpcall_3|Main|0|http://172.24.1.4:1323/httpcall|172.24.1.4_1323/httpcall_3|text/html; charset=UTF-8|0|NA|172.24.1.4:1323|/|./|200|0.002|0|834|GET|NA|NA|NA|NA|84.923|87.227|NA|NA|NA|NA|NA

@@ -1,0 +1,17 @@
+1/13 3:17:22|ChromeBrowserConfigurationSettings|clearLocalStorage|Local Storage can not be cleared|Following is the stack trace:
+java.io.IOException: Unable to delete file: C:\Users\kanhucharan.ghadai\Desktop\recorder\browserdata\Default\Local Storage\leveldb\MANIFEST-000001
+	at org.apache.commons.io.FileUtils.forceDelete(FileUtils.java:2106)
+	at org.apache.commons.io.FileUtils.cleanDirectory(FileUtils.java:1583)
+	at org.apache.commons.io.FileUtils.deleteDirectory(FileUtils.java:1465)
+	at org.apache.commons.io.FileUtils.forceDelete(FileUtils.java:2097)
+	at org.apache.commons.io.FileUtils.cleanDirectory(FileUtils.java:1583)
+	at org.apache.commons.io.FileUtils.deleteDirectory(FileUtils.java:1465)
+	at com.netstorm.chromium.browser.ChromeBrowserConfigurationSettings.clearLocalStorage(ChromeBrowserConfigurationSettings.java:346)
+	at com.netstorm.chromium.browser.ChromeBrowserConfigurationSettings.getBrowserWithConfiguration(ChromeBrowserConfigurationSettings.java:144)
+	at com.netstorm.chromium.browser.ChromeMainFrame.createChormeBrowserWithconfiguration(ChromeMainFrame.java:422)
+	at com.netstorm.chromium.browser.ChromeMainFrame.createBrowserWindowWithListener(ChromeMainFrame.java:163)
+	at com.netstorm.chromium.browser.ChromeMainFrame.<init>(ChromeMainFrame.java:140)
+	at com.netstorm.chromium.browser.NSChromeBrowser.setParamertesAndInitializeMainFrame(NSChromeBrowser.java:174)
+	at com.netstorm.chromium.browser.NSChromeBrowser.init(NSChromeBrowser.java:228)
+	at pacAction.ScriptHTMLStart.StartRecording(ScriptHTMLStart.java:266)
+	at pacAction.ScriptHTMLStart.run(ScriptHTMLStart.java:90)

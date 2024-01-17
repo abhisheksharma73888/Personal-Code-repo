@@ -1,0 +1,352 @@
+{
+	"flows": [
+		{
+			"orgID": "cc2b46247a491c7e",
+			"id": "08b79ae0d1ff0000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2022-01-06T08:07:55.975660398Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [
+							{
+								"id": "30820ed48a373c04",
+								"name": "_tasks",
+								"orgID": "cc2b46247a491c7e",
+								"type": "system"
+							}
+						],
+						"id": "local_d79161b4-41d5-41ea-bad4-b2a8f6897f51",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_dc72c700-69f7-457f-92a7-80bfe5ade0bd",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_1e5e09f0-d8e2-41bd-b989-26177c5f05bf",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "3991dc23-f7d5-40ba-9fa9-09123555d9a3",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "2f528dcc-72cd-4abc-81d2-d264c220ba45",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "ef55259f-58ae-4458-a4bd-a795c4764f3e",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2022-01-06T08:07:55.975660398Z"
+			},
+			"createdAt": "2022-01-06T08:07:55.975660398Z",
+			"updatedAt": "2022-01-06T08:08:09.266268485Z"
+		},
+		{
+			"orgID": "cc2b46247a491c7e",
+			"id": "08b91f33c9b49000",
+			"name": "Untitled Notebook",
+			"spec": {
+				"createdAt": "2022-01-07T12:24:32.784575405Z",
+				"name": "Untitled Notebook",
+				"pipes": [
+					{
+						"buckets": [],
+						"id": "local_0915e409-166f-4c1d-ada8-f80eade6e755",
+						"tags": [
+							{
+								"aggregateFunctionType": "filter",
+								"key": "_measurement",
+								"values": []
+							}
+						],
+						"title": "Build a Query",
+						"type": "queryBuilder",
+						"visible": true
+					},
+					{
+						"id": "local_db863cfa-3bd9-462c-a5b4-4b62f315ebd1",
+						"title": "Validate the Data",
+						"type": "table",
+						"visible": true
+					},
+					{
+						"id": "local_65b45e22-52ef-46fb-91fd-d33222ef9d5f",
+						"period": "10s",
+						"properties": {
+							"axes": {
+								"x": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								},
+								"y": {
+									"base": "10",
+									"bounds": [
+										"",
+										""
+									],
+									"label": "",
+									"prefix": "",
+									"scale": "linear",
+									"suffix": ""
+								}
+							},
+							"colors": [
+								{
+									"hex": "#31C0F6",
+									"id": "ac4eaaf5-c7b8-4d66-bb33-20f4a5bbbf1d",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#A500A5",
+									"id": "28a45524-688c-4165-87a4-0c00888295d7",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								},
+								{
+									"hex": "#FF7E27",
+									"id": "f7e0af0b-97e6-4dc1-9286-8fc5d9c873a4",
+									"name": "Nineteen Eighty Four",
+									"type": "scale",
+									"value": 0
+								}
+							],
+							"generateXAxisTicks": [],
+							"generateYAxisTicks": [],
+							"geom": "line",
+							"hoverDimension": "auto",
+							"legendColorizeRows": true,
+							"legendOpacity": 1,
+							"legendOrientationThreshold": 100000000,
+							"note": "",
+							"position": "overlaid",
+							"queries": [
+								{
+									"builderConfig": {
+										"aggregateWindow": {
+											"fillValues": false,
+											"period": "auto"
+										},
+										"buckets": [],
+										"functions": [
+											{
+												"name": "mean"
+											}
+										],
+										"tags": [
+											{
+												"aggregateFunctionType": "filter",
+												"key": "_measurement",
+												"values": []
+											}
+										]
+									},
+									"editMode": "builder",
+									"name": "",
+									"text": ""
+								}
+							],
+							"shape": "chronograf-v2",
+							"showNoteWhenEmpty": false,
+							"staticLegend": {
+								"colorizeRows": true,
+								"heightRatio": 0,
+								"opacity": 1,
+								"orientationThreshold": 100000000,
+								"show": false,
+								"widthRatio": 1
+							},
+							"type": "xy",
+							"xColumn": null,
+							"xTickStart": null,
+							"xTickStep": null,
+							"xTotalTicks": null,
+							"yColumn": null,
+							"yTickStart": null,
+							"yTickStep": null,
+							"yTotalTicks": null
+						},
+						"title": "Visualize the Result",
+						"type": "visualization",
+						"visible": true
+					},
+					{
+						"endpoint": "slack",
+						"endpointData": {
+							"url": "https://hooks.slack.com/services/X/X/X"
+						},
+						"id": "local_ffe13d3f-b1a0-4f07-9eea-17f4a18e3da0",
+						"interval": "10m",
+						"message": "${strings.title(v: r._type)} for ${r._source_measurement} triggered at ${time(v: r._source_timestamp)}!",
+						"offset": "0s",
+						"thresholds": [
+							{
+								"type": "greater",
+								"value": 0
+							}
+						],
+						"title": "New Alert",
+						"type": "notification",
+						"visible": true
+					}
+				],
+				"range": {
+					"duration": "1h",
+					"label": "Past 1h",
+					"lower": "now() - 1h",
+					"seconds": 3600,
+					"type": "selectable-duration",
+					"upper": null,
+					"windowPeriod": 10000
+				},
+				"readOnly": false,
+				"refresh": {
+					"duration": null,
+					"inactivityTimeout": 0,
+					"infiniteDuration": false,
+					"interval": 0,
+					"status": "paused"
+				},
+				"updatedAt": "2022-01-07T12:24:32.784575405Z"
+			},
+			"createdAt": "2022-01-07T12:24:32.784575405Z",
+			"updatedAt": "2022-01-07T12:24:33.960024661Z"
+		}
+	]
+}

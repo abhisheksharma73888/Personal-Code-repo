@@ -1,0 +1,316 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- OTEL  								                  #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 12 May 2023                                                                  #  
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/"
+AVAILABLE_TIERS=$Project
+
+function main() {
+	case $(get_test_name) in
+		"GOLANG-011-001") handle_golang_011_001_case ;;
+		"GOLANG-011-002") handle_golang_011_002_case ;;
+		"GOLANG-011-003") handle_golang_011_003_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+	esac
+}
+
+function log_status_int() {
+        local agentID="$1"
+    	local _status="$2"
+        local why="$3"
+        local productid=${productid:-1000}
+        local categoryid=${categoryid:-1000}
+        log_status_and_exit ${agentID} ${productid} ${categoryid} ${_status} "${why}"
+}
+
+function handle_unknown_case() {
+        error "Testcase name not found"
+        log_status_int "${tier}" "FAIL" "Testcase name not found"
+}
+
+function verify_rawdata(){
+        RAW_DATA_FILE=$1
+    local eventId0=$(grep -c "^0," $RAW_DATA_FILE)
+    local eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+    local eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+    if [ $eventId0 -lt 1 ] || [ $eventId0 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 0 not detected: ${eventId0}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 0 is detected: ${eventId0}"
+    fi
+    if [ $eventId99 -lt 1 ] || [ $eventId99 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 99 not detected: ${eventId99}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 99 is detected: ${eventId99}"
+    fi
+    if [ $eventId11 -lt 1 ] || [ $eventId11 -gt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 11 not detected: ${eventId11}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 11 is detected: ${eventId11}"
+    fi
+    debug "eventId2=$eventId2, eventId4=$eventId4"
+    if [ $eventId2 -lt 1 ] || [ $eventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not detected. Number of flowpaths: ${eventId4}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are detected. Number of flowpaths: ${eventId4}"
+    fi
+    if [ $eventId2 -ne $eventId4 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${eventId4}"
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${eventId4}"
+    fi
+}
+
+functionhexa(){
+    n=$1
+    b=$2
+    xy=$3
+    count=0;
+    echo $xy
+    echo decimal $n
+    c=$(echo "obase=16;$n" | bc)
+    echo hexadecimal $c
+    if [ ${c,,} == ${b} ];then
+	log_status_int "${tier}" "PASS" "Passed for Parentspan ID value is converting into hexadecimal correctly."
+    else
+	log_status_int "${tier}" "FAIL" "Failed for Parentspan ID value is not converting into hexadecimal correctly."
+    	((count++))
+	return 1
+    fi
+}
+
+function handle_golang_011_001_case() {
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^${tier}"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^${tier}"|head -1)
+                        CSV_FILE=$CSV_HOME/$(ls $CSV_HOME |grep "${tier}" |head -1)
+			checkOTELlevel1 $DATA_FILE 
+			RC=$?
+			if [ $count -gt 0 ];then
+                		verify_rawdata $DATA_FILE
+            		fi
+			if [ $RC -eq 0 ];then
+				log_status_int "${tier}" "PASS" "Passed for self verification"
+			fi
+		else
+            		log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        	fi
+  	done
+}
+
+#Check OTEL values in 2 record for self flowpaths
+function checkOTELlevel1(){
+	RAW_DATA_HOME=$1
+RecC=$(grep -c ^2, $RAW_DATA_HOME)
+if [ ${RecC} -eq 0 ];then
+	verify_rawdata $RAW_DATA_HOME 
+	return 1
+else
+	traceid=$(grep ^2, $RAW_DATA_HOME | cut -d ','  -f 15 | head -1)
+	echo $traceid
+	parentspanid=$(grep ^2, $RAW_DATA_HOME | cut -d ','  -f 16 | head -1)
+	echo $parentspanid
+	flag=$(grep ^2, $RAW_DATA_HOME | cut -d ','  -f 17 | head -1)
+	echo $flag
+	flowpathid=$(grep ^2, $RAW_DATA_HOME | cut -d ','  -f 2 | head -1)
+	echo $flowpathid
+	if [ -z $parentspanid ];then
+		log_status_int "${tier}" "FAIL" "Parentspanid is found to be empty"
+	else
+	functionhexa $flowpathid $parentspanid 
+	fi
+       	if [ $flag == 01 ];then
+		log_status_int "${tier}" "PASS" "Passed for flag is as 1."
+	else
+		log_status_int "${tier}" "FAIL" "wrong flag is coming"
+       		((count++))
+		return 1
+	fi
+	if [ ${traceid} == 0000000000000000${parentspanid} ];then
+		log_status_int "${tier}" "PASS" "Passed for traceid value is coming correct"
+	else
+		log_status_int "${tier}" "FAIL" "traceid value is coming wrong"
+       	fi
+fi
+}
+
+function handle_golang_011_002_case() {
+		if [ $(ls $RAW_DATA_HOME |grep "^${tier}"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^${tier}"|tail -1)
+                        CSV_FILE=$CSV_HOME/$(ls $CSV_HOME |grep "${tier}" |head -1)
+			checkOTELlevel2 $DATA_FILE1 	
+			RC=$?
+			if [ $count -gt 0 ];then
+                                verify_rawdata $DATA_FILE
+                        fi
+			if [ $RC -eq 0 ];then
+				log_status_int "${tier}" "PASS" "Passed OTEL filed validation in tier to tier callout"
+			fi
+		else
+                        log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+                fi
+}
+
+#checking OTEL fields in tier to tier callout across both flowpaths
+function checkOTELlevel2(){
+ RAW_DATA_HOME=$1
+ Rcount=$(grep -c ^2, $RAW_DATA_HOME)
+ if [ ${Rcount} -eq 0 ];then
+        log_status_int "${tier}" "FAIL" "OTEL validation for tier to tier callout failed"
+	verify_rawdata 
+        return 1
+ else
+       Tcount=$(grep -c ^12, $RAW_DATA_HOME)
+       if [ ${Tcount} -eq 0 ];then
+	       log_status_int "${tier}" "FAIL" "Request headers are not capturing."
+       else
+	       theaderid=$(grep ^6 $RAW_DATA_HOME | grep -i traceparent | cut -d ',' -f 3)
+	       if [ -z ${theaderid} ];then
+		       log_status_int "${tier}" "FAIL" " traceparent Request headers are not capturing."
+	       else
+		       tflowpathid=$(grep ^12 $RAW_DATA_HOME | grep $theaderid: | head -1 | cut -d ',' -f 2|head -1)
+ newtid=$(grep ^2,$tflowpathid $RAW_DATA_HOME | cut -d ','  -f 15 | head -1 )
+ newparentid=$(grep ^2,$tflowpathid $RAW_DATA_HOME | cut -d ','  -f 16 | head -1 )
+ flag=$(grep ^2,$tflowpathid $RAW_DATA_HOME | cut -d ','  -f 17 | head -1 )
+ gid=$(grep ^2,$tflowpathid $RAW_DATA_HOME | cut -d ',' -f 15,16)
+ parentflowpathid=$(grep ^2 $RAW_DATA_HOME1 | grep "$gid" | cut -d ',' -f 2)
+ parenttraceid=$(grep ^2,$parentflowpathid $RAW_DATA_HOME1 | cut -d ',' -f 15 | head -1)
+ parentselfid=$(grep ^2,$parentflowpathid $RAW_DATA_HOME1 | cut -d ',' -f 16 | head -1)
+ parentflag=$(grep ^2,$parentflowpathid $RAW_DATA_HOME1 | cut -d ',' -f 17 | head -1)
+ 			if [ ${newtid} == ${parenttraceid}  ];then
+	 			log_status_int "${tier}" "PASS" "Traceid is coming correctly in 2 record in case of Tier to Tier callout."
+ 			else
+	 			log_status_int "${tier}" "FAIL" "Traceid is not  coming correctly in 2 record in case of Tier to Tier callout."
+ 				((count++))
+				return 1
+ 			fi
+ 			if [ ${newparentid} == ${parentselfid}  ];then
+	 			log_status_int "${tier}" "PASS" "ParentID is coming correctly in 2 record in case of Tier to Tier callout."
+ 			else
+	 			log_status_int "${tier}" "FAIL" "ParentID is not coming correctly in 2 record in case of Tier to Tier callout."
+ 			fi
+	       fi
+       	fi
+fi
+}
+
+function handle_golang_011_003_case() {
+        for tier in $AVAILABLE_TIERS; do
+                if [ $(ls $RAW_DATA_HOME |grep "^${tier}"|head -1) ];then
+                        DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^${tier}"|tail -1)
+                        CSV_FILE=$CSV_HOME/$(ls $CSV_HOME |grep "${tier}" |head -1)
+                	checkOTELheaders $DATA_FILE1 $DATA_FILE2
+                	RC=$?
+			if [ $count -gt 0 ];then
+                		verify_rawdata $DATA_FILE
+            		fi
+                	if [ $RC -eq 0 ];then
+                        	log_status_int "${tier}" "PASS" "Passed for OTEL Header Validation"
+                	fi
+		else
+            		log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        	fi
+        done
+}
+
+function checkOTELheaders(){
+        RAW_DATA_HOME_file=$1
+	Rcount=$(grep -c ^2, $RAW_DATA_HOME_file)
+          if [ ${Rcount} -eq 0 ];then
+		log_status_int "${tier}" "FAIL" "Failed for OTEL Header Validation"
+		  verify_rawdata $RAW_DATA_HOME_file
+		  return 1
+	  else
+		  Tcount=$(grep -c ^12, $RAW_DATA_HOME_file)
+		  if [ ${Tcount} -eq 0 ];then
+			  log_status_int "${tier}" "FAIL" "Request headers are not capturing."
+		  else
+	# Extracting HeaderIDs in case of Child Flowpath
+	tracestateid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "tracestate" | cut -d ',' -f 3)
+	if [ -z ${tracestateid} ];then
+                     log_status_int "${tier}" "FAIL" " traceparent Request headers are not capturing."
+        else
+	traceparentid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "traceparent" | cut -d ',' -f 3 )
+	xb3traceidid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "X-B3-TraceId" | cut -d ',' -f 3  )
+	XB3ParentSpanIdid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "X-B3-ParentSpanId" | cut -d ',' -f 3 )
+	XB3SpanIdid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "X-B3-SpanId" | cut -d ',' -f 3 )
+	XB3Sampledid=$(grep ^6 $RAW_DATA_HOME_file | grep -i "X-B3-Sampled" | cut -d ',' -f 3 )
+	B3id=$(grep ^6 $RAW_DATA_HOME_file | grep -i ",B3," | cut -d ',' -f 3 )
+
+        # Extracting Header Values of Child Flowpath 
+	tracestatev=$(grep ^12, $RAW_DATA_HOME_file | grep ${tracestateid}: | head -1 | egrep -o "|${tracestateid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1 )
+	traceparentv=$(grep ^12, $RAW_DATA_HOME_file | grep ${traceparentid}: | head -1 | egrep -o "|${traceparentid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1)
+	xb3traceidv=$( grep ^12, $RAW_DATA_HOME_file | grep ${xb3traceidid}: | head -1 | egrep -o "|${xb3traceidid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1)
+	XB3ParentSpanIdv=$( grep ^12, $RAW_DATA_HOME_file | grep ${XB3ParentSpanIdid}: | head -1 | egrep -o "|${XB3ParentSpanIdid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1 )
+	XB3SpanIdv=$( grep ^12, $RAW_DATA_HOME_file | grep ${XB3SpanIdid}: | head -1 | egrep -o "|${XB3SpanIdid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1 )
+	XB3Sampledv=$( grep ^12, $RAW_DATA_HOME_file | grep ${XB3Sampledid}: | head -1 | egrep -o "|${XB3Sampledid}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1 )
+	B3v=$(grep ^12, $RAW_DATA_HOME_file | grep ${B3id}: | head -1 | egrep -o "|${B3id}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1)
+	spanidv=$(grep ^12, $RAW_DATA_HOME_file | grep ${B3id}: | head -1 | egrep -o "|${B3id}:.*|" | cut -d '|' -f 1 | cut -d '<' -f 2 | cut -d '>' -f 1 | cut -d '-' -f 2 )
+	
+        # Extracting fields of parent Flowpath
+	Cflowpathid=$(grep ^12 $RAW_DATA_HOME_file | grep $tracestateid: | head -1 | cut -d ',' -f 2|head -1)
+	CgroupID=$(grep ^2,$Cflowpathid $RAW_DATA_HOME_file | cut -d ',' -f 15,16)
+	Pflowpathid=$(grep ^2 $RAW_DATA_HOME_file1 | grep "$CgroupID" | cut -d ',' -f 2)
+	Ptraceid=$( grep ^2,$Pflowpathid $RAW_DATA_HOME_file1 | cut -d ',' -f 15 | head -1)
+	PParentspanid=$( grep ^2,$Pflowpathid $RAW_DATA_HOME_file1 | cut -d ',' -f 16 | head -1 )
+	PFlag=$(grep ^2,$Pflowpathid $RAW_DATA_HOME_file1 | cut -d ',' -f 17 | head -1)
+
+	#Checking and comparing Header value
+	if [ ${traceparentv} == 00-${Ptraceid}-${PParentspanid}-${PFlag} ];then
+		log_status_int "${tier}" "PASS" "Passed traceparent header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Fail as traceparent header value is not Passing correctly"
+		((count++))
+		return 1
+	fi
+	if [ ${xb3traceidv} == ${Ptraceid} ];then
+		log_status_int "${tier}" "PASS" "Passed X-B3-TraceId header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Fail as X-B3-TraceId header value is not Passing correctly"
+	fi
+	if [ ${XB3ParentSpanIdv} == ${PParentspanid} ];then
+		log_status_int "${tier}" "PASS" "Passed X-B3-ParentSpanId header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Passed X-B3-ParentSpanId header value is not Passing correctly"
+	fi
+	if [ ${XB3Sampledv} == ${PFlag} ];then
+		log_status_int "${tier}" "PASS" "Passed X-B3-Sampled header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Passed X-B3-Sampled header value is not Passing correctly"
+	fi
+	if [ ${XB3SpanIdv} == ${spanidv} ];then
+		log_status_int "${tier}" "PASS" "Passed X-B3-SpanId header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Passed X-B3-SpanId header value is  not Passing correctly"
+	fi
+	if [ ${B3v} == ${Ptraceid}-${spanidv}-${PFlag}-${PParentspanid} ];then
+		log_status_int "${tier}" "PASS" "Passed B3 header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Fail for B3 header value is not Passing correctly"
+	fi
+	if [[ "${tracestatev}" =~ cavisson=* ]];then
+		log_status_int "${tier}" "PASS" "Passed tracestate header value is Passing correctly"
+	else
+		log_status_int "${tier}" "FAIL" "Fail for tracestate header value is not Passing correctly"
+	fi
+     fi
+    fi
+  fi
+}
+
+main

@@ -1,0 +1,232 @@
+--Request 
+GET https://getqor.com/en
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:42 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://a.disquscdn.com/1617742046/images/noavatar92.png
+Host: a.disquscdn.com
+Host: a.disquscdn.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://disqus.com/embed/comments/?base=default&f=qor&t_i=8-en&t_u=http%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&t_d=New%2C%20Better%20QOR%20Documentation%20released!&t_t=New%2C%20Better%20QOR%20Documentation%20released!&s_o=default
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: image/png
+server: nginx
+last-modified: Fri, 26 Feb 2021 20:50:09 GMT
+etag: \"60395f01-66c\"
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+expires: Fri, 07 May 2021 00:35:18 GMT
+cache-control: max-age=2592000
+p3p: CP=\"DSP IDC CUR ADM DELi STP NAV COM UNI INT PHY DEM\"
+x-amz-cf-pop: MRS52-C2
+x-amz-cf-id: a8PtLgLUenk3zPZrPbm__Gmd5mO8hYfrKhHdtdaC-CjH413f94eKmA==
+date: Wed, 07 Apr 2021 17:46:43 GMT
+age: 61884
+strict-transport-security: max-age=300; includeSubdomains
+content-length: 1644
+----
+--Request 
+GET https://syndication.twitter.com/settings?session_id=bf3bf59e20aa75aac54f93bb61431302b9a7d1e0
+Host: syndication.twitter.com
+Host: syndication.twitter.com
+Connection: keep-alive
+Origin: https://platform.twitter.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Referer: https://platform.twitter.com/widgets/widget_iframe.e16c6ecf9d86005b77fc7c17beced5d8.html?origin=https%3A%2F%2Fgetqor.com
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET https://getqor.com/source/images/logo-lacoste.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 3205
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/logo-asics.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 3192
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/logo-danone.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 9480
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/logo-onitsuka.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 3731
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/analogue-life.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 3197
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/system/features/1/Icon/icon_f_1.20150819081315454533903.png
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+Content-Type: image/png
+Content-Length: 470
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Wed, 19 Aug 2015 08:39:13 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+

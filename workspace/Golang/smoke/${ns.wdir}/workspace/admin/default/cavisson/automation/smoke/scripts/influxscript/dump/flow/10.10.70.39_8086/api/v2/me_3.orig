@@ -1,0 +1,8 @@
+{
+	"links": {
+		"self": "/api/v2/users/08f58bd6d4e38000"
+	},
+	"id": "08f58bd6d4e38000",
+	"name": "abhishek",
+	"status": "active"
+}

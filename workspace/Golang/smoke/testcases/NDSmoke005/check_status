@@ -1,0 +1,229 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- DB Callout , HTTP Callout                                                          #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 17h August   2022                                                            # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/helpers.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="$NS_WDIR/logs/TR$(get_test_idx)"                                                
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"                                          
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data/" 
+AVAILABLE_TIERS=$Project
+SUMMARY_TOP_FILE="$TEST_RUN_PATH/summary.top"
+NDC_TRACE_LOG="$PARTITION_PATH/nd/logs/ndc_trace.log"
+tsdb_file="$(ls $NS_WDIR/logs/TR$(get_test_idx)/tsdb/tsdb_metrics.txt)"
+prc_file="$NS_WDIR/logs/TR$(get_test_idx)/$(get_test_partition)/reports/csv/prc.csv"
+
+
+
+function main() {
+	case $(get_test_name) in
+    "GOLANG-005-001") handle_golang_005_001_case ;;
+    "GOLANG-005-002") handle_golang_005_002_case ;;
+		*) handle_unknown_case ;;
+		?) handle_unknown_case ;;
+  esac
+}
+
+function log_status_int() {
+     agentID="$1"
+     status="$2"
+     why="${3}"
+     log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+function handle_unknown_case() {
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase name not found"
+}
+
+
+function raw_data_val(){
+	eventId0=$(grep -c "^0," $RAW_DATA_FILE)
+	eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+        eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+	eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+        eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+        eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+	eventId10=$(grep -c "^10," $RAW_DATA_FILE)
+	filesize=$(ls -ltrh $RAW_DATA_FILE | cut -d ' ' -f5)
+        if [ ! -e $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+        fi
+
+        if [ ! -s $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${filesize}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${filesize}"
+        fi
+
+	if [ $eventId0 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 0 detected: ${eventId0}"
+	else
+                log_status_int "${tier}" "FAIL" "Event id 0 is not detected: ${eventId0}"
+	fi
+
+        if [ $eventId99 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 99  detected: ${eventId99}"
+	else
+                log_status_int "${tier}" "FAIL" "Event id 99 is not detected: ${eventId99}"
+	fi
+
+        if [ $eventId11 -eq 1 ];then
+		log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+	else
+                log_status_int "${tier}" "FAIL" "Event id 11 is not detected: ${eventId11}"
+        fi
+
+ 	if [ $eventId5 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "Event id 5 is not  detected: ${eventId5}"
+		return 1
+        else
+                log_status_int "${tier}" "PASS" "Event id 5 is  detected: ${eventId5}"
+        fi
+
+
+        if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+        fi
+
+        if [ $eventId2 -ne $eventId4 ];then
+                log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+
+        else
+                log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        fi
+	return 0
+}
+
+
+function handle_golang_005_001_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        handle_mysql_Callout $DATA_FILE
+        RC=$?
+        if [ $countR -gt 0 ];then
+             raw_data_val $DATA_FILE
+         fi
+
+         if [ $RC -eq 0 ];then
+                log_status_int "${tier}" "PASS" "Mysql call is captured successfuly"
+        else
+            log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+        fi 
+     fi
+    done
+    }
+
+handle_mysql_Callout(){
+    RAW_DATA_FILE=$1
+    #url="/api/v2private/notebooks"
+    #method="DB_influxd.sqlite"
+    local eventId2=$(grep -c "^2," $RAW_DATA_FILE)                                                   
+    local eventId4=$(grep -c "^4," $RAW_DATA_FILE)                                                   
+    local eventId5=$(grep  "^5," $RAW_DATA_FILE)                                                   
+    local sqlMID=$(grep "^5,DB_*" $RAW_DATA_FILE | cut -d ',' -f3)
+    local fpid2=$(grep "^2," ${RAW_DATA_FILE} |grep "/api/v2private/notebooks?" | head -1 |cut -d ',' -f 2)
+    local fpid4=$(grep "^4,$fpid2," $RAW_DATA_FILE | cut -d ',' -f 9 |egrep -o "T[0-9]*:[0-9]*:[0-9]*:[0-9]*:[0-9]*:[0-9]*"|cut -d ':' -f4)
+    local sqlTRec=$(egrep -o "T[0-9]*:$sqlMID:[0-9]*:10:[0-9]*" $RAW_DATA_FILE | cut -d ':' -f2|head -1)
+    countR=0;
+
+     if [ -z $sqlMID ];then
+                log_status_int "$tier" "FAIL" "MYSQL Method is not captured in 5 record"    
+		((countR++))
+		return 1	       	 
+     	 else
+            log_status_int "$tier" "PASS" "MYSQL Method is captured in 5 record"
+     fi
+
+    if [ $fpid4 -ne 10 ];then
+	    	log_status_int "$tier" "FAIL" "MYSQL call is not captured with sqlID 10"
+	    	return 1
+   	 else
+		log_status_int "$tier" "PASS" "MYSQL call is captured with sqlID 10"
+    fi
+
+     if [ $sqlTRec -ne $sqlMID ];then  
+		log_status_int "$tier" "FAIL" "MYSQL call is not participating in flowpath sequence blob. Method id:$sqlMID and Participating Method id in seq blob: $sqlTRec"
+	        return 1
+       	else
+            log_status_int "$tier" "PASS" "MYSQL call is participating in flowpath seqence blob. Method id:$sqlMID and Participating Method id in seq blob: $sqlTRec"
+     fi
+    return 0
+
+}
+
+function handle_golang_005_002_case() {
+    for tier in $AVAILABLE_TIERS; do
+        if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+            DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+        handle_http_Callout $DATA_FILE
+        RC=$?
+	if [ $countR -gt 0 ];then
+              raw_data_val $DATA_FILE
+         fi
+
+         if [ $RC -eq 0 ];then
+		 log_status_int "${tier}" "PASS" "HTTP call is captured"
+        else
+     		# log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+     		log_status_int "${tier}" "FAIL" "Bug 135309-GoAgent|HTTP Callouts are not dumping in rawdata for GoAgent"
+        fi
+    fi
+    done
+}
+
+
+function handle_http_Callout(){
+     RAW_DATA_FILE=$1
+     #url="/api/v2/query?orgID=*"
+     #method="influx-testdata.s3.amazonaws.com"
+     local eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+     local eventId4=$(grep -c "^4," $RAW_DATA_FILE) 
+     local eventId5=$(grep "^5," $RAW_DATA_FILE)
+     local httpMID=$(grep "^5,HTTP_*" $RAW_DATA_FILE | cut -d ',' -f3)
+     local fpid2=$(grep "^2," ${RAW_DATA_FILE} |grep "/api/v2/query?orgID=*" | head -1 |cut -d ',' -f 2)
+     local fpid4=$(grep "^4,$fpid2," $RAW_DATA_FILE | cut -d ',' -f 9 |egrep -o "T[0-9]*:[0-9]*:[0-9]*:[0-9]*:[0-9]*:[0-9]*"|cut -d ':' -f4)
+     local httpTRec=$(egrep -o "T[0-9]*:$httpMID:[0-9]*:1:[0-9]*" $RAW_DATA_FILE | cut -d ':' -f4 | head -1)
+     countR=0
+           	 
+        if [ -z $httpMID ];then
+	  	log_status_int "$tier" "FAIL" "HTTP Method is not captured in 5 record"
+		((countR++))        
+		return 1 
+	else
+    		log_status_int "$tier" "PASS" "HTTP Method is captured in 5 record"
+        fi
+
+        if [ $fpid4 -ne 1 ];then
+    		log_status_int "$tier" "FAIL" "HTTP call is not captured with ID 1"
+		return 1	 
+	else
+    		log_status_int "$tier" "PASS" "HTTP call is captured with ID 1"
+        fi
+
+        if [ $httpTRec -ne $httpMID ];then
+    		log_status_int "$tier" "FAIL" "HTTP call is not participating in flowpath sequence blob. Method id:$httpMID and Participating Method id in seq blob: $httpTRec"
+		return 1    	    
+	else
+    		log_status_int "$tier" "PASS" "HTTP call is participating in flowpath sequence blob. Method id:$httpMID and Participating Method id in seq blob: $httpTRec"
+        fi
+       return 0
+}
+
+main

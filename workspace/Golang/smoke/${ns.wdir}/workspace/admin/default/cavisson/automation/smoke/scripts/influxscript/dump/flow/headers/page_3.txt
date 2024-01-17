@@ -1,0 +1,62 @@
+--Request 
+GET http://10.10.70.39:8086/api/v2/setup
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=3B1-5v6_KGewIuuNTf_cPNV2Ygn2ol98Q-HMq7wNU-t0cP3WTLP87hBSOrmymwbtO9QXiAB_TISAdZJSAd5AsA==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:35 GMT
+Content-Length: 21
+----
+--Request 
+GET http://10.10.70.39:8086/756cfeadfd.svg
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1711
+Content-Type: image/svg+xml
+Etag: \"171130115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:35 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/8a04845132.woff2
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Origin: http://10.10.70.39:8086
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://10.10.70.39:8086/e71b678a99.woff2
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Origin: http://10.10.70.39:8086
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+

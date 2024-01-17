@@ -1,0 +1,24 @@
+--Request 
+POST http://10.10.70.39:8086/api/v2/query?orgID=f99b06f47a4821f3
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://10.10.70.39:8086
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3/notebooks/0b1876b447676000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=5BlTyGdk4fxmHUEQnyx3vhn0ZfL5JbQkRsO8lcz5ae_e8DDJ1PiMIjAV0QqQuSijhZVlnyRzUlRGVkDSEYKxyQ==
+----
+ POSTDATA {"query":"import \"influxdata/influxdb/sample\"\n\nsample.data(set: \"airSensor\")\n\t|> range(start: -1h, stop: now())\n\t|> filter(fn: (r) =>\n\t\t(true))\n\t|> keys()\n\t|> keep(columns: [\"_value\"])\n\t|> distinct()\n\t|> filter(fn: (r) =>\n\t\t(r._value != \"_time\" and r._value != \"_start\" and r._value != \"_stop\" and r._value != \"_value\"))\n\t|> sort()\n\t|> limit(n: 200)","dialect":{"annotations":["group","datatype","default"]}}
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://10.10.70.39:8086
+Content-Type: text/csv; charset=utf-8
+Vary: Accept-Encoding
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:04:59 GMT
+Transfer-Encoding: chunked
+----
+

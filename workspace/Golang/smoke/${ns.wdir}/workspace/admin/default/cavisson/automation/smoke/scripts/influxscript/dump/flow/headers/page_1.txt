@@ -1,0 +1,145 @@
+--Request 
+GET http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Host: 10.10.70.39:8086
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 515
+Content-Type: text/html; charset=utf-8
+Etag: \"51530115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:25 GMT
+----
+--Request 
+GET https://dns.google/dns-query?dns=AAABAAABAAAAAAABA3d3dwdnc3RhdGljA2NvbQAAAQABAAApEAAAAAAAAFQADABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Host: dns.google
+Accept: application/dns-message
+Accept-Language: *
+User-Agent: Chrome
+Accept-Encoding: identity
+----
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:03 GMT
+expires: Mon, 10 Jan 2022 11:34:03 GMT
+cache-control: private, max-age=132
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:03 GMT
+expires: Mon, 10 Jan 2022 11:34:03 GMT
+cache-control: private, max-age=94
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET http://10.10.70.39:8086/6588f709b0.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 10125
+Content-Type: text/javascript; charset=utf-8
+Etag: \"1012530115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:25 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/26.c9f12339d6.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 2922425
+Content-Type: text/javascript; charset=utf-8
+Etag: \"292242530115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:26 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/600ef94c90.wasm
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 3364749
+Content-Type: application/wasm
+Etag: \"336474930115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:26 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/32.5c02872a8b.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 540162
+Content-Type: text/javascript; charset=utf-8
+Etag: \"54016230115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:33:26 GMT
+----
+

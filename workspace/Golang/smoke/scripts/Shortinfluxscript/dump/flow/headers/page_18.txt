@@ -1,0 +1,86 @@
+--Request 
+GET http://172.24.1.4:8086/api/v2/buckets?limit=100&orgID=6dc474be0df93348
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://172.24.1.4:8086/orgs/6dc474be0df93348/notebooks/0a969ec2e9380000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=Bi16hjOM1cLpauAEGocr-4oRjFcQnILZ4rluC89Nwy3Pq5VMjACpGLXoqJjzD3Nr5n8P9YzmeI4KJdwRHWZ8yA==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Fri, 13 Jan 2023 09:47:45 GMT
+Transfer-Encoding: chunked
+----
+--Request 
+GET http://172.24.1.4:8086/0367a1dab7.woff2
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Origin: http://172.24.1.4:8086
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://172.24.1.4:8086/61ea17f16c.woff2
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Origin: http://172.24.1.4:8086
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://172.24.1.4:8086/0367a1dab7.woff2
+Host: 172.24.1.4:8086
+Origin: http://172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 48068
+Content-Type: font/woff2
+Etag: \"4806830232616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Fri, 13 Jan 2023 09:47:45 GMT
+----
+--Request 
+GET http://172.24.1.4:8086/61ea17f16c.woff2
+Host: 172.24.1.4:8086
+Origin: http://172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://172.24.1.4:8086/signin
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 36648
+Content-Type: font/woff2
+Etag: \"3664830232616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Fri, 13 Jan 2023 09:47:45 GMT
+----
+

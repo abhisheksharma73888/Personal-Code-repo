@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<project name="NetDiagnostics Automation" basedir=".">
+    
+    <!--property definition-->
+    <property environment="env"/>
+    <property name="ns.wdir" value="${env.NS_WDIR}"/>  
+    <property name="lib.dir" value="${basedir}/lib"/>  
+    <property name="include.dir" value="${basedir}/include"/>  
+    <property name="results.dir" value="${env.HOME}/workspace/results"/>  
+    <property name="nd.ts.run.shell" value="${basedir}/bin/suite_runner.sh"/>  
+    <property name="nd.comp.report.script" value="${basedir}/bin/gen_compare_report_int.rb"/>
+    <property name="comp.report.script" value="${basedir}/bin/generate_performance_report.rb"/>
+    <property name="appd.comp.report.script" value="${basedir}/bin/appd_nd_compare.rb"/>
+    <property name="smoke.ant.file" value="${basedir}/smoke/build.xml"/> 
+    <property name="regression.ant.file" value="${basedir}/regression/build.xml"/> 
+    <property name="performance.ant.file" value="${basedir}/performance/build.xml"/> 
+    <property name="agent.home.dir" value="/home/cavisson/netdiagnostics"/> 
+    <property name="agent.local.dir" value="${env.HOME}/netdiagnostics"/> 
+    <property name="agent.config.dir" value="${agent.home.dir}/config"/> 
+    <property name="agent.logs.dir" value="${agent.home.dir}/logs"/> 
+    <property name="nd.report.script" value="${basedir}/bin/nd_generate_report.py"/>
+    <property name="nd.db.upload.script" value="${basedir}/bin/remote_db_upload.py"/>
+    <property name="bash" value="/bin/bash"/>
+
+    <property name="core.outfile" value="${env.HOME}/workspace/core/core_list"/>
+	    <!-- <property name="core.mailing.dir" value="${basedir}/etc/mail"/>-->
+    <property name="core.mailing.dir" value="${basedir}/mailing"/>
+    <property name="nd.core.script" value="${basedir}/bin/nd_core_report.py"/>
+    <property name="nsu.start.test.shell" value="${include.dir}/nsu_start_test"/>
+
+     <!-- Properties for mailing server -->
+    <!--property name="mailing.server.user" value="cavisson"/>
+    <property name="mailing.server.passwd" value="cavisson@21"/>
+    <property name="mailing.server.host" value="10.10.30.205"/>
+    <property name="mailing.server.dir" value="/home/cavisson/Go_Mailing"/>
+    <property name="mailing.server.perf.dir" value="/home/cavisson/Go_Mailing/Performance"/>
+    <property name="mailing.server.smoke.dir" value="/home/cavisson/Go_Mailing/Smoke"/>
+		    <property name="mailing.server.script" value="/home/cavisson/Go_Mailing/mail_with_html.py"/-->
+<!-- End of mailing server Properties -->
+
+ <!-- Properties for mailing server -->
+    <property name="mailing.server.user" value="cavisson"/>
+    <property name="mailing.server.passwd" value="cavisson39"/>
+    <property name="mailing.server.host" value="10.10.70.39"/>
+    <property name="mailing.server.dir" value="/home/cavisson/Go_Mailing"/>
+    <property name="mailing.server.perf.dir" value="/home/cavisson/Go_Mailing/Performance"/>
+    <property name="mailing.server.smoke.dir" value="/home/cavisson/Go_Mailing/Smoke"/>
+                    <property name="mailing.server.script" value="/home/cavisson/Go_Mailing/mail_with_html.py"/>
+<!-- End of mailing server Properties -->
+
+			    
+    <target name="smoke-debug" depends="get-build-info" description="Run NetDiagnostics smoke testsuite in debug mode">
+        <ant antfile="${smoke.ant.file}" target="run" useNativeBasedir="true"/>
+    </target>
+    
+    <target name="smoke-debug-with-reporting" depends="get-build-info" description="Run NetDiagnostics smoke testsuite in debug mode">
+       <ant antfile="${smoke.ant.file}" target="run-smoke-with-report" useNativeBasedir="true"/>
+    </target>
+    
+    <target name="smoke" depends="get-build-info, check-config" description="Run NetDiagnostics smoke testsuite">
+   <!-- <target name="smoke" depends="get-build-info" description="Run NetDiagnostics smoke testsuite"> -->
+       <ant antfile="${smoke.ant.file}" target="smoke" useNativeBasedir="true"/>
+	      <ant antfile="${smoke.ant.file}" target="upload-results" useNativeBasedir="true"/>
+    </target>
+
+   <target name="generate-smoke-report" depends="get-build-info" description="Generate Smoke Report">
+       <ant antfile="${smoke.ant.file}" target="gen-reports" useNativeBasedir="true"/>
+   </target>
+   
+   <target name="smoke-db-upload" depends="get-build-info" description="Upload Smoke DB Results">
+       <ant antfile="${smoke.ant.file}" target="upload-results" useNativeBasedir="true"/>
+   </target>
+
+   <target name="get-build-info"  description="Get release and build information">
+			   <!--<target name="get-build-info" depends="check-and-copy-start-test-shell" description="Get release and build information">-->
+        <exec executable="bash" outputproperty="release.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|head -1|awk '{print $2}'"/>
+        </exec>
+        <exec executable="bash" outputproperty="build.info">
+            <arg value="-c"/>
+            <arg value="cat ${ns.wdir}/etc/version|tail -1|awk '{print $2}'"/>
+        </exec>
+        <echo message="Current Build: R${release.info}.B${build.info}"/>
+    </target>
+
+			<!-- Need to comment when trying to Run Test with NS Mode -->
+
+    <target name="check-config" description="Check system config and default it to NDE">
+      <echo message="Checking and setting config to NDE"/>
+      <exec executable="sed">
+        <arg value="-i"/>
+        <arg value="s/^CONFIG .*./CONFIG NDE/g"/>
+        <arg value="${env.HOME}/etc/cav.conf"/>
+      </exec>
+    </target> 
+
+    <!--  <target name="check-and-copy-start-test-shell" description="Checks and copies the nsu_start_test shell to $NS_WDIR/bin">
+      <exec executable="bash" outputproperty="release">
+        <arg value="-c"/>
+        <arg value="cat $NS_WDIR/etc/version | grep VERSION |cut -d ' ' -f2 | tr -d '.'"/>
+      </exec>
+      <exec executable="bash">
+        <arg value="-c"/>
+        <arg value="if [ ${release} -gt 419 ]; then cp -v ${nsu.start.test.shell} ${ns.wdir}/bin; chmod -v 777 ${ns.wdir}/bin/nsu_start_test; else echo All OK; fi"/>
+      </exec>
+    </target>-->
+
+</project>

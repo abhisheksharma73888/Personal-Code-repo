@@ -1,0 +1,100 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A.  cassandra setup
+
+install cassandra by folliwing this step from-
+
+https://cassandra.apache.org/download/
+
+after installing cassandra following this step
+
+1.sudo service start cassandra
+
+2.cqlsh
+
+3.
+CREATE KEYSPACE code2succeed
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 4};
+ALTER KEYSPACE code2succeed WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : '4'};
+
+4.
+use code2succeed;
+
+5.CREATE TABLE emps(empid text PRIMARY KEY, first_name text, last_name text , age int );
+
+
+
+
+B. Redis setup
+
+1.wget https://download.redis.io/releases/redis-6.0.9.tar.gz
+2. tar xzf redis-6.0.9.tar.gz
+3. cd redis-6.0.9
+4. make
+5. src/redis-server
+
+
+C. Mongo setup
+
+1.sudo apt-get install mongodb
+2.sudo apt-get update
+3.sudo service mongodb start
+4.mongo
+5.use test
+6.db.createCollection("trainers")
+
+
+
+D. Postgres setup
+
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+(sudo -i -u postgres psql
+   or 
+sudo -u postgres psql)
+
+CREATE TABLE student (
+     
+  rollno  INT     NOT NULL,
+  name varchar(50) NOT NULL
+  );
+
+INSERT INTO student (
+     rollno,
+    name )
+ VALUES
+     (1, 'movie3'),
+     (2 , 'movie2'),
+    (3, 'movie1');
+
+select * from student;
+
+CREATE DATABASE movies;
+CREATE TABLE movies(
+   id   INT PRIMARY KEY     NOT NULL,
+   movieid         CHAR(50) NOT NULL,
+   moviename       CHAR(50) NOT NULL,  
+   
+);
+
+
+For Postgres you are put in .env  POSTGRES_USER and POSTGRES_PASS  
+
+//ALTER USER postgres PASSWORD '12345678';
+
+
+
+

@@ -1,0 +1,82 @@
+--Request 
+POST https://in.hotjar.com/api/v2/client/sites/249442/visit-data?sv=5
+Host: in.hotjar.com
+Host: in.hotjar.com
+Connection: keep-alive
+Content-Length: 112
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Content-Type: text/plain; charset=UTF-8
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA {"r_value":1,"is_vpv":false,"session_only":false,"rec_value":1,"user_id":"bf6d1ae9-16c6-5ecd-962b-f492c10d29f9"}
+--Response 
+HTTP/1.1 200
+status: 200
+date: Wed, 07 Apr 2021 17:46:45 GMT
+content-type: application/json
+vary: Accept-Encoding
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-max-age: 86400
+content-encoding: br
+----
+
+--Response 
+HTTP/1.1 200
+status: 200
+date: Wed, 07 Apr 2021 17:46:42 GMT
+content-type: application/javascript; charset=utf-8
+content-length: 535
+last-modified: Wed, 24 Mar 2021 20:33:38 GMT
+etag: \"605ba222-217\"
+content-encoding: gzip
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+expires: Thu, 24 Mar 2022 21:19:20 GMT
+cache-control: max-age=31536000, public, immutable, no-transform
+access-control-allow-origin: *
+timing-allow-origin: *
+x-amz-cf-pop: MRS52-C2
+x-amz-cf-id: Ci6ODhVmxzjvnJaKs1hpEB33esi9GFpJxp90mT93jMYG5DBD-qH0Pw==
+age: 1196840
+cf-cache-status: HIT
+accept-ranges: bytes
+cf-request-id: 094f0aa12300002e4cdf846000000001
+expect-ct: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"
+vary: Accept-Encoding
+server: cloudflare
+cf-ray: 63c513ae9b0f2e4c-BOM
+----
+--Request 
+GET https://getqor.com/source/favicon.png
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1; _hjid=849c203a-4450-4b34-be27-c5173df9e03e; _hjFirstSeen=1; _hjIncludedInPageviewSample=1; _hjAbsoluteSessionInProgress=0
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:45 GMT
+Content-Type: image/png
+Content-Length: 147
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+

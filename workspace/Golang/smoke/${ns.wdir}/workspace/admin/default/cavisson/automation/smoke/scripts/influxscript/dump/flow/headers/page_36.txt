@@ -1,0 +1,83 @@
+--Request 
+POST https://update.googleapis.com/service/update2/json?cup2key=10:3005751128&cup2hreq=5a0e0e63a4418db2f153ebcad1d19d31e2e75d7e4816737b04f4f0da00d85a34
+Host: update.googleapis.com
+X-Goog-Update-AppId: oimompecagnajdejgnnjijobebaeigek,gcmjkmgdlgnkkcocmoeiminaijmmjnii,cmahhnpholdijhjokonmfdjbfmklppij,obedbbhbpmojnkanicioggnmelmoomoc,giekcmmlnklenlaomppkphknjmnnpneh,khaoiebndkojlmppeemjhbpbandiljpe,llkgjffcdpffmhiakmfcdcblohccpfmo,aemomkdncapdnfajjbbcbdebjljbpmpj,jflookgnkcckhobaglndicnbbgbonegd,hfnkpimlhhgieaddgfemjhofmfblmnib,ggkkehgbnfjpeggfpleeakpidbkibbmn,ojhpjlocmbogdgmfpkhlaaeamibhnphh,jamhcnnkihinmdlkakkaopbjbbcngflc,pdafiollngonhoadbmdoemagnfpdphbe,eeigpngbgcognadeebkilcpcaedhellh
+X-Goog-Update-Interactivity: bg
+X-Goog-Update-Updater: chromium-90.0.4430.93
+Content-Type: application/json
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: empty
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+----
+ POSTDATA {"request":{"@os":"win","@updater":"chromium","acceptformat":"crx2,crx3","app":[{"appid":"oimompecagnajdejgnnjijobebaeigek","cohort":"1::","enabled":true,"packages":{"package":[{"fp":"1.e80345a4828e2b82d049520da48dc125df0c2600b1e4591cd05c71bb661231e5"}]},"ping":{"ping_freshness":"{c3a8bfcc-a023-49b3-b206-cd73556b0dbf}","rd":5488},"updatecheck":{},"version":"4.10.2391.0"},{"appid":"gcmjkmgdlgnkkcocmoeiminaijmmjnii","cohort":"1:bm1:11vf@0.01","cohorthint":"M54AndUp","cohortname":"M54AndUp","enabled":true,"packages":{"package":[{"fp":"1.dbbba5869c1d8946e5e23215c0404619fe82793d60eb89489b345ef55023e077"}]},"ping":{"ping_freshness":"{3795bd48-88f9-4b83-866d-6a0c76a45786}","rd":5488},"updatecheck":{},"version":"9.32.0"},{"appid":"cmahhnpholdijhjokonmfdjbfmklppij","cohort":"1:wr3:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.b4ddbdce4f8d5c080328aa34c19cb533f2eedec580b5d97dc14f74935e4756b7"}]},"ping":{"ping_freshness":"{55be110d-2fa5-4fbb-a7be-aeb11ce75988}","rd":5488},"updatecheck":{},"version":"1.0.6"},{"accept_locale":"ENUS","appid":"obedbbhbpmojnkanicioggnmelmoomoc","cohort":"1:s6f:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.b8ceac0b104a703e754df60e62165a93ccfa8b3c454d931fbc53e82f3d8495df"}]},"ping":{"ping_freshness":"{472aff6e-d30d-4492-8157-04d4b58b1b1e}","rd":5488},"updatecheck":{},"version":"20220101.419492099"},{"appid":"giekcmmlnklenlaomppkphknjmnnpneh","cohort":"1:j5l:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.fd515ec0dc30d25a09641b8b83729234bc50f4511e35ce17d24fd996252eaace"}]},"ping":{"ping_freshness":"{dbfbbaeb-65fe-49c3-ab9a-10cd2dcdae6d}","rd":5488},"updatecheck":{},"version":"7"},{"appid":"khaoiebndkojlmppeemjhbpbandiljpe","cohort":"1:cux:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.d237485db9493e87035e3295dbaa1e24b727c7fb91b24401814fd88f2ab81c3c"}]},"ping":{"ping_freshness":"{475a9dd4-5a5e-4cce-8653-cdc1515473a6}","rd":5488},"updatecheck":{},"version":"47"},{"appid":"llkgjffcdpffmhiakmfcdcblohccpfmo","cohort":"1::","enabled":true,"ping":{"ping_freshness":"{0f3ec369-bfe4-4e7d-8855-03f7283b90ea}","rd":5488},"updatecheck":{},"version":"0.0.0.0"},{"appid":"aemomkdncapdnfajjbbcbdebjljbpmpj","cohort":"1::","enabled":true,"packages":{"package":[{"fp":"1.c25787c5c76ff9c4c50a87d32802301c9ed80d934830d677bbc6629e290cb5aa"}]},"ping":{"ping_freshness":"{9b0ca6b3-8160-4076-abb9-f53fe9f66a58}","rd":5488},"updatecheck":{},"version":"1.0.6.0"},{"appid":"jflookgnkcckhobaglndicnbbgbonegd","cohort":"1:s7x:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.715d11efc2de8af25b5a4ddfbf395e5b62bf0a55519b159ee0102ac300e760e8"}]},"ping":{"ping_freshness":"{492f65ed-b340-46c4-aa27-666f36873a5b}","rd":5488},"updatecheck":{},"version":"2761"},{"appid":"hfnkpimlhhgieaddgfemjhofmfblmnib","cohort":"1:jcl:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.f70eabd1017f312f3202a9ae03c60526e8e639a12bba0bf92e3887b8f72ac2f6"}]},"ping":{"ping_freshness":"{f997e61e-b548-42cb-9302-bf83592d71f3}","rd":5488},"updatecheck":{},"version":"7089"},{"appid":"ggkkehgbnfjpeggfpleeakpidbkibbmn","cohort":"1:ut9:12fr@0.01","cohorthint":"M80ToM99","cohortname":"M80ToM99","enabled":true,"packages":{"package":[{"fp":"1.cf9ef903b56de506d39b612dba9b9ac8cbe066aefa1af94507a78954abdbfdf7"}]},"ping":{"ping_freshness":"{d6a48b53-a7bc-408a-b131-a6634083cbd2}","rd":5488},"updatecheck":{},"version":"2021.11.28.1202"},{"appid":"ojhpjlocmbogdgmfpkhlaaeamibhnphh","cohort":"1:w0x:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.478aa915e78878e332a0b4bb4d2a6fb67ff1c7f7b62fe906f47095ba5ae112d0"}]},"ping":{"ping_freshness":"{c3a535c2-05e4-4216-8591-ebfc4e82c8bb}","rd":5488},"updatecheck":{},"version":"1"},{"appid":"jamhcnnkihinmdlkakkaopbjbbcngflc","cohort":"1:wvr:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.fa88746db68685be6e6bd0a58bfa85a6f4e66ae8e1e7cb133906c9593c9e7235"}]},"ping":{"ping_freshness":"{04d93757-3506-45d9-bbe1-1d68e238807b}","rd":5488},"updatecheck":{},"version":"99.0.4818.0"},{"appid":"pdafiollngonhoadbmdoemagnfpdphbe","cohort":"1:vz3:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.54b93e249d02a0f9061e8f70866d4668a0260db9ae43483810ab78f97f3eaa2a"}]},"ping":{"ping_freshness":"{7260ad5a-214b-4321-bc1f-cad943ed6f68}","rd":5488},"updatecheck":{},"version":"2021.8.17.1300"},{"appid":"eeigpngbgcognadeebkilcpcaedhellh","cohort":"1:w59:","cohorthint":"Auto","cohortname":"Auto","enabled":true,"packages":{"package":[{"fp":"1.c64c9c1008f3ba5f6e18b3ca524bc98dcd8acfae0a2720a8f1f3ef0f8d643d05"}]},"ping":{"ping_freshness":"{43f2c650-09e4-4da0-a4ed-04af6673f8e3}","rd":5488},"updatecheck":{},"version":"2020.11.2.164946"}],"arch":"x64","dedup":"cr","domainjoined":false,"hw":{"physmemory":16},"lang":"en-US","nacl_arch":"x86-64","os":{"arch":"x86_64","platform":"Windows","version":"10.0.18363.1977"},"prodversion":"90.0.4430.93","protocol":"3.1","requestid":"{c31aaf56-447f-47a9-a1a3-c0a86f2e6d40}","sessionid":"{21eb6723-45fc-4791-925c-d7589f772e99}","updaterversion":"90.0.4430.93"}}
+--Response 
+HTTP/1.1 200
+content-security-policy: script-src 'report-sample' 'nonce-CSb61PcfxrdhVDyt8J8X1Q' 'unsafe-inline' 'strict-dynamic' https: http:;object-src 'none';base-uri 'self';report-uri https://csp.withgoogle.com/csp/clientupdate-aus/1
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: Mon, 01 Jan 1990 00:00:00 GMT
+date: Mon, 10 Jan 2022 11:34:58 GMT
+x-cup-server-proof: 304502202db0266b68554fd00d886866cf8d1d5e622dc242153ad8a9473ca4c84bda62f4022100f49caebd9672511146256f74f27b15994c53bcc0d72a53838ea3d2b235124bd0:5a0e0e63a4418db2f153ebcad1d19d31e2e75d7e4816737b04f4f0da00d85a34
+etag: W/\"304502202db0266b68554fd00d886866cf8d1d5e622dc242153ad8a9473ca4c84bda62f4022100f49caebd9672511146256f74f27b15994c53bcc0d72a53838ea3d2b235124bd0:5a0e0e63a4418db2f153ebcad1d19d31e2e75d7e4816737b04f4f0da00d85a34\"
+content-type: application/json; charset=utf-8
+x-daynum: 5488
+x-daystart: 12898
+content-encoding: gzip
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+content-length: 663
+server: GSE
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://dns.google/dns-query?dns=AAABAAABAAAAAAABBnVwZGF0ZQpnb29nbGVhcGlzA2NvbQAAAQABAAApEAAAAAAAAE4ADABKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Host: dns.google
+Accept: application/dns-message
+Accept-Language: *
+User-Agent: Chrome
+Accept-Encoding: identity
+----
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:57 GMT
+expires: Mon, 10 Jan 2022 11:34:57 GMT
+cache-control: private, max-age=137
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://dns.google/dns-query?dns=AAABAAABAAAAAAABBnVwZGF0ZQpnb29nbGVhcGlzA2NvbQAAHAABAAApEAAAAAAAAE4ADABKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Host: dns.google
+Accept: application/dns-message
+Accept-Language: *
+User-Agent: Chrome
+Accept-Encoding: identity
+----
+--Response 
+HTTP/1.1 200
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-content-type-options: nosniff
+date: Mon, 10 Jan 2022 11:34:57 GMT
+expires: Mon, 10 Jan 2022 11:34:57 GMT
+cache-control: private, max-age=116
+content-type: application/dns-message
+server: HTTP server (unknown)
+content-length: 468
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+
+

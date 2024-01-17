@@ -1,0 +1,78 @@
+#Module|PackageWithClass.Method(" " for method, if class level instrumentation)|EntryPointType|IsInstrumented|||||#EntryName|IsCustomEntry|EntryDesc
+#Following are service Entry Points:
+Microsoft.AspNetCore.Hosting.dll|Microsoft.AspNetCore.Hosting.HostingApplication.DisposeContext|TX_EXIT|0|||||#HostingApplication.DisposeContext|false|CORE FRAMEWORK ENTRY POINT
+System.Web.dll|System.Web.HttpRuntime.ProcessRequestNotificationPrivate|HTTP_ENTRY|1|||||#ProcessRequestNotificationPrivate|false|Entry Point for IIS based Application.
+SampleApplication.exe|SampleApplication.Form1.button1_Click|Generic|1|||||#Form1.button1_Click|false|Entry Point for Desktop Application.
+Microsoft.AspNetCore.Hosting.dll|Microsoft.AspNetCore.Hosting.HostingApplication.ProcessRequestAsync|HTTP_ENTRY|1|||||#HostingApplication.ProcessRequestAsync|false|CORE FRAMEWORK ENTRY POINT
+System.Web.dll|System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper|HTTP_ENTRY|1|||||#ProcessRequestNotificationHelper|false|Entry Point for IIS based Application.
+System.Web.dll|System.Web.HttpRuntime.FinishPipelineRequest|TX_EXIT|1|||||#FinishPipelineRequest|false|Entry Point for IIS based Application.
+System.Web.dll|System.Web.HttpRuntime.FinishRequest|TX_EXIT|1|||||#FinishRequest|false|Entry Point for IIS based Application.
+SampleApplication.exe|SampleApplication.Form4.button1_Click|Generic|0|||||#Form4.button1_Click|false|Entry Point for Desktop Application.
+SampleApplication.exe|SampleApplication.Form6.button1_Click|Generic|0|||||#Form6.button1_Click|false|Entry Point for Desktop Application.
+SampleApplication.exe|SampleApplication.Form1.Exception_Level1_Click|Generic|0|||||#FForm1.Exception_Level1_Click|false|Entry Point for Desktop Application.
+SampleApplication.exe|SampleApplication.Form1.Exception_Level2_Click|Generic|0|||||#Form1.Exception_Level2_Click|false|Entry Point for Desktop Application.
+#Following are backend Entry Points
+System.Data.OracleClient.dll|System.Data.OracleClient.OracleConnection.Open|ORACLE|1|||||#69|System.Data.OracleClient.OracleConnection.Open|false|ORACLE_CALLOUT for dot net
+System.dll|System.Net.HttpWebRequest.GetRequestStream|ASYNC_CALL|1|||||#18|HttpWebRequest.GetRequestStream|false|HTTP end point for dot net
+System.ServiceModel.Internals.dll|System.Runtime.IOThreadScheduler.ScheduleCallbackLowPriNoFlow|ASYNC_CALL|1|||||#18|IOThreadScheduler.ScheduleCallbackLowPriNoFlow|false|ASYNC call for dot net
+System.ServiceModel.Activation.dll|System.ServiceModel.Activation.HostedHttpRequestAsyncResult.OnBeginRequest|ASYNC_CALL|1|||||#18|HostedHttpRequestAsyncResult.OnBeginRequest|false|ASYNC call for dot net
+System.Data.OracleClient.dll|System.Data.OracleClient.OracleCommand.ExecuteReader|ORACLE|1|||||#69|System.Data.OracleClient.OracleCommand.ExecuteReader|false|ORACLE_CALLOUT for dot net
+System.Data.OracleClient.dll|System.Data.OracleClient.OracleCommand.ExecuteNonQueryInternal|ORACLE|1|||||#69|System.Data.OracleClient.OracleCommand.ExecuteNonQueryInternal|false|ORACLE_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.GetStreamAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.GetStreamAsync|false|HTTP_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.GetStringAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.GetStringAsync.|false|HTTP_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.BeginExecuteNonQueryInternal|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.BeginExecuteNonQueryInternal|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.ExecuteDbDataReader|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.ExecuteDbDataReader|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.RunExecuteReaderTds|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.RunExecuteReaderTds|false|SQL_CALLOUT for dot net
+System.Xml.dll|System.Xml.XmlDocument.Load|ASYNC_CALL|1|||||#18|System.Xml.XmlDocument.Load|false|ASYNC_CALL for dot net
+log4net.dll|log4net.Repository.Hierarchy.Logger.Log|ASYNC_CALL|1|||||#18|log4net.Repository.Hierarchy.Logger.Log|false|ASYNC_CALL for dot net
+Oracle.ManagedDataAccess.dll|Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery|ORACLE|1|||||#69|Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteNonQuery|false|ORACLE_CALLOUT for dot net
+Nlog.dll|NLog.Logger.Error|ASYNC_CALL|1|||||#18|NLog.Logger.Error|false|ASYNC_CALL for dot net
+RabbitMQ.Client.dll|RabbitMQ.Client.Impl.ModelBase.BasicPublish|REDIS|0|||||#67|RabbitMQ.Client.Impl.ModelBase.BasicPublish|false|Redis Callout for dot net
+Nlog.dll|NLog.Logger.Debug|ASYNC_CALL|1|||||#18|NLog.Logger.Debug|false|ASYNC_CALL for dot net
+log4net.dll|log4net.Repository.Hierarchy.Logger.AddAppender|ASYNC_CALL|1|||||#18|log4net.Repository.Hierarchy.Logger.AddAppender|false|ASYNC_CALL for dot net
+IBM.Data.DB2.dll|IBM.Data.DB2.DB2Connection.Open|DB2|1|||||#70|IBM.Data.DB2.DB2Connection.Open|false|DB2_CALLOUT for dot net
+Nlog.dll|NLog.Logger.Info|ASYNC_CALL|1|||||#18|NLog.Logger.Info|false|ASYNC_CALL for dot net
+Oracle.ManagedDataAccess.dll|Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader|ORACLE|1|||||#69|Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader|false|ORACLE_CALLOUT for dot net
+Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll|Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager.HandleException|ASYNC_CALL|1|||||#18|Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ExceptionManager.HandleException|false|ASYNC_CALL for dot net
+Oracle.ManagedDataAccess.dll|Oracle.ManagedDataAccess.Client.OracleConnection.Open|ORACLE|1|||||#69|Oracle.ManagedDataAccess.Client.OracleConnection.Open|false|ORACLE_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.GetByteArrayAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.GetByteArrayAsync.|false|HTTP_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.PostAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.PostAsync.|false|HTTP_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.GetAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.GetAsync|false|HTTP_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.PutAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.PutAsync.|false|HTTP_CALLOUT for dot net
+System.Data.dll|System.Data.OleDb.OleDbCommand.ExecuteReader|SQL_CALLOUT|1|||||#17|System.Data.OleDb.OleDbCommand.ExecuteReader|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.BeginExecuteReaderInternal|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.BeginExecuteReaderInternal|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.Common.DataAdapter.Fill|SQL_CALLOUT|1|||||#17|System.Data.Common.DataAdapter.Fill|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.FinishExecuteReader|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.FinishExecuteReader|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.Common.DataAdapter.Update|SQL_CALLOUT|1|||||#17|System.Data.Common.DataAdapter.Update|false|SQL_CALLOUT for dot net
+RabbitMQ.Client.dll|RabbitMQ.Client.IModel.QueueDeclare|REDIS|0|||||#67|RabbitMQ.Client.IModel.QueueDeclare|false|Redis Callout for dot net
+Nlog.dll|NLog.Logger.Fatal|ASYNC_CALL|1|||||#18|NLog.Logger.Fatal|false|ASYNC_CALL for dot net
+npgsql.dll|npgsql.NpgsqlCommand.ExecuteReader|PGSQL|1|||||#68|npgsql.NpgsqlCommand.ExecuteReader|false|PGSQL_CALLOUT for dot net
+RabbitMQ.Client.dll|RabbitMQ.Client.IModel.BasicGet|REDIS|0|||||#67|RabbitMQ.Client.IModel.BasicGet|false|Redis Callout for dot net
+npgsql.dll|npgsql.NpgsqlConnection.Open|PGSQL|1|||||#68|npgsql.NpgsqlConnection.Open|false|PGSQL_CALLOUT for dot net
+IBM.Data.DB2.dll|IBM.Data.DB2.DB2Command.ExecuteReader|DB2|1|||||#70|IBM.Data.DB2.DB2Command.ExecuteReader|false|DB2_CALLOUT for dot net
+Nlog.dll|NLog.Logger.Warn|ASYNC_CALL|1|||||#18|NLog.Logger.Warn|false|ASYNC_CALL for dot net
+System.Data.OracleClient.OracleCommand.ExecuteNonQuery|System.Data.OracleClient.OracleCommand.ExecuteNonQuery|ORACLE|1|||||#69|System.Data.OracleClient.OracleCommand.ExecuteNonQuery|false|ORACLE_CALLOUT for dot net
+IBM.Data.DB2.dll|IBM.Data.DB2.DB2Command.ExecuteNonQuery|DB2|1|||||#70|IBM.Data.DB2.DB2Command.ExecuteNonQuery|false|DB2_CALLOUT for dot net
+System.dll|System.Net.HttpWebRequest.BeginSubmitRequest|HTTP_CALLOUT|1|||||#16|System.Net.HttpWebRequest.BeginSubmitRequest|false|HTTP_CALLOUT for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.DeleteAsync|HTTP_CALLOUT|1|||||#16|System.Net.Http.HttpClient.DeleteAsync.|false|HTTP_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.ExecuteScalar|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.ExecuteScalar|false|SQL_CALLOUT for dot net
+Microsoft.Data.SqlClient.dll|Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader|SQL_CALLOUT|1|||||#17|Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader|false|SQL_CALLOUT for dot net
+Microsoft.Practices.EnterpriseLibrary.Data.dll|Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteReader|SQL_CALLOUT|1|||||#17|Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteReader|false|SQL_CALLOUT for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.ExecuteReaderAsync|SQL_CALLOUT|1|||||#17|System.Data.SqlClient.SqlCommand.ExecuteReaderAsync|false|SQL_CALLOUT for dot net
+Microsoft.Practices.EnterpriseLibrary.Data.dll|Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery|SQL_CALLOUT|1|||||#17|Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery|false|SQL_CALLOUT for dot net
+System.Xml.dll|System.Xml.XmlDocument.LoadXml|ASYNC_CALL|1|||||#18|System.Xml.XmlDocument.LoadXml|false|ASYNC_CALL for dot net
+System.dll|System.Net.HttpWebRequest.GetResponse|HTTP_CALLOUT|1|||||#16|HttpWebRequest.GetResponse|false|HTTP end point for dot net
+System.dll|System.Net.HttpWebRequest.BeginGetResponse|HTTP_CALLOUT|1|||||#16|HttpWebRequest.BeginGetResponse|false|HTTP end point for dot net
+System.dll|System.Net.HttpWebRequest.EndGetResponse|HTTP_CALLOUT|1|||||#16|HttpWebRequest.EndGetResponse|false|HTTP end point for dot net
+System.Net.Http.dll|System.Net.Http.HttpClient.SendAsync|HTTP_CALLOUT|1|||||#16|HttpClient.SendAsync|false|HTTP end point
+System.Net.Http.dll|System.Net.Http.HttpClientHandler.SendAsync|HTTP_CALLOUT|1|||||#16|HttpClientHandler.SendAsync|false|HTTP end point
+System.Data.dll|System.Data.SqlClient.SqlConnection.Open|SQL_CALLOUT|1|||||#17|SqlConnection.Open|false|SQL callout for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.RunExecuteReader|SQL_CALLOUT|1|||||#17|SqlCommand.RunExecuteReader|false|SQL call for dot net
+System.Data.dll|System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery|SQL_CALLOUT|1|||||#17|SqlCommand.InternalExecuteNonQuery|false|SQL call for dot net
+System.dll|System.Net.HttpWebRequest.BeginGetRequestStream|ASYNC_CALL|1|||||#18|HttpWebRequest.BeginGetRequestStream|false|HTTP end point for dot net
+System.Web.dll|System.Web.HttpApplication.ExecuteStep|ASYNC_CALL|1|||||#18|HttpApplication.ExecuteStep|false|ASYNC call for dot net
+|cavlib.conn.QueryContext|SQL_CALLOUT|1|||||#44|PDO.query|false|SQL Callout
+|cavwrapperlib.github.commandMonitor.started|SQL_CALLOUT|1|||||#74|PDO.query|false|SQL Callout
+|cavlib.queryHook.BeforeQuery|SQL_CALLOUT|1|||||#73|PDO.query|false|SQL Callout
+|http.RoundTripper.RoundTrip|HTTP_CALLOUT|1|||||#49|.curl_exec|false|HTTP_CALLOUT Backend
+

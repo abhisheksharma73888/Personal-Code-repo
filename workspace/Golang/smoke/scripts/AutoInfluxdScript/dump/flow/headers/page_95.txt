@@ -1,0 +1,152 @@
+--Request 
+GET https://cdn.linkedin.oribi.io/partner/32953/domain/docs.influxdata.com/token
+Host: cdn.linkedin.oribi.io
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+Accept: *
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Origin: https://docs.influxdata.com
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+content-type: application/json
+date: Mon, 24 Apr 2023 06:01:00 GMT
+access-control-allow-origin: *
+cache-control: public, max-age=3600
+content-encoding: gzip
+vary: accept-encoding
+x-cache: Hit from cloudfront
+via: 1.1 75205277833555fcf80748ce4e308be0.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-P4
+x-amz-cf-id: H89ix34IlS8NmCvAJkJPBG5Blf9avNTrPpK7Aidhn5TAER0vhNV8sQ==
+age: 254
+----
+--Request 
+GET https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=32953&time=1682316317130&url=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F
+Host: px.ads.linkedin.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 302
+location: /collect?v=2&fmt=js&pid=32953&time=1682316317130&url=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&cookiesTest=true
+set-cookie: li_sugr=85b77117-8e41-4ec7-a9ff-90e6e51c7436; Max-Age=7776000; Expires=Sun, 23 Jul 2023 06:05:14 GMT; SameSite=None; Path=/; Domain=.linkedin.com; Secure
+set-cookie: bcookie=\"v=2&cc36a9ac-8855-49fd-8602-21370bd6a46c\"; domain=.linkedin.com; Path=/; Secure; Expires=Tue, 23-Apr-2024 06:05:14 GMT; SameSite=None
+set-cookie: lidc=\"b=VGST01:s=V:r=V:a=V:p=V:g=2902:u=1:x=1:i=1682316314:t=1682402714:v=2:sig=AQEweZ71841008ycCetjvLRSWxpYMErP\"; Expires=Tue, 25 Apr 2023 06:05:14 GMT; domain=.linkedin.com; Path=/; SameSite=None; Secure
+linkedin-action: 1
+x-li-fabric: prod-lva1
+x-li-pop: afd-prod-lva1-x
+x-li-proto: http/2
+x-li-uuid: AAX6Dspam/wOeX2voLtsyA==
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 5E040EEC971745DCB86DA1ED8B77A961 Ref B: DEL01EDGE0816 Ref C: 2023-04-24T06:05:14Z
+date: Mon, 24 Apr 2023 06:05:14 GMT
+content-length: 0
+----
+--Request 
+GET https://www.google.com/pagead/1p-user-list/866720798/?random=1682316316938&cv=11&fst=1682316000000&bg=ffffff&guid=ON&async=1&gtm=45He34j0&u_w=1536&u_h=864&url=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&frm=0&tiba=Get%20started%20with%20Flux%20and%20InfluxDB%20%7C%20InfluxDB%20OSS%202.7%20Documentation&fmt=3&is_vtc=1&random=4197497613&rmt_tld=0&ipr=y
+Host: www.google.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+p3p: policyref=\"https://www.googleadservices.com/pagead/p3p.xml\", CP=\"NOI DEV PSA PSD IVA IVD OTP OUR OTR IND OTC\"
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+date: Mon, 24 Apr 2023 06:05:15 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+content-type: image/gif
+content-security-policy: script-src 'none'; object-src 'none'
+x-content-type-options: nosniff
+server: cafe
+content-length: 42
+x-xss-protection: 0
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000
+----
+--Request 
+GET https://www.google.co.in/pagead/1p-user-list/866720798/?random=1682316316938&cv=11&fst=1682316000000&bg=ffffff&guid=ON&async=1&gtm=45He34j0&u_w=1536&u_h=864&url=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&frm=0&tiba=Get%20started%20with%20Flux%20and%20InfluxDB%20%7C%20InfluxDB%20OSS%202.7%20Documentation&fmt=3&is_vtc=1&random=4197497613&rmt_tld=1&ipr=y
+Host: www.google.co.in
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+p3p: policyref=\"https://www.googleadservices.com/pagead/p3p.xml\", CP=\"NOI DEV PSA PSD IVA IVD OTP OUR OTR IND OTC\"
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+date: Mon, 24 Apr 2023 06:05:15 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+content-type: image/gif
+content-security-policy: script-src 'none'; object-src 'none'
+x-content-type-options: nosniff
+server: cafe
+content-length: 42
+x-xss-protection: 0
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000
+----
+--Request 
+GET https://alb.reddit.com/rp.gif?ts=1682316317277&id=t2_pxlh0vso&event=PageVisit&m.itemCount=undefined&m.value=&m.valueDecimal=undefined&m.currency=undefined&m.transactionId=&m.customEventName=&m.products=&uuid=57de13f6-3295-4700-8541-754176b012df&aaid=&em=&external_id=&idfa=&integration=gtm&opt_out=0&sh=1536&sw=864&v=rdt_65e23bc4
+Host: alb.reddit.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+server: Varnish
+retry-after: 0
+cross-origin-resource-policy: cross-origin
+content-type: image/gif
+accept-ranges: bytes
+date: Mon, 24 Apr 2023 06:05:15 GMT
+via: 1.1 varnish
+content-length: 42
+----
+

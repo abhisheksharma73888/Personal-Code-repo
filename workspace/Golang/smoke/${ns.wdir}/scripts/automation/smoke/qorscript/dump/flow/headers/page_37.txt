@@ -1,0 +1,66 @@
+--Request 
+GET https://referrer.disqus.com/juggler/event.gif?imp=788h7ai90m36h&experiment=network_default_hidden&variant=fallthrough&service=dynamic&area=lightbox&product=embed&forum=qor&zone=thread&page_url=https%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&page_referrer=http%3A%2F%2F10.10.30.5%3A7000%2F&object_type=provider&event=activity&ad_product_name=iab_display&ad_product_layout=iab_display&bin=embed%3Apromoted_discovery%3Adynamic%3Anetwork_default_hidden%3Afallthrough&section=default&verb=call&adjective=1&forum_id=3908466
+Host: referrer.disqus.com
+Host: referrer.disqus.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: no-cors
+Referer: https://disqus.com/embed/comments/?base=default&f=qor&t_i=8-en&t_u=http%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&t_d=New%2C%20Better%20QOR%20Documentation%20released!&t_t=New%2C%20Better%20QOR%20Documentation%20released!&s_o=default
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: disqus_unique=787nutd2ubjsbl
+----
+--Response 
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 43
+Server: nginx
+Content-Type: image/gif
+Last-Modified: Mon, 28 Sep 1970 06:00:00 GMT
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Date: Wed, 07 Apr 2021 17:46:43 GMT
+----
+--Request 
+GET https://connect.facebook.net/en_US/sdk.js?hash=c436330564833a60874386e5c9db3f65&ua=modern_es6
+Host: connect.facebook.net
+Host: connect.facebook.net
+Connection: keep-alive
+Origin: https://disqus.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://disqus.com/embed/comments/?base=default&f=qor&t_i=8-en&t_u=http%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&t_d=New%2C%20Better%20QOR%20Documentation%20released!&t_t=New%2C%20Better%20QOR%20Documentation%20released!&s_o=default
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+vary: Accept-Encoding
+access-control-expose-headers: X-FB-Content-MD5
+etag: \"81849320a0f5bf198d04172cc0197054\"
+x-frame-options: DENY
+content-encoding: gzip
+strict-transport-security: max-age=31536000; preload; includeSubDomains
+content-type: application/x-javascript; charset=utf-8
+x-content-type-options: nosniff
+x-fb-rlafr: 0
+cache-control: public,max-age=31536000,stale-while-revalidate=3600,immutable
+expires: Thu, 07 Apr 2022 16:56:43 GMT
+x-fb-content-md5: 4e8c5eb3a386962f43aff713424d9b2d
+cross-origin-resource-policy: cross-origin
+access-control-allow-origin: *
+timing-allow-origin: *
+content-md5: 0bjQJTToYsIp6wiYjk8N1A==
+x-fb-debug: GtWlW7Jq4BStRH1d/TKvu0B9ztFjuw/jiqvUhBu8+p7cFG4M46p/AAknyo7ufHAbq4xQnd/3dzGhMltj+vSR9g==
+priority: u=3,i
+content-length: 61302
+x-fb-trip-id: 1984883670
+date: Wed, 07 Apr 2021 17:46:42 GMT
+alt-svc: h3-29=\":443\"; ma=3600,h3-27=\":443\"; ma=3600
+----
+

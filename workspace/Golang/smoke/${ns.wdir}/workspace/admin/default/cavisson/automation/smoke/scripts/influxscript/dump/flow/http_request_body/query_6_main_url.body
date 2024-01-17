@@ -1,0 +1,1 @@
+{"query":"import \"influxdata/influxdb/sample\"\n\nsample.data(set: \"airSensor\")\n    |> range(start: -1h, stop: now())\n    |> filter(fn: (r) => r[\"_measurement\"] == \"airSensors\")\n    |> keep(columns: [\"_field\"])\n    |> group()\n    |> distinct(column: \"_field\")\n    |> limit(n: 200)\n    |> sort()","dialect":{"annotations":["group","datatype","default"]}}

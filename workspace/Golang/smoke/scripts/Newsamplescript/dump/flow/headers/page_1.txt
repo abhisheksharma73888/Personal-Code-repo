@@ -1,0 +1,100 @@
+--Request 
+GET http://172.24.1.4:1323/
+Host: 172.24.1.4:1323
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Date: Thu, 12 Jan 2023 14:15:20 GMT
+Transfer-Encoding: chunked
+----
+--Request 
+GET https://code.jquery.com/jquery-3.3.1.min.js
+Host: code.jquery.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+Origin: http://172.24.1.4:1323
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: script
+Referer: http://172.24.1.4:1323/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+date: Thu, 12 Jan 2023 14:15:21 GMT
+content-encoding: gzip
+content-length: 30288
+content-type: application/javascript; charset=utf-8
+last-modified: Fri, 20 Aug 2021 17:47:53 GMT
+accept-ranges: bytes
+server: nginx
+etag: W/\"611feac9-1538f\"
+cache-control: max-age=315360000
+cache-control: public
+access-control-allow-origin: *
+vary: Accept-Encoding
+x-sp-metadata: HS256.CInIgJ4GEokBCiQ4MDRiNmU3MC1lZmI5LTRkMTQtOTk2MC02ZDdhOWIyMGNiOGIQ+OiCoKvU+wIaBgj5q4CeBiIOMTgyLjcxLjExOS4yMTIo5t0DMAM4BEIWVExTX0FFU18xMjhfR0NNX1NIQTI1NlogM2U5YjIwNjEwMDk4YjZjOWJmZjk1Mzg1NmU1ODAxNmEaLAgBEiRlMDhkYWQzMC05N2I4LTQ5NDEtODI0Yi05MDE2NTNjMzk0YjYY0OwBIhgIAhIUY2RzMDU3LmZyOC5od2Nkbi5uZXQ=.ZoGFYBkNcxMNoRpJGWNAmo9JYKuVZzLfPmLpbI7AjJU=
+x-hw: 1673532921.dop010.fr8.t,1673532921.cds254.fr8.hn,1673532921.cds057.fr8.c
+----
+--Request 
+GET http://172.24.1.4:1323/static/css/main.css
+Host: 172.24.1.4:1323
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Referer: http://172.24.1.4:1323/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 774
+Content-Type: text/css; charset=utf-8
+Last-Modified: Wed, 04 Jan 2023 07:04:53 GMT
+Date: Thu, 12 Jan 2023 14:15:20 GMT
+----
+--Request 
+GET http://172.24.1.4:1323/static/image/goimg.png
+Host: 172.24.1.4:1323
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:1323/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 38678
+Content-Type: image/png
+Last-Modified: Wed, 04 Jan 2023 07:04:53 GMT
+Date: Thu, 12 Jan 2023 14:15:20 GMT
+----
+--Request 
+GET http://172.24.1.4:1323/static/image/o.jpg
+Host: 172.24.1.4:1323
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://172.24.1.4:1323/static/css/main.css
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 134062
+Content-Type: image/jpeg
+Last-Modified: Wed, 04 Jan 2023 07:04:53 GMT
+Date: Thu, 12 Jan 2023 14:15:23 GMT
+----
+

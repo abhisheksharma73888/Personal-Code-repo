@@ -1,0 +1,84 @@
+--Request 
+GET https://payments-jp-sandbox.amazon.com/gp/widgets/sessionstabilizer?countryOfEstablishment=JP&ledgerCurrency=JPY&isSandbox=true
+Host: payments-jp-sandbox.amazon.com
+Host: payments-jp-sandbox.amazon.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: http://10.10.30.5:7000/cart
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: ubid-main=358-5414753-9305410; session-token=\"J3nnpzCTekLyZ8Qe1TcXocVAPWH2qL4GehOEctY8vIF7FQE7B88iycgy9huoD5hWqUE593oBpTO6dAzVc5Oog6ZZKssHEzBu9emrplGrNZf6GSqSEGKTOYi4MzzI+0sbv2eq0wltufXnJAIYHhJmMX6v99psoytCu1LVSOdypuDRMiNhNIDsBkPXHcijqksCq1HGC/ulM1c=\"; session-id=355-0222234-8771173; session-id-time=2082758400; session-id-apay=355-0222234-8771173
+----
+--Response 
+HTTP/1.1 200 OK
+Server: Server
+Date: Wed, 07 Apr 2021 17:46:06 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+x-amz-rid: G87P35V3EQF8F54PQMMZ
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://10.10.30.5:7000
+x-amzn-RequestId: G87P35V3EQF8F54PQMMZ
+Vary: Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+----
+--Request 
+GET http://10.10.30.5:7000/admin//action_bar/inline_edit
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/cart
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; _session=MTYxNzgxNzU2NXxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSEVfNElBQXdaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOd1p6ZEhKcGJtY01Ed0FOWDJGMWRHaGZjMlZ6YzJsdmJnWnpkSEpwYm1jTV9nRllBUDRCVkdWNVNtaGlSMk5wVDJsS1NWVjZTVEZPYVVselNXNVNOV05EU1RaSmEzQllWa05LT1M1bGVVcDNZMjA1TW1GWFVteGphVWsyU1c1Q2FHTXpUak5pTTBwclNXbDNhV1JZVG14amJXeHJTV3B2YVU1cVFYbEphWGRwWWtkR2VtUkdPWE5pTW1Sd1ltbEpOa2xxU1hkTmFrVjBUVVJSZEUxRVpGVk5hazAyVFZSVk5rNVVTWFZOUkZFelRYcGpNMDFFYTNoTGVrRXhUMnBOZDBscGQybGlSMFo2WkVZNWFGa3pVbkJrYlZWcFQybEplVTFFU1hoTVZFRXdURlJCTTFaRVNYcFBha1V5VDJwQk1VeHFZelZOYWtGNlRWUkpNazE1YzNkT1ZHOTZUVU5KYzBsdFVuQmpNMUo1V1ZkT01HRlhPWFZZTTFKd1lsZFZhVTlxV1hkTmVrMTRUbXBKTUU5VVZYTkpiWEF3WVZOSk5rbHRSbWxoUjJ4QldqSXhhR0ZYZDNWWk1qbDBTVzR3TG5kR1dWRjBlVlpMU1hoVU5UbHBjSGR0VXpWNFgyZDBNVWgzVjI1UGQyUmFkbkZaVjBNM1FXMXNXa0VHYzNSeWFXNW5EQXNBQ1hKbGRIVnlibDkwYndaemRISnBibWNNQndBRkwyTmhjblE9fHt1siB7nDvQWDX2YzpMpWr9ZVJwDXPxfFTpQq5lj8sp
+----
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: no-store
+Pragma: no-cache
+Set-Cookie: _session=MTYxNzgxNzU2NnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSERfNElBQXdaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOd1p6ZEhKcGJtY01Ed0FOWDJGMWRHaGZjMlZ6YzJsdmJnWnpkSEpwYm1jTV9nRlhBUDRCVTJWNVNtaGlSMk5wVDJsS1NWVjZTVEZPYVVselNXNVNOV05EU1RaSmEzQllWa05LT1M1bGVVcDNZMjA1TW1GWFVteGphVWsyU1c1Q2FHTXpUak5pTTBwclNXbDNhV1JZVG14amJXeHJTV3B2YVU1cVFYbEphWGRwWWtkR2VtUkdPWE5pTW1Sd1ltbEpOa2xxU1hkTmFrVjBUVVJSZEUxRVpGVk5hazAyVFZSVk5rNVVTWFZOUkZFelRYcGpNMDFFYTNoTGVrRXhUMnBOZDBscGQybGlSMFo2WkVZNWFGa3pVbkJrYlZWcFQybEplVTFFU1hoTVZFRXdURlJCTTFaRVNYcFBha1V5VDJwQk1reHFTWGRQUkdNMVRrUlJla3Q2UVRGUGFrMTNTV2wzYVZwSGJIcGtTRXBvV1ROU2NHSXlOV1prUjJ4MFdsTkpOazVxUVhwTmVrVXlUV3BSTlU1VGQybGhibEp3U1dwdmFWbFhTbTloVlVKdVlsZEdjR0pETldwaU1qQnBabEV1YTBsZmRIQndMWFkyWWpKc1pESlBUamxwWm05blRsUmlSa2RzYm1oc1ZGQkphVzFWU1hGQ2FHaG5RUVp6ZEhKcGJtY01Dd0FKY21WMGRYSnVYM1J2Qm5OMGNtbHVad3dIQUFVdlkyRnlkQT09fCX6X6L3dUy-P58f8r3QUbvVMS8yn_n-oQHwD57cVFzj; Path=/; Expires=Fri, 07 May 2021 17:46:06 GMT; Max-Age=2592000
+Set-Cookie: _session=MTYxNzgxNzU2NnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGNfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3Z0FCNHZZV1J0YVc0dkwyRmpkR2x2Ymw5aVlYSXZhVzVzYVc1bFgyVmthWFFHYzNSeWFXNW5EQWtBQjJOaGNuUmZhV1FHYzNSeWFXNW5EQVlBQkRFeU1qY0djM1J5YVc1bkRBOEFEVjloZFhSb1gzTmxjM05wYjI0R2MzUnlhVzVuRFA0QlZ3RC1BVk5sZVVwb1lrZGphVTlwU2tsVmVra3hUbWxKYzBsdVVqVmpRMGsyU1d0d1dGWkRTamt1WlhsS2QyTnRPVEpoVjFKc1kybEpOa2x1UW1oak0wNHpZak5LYTBscGQybGtXRTVzWTIxc2EwbHFiMmxPYWtGNVNXbDNhV0pIUm5wa1JqbHpZakprY0dKcFNUWkpha2wzVFdwRmRFMUVVWFJOUkdSVlRXcE5OazFVVlRaT1ZFbDFUVVJSTTAxNll6Tk5SR3Q0UzNwQk1VOXFUWGRKYVhkcFlrZEdlbVJHT1doWk0xSndaRzFWYVU5cFNYbE5SRWw0VEZSQk1FeFVRVE5XUkVsNlQycEZNazlxUVRKTWFrbDNUMFJqTlU1RVVYcExla0V4VDJwTmQwbHBkMmxhUjJ4NlpFaEthRmt6VW5CaU1qVm1aRWRzZEZwVFNUWk9ha0Y2VFhwRk1rMXFVVFZPVTNkcFlXNVNjRWxxYjJsWlYwcHZZVlZDYm1KWFJuQmlRelZxWWpJd2FXWlJMbXRKWDNSd2NDMTJObUl5YkdReVQwNDVhV1p2WjA1VVlrWkhiRzVvYkZSUVNXbHRWVWx4UW1ob1owRT189VmcJnVkQFVg-YEUo0UVvHZ0QMb8EIls3unOu3cQBhY=; Path=/; Expires=Fri, 07 May 2021 17:46:06 GMT; Max-Age=2592000
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Date: Wed, 07 Apr 2021 17:46:06 GMT
+Content-Length: 2006
+Content-Type: text/html; charset=utf-8
+----
+--Request 
+GET https://d1oct1bdmx33tz.cloudfront.net/default/jp/sandbox/lwa/gold/medium/PwA.png
+Host: d1oct1bdmx33tz.cloudfront.net
+Host: d1oct1bdmx33tz.cloudfront.net
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: http://10.10.30.5:7000/cart
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-length: 3974
+date: Wed, 07 Apr 2021 03:09:09 GMT
+last-modified: Fri, 28 Sep 2018 00:40:24 GMT
+etag: \"761623ea0c25d06d6358532efbe9d921\"
+cache-control: max-age=86400,public
+accept-ranges: bytes
+server: AmazonS3
+x-cache: Hit from cloudfront
+via: 1.1 0bc30732052b8a4d4d4852040305cc40.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-C1
+x-amz-cf-id: 0SKTKnYUMaaxpNUHqRY_MbOWbXUXPVpA1EayM8aIpCvaqm4FdgePOw==
+age: 52618
+----
+

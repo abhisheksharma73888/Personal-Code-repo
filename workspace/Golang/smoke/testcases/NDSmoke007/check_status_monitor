@@ -1,0 +1,226 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#  Auther :- Rajesh Kumar                                                                         #
+#  Feature :- Method Monitor                                                                      #
+#  Modified Date :- 16th July 2020                                                                #
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/smoke.properties
+
+RUBY_GET_LATEST_FILE_PROG="/usr/bin/get_latest_file.rb"
+PARTITION_PATH="${NS_WDIR}/logs/TR$(get_test_idx)/$(get_test_partition)"
+RAW_DATA_HOME="$PARTITION_PATH/nd/raw_data"
+TEST_RUN_GDF_FILE=$(${RUBY_GET_LATEST_FILE_PROG} -d ${PARTITION_PATH} -p 'testrun.gdf*')
+TEST_RUN_GDF="$PARTITION_PATH/testrun.gdf*"
+TEST_RUN_TSDB="${NS_WDIR}/logs/TR$(get_test_idx)/tsdb/tsdb_metrics.txt"
+MONITOR_LOG_FILE="${PARTITION_PATH}/monitor.log"
+NDC_TRACE_LOG_FILE="${PARTITION_PATH}/nd/logs/ndc_trace.log"
+SUMMARY_GDF_FILE="${NS_WDIR}/logs/TR$(get_test_idx)/summary_gdf.data"
+AVAILABLE_TIERS=$Project
+
+function main(){
+	case $(get_test_name) in
+		"SMOKE-007-001") handle_smoke_001_case ;;
+		"SMOKE-007-004") handle_smoke_004_case ;;
+		*) handle_unknown_case ;; 
+		?) handle_unknown_case ;;
+	esac
+}
+
+
+function log_status_int(){
+	agentID="$1"
+	status="$2"
+	why="${3}"
+	log_status_and_exit $agentID $productid $categoryid $status "${why}"
+}
+
+
+function handle_unknown_case(){
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase not found"
+}
+
+function handle_smoke_001_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|tail -1)
+	#	fi
+		method_mon_verification $AGGR_FILE
+		RC=$?
+		if [ $RC -gt 0 ];then
+		verifyRawData $DATA_FILE
+		fi
+		if [ $RC -eq 0 ];then
+			log_status_int "${tier}" "PASS" "Passed for validaiton of NDMethodMonAsList "
+		else
+			log_status_int "${tier}" "FAIL" "Failed for validaiton of NDMethodMonAsList "
+		fi
+	        else
+		        log_status_int "$tier" "FAIL" "Raw Data File has not formed for the Tier= ${tier}"
+		fi
+
+	done
+
+}
+function method_mon_verification(){
+        AGGR_DATA_FILE=$1
+        rc=-1
+        serviceMethodCount=-1
+        #eventID61=$(grep -c "^61," ${AGGR_DATA_FILE} | grep $aliasName)
+        check_cm_init=$(grep "cm_init_monitor" ${NDC_TRACE_LOG_FILE})
+        check_Accepting_Msg=$(grep "cm_nd_method_mon_data_ex" ${NDC_TRACE_LOG_FILE} | grep -o "Accepting new connection"| head -1)
+	graphCount=$(grep "^61," ${AGGR_DATA_FILE} | head -1 | wc -w)
+	totalMethodInvoc=$(grep "ND Method Stats" tsdb_metrics.txt | grep "Tier:$tier"| grep -o "Total Method Invocations"|head -1)
+        methodInvocationperSec=$(grep "ND Method Stats" tsdb_metrics.txt | grep "Tier:$tier"| grep -o "Method Invocations/Sec"|head -1)
+        methodExecutionTime=$(grep "ND Method Stats" tsdb_metrics.txt | grep "Tier:$tier"| grep -o "Method Execution Time"|head -1)
+        methodCPUTime=$(grep "ND Method Stats" tsdb_metrics.txt | grep "Tier:$tier"| grep -o "Method CPU Time(ms)"|head -1)	
+
+        ALIAS_NAME=$(cut -d "|" -f1 ExtendedMethodList.mml)
+        if [ $tier == "ATG_Weblogic_JavaEE" ];then
+                ALIAS_NAME=$(cut -d "|" -f1 /home/cavisson/work/ndprof/.config/ExtendedMethodList.mml)
+        else
+        if [ $tier == "Mongo_SpringBoot_JavaEE" || $tier == "OpenSh-Spring-JDK11" ];then
+                ALIAS_NAME=$(cut -d "|" -f1 /home/cavisson/work/ndprof/.config/MongoMethodMon.mml)
+        else
+                ALIAS_NAME=$(cut -d "|" -f1 /home/cavisson/work/ndprof/.config/NsecomMethodMon.mml)
+        fi
+        fi      
+                if [ $check_cm_init ];then
+                        log_status_int "${tier}" "PASS" "Passed for cm_init monitor request sent to NDC from NS for $aliasName and found logs in ndc_trace.log file."
+                else
+                        log_status_int "${tier}" "FAIL" "Failed for cm_init monitor request not sent to NDC from NS for $aliasName and found logs in ndc_trace.log file."
+                        return 1
+                fi
+                if [ $check_Accepting_Msg ];then
+                        log_status_int "${tier}" "PASS" "Passed for Accepting new connection message sent from NS to NDC in ndc_trace.log file."
+                else
+                        log_status_int "${tier}" "FAIL" "Failed for Accepting new connection message sent from NS to NDC in ndc_trace.log file."
+                        return 1
+                fi
+		if [ ! -z $totalMethodInvoc ];then
+                        log_status_int "${tier}" "PASS" "Passed as Total Method Invocations is coming in tsdb_metrics file."
+		else
+                        log_status_int "${tier}" "FAIL" "Failed as Total Method Invocations is not coming in tsdb_metrics file."
+                        return 1
+		fi
+		if [ ! -z $methodInvocationperSec ];then
+                        log_status_int "${tier}" "PASS" "Passed as Method Invocations/Sec is coming in tsdb_metrics file."
+                else
+                        log_status_int "${tier}" "FAIL" "Failed as Method Invocations/Sec is not coming in tsdb_metrics file."
+                        return 1			
+		fi
+		if [ ! -z $methodExecutionTime ];then
+                        log_status_int "${tier}" "PASS" "Passed as Method Execution Time(ms) is coming in tsdb_metrics file."
+                else
+                        log_status_int "${tier}" "FAIL" "Failed as Method Execution Time(ms) is not coming in tsdb_metrics file."
+                        return 1
+		fi
+		if [ ! -z $methodCPUTime ];then
+                        log_status_int "${tier}" "PASS" "Passed as Method CPU Time(ms) is coming in tsdb_metrics file."
+                else
+                        log_status_int "${tier}" "FAIL" "Failed as Method CPU Time(ms) is not coming in tsdb_metrics file."
+                        return 1
+		fi
+
+
+        for aliasName in $ALIAS_NAME;do
+                graphCount=$(grep "^61," ${AGGR_DATA_FILE} | grep $aliasName | head -1 | wc -w)
+                eventID61=$(grep -c "^61," ${AGGR_DATA_FILE} | grep $aliasName)		
+
+        	if [ $eventID61 -gt 0 ];then
+                	log_status_int "${tier}" "PASS" "Passed for Method monitor is observed in Aggregate File"
+       		 else
+                	log_status_int "${tier}" "FAIL" "Failed for Method monitor is not observed in Aggregate File"
+                	return 1
+        	fi
+		if [ $graphCount -eq 10 || $graphCount -eq 11 ];then
+                        log_status_int "${tier}" "PASS" "Passed for Method monitor graphs are observed in Aggregate File"
+                 else
+                        log_status_int "${tier}" "FAIL" "Failed for Method monitor graphs are not observed in Aggregate File"
+                        return 1
+		fi		
+	done
+}
+
+function verifyRawData(){
+	RAW_DATA_FILE=$1
+	EvenId2=$(grep -c "^2," $RAW_DATA_FILE )
+	EventId4=$(grep "^[3-4]," $RAW_DATA_FILE|cut -d . -f2 | tr -d ":"|sort -n|uniq|wc -l)
+	if [ ! -e $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file Exists: ${RAW_DATA_FILE}"
+    fi
+    if [ ! -s $RAW_DATA_FILE ];then
+        log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${RAW_DATA_FILE}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Rawdata file size is not zero: ${RAW_DATA_FILE}"
+    fi
+    if [ $EventId2 -lt 1 ] && [ $EventId4 -lt 1 ];then
+        log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File (Bug-115332)"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+    fi
+    if [ $($EventId4 - $EventId2) -gt 2 ];then
+        log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. Number of flowpaths: ${EventId4}"
+        return 1
+    else
+        log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. Number of flowpaths: ${EventId4}"
+    fi
+
+
+}
+
+
+function handle_smoke_004_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "$tier"|tail -1)
+			AGGR_DATA_FILE=$RAW_DATA_HOME$(ls $RAW_DATA_HOME |grep "agg_data_$tier"|head -1)
+		#fi
+		Aggr_data_file $AGGR_FILE
+		RC=$?
+		if [ $RC -gt 0 ];
+			verifyRawData $DATA_FILE
+		fi
+		if [ $RC -eq 0 ];then
+			log_status_int "${tier}" "PASS" "Passed for enable aggregate raw data file "
+		else
+			log_status_int "${tier}" "FAIL" "Aggregate raw data file is not present or is of 0 bytes "
+		fi
+	        else
+		        log_status_int "${tier}" "FAIL" "Raw Data File has not formed for the Tier= ${tier}"
+		fi
+
+	done
+}
+
+Aggr_data_file(){
+	AGGR_DATA_FILE=$1
+	eventID61=$(grep -c "^61," ${AGGR_DATA_FILE})
+
+	if [ $eventID61 -gt 0 ];then
+                log_status_int "${tier}" "PASS" "61 Records are observed in Aggregate File"
+	else
+                log_status_int "${tier}" "FAIL" "61 Records are not observed in Aggregate File"
+	fi
+
+	if [ -s $TEST_RUN_TSDB ];then
+		log_status_int "${tier}" "PASS" "TestRun TSDB File Exist with non Zero File Size"
+	fi
+
+	if [ -s $AGGR_DATA_FILE ]; then
+		RC=0
+	else
+		RC=1
+	fi
+}
+main

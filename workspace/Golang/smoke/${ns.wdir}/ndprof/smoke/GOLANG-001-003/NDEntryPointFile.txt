@@ -1,0 +1,30 @@
+#HTTP_ENTRYpoint for chi application
+chi|op_check|HTTP_ENTRY|1|
+chi|op_root|HTTP_ENTRY|1|
+chi|op_cavisson|HTTP_ENTRY|1|
+chi|op_hit|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoints for wrapecho application
+wrapecho|hello|HTTP_ENTRY|1|
+wrapecho|Hellocat|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoints for gin application
+gin|Hello|HTTP_ENTRY|1|
+gin|Hellocat|HTTP_ENTRY|1|
+gin|Hellodog|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoints for http2 application
+http2|mainAdmin|HTTP_ENTRY|1|
+http2|mainAdmin1|HTTP_ENTRY|1|
+http2|mainAdmin2|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoints for gosql application
+gosql|mainAdmin|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoints for mongoSample application 
+mongoSample|mainAdmin|HTTP_ENTRY|1|
+mongoSample|mainAdmin1|HTTP_ENTRY|1|
+mongoSample|mainAdmin2|HTTP_ENTRY|1|
+
+#HTTP_ENTRYpoint for qor application
+qorappl|github.com/qor/qor-example/app/products.Controller.Show|HTTP_ENTRY|1|

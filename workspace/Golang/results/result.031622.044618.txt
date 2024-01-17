@@ -1,0 +1,12 @@
+Golang,Flowpath,GOLANG-001-001,1002,1000,1000,pass,Rawdata file Exists: 
+Golang,Flowpath,GOLANG-001-001,1002,1000,1000,pass,Rawdata file size is not zero: 
+Golang,Flowpath,GOLANG-001-001,1002,1000,1000,fail,MetaData Event id 5 not detected: 0
+Golang,Flowpath,GOLANG-001-002,1003,1000,1000,pass,Rawdata file exists: 
+Golang,Flowpath,GOLANG-001-002,1003,1000,1000,pass,Rawdata file size is not zero: 
+Golang,Flowpath,GOLANG-001-002,1003,1000,1000,fail,MetaData Event id 5 not detected: 0
+Golang,Flowpath,GOLANG-001-003,1004,1000,1000,pass,Rawdata file exists: 
+Golang,Flowpath,GOLANG-001-003,1004,1000,1000,pass,Rawdata file is not zero size: 
+Golang,Flowpath,GOLANG-001-003,1004,1000,1000,fail,MetaData Event id 5 not detected: 
+Golang,Flowpath,GOLANG-001-004,1005,1000,1000,pass,Rawdata file exists: 
+Golang,Flowpath,GOLANG-001-004,1005,1000,1000,pass,Rawdata file is not zero size: 
+Golang,Flowpath,GOLANG-001-004,1005,1000,1000,fail,MetaData Event id 5 not detected: 

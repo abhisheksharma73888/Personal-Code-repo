@@ -1,0 +1,67 @@
+--Request 
+POST https://www.google-analytics.com/j/collect?v=1&_v=j99&a=712861197&t=pageview&_s=1&dl=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&dp=docs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&ul=en-us&de=UTF-8&dt=Get%20started%20with%20Flux%20and%20InfluxDB%20%7C%20InfluxDB%20OSS%202.7%20Documentation&sd=24-bit&sr=1536x864&vp=1198x567&je=0&_u=aEDAAEABQAAAACAAI~&jid=1697449100&gjid=1181550937&cid=1412212591.1682316317&tid=UA-45024174-12&_gid=2029417635.1682316317&_r=1&_slc=1&gtm=45He34j0n71WXRH9C&cd3=(not%20set)&z=1593328008
+Host: www.google-analytics.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Content-Type: text/plain
+Accept: */*
+Origin: https://docs.influxdata.com
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA 
+--Response 
+HTTP/1.1 200
+access-control-allow-origin: https://docs.influxdata.com
+date: Mon, 24 Apr 2023 06:05:15 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+access-control-allow-credentials: true
+x-content-type-options: nosniff
+content-type: text/plain
+cross-origin-resource-policy: cross-origin
+server: Golfe2
+content-length: 3
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000
+----
+--Request 
+GET https://api.ipify.org/?format=jsonp&callback=getIP
+Host: api.ipify.org
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET https://www.googletagmanager.com/gtag/js?id=G-CNWQ54SDD8&l=dataLayer&cx=c
+Host: www.googletagmanager.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+
+

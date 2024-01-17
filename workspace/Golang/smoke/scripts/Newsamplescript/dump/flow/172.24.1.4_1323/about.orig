@@ -1,0 +1,71 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>
+  Go Application | About
+</title>
+      
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    </head>
+    <body style='color:red;'>
+      
+   <header>
+
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+        <img src="/static/image/goimg.png" alt ="Gopher">
+        <b style='color:red ; max-width: 500px;margin: center; !important;'>Cavisson System </b>
+        </header>
+        <nav>
+        <ul>
+                        <li style='color:red;'><a href="/"; style='color:lightyellow;'> Home </a></li>
+            <li style='color:red;'><a href="/page"; style='color:lightyellow;'>Content </a></li>
+            <li style='color:red;' ><a href="/about"; style='color:lightyellow;'>About</a></li>
+        </ul>
+        </nav>
+        <hr> 
+  <h1 style='color:red;'>Hello Cavisson Noida</h1>
+
+  
+  <form id="post-full-name-form">
+    <input type="text" id="User-Name" placeholder="username">
+    <input type="password" id="Pass-word" placeholder="password">
+    <button type="button" id="submit-btn">Submit</button>
+  </form>
+
+  
+  <pre id="form-result"></pre>
+
+  <script type="text/javascript"; style='color:lightyellow;'>
+    
+    $("#submit-btn").on("click", function(){
+      var UserName = $("#User-Name").val();
+      var Password = $("#Pass-word").val();
+    
+      $.ajax({
+        type: "POST",
+        url: "/api/post-full-name",
+        data: JSON.stringify({
+          first_name: UserName,
+          last_name: Password
+        }),
+        processData: false,
+        contentType: "application/json",
+        dataType: "json"
+      }).done(
+        function(data){
+          $("#form-result").text(JSON.stringify(data, null, 2));
+        }
+      ).fail(
+        function(data){
+          $("#form-result").text("POST request failed!");
+        }
+      )
+    });
+  </script>
+
+    </body>
+  </html>

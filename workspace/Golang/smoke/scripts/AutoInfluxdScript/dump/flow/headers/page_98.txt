@@ -1,0 +1,119 @@
+--Request 
+POST https://www.google-analytics.com/j/collect?v=1&_v=j99&a=712861197&t=pageview&_s=1&dl=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&dp=docs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&ul=en-us&de=UTF-8&dt=Get%20started%20with%20Flux%20and%20InfluxDB%20%7C%20InfluxDB%20OSS%202.7%20Documentation&sd=24-bit&sr=1536x864&vp=1198x567&je=0&_u=aGDAAEABQAAAACAAI~&jid=808105915&gjid=1287526570&cid=1412212591.1682316317&tid=UA-45024174-4&_gid=2029417635.1682316317&_r=1&_slc=1&gtm=45He34j0n71WXRH9C&cd3=(not%20set)&cd5=1412212591.1682316317&cd8=11&cd10=1&cd11=20230424113517&cd12=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F104.0.5112.124%20Safari%2F537.36&z=952029583
+Host: www.google-analytics.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Content-Type: text/plain
+Accept: */*
+Origin: https://docs.influxdata.com
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA 
+--Response 
+HTTP/1.1 200
+access-control-allow-origin: https://docs.influxdata.com
+date: Mon, 24 Apr 2023 06:05:15 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+access-control-allow-credentials: true
+x-content-type-options: nosniff
+content-type: text/plain
+cross-origin-resource-policy: cross-origin
+server: Golfe2
+content-length: 4
+alt-svc: h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000
+----
+--Request 
+GET https://px.ads.linkedin.com/collect?v=2&fmt=js&pid=32953&time=1682316317130&url=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&cookiesTest=true
+Host: px.ads.linkedin.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+content-type: application/javascript
+set-cookie: bcookie=\"v=2&6b20019b-c863-433c-8202-ff1445d08905\"; domain=.linkedin.com; Path=/; Secure; Expires=Tue, 23-Apr-2024 06:05:15 GMT; SameSite=None
+set-cookie: lidc=\"b=OGST01:s=O:r=O:a=O:p=O:g=2953:u=1:x=1:i=1682316315:t=1682402715:v=2:sig=AQF85l9iHYkLMnFSXfPqPsQR_CnjEnDl\"; Expires=Tue, 25 Apr 2023 06:05:15 GMT; domain=.linkedin.com; Path=/; SameSite=None; Secure
+linkedin-action: 1
+x-li-fabric: prod-lor1
+x-li-pop: afd-prod-lor1-x
+x-li-proto: http/2
+x-li-uuid: AAX6DspgA2fykmo6o1d7qw==
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 02C9208BD07B405DABF2377765958E7E Ref B: DEL01EDGE0816 Ref C: 2023-04-24T06:05:15Z
+date: Mon, 24 Apr 2023 06:05:15 GMT
+content-length: 0
+----
+--Request 
+GET https://bat.bing.com/p/action/17534276.js
+Host: bat.bing.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 204
+cache-control: private,max-age=1800
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-powered-by: ARR/3.0
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: E818C754E3E94A88BB473E4F9F6BA325 Ref B: DEL01EDGE0818 Ref C: 2023-04-24T06:05:15Z
+date: Mon, 24 Apr 2023 06:05:14 GMT
+----
+--Request 
+GET https://bat.bing.com/action/0?ti=17534276&tm=gtm002&Ver=2&mid=6860ed40-6ec7-4b6a-8392-23447b6e17ac&sid=fc9db080e26511eda26a812737e67ca9&vid=fc9e0990e26511ed9b62e1e49976081a&vids=1&msclkid=N&uach=pv%3D15.0.0&pi=918639831&lg=en-US&sw=1536&sh=864&sc=24&tl=Get%20started%20with%20Flux%20and%20InfluxDB%20%7C%20InfluxDB%20OSS%202.7%20Documentation&p=https%3A%2F%2Fdocs.influxdata.com%2Finfluxdb%2Fv2.7%2Fquery-data%2Fget-started%2F&r=&lt=1272&evt=pageLoad&sv=1&rn=216647
+Host: bat.bing.com
+sec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"104\"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+sec-ch-ua-platform: \"Windows\"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: https://docs.influxdata.com/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 204
+cache-control: no-cache, must-revalidate
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+set-cookie: MUID=248D64D0A49F67343C1E762DA56D6645; domain=.bing.com; expires=Sat, 18-May-2024 06:05:15 GMT; path=/; SameSite=None; Secure; Priority=High;
+set-cookie: MR=0; domain=bat.bing.com; expires=Mon, 01-May-2023 06:05:15 GMT; path=/; SameSite=None; Secure;
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: *
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 5CE1C2827424471AA814777D859F4D29 Ref B: DEL01EDGE0818 Ref C: 2023-04-24T06:05:15Z
+date: Mon, 24 Apr 2023 06:05:14 GMT
+----
+

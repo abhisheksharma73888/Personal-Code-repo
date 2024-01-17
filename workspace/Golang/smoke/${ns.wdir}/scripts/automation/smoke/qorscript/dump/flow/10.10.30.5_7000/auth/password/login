@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+<meta name="description" content=" - Default Description">
+<meta name="keywords" content=" - Default Keywords">
+<meta property="og:description" name="og:description" content=" - Default Description">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0"/>
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i|Playfair+Display|Raleway" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./../../../10.10.30.5_7000/dist/home_products.css" />
+    <link type="text/css" rel="stylesheet" href="./../../../10.10.30.5_7000/vendors/flexslider.css" />
+    <link rel="stylesheet" media="all" href="./../../../10.10.30.5_7000/dist/qor.css">
+    <script src="./../../../10.10.30.5_7000/vendors/jquery.js"></script>
+    <link href="./../../../use.fontawesome.com/6a90f27203.css" media="all" rel="stylesheet">
+  </head>
+
+  <body>
+    
+
+    <div class="header">
+      <header class="container">
+        <div class="grid">
+          <input type="checkbox" id="header-menustate" class="header__menustate" style="display: none" />
+          <label class="header__mobileicon" for="header-menustate">
+            <i class="material-icons">&#xE3C7;</i>
+          </label>
+
+          <div class="grid__col is-2 header__logo">
+            <a href="/" class="logo"><img src="./../../../10.10.30.5_7000/images/logo.png" /></a>
+          </div>
+
+          <a href="#" class="header__mobilemenu-cart">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          </a>
+
+          <div class="header__mobilemenu grid__col is-10">
+            <div class="header__menu">
+              <a href="/">Home</a>
+              <a href="/men">men</a>
+              <a href="/women">women</a>
+              <a href="/kids">kids</a>
+            </div>
+
+            <div class="header__func ">
+              
+                <a href="/auth/login">SIGN IN</a>
+                <a href="/auth/register">REGISTER</a>
+              
+
+              <a href="/cart" class="header__menu-cart">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        
+          
+            <div class="alert alert-danger">invalid account</div>
+          
+        
+      </div>
+    </div>
+
+    <link rel="stylesheet" media="all" href="./../../../10.10.30.5_7000/auth/assets/qor_auth.css">
+
+<div class="container qor-auth">
+  <div class="qor-auth-box">
+    
+    
+
+    <h1>Sign In</h1>
+
+    <a class="signup-link" href="/auth/register">
+      Don't have an account? Click here to sign up.
+    </a>
+
+    
+      <form action="/auth/password/login" method="POST">
+        <b>Demo Account: dev@getqor.com / testing</b>
+
+        <ul class="auth-form">
+          <li>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="login" placeholder="email address" value="abhi@gmail.com">
+          </li>
+
+          <li>
+            <label for="password">Password</label>
+            <a class="forgot-password" href="/auth/password/new">Forgot Password?</a>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          </li>
+
+          <li>
+            <button type="submit" class="button button__primary">Sign in</button>
+          </li>
+        </ul>
+      </form>
+    
+
+    
+  </div>
+</div>
+
+
+    <footer class="footer">
+      <div class="container">
+
+        <div class="grid">
+          <div class="grid__col is-8">
+            <h4>CONNECT</h4>
+            <div class="society">
+              <a href="#"><img src="./../../../10.10.30.5_7000/images/twitter.png" /></a>
+              <a href="#"><img src="./../../../10.10.30.5_7000/images/facebook.png" /></a>
+              <a href="#"><img src="./../../../10.10.30.5_7000/images/gplus.png" /></a>
+              <a href="#"><img src="./../../../10.10.30.5_7000/images/youtube.png" /></a>
+            </div>
+
+            <p>QOR is Open Source software brought to you by <a href="https://theplant.jp/">The Plant</a> under an MIT license.</p><p>The name â??QORâ?? is a trademark of The Plant and <a href="https://theplant.jp/">subject to trademark restrictions</a>.</p>
+
+            
+            <div class="footer__change-language">
+              <select>
+                <option selected value="/switch_locale?locale=en-US">English</option>
+                <option  value="/switch_locale?locale=zh-CN">ç®?ä½?ä¸­æ??</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid__col is-4">
+            <h4>SUPPORT & INFO</h4>
+
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Size Guide</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+    </footer>
+
+    <script src="./../../../10.10.30.5_7000/dist/app.js"></script>
+    <script type="text/javascript">
+  var amazonMerchantId = "";
+  var amazonOrderReferenceId = null;
+  var amazonOrderReference = null;
+
+  window.onAmazonLoginReady = function() {
+    amazon.Login.setClientId('');
+  };
+
+  window.onAmazonPaymentsReady = function() {
+    $(function() {
+      if (location.pathname == "/cart") {
+        if ($("#amazon_login_widget").length > 0) {
+          showAmazonButton();
+        }
+      }
+
+      if (location.pathname == "/cart/checkout") {
+        showAmazonAddress();
+      }
+    })
+  };
+
+  function showAmazonButton(){
+    var authRequest;
+    OffAmazonPayments.Button("amazon_login_widget", amazonMerchantId, {
+      type:  "PwA",
+      color: "Gold",
+      size:  "medium",
+      authorization: function() {
+        loginOptions = {
+          scope: "profile payments:widget payments:shipping_address",
+          popup: "false"
+        };
+        authRequest = amazon.Login.authorize (loginOptions, "/cart/checkout");
+      }
+    });
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function showAmazonAddress(){
+    new OffAmazonPayments.Widgets.AddressBook({
+      sellerId : amazonMerchantId,
+      onOrderReferenceCreate: function(orderReference) {
+        $("#amazon_login_widget").hide()
+        amazonOrderReference = orderReference
+        amazonOrderReferenceId = orderReference.getAmazonOrderReferenceId();
+        console.log(orderReference)
+
+        $('#checkout-access-token').val(getParameterByName('access_token'))
+        $('#checkout-referenceid').val(amazonOrderReferenceId)
+        showAmazonWallet()
+      },
+      design : {
+        designMode: 'smartphoneCollapsible'
+      },
+      onAddressSelect : function(orderReference) {
+      },
+      onError : function(error) {
+      }
+    }).bind("amazon_addressbook_widget");
+  }
+
+  function showAmazonWallet(){
+    new OffAmazonPayments.Widgets.Wallet({
+      sellerId: amazonMerchantId,
+      amazonOrderReferenceId: amazonOrderReferenceId,
+      onPaymentSelect: function(orderReference) {
+        
+        
+
+        
+        
+      },
+      design: {
+        designMode: 'responsive'
+      },
+      onError: function(error) {
+        console.log(error.getErrorCode() + ': ' + error.getErrorMessage());
+      }
+    }).bind("amazon_wallet_widget");
+  }
+</script>
+
+<script async="async" src='./../../../static-fe.payments-amazon.com/OffAmazonPayments/jp/sandbox/lpa/js/Widgets.js'></script>
+
+  </body>
+</html>

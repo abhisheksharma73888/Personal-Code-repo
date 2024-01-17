@@ -1,0 +1,201 @@
+--Request 
+GET http://10.10.70.39:8086/api/v2/orgs
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=5BlTyGdk4fxmHUEQnyx3vhn0ZfL5JbQkRsO8lcz5ae_e8DDJ1PiMIjAV0QqQuSijhZVlnyRzUlRGVkDSEYKxyQ==
+----
+--Response 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+Content-Length: 715
+----
+
+
+--Request 
+GET http://10.10.70.39:8086/1.3300133c6a.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 135362
+Content-Type: text/javascript; charset=utf-8
+Etag: \"1353622133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/4.64dda24b4e.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 114980
+Content-Type: text/javascript; charset=utf-8
+Etag: \"1149802133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/5.e9e7a5463f.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 35740
+Content-Type: text/javascript; charset=utf-8
+Etag: \"357402133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/6.71289d1e6f.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 296497
+Content-Type: text/javascript; charset=utf-8
+Etag: \"2964972133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/28.e798bcc63e.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 1306642
+Content-Type: text/javascript; charset=utf-8
+Etag: \"13066422133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:44 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/65.0a6b523ddb.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 42010
+Content-Type: text/javascript; charset=utf-8
+Etag: \"420102133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:45 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/42.835ca16580.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 294338
+Content-Type: text/javascript; charset=utf-8
+Etag: \"2943382133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:45 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/e6cef65982.woff2
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Origin: http://10.10.70.39:8086
+Accept: */*
+Referer: http://10.10.70.39:8086/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://10.10.70.39:8086/e6cef65982.woff2
+Host: 10.10.70.39:8086
+Origin: http://10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 15952
+Content-Type: font/woff2
+Etag: \"159522133225\"
+Last-Modified: Tue, 02 Nov 2021 18:32:25 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:03:45 GMT
+----
+

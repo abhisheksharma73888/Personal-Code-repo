@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#source /home/cavisson/work/etc/netstorm.env
+#/etc/init.d/ndc forcerestart
+#sleep 30
+exit 0

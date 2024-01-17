@@ -1,0 +1,23 @@
+--Request 
+PATCH http://10.10.70.39:8086/api/v2private/notebooks/0b1876b447676000
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+content-type: application/json
+Accept: */*
+Origin: http://10.10.70.39:8086
+Referer: http://10.10.70.39:8086/orgs/f99b06f47a4821f3/notebooks/0b1876b447676000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=5BlTyGdk4fxmHUEQnyx3vhn0ZfL5JbQkRsO8lcz5ae_e8DDJ1PiMIjAV0QqQuSijhZVlnyRzUlRGVkDSEYKxyQ==
+----
+ POSTDATA {"orgID":"f99b06f47a4821f3","name":"Untitled Notebook","spec":{"name":"Untitled Notebook","readOnly":false,"range":{"duration":"1h","label":"Past 1h","lower":"now() - 1h","seconds":3600,"type":"selectable-duration","upper":null,"windowPeriod":10000},"refresh":{"duration":null,"inactivityTimeout":0,"infiniteDuration":false,"interval":0,"status":"paused"},"createdAt":"2023-04-24T06:04:51.357473458Z","updatedAt":"2023-04-24T06:04:51.357473458Z","pipes":[{"buckets":[],"id":"local_ba037cdf-2193-47ae-a5b9-eb191b8f15c6","tags":[{"aggregateFunctionType":"filter","key":"_measurement","values":[]}],"type":"queryBuilder","title":"Build a Query","visible":true},{"id":"local_7174fef4-1684-4197-a085-33e9cee9f281","type":"table","title":"Validate the Data","visible":true},{"id":"local_dfe45b86-9cf0-4c61-b3c0-232739981f97","properties":{"axes":{"x":{"base":"10","bounds":["",""],"label":"","prefix":"","scale":"linear","suffix":""},"y":{"base":"10","bounds":["",""],"label":"","prefix":"","scale":"linear","suffix":""}},"colors":[{"hex":"#31C0F6","id":"d4cf0467-03f1-43e5-8522-cb3b100cb141","name":"Nineteen Eighty Four","type":"scale","value":0},{"hex":"#A500A5","id":"8ab0fa52-6fec-4826-85c5-d6977846476b","name":"Nineteen Eighty Four","type":"scale","value":0},{"hex":"#FF7E27","id":"a74cbb17-648d-4950-bdba-5819b1f4a6fe","name":"Nineteen Eighty Four","type":"scale","value":0}],"generateXAxisTicks":[],"generateYAxisTicks":[],"geom":"line","hoverDimension":"auto","legendColorizeRows":true,"legendOpacity":1,"legendOrientationThreshold":100000000,"note":"","position":"overlaid","queries":[{"builderConfig":{"aggregateWindow":{"fillValues":false,"period":"auto"},"buckets":[],"functions":[{"name":"mean"}],"tags":[{"aggregateFunctionType":"filter","key":"_measurement","values":[]}]},"editMode":"builder","name":"","text":""}],"shape":"chronograf-v2","showNoteWhenEmpty":false,"staticLegend":{"colorizeRows":true,"heightRatio":0,"opacity":1,"orientationThreshold":100000000,"show":false,"widthRatio":1},"type":"xy","xColumn":null,"xTickStart":null,"xTickStep":null,"xTotalTicks":null,"yColumn":null,"yTickStart":null,"yTickStep":null,"yTotalTicks":null},"type":"visualization","period":"10s","title":"Visualize the Result","visible":true}]}}
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://10.10.70.39:8086
+Content-Type: application/json; charset=utf-8
+X-Influxdb-Build: OSS
+X-Influxdb-Version: v2.2.0
+Date: Mon, 24 Apr 2023 06:04:52 GMT
+Transfer-Encoding: chunked
+----
+

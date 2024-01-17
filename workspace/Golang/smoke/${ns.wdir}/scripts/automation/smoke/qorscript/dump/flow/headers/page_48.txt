@@ -1,0 +1,124 @@
+--Request 
+GET http://10.10.30.5:7000/products/crossover-back_w
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; language=ja_JP; amazon-pay-connectedAuth=connectedAuth_general; _session=MTYxNzgxNzYwNnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGVfNElBQXdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZaQVA0QlZXVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycFJNa3hxYTNkT1ZFVjRUbXBWZWsxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVJYZE5la1V5VFdwcmQwMTZRVEZNUTBweFpFZHJhVTlwU21oWmJXaHdVVWRrZEZsWGJITk1iVTUyWWxOS09TNXJNWEU0WVZST1NFUjVSamQ1VjBwaFZqUmFObUUyUW1STWEyRnFVbVJqYkdSbVlrNURWelpWTmxCckJuTjBjbWx1Wnd3TEFBbHlaWFIxY201ZmRHOEdjM1J5YVc1bkRDQUFIaTloWkcxcGJpOHZZV04wYVc5dVgySmhjaTlwYm14cGJtVmZaV1JwZEFaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOdz09fHh_aSZo7oRF-SCbSzG7ExA8IBgczvlvfAOvsdqrAy13
+----
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/html
+Set-Cookie: _session=MTYxNzgxNzYxM3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGVfNElBQXdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZaQVA0QlZXVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycFZla3hxU1hsUFZGRjVUa1JqTUUxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVJYZE5la1V5VFdwcmQwMTZRVEZNUTBweFpFZHJhVTlwU21oWmJXaHdVVWRrZEZsWGJITk1iVTUyWWxOS09TNU1NRXBDYmtVMWJpMWxlVnBxUVU5c1IycEpZM2xmUm1KT2VscDVZWEIzZFhCNmJFcDZjbkZPU200d0JuTjBjbWx1Wnd3TEFBbHlaWFIxY201ZmRHOEdjM1J5YVc1bkRDQUFIaTloWkcxcGJpOHZZV04wYVc5dVgySmhjaTlwYm14cGJtVmZaV1JwZEFaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOdz09fI_KW8oijZwvCHGtfEIOANNd32cY3I7hQ3a4eS5ZALbQ; Path=/; Expires=Fri, 07 May 2021 17:46:53 GMT; Max-Age=2592000
+Set-Cookie: _session=MTYxNzgxNzYxM3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGFfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3Y0FCb3ZjSEp2WkhWamRITXZZM0p2YzNOdmRtVnlMV0poWTJ0ZmR3WnpkSEpwYm1jTUNRQUhZMkZ5ZEY5cFpBWnpkSEpwYm1jTUJnQUVNVEl5TndaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZaQVA0QlZXVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycFZla3hxU1hsUFZGRjVUa1JqTUUxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVJYZE5la1V5VFdwcmQwMTZRVEZNUTBweFpFZHJhVTlwU21oWmJXaHdVVWRrZEZsWGJITk1iVTUyWWxOS09TNU1NRXBDYmtVMWJpMWxlVnBxUVU5c1IycEpZM2xmUm1KT2VscDVZWEIzZFhCNmJFcDZjbkZPU200d3xdGhV_xKr4hPlqpMdVYirQHh4g-CZRmnqgcP7-jSR9ng==; Path=/; Expires=Fri, 07 May 2021 17:46:53 GMT; Max-Age=2592000
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Set-Cookie: _session=MTYxNzgxNzYxM3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGFfNElBQXdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZaQVA0QlZXVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycFZla3hxU1hsUFZGRjVUa1JqTUUxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVJYZE5la1V5VFdwcmQwMTZRVEZNUTBweFpFZHJhVTlwU21oWmJXaHdVVWRrZEZsWGJITk1iVTUyWWxOS09TNU1NRXBDYmtVMWJpMWxlVnBxUVU5c1IycEpZM2xmUm1KT2VscDVZWEIzZFhCNmJFcDZjbkZPU200d0JuTjBjbWx1Wnd3TEFBbHlaWFIxY201ZmRHOEdjM1J5YVc1bkRCd0FHaTl3Y205a2RXTjBjeTlqY205emMyOTJaWEl0WW1GamExOTNCbk4wY21sdVp3d0pBQWRqWVhKMFgybGtCbk4wY21sdVp3d0dBQVF4TWpJM3ye-dIrzhKLEX33FJjVsYxqL51Ragt0lODK0KAssswBOQ==; Path=/; Expires=Fri, 07 May 2021 17:46:53 GMT; Max-Age=2592000
+Date: Wed, 07 Apr 2021 17:46:53 GMT
+Transfer-Encoding: chunked
+----
+--Request 
+GET http://use.fontawesome.com/6a90f27203.css
+Host: use.fontawesome.com
+Host: use.fontawesome.com
+Connection: keep-alive
+If-None-Match: W/\"32adbef3fe8dffb60afd89d1dcd537e5\"
+If-Modified-Since: Thu, 03 Aug 2017 06:56:25 GMT
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Referer: http://10.10.30.5:7000/products/crossover-back_w
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 304 Not Modified
+Date: Wed, 07 Apr 2021 17:46:53 GMT
+Connection: keep-alive
+x-amz-id-2: 5+Jz9Tn0n+o0RHixGS5bdm3qau+ot4jFyHcTBVaN/4xtWpwxoF8Yr9aXjg2nO5sHBdfGh/k7q1o=
+x-amz-request-id: QQY3BTCSHDK5DTZ5
+Last-Modified: Thu, 03 Aug 2017 06:56:25 GMT
+ETag: \"32adbef3fe8dffb60afd89d1dcd537e5\"
+Server: NetDNA-cache/2.2
+Cache-Control: max-age=0, private, must-revalidate
+X-Cache: HIT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 7e4c7ddd46c22af944c9299023f37b74
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:59 GMT
+Content-Length: 1098
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 064284d228de05ac6e63559a4d61abdc
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:59 GMT
+Content-Length: 404
+----
+
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: text/css; charset=utf-8
+access-control-allow-origin: *
+timing-allow-origin: *
+link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin
+expires: Wed, 07 Apr 2021 17:46:46 GMT
+date: Wed, 07 Apr 2021 17:46:46 GMT
+cache-control: private, max-age=86400, stale-while-revalidate=604800
+last-modified: Wed, 07 Apr 2021 17:46:46 GMT
+cross-origin-resource-policy: cross-origin
+content-encoding: gzip
+server: ESF
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: image/png
+Etag: 68a953f408f9cd92073560780cb1f7a2
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:59 GMT
+Content-Length: 924
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 169957
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:45:59 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Content-Length: 110261
+Content-Type: image/jpeg
+Last-Modified: Tue, 06 Apr 2021 08:40:51 GMT
+Date: Wed, 07 Apr 2021 17:45:59 GMT
+----
+

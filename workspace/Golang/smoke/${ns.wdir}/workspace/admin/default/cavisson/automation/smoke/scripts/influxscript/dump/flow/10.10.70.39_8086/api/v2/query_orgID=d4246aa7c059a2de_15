@@ -1,0 +1,13 @@
+#group,false,false,false
+#datatype,string,long,string
+#default,_result,,
+,result,table,_value
+,,0,TLM0100
+,,0,TLM0101
+,,0,TLM0102
+,,0,TLM0103
+,,0,TLM0200
+,,0,TLM0201
+,,0,TLM0202
+,,0,TLM0203
+

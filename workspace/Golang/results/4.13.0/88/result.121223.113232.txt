@@ -1,0 +1,10 @@
+Golang,Flowpath,GOLANG-001-001,1638,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,Business Trx,GOLANG-002-002,1648,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,Business Trx,GOLANG-002-003,1649,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-004,1654,1000,1000,fail,Failed for captureHTTPReqFullFp=3%20Host%200 and captureHTTPRespFullFp=0.=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-005,1655,1000,1000,fail,Failed Http Req/Resp feature for captureHTTPReqFullFp=3%20Accept Accept%200 for Connection & Accept header and captureHTTPRespFullFp=0.=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-006,1656,1000,1000,fail,Failed for captureHTTPReqFullFp=3%20Host Cookie%201%205 for host and cookie header with max length 5 and captureHTTPRespFullFp=0.=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-008,1658,1000,1000,fail,Failed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp=2%20ALL%201%203.
+Golang,HTTP Req-Res Header,GOLANG-004-010,1660,1000,1000,fail,Failed for captureHTTPReqFullFp=0 and captureHTTPRespFullFp for multiple specified headers.=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-011,1661,1000,1000,fail,Raw data has not formed for Tier=Golang
+Golang,HTTP Req-Res Header,GOLANG-004-012,1662,1000,1000,fail,Raw data has not formed for Tier=Golang

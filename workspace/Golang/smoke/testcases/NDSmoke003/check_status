@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+#                                                                                                 #
+#   Feature :- Heap & Thread Dump                                                                 #
+#   Developer :- Abhishek Sharma                                                                  #
+#   Modified Date :- 20th May 2022                                                                # 
+#                                                                                                 #
+###################################################################################################
+
+source $NS_WDIR/lib/utilities.sh
+source $NS_WDIR/lib/smoke.properties
+
+TEST_RUN_PATH="/home/cavisson/work/logs/TR$(get_test_idx)"
+PARTITION_PATH="$TEST_RUN_PATH/$(get_test_partition)"
+RAW_DATA_HOME="${PARTITION_PATH}/nd/raw_data"
+AVAILABLE_TIERS=$Project
+
+function main(){
+	case $(get_test_name) in
+		"GOLANG-003-001") handle_golang_003_001_case ;;
+		*) handle_unknown_case ;; 
+		?) handle_unknown_case ;;
+	esac
+}
+
+function log_status_int(){
+	agentID="$1"
+	status="$2"
+	why="${3}"
+	log_status_and_exit $agentID $productid $categoryid $status "${why}"
+
+}
+
+function handle_unknown_case(){
+	error "Testcase name not found"
+	log_status_int "FAIL" "Testcase not found"
+}
+
+function raw_data_val(){
+	ventId0=$(grep -c "^0," $RAW_DATA_FILE)
+	eventId2=$(grep -c "^2," $RAW_DATA_FILE)
+        eventId4=$(grep -c "^4," $RAW_DATA_FILE)
+	eventId5=$(grep -c "^5," $RAW_DATA_FILE)
+        eventId99=$(grep -c "^99," $RAW_DATA_FILE)
+        eventId11=$(grep -c "^11," $RAW_DATA_FILE)
+	eventId10=$(grep -c "^10," $RAW_DATA_FILE)
+	filesize=$(ls -ltrh $RAW_DATA_FILE | cut -d ' ' -f5) 
+ 	if [ ! -e $RAW_DATA_FILE ];then
+		log_status_int "${tier}" "FAIL" "Rawdata file does not exist: ${RAW_DATA_FILE}"
+		return 1
+	else
+		log_status_int "${tier}" "PASS" "Rawdata file exists: ${RAW_DATA_FILE}"
+        fi
+
+        if [ ! -s $RAW_DATA_FILE ];then
+                log_status_int "${tier}" "FAIL" "Rawdata file having zero size: ${filesize}"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Rawdata file is not zero size: ${filesize}"
+        fi
+
+	if [ $eventId0 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 0 detected: ${eventId0}"
+		return 1
+	else
+                log_status_int "${tier}" "FAIL" "Event id 0 is not detected: ${eventId0}"
+	fi
+
+        if [ $eventId99 -eq 1 ];then
+                log_status_int "${tier}" "PASS" "Event id 99  detected: ${eventId99}"
+		return 1
+	else
+                log_status_int "${tier}" "FAIL" "Event id 99 is not detected: ${eventId99}"
+	fi
+
+        if [ $eventId11 -eq 1 ];then
+		log_status_int "${tier}" "PASS" "Event id 11 is detected: ${eventId11}"
+		return 1
+	else
+                log_status_int "${tier}" "FAIL" "Event id 11 is not detected: ${eventId11}"
+        fi
+
+ 	if [ $eventId5 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "Event id 5 is not  detected: ${eventId5}"
+		return 1
+        else
+                log_status_int "${tier}" "PASS" "Event id 5 is  detected: ${eventId5}"
+        fi
+
+
+        if [ $eventId2 -lt 1 ] && [ $eventId4 -lt 1 ];then
+                log_status_int "${tier}" "FAIL" "No Flowpath detected in RawData File"
+                return 1
+        else
+                log_status_int "${tier}" "PASS" "Flowpath detected in RawData File"
+        fi
+
+        if [ $eventId2 -ne $eventId4 ];then
+                log_status_int "${tier}" "FAIL" "Event ID 2 and 4 are not equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+		return 1
+        else
+                log_status_int "${tier}" "PASS" "Event ID 2 and 4 are equal. No of flowpath of eventId2: ${eventId2} and No of fps of eventId4: ${eventId4}}"
+        fi
+	return 0
+}
+
+function handle_golang_003_001_case(){
+	for tier in $AVAILABLE_TIERS; do
+		if [ $(ls $RAW_DATA_HOME |grep "^$tier"|head -1) ];then
+			DATA_FILE=$RAW_DATA_HOME/$(ls $RAW_DATA_HOME |grep "^$tier"|head -1)
+			RAW_FILE=$(ls $RAW_DATA_HOME |egrep "^$tier"|tail -1)
+			server=$(echo "${RAW_FILE//$tier}"|cut -d  "_" -f2)
+			instance=$(echo "${RAW_FILE//$tier}"|cut -d  "_" -f3|cut -d "." -f1)
+			Thread_Heap_Dump_Analysis $server $instance
+			RC=$?
+       			if [ $countR -gt 0 ];then
+	      			raw_data_val $DATA_FILE
+       			fi
+    		
+			if [ $RC -eq 0 ];then
+				log_status_int "$tier" "PASS" "Passed for Successfully Dumping Thread Dump File"
+
+			else
+				log_status_int "${tier}" "FAIL" "Raw data has not formed for Tier=${tier}"
+			fi
+		fi	
+	done
+}
+
+Thread_Heap_Dump_Analysis(){
+	TestRunHome="/home/cavisson/work/logs/"
+	cd $TestRunHome
+    	TR=$(ls -ltr $TestRunHome|grep "TR"|tail -2|head -1|awk {'print $9'}|tr -d "TR")
+	Partition=$(ls -ltr $TestRunHome/TR$TR/|awk {'print $9'}|grep -o [0-9]*)
+    	ThreadDumpHome="/home/cavisson/work/logs/TR$TR/$Partition/server_logs/thread_dumps/${tier}/${server}/${instance}/"
+	TDFile=$(ls -ltr $ThreadDumpHome|awk {'print $9'}|tail -1)
+	ThreadDumpFile="${ThreadDumpHome}/$TDFile"
+	countR=0	
+	if [ -n $(ls -ltr ${ThreadDumpHome}|awk {'print $9'}) ];then
+		log_status_int "$tier" "PASS" "Able to Take ThreadDump and file been dumped in given Path"
+	else
+		log_status_int "$tier" "FAIL" "Unable to Take Thread Dump for the mentioned Build"
+		((countR++))
+		return 1	
+	fi
+	if [ -s ${ThreadDumpFile} ];then
+		log_status_int "$tier" "PASS" "Thread Dump File Exist with non Zero size"
+	else
+		log_status_int "$tier" "FAIL" "Unable to Take Thread Dump for the mentioned Build"
+		 
+	fi
+	return 0
+}
+main

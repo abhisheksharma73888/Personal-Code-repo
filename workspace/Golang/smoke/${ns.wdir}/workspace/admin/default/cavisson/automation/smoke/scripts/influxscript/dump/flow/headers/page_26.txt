@@ -1,0 +1,65 @@
+--Request 
+GET http://10.10.70.39:8086/36.aefa625aee.js
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: */*
+Referer: http://10.10.70.39:8086/orgs/cc2b46247a491c7e/data-explorer
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 587917
+Content-Type: text/javascript; charset=utf-8
+Etag: \"58791730115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:34:05 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/a592c9bd38.svg
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=3600
+Content-Length: 81805
+Content-Type: image/svg+xml
+Etag: \"8180530115616\"
+Last-Modified: Thu, 30 Dec 2021 17:56:16 GMT
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:34:11 GMT
+----
+--Request 
+GET http://10.10.70.39:8086/61ea17f16c.woff2
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Origin: http://10.10.70.39:8086
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+--Request 
+GET http://10.10.70.39:8086/0367a1dab7.woff2
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Origin: http://10.10.70.39:8086
+Accept: */*
+Referer: http://10.10.70.39:8086/signin?returnTo=/orgs/cc2b46247a491c7e/settings/variables
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+----
+
+

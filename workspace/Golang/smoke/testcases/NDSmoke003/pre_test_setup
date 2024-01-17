@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+ndi_send_msg_ex  127.0.0.1 7892 "nd_control_req:action=get_bci_agents_info;Tier=Golang;Server=GoSer;fromTD=1;
+">Golang.txt
+
+TestRunHome="/home/cavisson/work/logs/"
+cd $TestRunHome
+TR=$(ls -ltr $TestRunHome|grep "TR"|tail -1|awk {'print $9'})
+TRidx=$(ls -ltr $TestRunHome|grep "TR"|tail -1|awk {'print $9'}|tr -d "TR")
+
+  ######################################### Thread-Dump ###################################
+
+ndi_send_msg_ex  127.0.0.1 7892 "nd_meta_data_req:action=get_thread_dump;Tier=Golang;Server=GoSer;Instance=GoInst;CompressMode=0;TestNum=$TRidx;agentType=Golang;
+"
+
+
+#source /home/cavisson/work/etc/netstorm.env
+#/etc/init.d/ndc forcerestart
+#sleep 60
+exit 0

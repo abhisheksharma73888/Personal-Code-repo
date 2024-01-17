@@ -1,0 +1,517 @@
+--Request 
+GET https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Referer: http://10.10.30.5:7000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://getqor.com/source/normalize.css
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: text/css; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://getqor.com/source/main.css
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: text/css; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://getqor.com/source/login.css
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: text/css; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://getqor.com/source/jquery-1.11.3.js
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: application/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Encoding: gzip
+----
+--Request 
+GET https://getqor.com/source/images/qor-logo.svg
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/svg+xml
+Content-Length: 1345
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/m-menu.svg
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/svg+xml
+Content-Length: 1218
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/share-twitter.png
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/png
+Content-Length: 764
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/share-g+.png
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/png
+Content-Length: 1052
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/system/assets/17/1200px-Jigsaw_puzzle_01_by_Scouten.20161209091916206040735.jpg
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/jpeg
+Content-Length: 187485
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Fri, 09 Dec 2016 09:26:19 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/images/theplant-logo.png?1436944389
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: image/png
+Content-Length: 291
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://getqor.com/source/web-fonts/robotocondensed-regular-webfont.woff2
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/source/normalize.css
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:40 GMT
+Content-Type: font/woff2
+Content-Length: 19868
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://static.hotjar.com/c/hotjar-249442.js?sv=5
+Host: static.hotjar.com
+Host: static.hotjar.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: application/javascript; charset=UTF-8
+access-control-allow-origin: *
+content-encoding: br
+x-cache-hit: 1
+x-content-type-options: nosniff
+date: Wed, 07 Apr 2021 17:46:39 GMT
+cache-control: max-age=60
+etag: W/05118f5c8d00d0521417b15697c788d7
+vary: Accept-Encoding
+x-cache: Hit from cloudfront
+via: 1.1 2a62392b2c82d375722e5df666b2d2e9.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-C1
+x-amz-cf-id: FbAsafB88cuhF5EG_h-CfuT5n1YDXBjxYZJalXXPdK_it0-hGBQV3g==
+age: 1
+----
+--Request 
+GET https://getqor.com/source/web-fonts/roboto-light-webfont.woff2
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/source/normalize.css
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:41 GMT
+Content-Type: font/woff2
+Content-Length: 19428
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://www.google-analytics.com/analytics.js
+Host: www.google-analytics.com
+Host: www.google-analytics.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+date: Wed, 07 Apr 2021 17:22:45 GMT
+expires: Wed, 07 Apr 2021 19:22:45 GMT
+last-modified: Fri, 19 Mar 2021 19:22:18 GMT
+x-content-type-options: nosniff
+content-type: text/javascript
+vary: Accept-Encoding
+content-encoding: gzip
+cross-origin-resource-policy: cross-origin
+server: Golfe2
+content-length: 19463
+cache-control: public, max-age=7200
+age: 1436
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://vars.hotjar.com/box-5e3cec51ed8e99df6977c199d27812d7.html
+Host: vars.hotjar.com
+Host: vars.hotjar.com
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: nested-navigate
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: text/html
+content-length: 684
+date: Tue, 30 Mar 2021 16:10:32 GMT
+accept-ranges: bytes
+cache-control: max-age=31536000
+content-encoding: br
+etag: \"4e332edbbc3b46800c87f197cc7d3bb6\"
+last-modified: Tue, 30 Mar 2021 14:48:51 GMT
+x-robots-tag: none
+vary: Accept-Encoding
+x-cache: Hit from cloudfront
+via: 1.1 1d6770d4464cfbe59377b9fde853a856.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-C1
+x-amz-cf-id: 7orphbu7gNkduyoqhdNyPs7rRWwiPPokJoatOT6WM1mZaqC6WBET7A==
+age: 696969
+----
+--Request 
+GET https://qor.disqus.com/embed.js
+Host: qor.disqus.com
+Host: qor.disqus.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA 
+--Response 
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 24292
+Server: openresty
+Content-Type: application/javascript; charset=utf-8
+X-Service: router
+Content-Encoding: gzip
+Date: Wed, 07 Apr 2021 17:46:41 GMT
+Age: 0
+Vary: Accept-Encoding
+Cache-Control: private, max-age=60
+Strict-Transport-Security: max-age=300; includeSubdomains
+Link: <https://disqus.com>; rel=preconnect, <https://c.disquscdn.com>; rel=preconnect
+----
+--Request 
+GET https://getqor.com/source/web-fonts/roboto-regular-webfont.woff2
+Host: getqor.com
+Host: getqor.com
+Connection: keep-alive
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/source/normalize.css
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: _ga=GA1.2.1230909809.1617817601; _gid=GA1.2.1544911875.1617817601; _gat=1
+----
+--Response 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Wed, 07 Apr 2021 17:46:41 GMT
+Content-Type: font/woff2
+Content-Length: 19980
+Connection: keep-alive
+Accept-Ranges: bytes
+Last-Modified: Tue, 23 Jul 2019 02:22:59 GMT
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+----
+--Request 
+GET https://platform.twitter.com/widgets.js
+Host: platform.twitter.com
+Host: platform.twitter.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+last-modified: Mon, 05 Apr 2021 23:24:36 GMT
+cache-control: public, max-age=1800
+content-type: application/javascript; charset=utf-8
+etag: \"c6906b2e1894558795b131fc4eee41cf+gzip\"
+content-encoding: gzip
+access-control-allow-methods: GET
+access-control-allow-origin: *
+p3p: CP=\"CAO DSP LAW CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa OUR BUS IND UNI COM NAV INT\"
+accept-ranges: bytes
+date: Wed, 07 Apr 2021 17:46:41 GMT
+x-served-by: cache-bwi5129-BWI, cache-sin18033-SIN
+x-cache: HIT, HIT
+vary: Accept-Encoding
+tw-cdn: FT
+content-length: 28673
+----
+

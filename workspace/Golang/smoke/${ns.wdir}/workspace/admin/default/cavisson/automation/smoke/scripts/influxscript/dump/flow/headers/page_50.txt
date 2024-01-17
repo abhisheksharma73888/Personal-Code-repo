@@ -1,0 +1,24 @@
+--Request 
+POST http://10.10.70.39:8086/api/v2/query?orgID=cc2b46247a491c7e
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://10.10.70.39:8086
+Referer: http://10.10.70.39:8086/orgs/cc2b46247a491c7e/alert-history?type=statuses
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=3B1-5v6_KGewIuuNTf_cPNV2Ygn2ol98Q-HMq7wNU-t0cP3WTLP87hBSOrmymwbtO9QXiAB_TISAdZJSAd5AsA==
+----
+ POSTDATA {"query":"\nfrom(bucket: \"_monitoring\")\n  |> range(start: -1d, stop: 1641814509)\n  |> filter(fn: (r) => r._measurement == \"statuses\" and r._field == \"_message\")\n  |> filter(fn: (r) => exists r._check_id and exists r._value and exists r._check_name and exists r._level)\n  |> keep(columns: [\"_time\", \"_value\", \"_check_id\", \"_check_name\", \"_level\"])\n  |> rename(columns: {\"_time\": \"time\",\n                      \"_value\": \"message\",\n                      \"_check_id\": \"checkID\",\n                      \"_check_name\": \"checkName\",\n                      \"_level\": \"level\"})\n  |> group()\n  |> sort(columns: [\"time\"], desc: true)\n  |> limit(n: 100, offset: 0)\n","dialect":{"annotations":["group","datatype","default"]}}
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://10.10.70.39:8086
+Content-Type: text/csv; charset=utf-8
+Vary: Accept-Encoding
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:34:30 GMT
+Transfer-Encoding: chunked
+----
+

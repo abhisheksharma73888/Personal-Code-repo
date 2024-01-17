@@ -1,0 +1,81 @@
+{
+	"links": {
+		"self": "/api/v2/buckets?descending=false\u0026limit=100\u0026offset=0\u0026orgID=f99b06f47a4821f3"
+	},
+	"buckets": [
+		{
+			"id": "6136030995ce4a31",
+			"orgID": "f99b06f47a4821f3",
+			"type": "system",
+			"description": "System bucket for monitoring logs",
+			"name": "_monitoring",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 604800,
+					"shardGroupDurationSeconds": 86400
+				}
+			],
+			"createdAt": "2023-04-24T05:53:58.318201505Z",
+			"updatedAt": "2023-04-24T05:53:58.318201621Z",
+			"links": {
+				"labels": "/api/v2/buckets/6136030995ce4a31/labels",
+				"members": "/api/v2/buckets/6136030995ce4a31/members",
+				"org": "/api/v2/orgs/f99b06f47a4821f3",
+				"owners": "/api/v2/buckets/6136030995ce4a31/owners",
+				"self": "/api/v2/buckets/6136030995ce4a31",
+				"write": "/api/v2/write?org=f99b06f47a4821f3\u0026bucket=6136030995ce4a31"
+			},
+			"labels": []
+		},
+		{
+			"id": "4c53e89fb528698f",
+			"orgID": "f99b06f47a4821f3",
+			"type": "system",
+			"description": "System bucket for task logs",
+			"name": "_tasks",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 259200,
+					"shardGroupDurationSeconds": 86400
+				}
+			],
+			"createdAt": "2023-04-24T05:53:58.312869582Z",
+			"updatedAt": "2023-04-24T05:53:58.312869723Z",
+			"links": {
+				"labels": "/api/v2/buckets/4c53e89fb528698f/labels",
+				"members": "/api/v2/buckets/4c53e89fb528698f/members",
+				"org": "/api/v2/orgs/f99b06f47a4821f3",
+				"owners": "/api/v2/buckets/4c53e89fb528698f/owners",
+				"self": "/api/v2/buckets/4c53e89fb528698f",
+				"write": "/api/v2/write?org=f99b06f47a4821f3\u0026bucket=4c53e89fb528698f"
+			},
+			"labels": []
+		},
+		{
+			"id": "98c6899268f8f40a",
+			"orgID": "f99b06f47a4821f3",
+			"type": "user",
+			"name": "cavisson",
+			"retentionRules": [
+				{
+					"type": "expire",
+					"everySeconds": 0,
+					"shardGroupDurationSeconds": 604800
+				}
+			],
+			"createdAt": "2023-04-24T05:53:58.321672618Z",
+			"updatedAt": "2023-04-24T05:53:58.321672777Z",
+			"links": {
+				"labels": "/api/v2/buckets/98c6899268f8f40a/labels",
+				"members": "/api/v2/buckets/98c6899268f8f40a/members",
+				"org": "/api/v2/orgs/f99b06f47a4821f3",
+				"owners": "/api/v2/buckets/98c6899268f8f40a/owners",
+				"self": "/api/v2/buckets/98c6899268f8f40a",
+				"write": "/api/v2/write?org=f99b06f47a4821f3\u0026bucket=98c6899268f8f40a"
+			},
+			"labels": []
+		}
+	]
+}

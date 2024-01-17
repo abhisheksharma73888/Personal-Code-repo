@@ -1,0 +1,85 @@
+--Request 
+GET https://payments-jp-sandbox.amazon.com/gp/widgets/sessionstabilizer?countryOfEstablishment=JP&ledgerCurrency=JPY&isSandbox=true
+Host: payments-jp-sandbox.amazon.com
+Host: payments-jp-sandbox.amazon.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: http://10.10.30.5:7000/cart/checkout
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: ubid-main=358-5414753-9305410; session-token=\"J3nnpzCTekLyZ8Qe1TcXocVAPWH2qL4GehOEctY8vIF7FQE7B88iycgy9huoD5hWqUE593oBpTO6dAzVc5Oog6ZZKssHEzBu9emrplGrNZf6GSqSEGKTOYi4MzzI+0sbv2eq0wltufXnJAIYHhJmMX6v99psoytCu1LVSOdypuDRMiNhNIDsBkPXHcijqksCq1HGC/ulM1c=\"; session-id=355-0222234-8771173; session-id-time=2082758400; session-id-apay=355-0222234-8771173
+----
+--Response 
+HTTP/1.1 200 OK
+Server: Server
+Date: Wed, 07 Apr 2021 17:46:12 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+x-amz-rid: 9W1RXA4QG3MKN7XHASAQ
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://10.10.30.5:7000
+x-amzn-RequestId: 9W1RXA4QG3MKN7XHASAQ
+Vary: Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+----
+--Request 
+GET http://10.10.30.5:7000/admin//action_bar/inline_edit
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/cart/checkout
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; language=ja_JP; amazon-pay-connectedAuth=connectedAuth_general; _session=MTYxNzgxNzU3MXxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSE5fNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3UUFBNHZZMkZ5ZEM5amFHVmphMjkxZEFaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOd1p6ZEhKcGJtY01Ed0FOWDJGMWRHaGZjMlZ6YzJsdmJnWnpkSEpwYm1jTV9nRllBUDRCVkdWNVNtaGlSMk5wVDJsS1NWVjZTVEZPYVVselNXNVNOV05EU1RaSmEzQllWa05LT1M1bGVVcDNZMjA1TW1GWFVteGphVWsyU1c1Q2FHTXpUak5pTTBwclNXbDNhV1JZVG14amJXeHJTV3B2YVU1cVFYbEphWGRwWWtkR2VtUkdPWE5pTW1Sd1ltbEpOa2xxU1hkTmFrVjBUVVJSZEUxRVpGVk5hazAyVFZSVk5rNVVTWFZOUkZFelRYcGpNMDFFYTNoTGVrRXhUMnBOZDBscGQybGlSMFo2WkVZNWFGa3pVbkJrYlZWcFQybEplVTFFU1hoTVZFRXdURlJCTTFaRVNYcFBha1V5VDJwRmVFeHFhekpPVkVFMVRrUnJkMDVUYzNkT1ZHOTZUVU5KYzBsdFVuQmpNMUo1V1ZkT01HRlhPWFZZTTFKd1lsZFZhVTlxV1hkTmVrMTRUbXBKTUU5VVZYTkpiWEF3WVZOSk5rbHRSbWxoUjJ4QldqSXhhR0ZYZDNWWk1qbDBTVzR3TGsxQ1NqWkViSE00V1U1WGNsZzRNVFF0TjJGeFptcHZTRFZaVDBKcU1tRkZaVU5NWWtSbFNYaFpWbFU9fL2k4G7_kHipfUhf5r60FlHuQsmuA2v65R9xRjuV8HDB
+----
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: no-store
+Pragma: no-cache
+Set-Cookie: _session=MTYxNzgxNzU3MnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSE5fNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3UUFBNHZZMkZ5ZEM5amFHVmphMjkxZEFaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOd1p6ZEhKcGJtY01Ed0FOWDJGMWRHaGZjMlZ6YzJsdmJnWnpkSEpwYm1jTV9nRllBUDRCVkdWNVNtaGlSMk5wVDJsS1NWVjZTVEZPYVVselNXNVNOV05EU1RaSmEzQllWa05LT1M1bGVVcDNZMjA1TW1GWFVteGphVWsyU1c1Q2FHTXpUak5pTTBwclNXbDNhV1JZVG14amJXeHJTV3B2YVU1cVFYbEphWGRwWWtkR2VtUkdPWE5pTW1Sd1ltbEpOa2xxU1hkTmFrVjBUVVJSZEUxRVpGVk5hazAyVFZSVk5rNVVTWFZOUkZFelRYcGpNMDFFYTNoTGVrRXhUMnBOZDBscGQybGlSMFo2WkVZNWFGa3pVbkJrYlZWcFQybEplVTFFU1hoTVZFRXdURlJCTTFaRVNYcFBha1V5VDJwRmVVeHFWVFZOZWxFMVRXcEpNazVUYzNkT1ZHOTZUVU5KYzBsdFVuQmpNMUo1V1ZkT01HRlhPWFZZTTFKd1lsZFZhVTlxV1hkTmVrMTRUbXBKTUU5VVZYTkpiWEF3WVZOSk5rbHRSbWxoUjJ4QldqSXhhR0ZYZDNWWk1qbDBTVzR3TGpGS2VFVkRPRUV6VGtWbE1rZDZhVWt0VlhWek0yNXRaSGhqVkRJMmQwRllXak5yVURkQlZETmthRVU9fJ-h7ZzsG8b4w3lcqheworVlO8vlKFBtZ5mXKVm5EwK3; Path=/; Expires=Fri, 07 May 2021 17:46:12 GMT; Max-Age=2592000
+Set-Cookie: _session=MTYxNzgxNzU3MnxEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGRfNElBQXdaemRISnBibWNNQ3dBSmNtVjBkWEp1WDNSdkJuTjBjbWx1Wnd3Z0FCNHZZV1J0YVc0dkwyRmpkR2x2Ymw5aVlYSXZhVzVzYVc1bFgyVmthWFFHYzNSeWFXNW5EQWtBQjJOaGNuUmZhV1FHYzNSeWFXNW5EQVlBQkRFeU1qY0djM1J5YVc1bkRBOEFEVjloZFhSb1gzTmxjM05wYjI0R2MzUnlhVzVuRFA0QldBRC1BVlJsZVVwb1lrZGphVTlwU2tsVmVra3hUbWxKYzBsdVVqVmpRMGsyU1d0d1dGWkRTamt1WlhsS2QyTnRPVEpoVjFKc1kybEpOa2x1UW1oak0wNHpZak5LYTBscGQybGtXRTVzWTIxc2EwbHFiMmxPYWtGNVNXbDNhV0pIUm5wa1JqbHpZakprY0dKcFNUWkpha2wzVFdwRmRFMUVVWFJOUkdSVlRXcE5OazFVVlRaT1ZFbDFUVVJSTTAxNll6Tk5SR3Q0UzNwQk1VOXFUWGRKYVhkcFlrZEdlbVJHT1doWk0xSndaRzFWYVU5cFNYbE5SRWw0VEZSQk1FeFVRVE5XUkVsNlQycEZNazlxUlhsTWFsVTFUWHBSTlUxcVNUSk9VM04zVGxSdmVrMURTWE5KYlZKd1l6TlNlVmxYVGpCaFZ6bDFXRE5TY0dKWFZXbFBhbGwzVFhwTmVFNXFTVEJQVkZWelNXMXdNR0ZUU1RaSmJVWnBZVWRzUVZveU1XaGhWM2QxV1RJNWRFbHVNQzR4U25oRlF6aEJNMDVGWlRKSGVtbEpMVlYxY3pOdWJXUjRZMVF5Tm5kQldGb3phMUEzUVZRelpHaEZ8kqo-nsB6k92OSA51172GsskT2un-vM9xWyZue3Gp5lc=; Path=/; Expires=Fri, 07 May 2021 17:46:12 GMT; Max-Age=2592000
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Date: Wed, 07 Apr 2021 17:46:12 GMT
+Content-Length: 2006
+Content-Type: text/html; charset=utf-8
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 73e51da0125e1146304311c6c046ad94
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:55 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: d7a72dab20039c308d2c9e060ee0991f
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:55 GMT
+----
+
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: private, must-revalidate, max-age=300
+Content-Type: application/javascript
+Etag: 60e45c41914bc6572d349c0a02667bde
+Last-Modified: Wed, 07 Apr 2021 23:04:53 GMT
+Date: Wed, 07 Apr 2021 17:45:55 GMT
+----
+

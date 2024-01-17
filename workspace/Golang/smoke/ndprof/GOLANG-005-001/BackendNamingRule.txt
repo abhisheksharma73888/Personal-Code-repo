@@ -1,0 +1,2 @@
+HTTP|host,port,URL
+DB|host,port,databaseproductname,username,servicename,URL,databaseProductVersion,driverName,driverVersion

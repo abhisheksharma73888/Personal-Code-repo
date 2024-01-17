@@ -1,0 +1,15 @@
+--Request 
+POST http://172.24.1.4:8086/api/v2/query?orgID=6dc474be0df93348
+Host: 172.24.1.4:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.124 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://172.24.1.4:8086
+Referer: http://172.24.1.4:8086/orgs/6dc474be0df93348/notebooks/0a969ec2e9380000
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=Bi16hjOM1cLpauAEGocr-4oRjFcQnILZ4rluC89Nwy3Pq5VMjACpGLXoqJjzD3Nr5n8P9YzmeI4KJdwRHWZ8yA==
+----
+ POSTDATA {"query":"import \"influxdata/influxdb/sample\"\n\nsample.data(set: \"airSensor\")\n    |> range(start: -1h, stop: now())\n    |> filter(fn: (r) => r[\"_measurement\"] == \"airSensors\" and r[\"_field\"] == \"co\" and r[\"sensor_id\"] == \"TLM0100\")\n    |> keys()\n    |> keep(columns: [\"_value\"])\n    |> distinct()\n    |> filter(fn: (r) => r._value != \"_time\" and r._value != \"_start\" and r._value != \"_stop\" and r._value != \"_value\")\n    |> sort()\n    |> limit(n: 200)","dialect":{"annotations":["group","datatype","default"]}}
+
+

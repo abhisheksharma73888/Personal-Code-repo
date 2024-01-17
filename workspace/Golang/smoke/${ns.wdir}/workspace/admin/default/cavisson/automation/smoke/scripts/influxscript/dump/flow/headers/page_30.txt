@@ -1,0 +1,27 @@
+--Request 
+POST http://10.10.70.39:8086/api/v2/query?orgID=cc2b46247a491c7e
+Host: 10.10.70.39:8086
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://10.10.70.39:8086
+Referer: http://10.10.70.39:8086/orgs/cc2b46247a491c7e/data-explorer
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: influxdb-oss-session=3B1-5v6_KGewIuuNTf_cPNV2Ygn2ol98Q-HMq7wNU-t0cP3WTLP87hBSOrmymwbtO9QXiAB_TISAdZJSAd5AsA==
+----
+ POSTDATA {"query":"import \"regexp\"\n  \n  from(bucket: \"influxdata\")\n  |> range(start: -1h, stop: now())\n  |> filter(fn: (r) => true)\n  |> keep(columns: [\"_measurement\"])\n  |> group()\n  |> distinct(column: \"_measurement\")\n  |> limit(n: 200)\n  |> sort()","dialect":{"annotations":["group","datatype","default"]}}
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://10.10.70.39:8086
+Content-Encoding: gzip
+Content-Type: text/csv; charset=utf-8
+Vary: Accept-Encoding
+X-Influxdb-Build: OSS
+X-Influxdb-Version: dev
+Date: Mon, 10 Jan 2022 11:34:12 GMT
+Transfer-Encoding: chunked
+----
+
+
+

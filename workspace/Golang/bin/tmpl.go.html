@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{.Title}}</title>
+  </head>
+  <body>
+    <div class="container">
+    <table style="width: 92% !important; border: 0px;">
+      <tr>
+        <td width="30%" style="border: 0px!important; padding: 0px!important">
+          <h2 class="lead">{{.Title}}</h2>
+        </td>
+        <td width="70%" style="border: 0px!important; padding: 0px!important">
+          <table>
+            <tr>
+              <th>Status</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+            </tr>
+            <tr>
+              <td style="background-color: #FFCCCC">{{.Status}}</td>
+              <td>{{.StartTime}}</td>
+              <td>{{.EndTime}}</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br />
+    <div class="divider">
+      <br />
+      <table>
+        <caption class="lead">Test Results</caption>
+        <tr>
+          <th>Category</th>
+          <th>Total</th>
+          <th>Passed</th>
+          <th>Failed</th>
+        </tr>
+        <tr>
+          <td>{{.Category}}</td>
+          <td>{{.Total}}</td>
+          <td>{{.Passed}}</td>
+          <td>{{.Failed}}</td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <br />
+      <table>
+		<caption class="lead">ATG_Weblogic_JavaEE</caption>
+        <tr>
+          <th>Feature</th>
+          <th>Total</th>
+          <th>Passed</th>
+          <th>Failed</th>
+        </tr>
+        {{ range $name, $feature := .Feature}}
+          <tr>
+			<td>{{$name}}</td>
+            <td style="color: blue; font-weight: bold">{{$feature.Total}}</td>
+            <td style="color: green; font-weight: bold">{{$feature.Passed}}</td>
+            <td style="color: red; font-weight: bold">{{$feature.Failed}}</td>
+          </tr>
+        {{end}}
+      </table>
+	  <br />
+	  <br />
+	  <br />
+	  <table>
+		<caption class="lead">NSECOM_Tomcat8_JavaEE</caption>
+		<tr>
+			<th>Feature</th>
+			<th>Total</th>
+			<th>Passed</th>
+			<th>Failed</th>
+		</tr>
+		{{ range $name, $feature := .Feature}}
+		<tr>
+			<td>{{$name}}</td>
+			<td style="color: blue; font-weight: bold">{{$feature.Total}}</td>
+			<td style="color: green; font-weight: bold">{{$feature.Passed}}</td>
+			<td style="color: red; font-weight: bold">{{$feature.Failed}}</td>
+		</tr>
+		{{end}}
+	  </table>
+	  <br />
+	  <br />
+	  <br />
+      <table>
+		<caption class="lead">NSECOM_Tomcat9_JavaEE</caption>
+        <tr>
+          <th>Feature</th>
+          <th>Total</th>
+          <th>Passed</th>
+          <th>Failed</th>
+        </tr>
+        {{ range $name, $feature := .Feature}}
+          <tr>
+			<td>{{$name}}</td>
+            <td style="color: blue; font-weight: bold">{{$feature.Total}}</td>
+            <td style="color: green; font-weight: bold">{{$feature.Passed}}</td>
+            <td style="color: red; font-weight: bold">{{$feature.Failed}}</td>
+          </tr>
+        {{end}}
+      </table>
+	  <br />
+	  <br />
+	  <br />
+	  <table>
+		<caption class="lead"> AsyncDemo_Jetty_JavaEE</caption>
+		<tr>
+			<th>Feature</th>
+			<th>Total</th>
+			<th>Passed</th>
+			<th>Failed</th>
+		</tr>
+		{{ range $name, $feature := .Feature}}
+		  <tr>
+			<td>{{$name}}</td>
+			<td style="color: blue; font-weight: bold">{{$feature.Total}}</td>
+			<td style="color: green; font-weight: bold">{{$feature.Passed}}</td>
+			<td style="color: red; font-weight: bold">{{$feature.Failed}}</td>
+		  </tr>
+	    {{end}}
+      </table>
+	  <br />
+	  <br />
+	  <br />
+	  <table>
+		<caption class="lead"> Mongo_SpringBoot_JavaEE</caption>
+		<tr>
+			<th>Feature</th>
+			<th>Total</th>
+			<th>Passed</th>
+			<th>Failed</th>
+		</tr>
+		{{ range $name, $feature := .Feature}}
+		  <tr>
+			<td>{{$name}}</td>
+			<td style="color: blue; font-weight: bold">{{$feature.Total}}</td>
+			<td style="color: green; font-weight: bold">{{$feature.Passed}}</td>
+			<td style="color: red; font-weight: bold">{{$feature.Failed}}</td>
+		  </tr>
+		{{end}}
+	  </table>
+      {{ if (gt .Failed 0) }}
+        <br />
+        <br />
+        <br />
+        <table>
+          <caption class="lead">ATG_Weblogic_JavaEE</caption>
+          <tr>
+            <th>Feature</th>
+            <th>CaseID</th>
+            <th>TestID</th>
+            <th>Description</th>
+          </tr>
+          {{ range $name, $feature := .Features}}
+              {{ range $feature.TestCases }}
+                {{ if (eq "fail" .Status )}}
+                  <tr>
+                    <td>{{$name}}</td>
+                    <td>{{.CaseID}}</td>
+                    <td>{{.TestID}}</td>
+                    <td>{{.Description}}</td>
+                  </tr>
+                {{end}}
+              {{ end }}
+          {{end}}
+        </table>
+		<br />
+		<br />
+		<br />
+		<table>
+		  <caption class="lead">NSECOM_Tomcat8_JavaEE</caption>
+		  <tr>
+			<th>Feature</th>
+			<th>CaseID</th>
+			<th>TestID</th>
+			<th>Description</th>
+		  </tr>
+		  {{ range $name, $feature := .Features}}
+		  	  {{ range $feature.TestCases }}
+		        {{ if (eq "fail" .Status )}}
+		  		  <tr>
+			  		<td>{{$name}}</td>
+			  		<td>{{.CaseID}}</td>
+			  		<td>{{.TestID}}</td>
+			  		<td>{{.Description}}</td>
+		  		  </tr>
+				{{end}}															
+	  		  {{ end }}
+		{{ end }}
+		</table>
+		<br />
+		<br />
+		<br />
+		<table>
+		  <caption class="lead">NSECOM_Tomcat9_JavaEE</caption>
+		  <tr>
+			<th>Feature</th>
+			<th>CaseID</th>
+			<th>TestID</th>
+			<th>Description</th>
+		  </tr>
+		  {{ range $name, $feature := .Features}}
+		  	  {{ range $feature.TestCases }}
+		        {{ if (eq "fail" .Status )}}
+		  		  <tr>
+			  		<td>{{$name}}</td>
+			  		<td>{{.CaseID}}</td>
+			  		<td>{{.TestID}}</td>
+			  		<td>{{.Description}}</td>
+		  		  </tr>
+				{{end}}															
+	  		  {{ end }}
+		{{ end }}
+        </table>
+		<br />
+		<br />
+		<br />
+		<table>
+		  <caption class="lead">AsyncDemo_Jetty_JavaEE</caption>
+		  <tr>
+			<th>Feature</th>
+			<th>CaseID</th>
+			<th>TestID</th>
+			<th>Description</th>
+		  </tr>
+		  {{ range $name, $feature := .Features}}
+		  	  {{ range $feature.TestCases }}
+		        {{ if (eq "fail" .Status )}}
+		  		  <tr>
+			  		<td>{{$name}}</td>
+			  		<td>{{.CaseID}}</td>
+			  		<td>{{.TestID}}</td>
+			  		<td>{{.Description}}</td>
+		  		  </tr>
+				{{end}}															
+	  		  {{ end }}
+        </table>
+		<br />
+		<br />
+		<br />
+		<table>
+		  <caption class="lead">Mongo_SpringBoot_JavaEE</caption>
+		  <tr>
+			<th>Feature</th>
+			<th>CaseID</th>
+			<th>TestID</th>
+			<th>Description</th>
+		  </tr>
+		  {{ range $name, $feature := .Features}}
+		  	  {{ range $feature.TestCases }}
+		        {{ if (eq "fail" .Status )}}
+		  		  <tr>
+			  		<td>{{$name}}</td>
+			  		<td>{{.CaseID}}</td>
+			  		<td>{{.TestID}}</td>
+			  		<td>{{.Description}}</td>
+		  		  </tr>
+				{{end}}															
+	  		  {{ end }}
+        </table>
+		<br />
+		<br />
+		<br />
+		<a style="text-decoration: none; color: #263238;" href="http://10.10.30.37/reports/graphs/netjsagent/smoke/4.1.15/B33">Click to see online reports</a>
+      <br />
+      <br />
+      <div class="signature">Automation Team <br/>Cavisson Systems Inc.</div>
+    </div>
+    <style>.container,table,td,th{border:1px solid #e0e0e0}body,th{color:#333}body{font-size:.9rem}.container{width:90%;padding:50px}table{border-collapse:collapse;width:80%}table,td,th{padding:10px;font-size:1em}th{background-color:#f5f5f5;text-align:left}.divider{border-top:1px solid #e0e0e0}.signature{color:#607d8b}.lead{font-size:1.68rem;color:#616161;font-weight:300}</style>
+  </body>

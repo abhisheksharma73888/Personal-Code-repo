@@ -1,0 +1,5 @@
+#group,false,false
+#datatype,string,long
+#default,_result,0
+,result,table
+

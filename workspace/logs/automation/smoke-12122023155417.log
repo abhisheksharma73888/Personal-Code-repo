@@ -1,0 +1,417 @@
+Buildfile: /home/cavisson/workspace/Golang/build.xml
+
+agent-build-info:
+     [echo] Current Build: R4.13.0.B82
+
+get-build-info:
+     [echo] Current Build: R4.13.0.B88
+
+smoke:
+
+clean:
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+   [delete] Deleting directory /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+   [delete] Deleting directory /home/cavisson/work/lib
+
+create-workbench:
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+    [mkdir] Created dir: /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+    [mkdir] Created dir: /home/cavisson/work/lib
+
+copy-workbench-files:
+     [copy] Copying 1698 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scripts
+     [copy] Copying 12 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios
+     [copy] Copying 1 file to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testsuites
+     [copy] Copying 82 files to /home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/testcases
+     [copy] Copying 16 files to /home/cavisson/work/lib
+
+calc-start-time:
+     [echo] Test started at: 12/12/23 03:54:20 PM
+
+run-smoke:
+     [echo] Running Smoke...
+     [exec] #TierName|Enable/Disable(1/0)
+     [exec] Golang,1
+     [exec] IP_ADDR = https://0.0.0.0:7901
+     [exec] Controller = /home/cavisson/work
+     [exec] Test Cycle Number = 231212_155429
+     [exec] Test Suite Run Number = 1038
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke001
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke001.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke001
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke002.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke002
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke002.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke002
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke003
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke003
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke004
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke004.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke004
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke005
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke005
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke005
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke005.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke005
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke006
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke006
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke006
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke006.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke006
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke007
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke007
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke007
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke007.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke007
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke007
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke007.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke007
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke008
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke008
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke008
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke008.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke008
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke009
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke009
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke010
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke010
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke010
+     [exec] Starting pre_test_setup script
+     [exec] ln: failed to create hard link '/home/cavisson/work/workspace/admin/default/cavisson/automation/smoke/scenarios/.NDSmoke010.conf': File exists
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke010
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] Starting execution of test case - NDSmoke011
+     [exec] Starting pre_test_setup script
+     [exec] Starting scenario
+     [exec] Netstorm is starting for Project: automation, Subproject: smoke, Scenario is - NDSmoke011
+     [exec] sleeping for 1 sec
+     [exec] Checking status
+     [exec] Starting post_test_setup script
+     [exec] /home/cavisson/work/bin/ts_run: line 1291: [: -eq: unary operator expected
+     [exec] Test Suite execution is completed!!!
+     [exec] Result File: /home/cavisson/workspace/Golang/results/4.13.0/88/result.121223.155429.txt
+     [exec] Total: 142, Success: 126, Failures: 16, Failure Percentage(%): 11.200, Success Percentage(%): 88.800
+     [exec] Processing result file and formatting to XML
+     [exec] Error in processing input file
+     [exec] /home/cavisson/workspace/Golang/bin/xml_writer.rb:82:in `block (6 levels) in write_testcase_doc': undefined method `chomp' for nil:NilClass (NoMethodError)
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:433:in `insert'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:415:in `method_missing'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:77:in `block (5 levels) in write_testcase_doc'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:76:in `each'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:76:in `block (4 levels) in write_testcase_doc'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:71:in `each'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:71:in `block (3 levels) in write_testcase_doc'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:433:in `insert'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:415:in `method_missing'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:70:in `block (2 levels) in write_testcase_doc'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:433:in `insert'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:415:in `method_missing'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:69:in `block in write_testcase_doc'
+     [exec] 	from /var/lib/gems/2.7.0/gems/nokogiri-1.15.4-x86_64-linux/lib/nokogiri/xml/builder.rb:331:in `initialize'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:68:in `new'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:68:in `write_testcase_doc'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:156:in `main'
+     [exec] 	from /home/cavisson/workspace/Golang/bin/xml_writer.rb:174:in `<main>'
+     [exec] Result: 1
+
+calc-end-time:
+     [echo] Test ended at: 12/12/23 06:18:23 PM
+
+update-email-config:
+     [echo] Result file is: /home/cavisson/workspace/Golang/results/4.13.0/88/result.121223.155429.txt
+     [exec] Traceback (most recent call last):
+     [exec]   File "/home/cavisson/workspace/Golang/bin/generate_report.py", line 189, in <module>
+     [exec]     agents_list, features_list = sql_function(opts.infile)
+     [exec]   File "/home/cavisson/workspace/Golang/bin/generate_report.py", line 26, in sql_function
+     [exec]     insert(line)
+     [exec]   File "/home/cavisson/workspace/Golang/bin/generate_report.py", line 20, in insert
+     [exec]     cursor.execute("INSERT INTO data VALUES (?, ?, ?, ?, ?, ?, ?, ?)",values)
+     [exec] sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 8, and there are 1 supplied.
+
+BUILD FAILED
+/home/cavisson/workspace/Golang/build.xml:41: The following error occurred while executing this line:
+/home/cavisson/workspace/Golang/smoke/build.xml:161: exec returned: 1
+
+Total time: 144 minutes 8 seconds

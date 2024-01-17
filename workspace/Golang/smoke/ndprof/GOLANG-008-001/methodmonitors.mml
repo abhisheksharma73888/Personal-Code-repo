@@ -1,0 +1,7 @@
+http|Go1|http.RoundTripper.RoundTrip|||||
+cavwrapperlib|Go2|cavwrapperlib.github.commandMonitor.started|||||
+cavlib|Go3|cavlib.queryHook.BeforeQuery|||||
+cavlibs|Go4|cavlib.conn.QueryContext|||||
+
+sqlite|monitor1|DB_influxd.sqlite|||||
+ServeHTTP|monitors|cavwrapperlib.github.httphandler.ServeHTTP|||||

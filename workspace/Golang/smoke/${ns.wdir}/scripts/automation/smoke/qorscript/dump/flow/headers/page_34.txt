@@ -1,0 +1,259 @@
+--Request 
+POST https://www.google-analytics.com/j/collect?v=1&_v=j89&a=755506800&t=pageview&_s=1&dl=https%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&dr=http%3A%2F%2F10.10.30.5%3A7000%2F&ul=en-us&de=UTF-8&dt=QOR%20Go%20(Golang)%20SDK%20%3A%20New%2C%20Better%20QOR%20Documentation%20released!&sd=24-bit&sr=1366x768&vp=1349x607&je=0&_u=IEBAAEABAAAAAC~&jid=1815578670&gjid=347032235&cid=1230909809.1617817601&tid=UA-389151-11&_gid=1544911875.1617817601&_r=1&_slc=1&z=847067763
+Host: www.google-analytics.com
+Host: www.google-analytics.com
+Connection: keep-alive
+Content-Length: 0
+Origin: https://getqor.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Content-Type: text/plain
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+access-control-allow-origin: https://getqor.com
+date: Wed, 07 Apr 2021 17:46:41 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+access-control-allow-credentials: true
+x-content-type-options: nosniff
+content-type: text/plain
+cross-origin-resource-policy: cross-origin
+server: Golfe2
+content-length: 2
+alt-svc: h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"
+----
+--Request 
+GET https://script.hotjar.com/modules.0cb976794ef50d89b299.js
+Host: script.hotjar.com
+Host: script.hotjar.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+content-type: application/javascript
+content-length: 58593
+date: Thu, 01 Apr 2021 10:27:08 GMT
+accept-ranges: bytes
+access-control-allow-origin: *
+cache-control: max-age=31536000
+content-encoding: br
+etag: \"9788f73dd0ec050ba354063604c23c0e\"
+last-modified: Thu, 01 Apr 2021 10:26:58 GMT
+x-content-type-options: nosniff
+x-robots-tag: none
+vary: Accept-Encoding
+x-cache: Hit from cloudfront
+via: 1.1 0bc30732052b8a4d4d4852040305cc40.cloudfront.net (CloudFront)
+x-amz-cf-pop: DEL51-C1
+x-amz-cf-id: uKWPhkiNn_7ejnuzLplvDFZZqRxCtvwrqIMAupryn_cO9n6EBp_lIw==
+age: 544773
+----
+--Request 
+GET https://disqus.com/next/config.js
+Host: disqus.com
+Host: disqus.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: application/signed-exchange;v=b3;q=0.9,*/*;q=0.8
+Purpose: prefetch
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+ POSTDATA {"r_value":1,"is_vpv":false,"session_only":false,"rec_value":1,"user_id":"bf6d1ae9-16c6-5ecd-962b-f492c10d29f9"}
+--Response 
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 11508
+Server: nginx
+Content-Type: application/javascript; charset=UTF-8
+p3p: CP=\"DSP IDC CUR ADM DELi STP NAV COM UNI INT PHY DEM\"
+Cache-Control: public, stale-while-revalidate=300, s-stalewhilerevalidate=3600, max-age=60
+X-Frame-Options: SAMEORIGIN
+Access-Control-Allow-Origin: *
+Timing-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Date: Wed, 07 Apr 2021 17:46:41 GMT
+Age: 38
+Strict-Transport-Security: max-age=300; includeSubdomains
+----
+--Request 
+GET https://c.disquscdn.com/next/embed/styles/lounge.c82b267b396dfbc10ae5113342115da8.css
+Host: c.disquscdn.com
+Host: c.disquscdn.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: application/signed-exchange;v=b3;q=0.9,*/*;q=0.8
+Purpose: prefetch
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+date: Wed, 07 Apr 2021 17:46:41 GMT
+content-type: text/css; charset=utf-8
+content-length: 22713
+last-modified: Wed, 03 Mar 2021 01:20:39 GMT
+etag: \"603ee467-58b9\"
+content-encoding: gzip
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+expires: Thu, 03 Mar 2022 18:27:31 GMT
+cache-control: max-age=31536000, public, immutable, no-transform
+access-control-allow-origin: *
+timing-allow-origin: *
+x-amz-cf-pop: LHR3-C1
+x-amz-cf-id: z0U1RnJ2Nlo9AfxZjcqlll2LbP3tRALg7Bq1laIIHJOZL0SCB9mIbQ==
+age: 3021550
+strict-transport-security: max-age=300; includeSubdomains
+cf-cache-status: HIT
+accept-ranges: bytes
+cf-request-id: 094f0a9ec3000031f91024b000000001
+expect-ct: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"
+vary: Accept-Encoding
+server: cloudflare
+cf-ray: 63c513aadd6931f9-BOM
+----
+--Request 
+GET https://c.disquscdn.com/next/embed/common.bundle.f485ba8b89bf2153fdb9f493ec342aed.js
+Host: c.disquscdn.com
+Host: c.disquscdn.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: application/signed-exchange;v=b3;q=0.9,*/*;q=0.8
+Purpose: prefetch
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+date: Wed, 07 Apr 2021 17:46:41 GMT
+content-type: application/javascript; charset=utf-8
+content-length: 94786
+last-modified: Tue, 09 Mar 2021 17:57:38 GMT
+etag: \"6047b712-17242\"
+content-encoding: gzip
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+expires: Wed, 09 Mar 2022 18:10:07 GMT
+cache-control: max-age=31536000, public, immutable, no-transform
+access-control-allow-origin: *
+timing-allow-origin: *
+x-amz-cf-pop: LHR3-C1
+x-amz-cf-id: 5lGAMJ3B8_ePXVW-QvGr0PAQzL-1BLbeIg7P-Btboy7QlGGojpghUw==
+age: 2504190
+strict-transport-security: max-age=300; includeSubdomains
+cf-cache-status: HIT
+accept-ranges: bytes
+cf-request-id: 094f0a9ec4000031f9d795f000000001
+expect-ct: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"
+vary: Accept-Encoding
+server: cloudflare
+cf-ray: 63c513aadd6b31f9-BOM
+----
+--Request 
+GET https://c.disquscdn.com/next/embed/lounge.bundle.5c8cd56736a07a84352a4d37a862a762.js
+Host: c.disquscdn.com
+Host: c.disquscdn.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: application/signed-exchange;v=b3;q=0.9,*/*;q=0.8
+Purpose: prefetch
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: no-cors
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200
+status: 200
+date: Wed, 07 Apr 2021 17:46:41 GMT
+content-type: application/javascript; charset=utf-8
+content-length: 117042
+last-modified: Wed, 24 Mar 2021 20:33:38 GMT
+etag: \"605ba222-1c932\"
+content-encoding: gzip
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+expires: Thu, 24 Mar 2022 21:19:19 GMT
+cache-control: max-age=31536000, public, immutable, no-transform
+access-control-allow-origin: *
+timing-allow-origin: *
+x-amz-cf-pop: MRS52-C2
+x-amz-cf-id: Q-6yts_05cvQEE4-Dj1B1fWnhh-b5kRm4axHfo7QXnBUrLPhON-oww==
+age: 1196840
+strict-transport-security: max-age=300; includeSubdomains
+cf-cache-status: HIT
+accept-ranges: bytes
+cf-request-id: 094f0a9ec4000031f913029000000001
+expect-ct: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"
+vary: Accept-Encoding
+server: cloudflare
+cf-ray: 63c513aadd6c31f9-BOM
+----
+--Request 
+GET https://disqus.com/embed/comments/?base=default&f=qor&t_i=8-en&t_u=http%3A%2F%2Fgetqor.com%2Fen%2Fblogs%2Farticle%2Ftitle%3Dnew%2C-better-qor-documentation-released&t_d=New%2C%20Better%20QOR%20Documentation%20released!&t_t=New%2C%20Better%20QOR%20Documentation%20released!&s_o=default#version=a658a7c16140d8728cc859daf581cbbc
+Host: disqus.com
+Host: disqus.com
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: nested-navigate
+Referer: https://getqor.com/en/blogs/article/title=new,-better-qor-documentation-released
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+----
+--Response 
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 3072
+Server: nginx
+Content-Type: text/html; charset=utf-8
+Content-Security-Policy: script-src https://*.twitter.com:* https://www.gstatic.com/recaptcha/ https://a.disquscdn.com https://c.disquscdn.com c.disquscdn.com https://*.services.disqus.com:* https://cdn.boomtrain.com/p13n/ https://apis.google.com https://cdn.syndication.twimg.com/tweets.json https://connect.facebook.net/en_US/sdk.js https://referrer.disqus.com/juggler/ 'unsafe-inline' https://com-disqus.netmng.com:* https://www.google.com/recaptcha/ https://cf.ignitionone.com:* https://disqus.com
+Last-Modified: Tue, 23 Mar 2021 20:38:54 GMT
+ETag: W/\"lounge:view:5431023092.cea0a878836e1fae2de8cf372e429286.2\"
+Link: <https://c.disquscdn.com>;rel=preconnect,<https://c.disquscdn.com>;rel=dns-prefetch
+Cache-Control: stale-if-error=3600, s-stalewhilerevalidate=3600, stale-while-revalidate=30, no-cache, must-revalidate, public, s-maxage=5
+p3p: CP=\"DSP IDC CUR ADM DELi STP NAV COM UNI INT PHY DEM\"
+Referrer-Policy: no-referrer-when-downgrade
+Timing-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Encoding: gzip
+Date: Wed, 07 Apr 2021 17:46:42 GMT
+Age: 0
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=300; includeSubdomains
+----
+

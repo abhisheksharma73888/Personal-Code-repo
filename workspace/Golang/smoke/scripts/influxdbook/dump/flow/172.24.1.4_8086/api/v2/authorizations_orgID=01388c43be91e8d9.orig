@@ -1,0 +1,289 @@
+{
+	"links": {
+		"self": "/api/v2/authorizations"
+	},
+	"authorizations": [
+		{
+			"id": "0aa5d6b4f619b000",
+			"token": "PXI1jC38SlRmiqm5sVAS3Esj856GfBGnfH1kDHg2mGitFlHTiHoaQ3h4pG3N1y9VLD2flPHdJTyWJZQkrapu3w==",
+			"status": "active",
+			"description": "cavisson's Token",
+			"orgID": "01388c43be91e8d9",
+			"org": "Cavisson",
+			"userID": "0aa5d6b49319b000",
+			"user": "cavisson",
+			"permissions": [
+				{
+					"action": "read",
+					"resource": {
+						"type": "authorizations"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "authorizations"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "buckets"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "buckets"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "dashboards"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "dashboards"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "orgs"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "orgs"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "sources"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "sources"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "tasks"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "tasks"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "telegrafs"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "telegrafs"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "users"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "users"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "variables"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "variables"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "scrapers"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "scrapers"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "secrets"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "secrets"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "labels"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "labels"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "views"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "views"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "documents"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "documents"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "notificationRules"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "notificationRules"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "notificationEndpoints"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "notificationEndpoints"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "checks"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "checks"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "dbrp"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "dbrp"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "notebooks"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "notebooks"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "annotations"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "annotations"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "remotes"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "remotes"
+					}
+				},
+				{
+					"action": "read",
+					"resource": {
+						"type": "replications"
+					}
+				},
+				{
+					"action": "write",
+					"resource": {
+						"type": "replications"
+					}
+				}
+			],
+			"links": {
+				"self": "/api/v2/authorizations/0aa5d6b4f619b000",
+				"user": "/api/v2/users/0aa5d6b49319b000"
+			},
+			"createdAt": "2023-01-25T10:48:58.520135885+05:30",
+			"updatedAt": "2023-01-25T10:48:58.520135885+05:30"
+		}
+	]
+}

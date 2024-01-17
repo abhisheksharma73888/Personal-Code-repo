@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link type="text/css" rel="stylesheet" href="./../../../../10.10.30.5_7000/admin/assets/stylesheets/qor_admin_default.css">
+    <link type="text/css" rel="stylesheet" href="./../../../../10.10.30.5_7000/admin/assets/stylesheets/qor_demo.css">
+    
+    <script src="./../../../../10.10.30.5_7000/admin/assets/javascripts/vendors.js"></script>
+  </head>
+
+  <body class="qor-theme-slideout" style="background-color: rgba(0, 0, 0, 0.5);border:none;">
+    
+    <script>
+      QOR_Translations = window.QOR_Translations || {};
+      QOR_Translations.okButton = 'OK'
+      QOR_Translations.cancelButton = 'Cancel'
+      QOR_Translations.serverError = 'Server error, please try again later!'
+      QOR_Translations.slideoutCloseWarning = 'You have unsaved changes on this slideout. If you close this slideout, you will lose all unsaved changes. Are you sure you want to close the slideout?'
+    </script>
+    <script src="./../../../../10.10.30.5_7000/admin/assets/javascripts/qor_admin_default.js"></script>
+    <script src="./../../../../10.10.30.5_7000/admin/assets/javascripts/qor_demo.js"></script>
+    
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        function closeWidgetEditBox() {
+          setTimeout(function() {
+            window.parent.document.getElementById('qor-actionbar-iframe').classList.remove("show");
+            window.parent.document.querySelector('body').classList.remove("open-actionbar-editor");
+          }, 350);
+        }
+
+        $(document).on('bottomsheetSubmitComplete.qor.bottomsheets', function(){
+          closeWidgetEditBox();
+        })
+        
+        $('.qor-slideout').on('slideoutSubmitComplete.qor.slideout' , function() {
+          setTimeout(function() {
+            parent.window.location.reload();
+          }, 300);
+        }).on('slideoutClosed.qor.slideout', function(){
+          closeWidgetEditBox();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+
+--Response 
+HTTP/1.1 200 OK
+Server: Server
+Date: Wed, 07 Apr 2021 17:46:16 GMT
+Content-Type: application/json
+x-amz-rid: JBPVRY83H6PDE94T5KYW
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://10.10.30.5:7000
+x-amzn-RequestId: JBPVRY83H6PDE94T5KYW
+Vary: Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+----
+

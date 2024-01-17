@@ -1,0 +1,35 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>
+  Go Application | 
+</title>
+      
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    </head>
+    <body style='color:red;'>
+      
+        <header>
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+        <img src="/static/image/goimg.png" alt ="Gopher">
+        <b style='color:red !important;'>Cavisson System </b>
+        </header>
+        <nav>
+        <ul>
+             <li style='color:red;'><a href="/"; style='color:lightyellow;'> Home </a></li>
+            <li style='color:red;'><a href="/page"; style='color:lightyellow;'>Content </a></li>
+            <li style='color:red;'><a href="/about"; style='color:lightyellow;'>About</a></li>
+        </ul>
+        </nav> 
+        <hr>
+
+        <h1>Successfully</h1>
+    
+
+
+    </body>
+  </html>

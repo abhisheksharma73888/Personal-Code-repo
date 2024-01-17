@@ -1,0 +1,55 @@
+--Request 
+GET https://payments-jp-sandbox.amazon.com/gp/widgets/sessionstabilizer?countryOfEstablishment=JP&ledgerCurrency=JPY&isSandbox=true
+Host: payments-jp-sandbox.amazon.com
+Host: payments-jp-sandbox.amazon.com
+Connection: keep-alive
+Origin: http://10.10.30.5:7000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: cors
+Referer: http://10.10.30.5:7000/products/slogan-t-shirt_blue-light
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: ubid-main=358-5414753-9305410; session-token=\"J3nnpzCTekLyZ8Qe1TcXocVAPWH2qL4GehOEctY8vIF7FQE7B88iycgy9huoD5hWqUE593oBpTO6dAzVc5Oog6ZZKssHEzBu9emrplGrNZf6GSqSEGKTOYi4MzzI+0sbv2eq0wltufXnJAIYHhJmMX6v99psoytCu1LVSOdypuDRMiNhNIDsBkPXHcijqksCq1HGC/ulM1c=\"; session-id=355-0222234-8771173; session-id-time=2082758400; session-id-apay=355-0222234-8771173
+----
+--Response 
+HTTP/1.1 200 OK
+Server: Server
+Date: Wed, 07 Apr 2021 17:46:27 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+x-amz-rid: ATTXM4E8Q3J9A6Q4JWM1
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: http://10.10.30.5:7000
+x-amzn-RequestId: ATTXM4E8Q3J9A6Q4JWM1
+Vary: Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+----
+--Request 
+GET http://10.10.30.5:7000/admin//action_bar/inline_edit
+Host: 10.10.30.5:7000
+Host: 10.10.30.5:7000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://10.10.30.5:7000/products/slogan-t-shirt_blue-light
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Cookie: publish2_publish_scheduled_time=; pubilsh2_publish_draft_content=false; language=ja_JP; amazon-pay-connectedAuth=connectedAuth_general; _session=MTYxNzgxNzU4N3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGlfNElBQXdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZZQVA0QlZHVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycEpNMHhxUlhkTmFrVjVUbFJyTWsxNWMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVdYZE5lazE0VG1wSk1FOVVWWE5KYlhBd1lWTkpOa2x0Um1saFIyeEJXakl4YUdGWGQzVlpNamwwU1c0d0xrbFZTbkZsTmpoR1RtUlRXbWxxWXpoME5WSjNPVU41VTFnNE9UVjBSa1IzWDJOUWFuUm5iR0poWWpBR2MzUnlhVzVuREFzQUNYSmxkSFZ5Ymw5MGJ3WnpkSEpwYm1jTUpRQWpMM0J5YjJSMVkzUnpMM05zYjJkaGJpMTBMWE5vYVhKMFgySnNkV1V0YkdsbmFIUUdjM1J5YVc1bkRBa0FCMk5oY25SZmFXUUdjM1J5YVc1bkRBWUFCREV5TWpjPXzeHHs3WTmd0Me8ejI-Qz6SyQRbvNGz3yrFiAjFhKu1jA==
+----
+--Response 
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Cache-Control: no-store
+Pragma: no-cache
+Set-Cookie: _session=MTYxNzgxNzU4N3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGlfNElBQXdaemRISnBibWNNQ1FBSFkyRnlkRjlwWkFaemRISnBibWNNQmdBRU1USXlOd1p6ZEhKcGJtY01Ed0FOWDJGMWRHaGZjMlZ6YzJsdmJnWnpkSEpwYm1jTV9nRllBUDRCVkdWNVNtaGlSMk5wVDJsS1NWVjZTVEZPYVVselNXNVNOV05EU1RaSmEzQllWa05LT1M1bGVVcDNZMjA1TW1GWFVteGphVWsyU1c1Q2FHTXpUak5pTTBwclNXbDNhV1JZVG14amJXeHJTV3B2YVU1cVFYbEphWGRwWWtkR2VtUkdPWE5pTW1Sd1ltbEpOa2xxU1hkTmFrVjBUVVJSZEUxRVpGVk5hazAyVFZSVk5rNVVTWFZOUkZFelRYcGpNMDFFYTNoTGVrRXhUMnBOZDBscGQybGlSMFo2WkVZNWFGa3pVbkJrYlZWcFQybEplVTFFU1hoTVZFRXdURlJCTTFaRVNYcFBha1V5VDJwSk0weHFSVE5QUkZrelRYcHJNRTVEYzNkT1ZHOTZUVU5KYzBsdFVuQmpNMUo1V1ZkT01HRlhPWFZZTTFKd1lsZFZhVTlxV1hkTmVrMTRUbXBKTUU5VVZYTkpiWEF3WVZOSk5rbHRSbWxoUjJ4QldqSXhhR0ZYZDNWWk1qbDBTVzR3TGs5Sk5sWnFiemswTFdwTVgwOXhhR2xXVW10elFqbFRhblIzWkRReWFXRmZZalE0VWpOWlRWTmlNbEVHYzNSeWFXNW5EQXNBQ1hKbGRIVnlibDkwYndaemRISnBibWNNSlFBakwzQnliMlIxWTNSekwzTnNiMmRoYmkxMExYTm9hWEowWDJKc2RXVXRiR2xuYUhRPXw-D_LhLdJBA77TLolIa0BsCdTb6xfT4wsoQilPU_JLvw==; Path=/; Expires=Fri, 07 May 2021 17:46:27 GMT; Max-Age=2592000
+Set-Cookie: _session=MTYxNzgxNzU4N3xEdi1CQkFFQ180SUFBUkFCRUFBQV9nSGRfNElBQXdaemRISnBibWNNRHdBTlgyRjFkR2hmYzJWemMybHZiZ1p6ZEhKcGJtY01fZ0ZZQVA0QlZHVjVTbWhpUjJOcFQybEtTVlY2U1RGT2FVbHpTVzVTTldORFNUWkphM0JZVmtOS09TNWxlVXAzWTIwNU1tRlhVbXhqYVVrMlNXNUNhR016VGpOaU0wcHJTV2wzYVdSWVRteGpiV3hyU1dwdmFVNXFRWGxKYVhkcFlrZEdlbVJHT1hOaU1tUndZbWxKTmtscVNYZE5ha1YwVFVSUmRFMUVaRlZOYWswMlRWUlZOazVVU1hWTlJGRXpUWHBqTTAxRWEzaExla0V4VDJwTmQwbHBkMmxpUjBaNlpFWTVhRmt6VW5Ca2JWVnBUMmxKZVUxRVNYaE1WRUV3VEZSQk0xWkVTWHBQYWtVeVQycEpNMHhxUlROUFJGa3pUWHByTUU1RGMzZE9WRzk2VFVOSmMwbHRVbkJqTTFKNVdWZE9NR0ZYT1hWWU0xSndZbGRWYVU5cVdYZE5lazE0VG1wSk1FOVVWWE5KYlhBd1lWTkpOa2x0Um1saFIyeEJXakl4YUdGWGQzVlpNamwwU1c0d0xrOUpObFpxYnprMExXcE1YMDl4YUdsV1VtdHpRamxUYW5SM1pEUXlhV0ZmWWpRNFVqTlpUVk5pTWxFR2MzUnlhVzVuREFzQUNYSmxkSFZ5Ymw5MGJ3WnpkSEpwYm1jTUlBQWVMMkZrYldsdUx5OWhZM1JwYjI1ZlltRnlMMmx1YkdsdVpWOWxaR2wwQm5OMGNtbHVad3dKQUFkallYSjBYMmxrQm5OMGNtbHVad3dHQUFReE1qSTN8QtgJjpovgo5h3eN6puARl08GK1Tltko68jQJjmnoRy4=; Path=/; Expires=Fri, 07 May 2021 17:46:27 GMT; Max-Age=2592000
+Set-Cookie: publish2_publish_scheduled_time=; Path=/; HttpOnly
+Set-Cookie: pubilsh2_publish_draft_content=false; Path=/; HttpOnly
+Date: Wed, 07 Apr 2021 17:46:27 GMT
+Content-Length: 2006
+Content-Type: text/html; charset=utf-8
+----
+

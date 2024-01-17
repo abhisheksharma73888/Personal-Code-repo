@@ -1,0 +1,3 @@
+sqlite|monitor1|DB_influxd.sqlite|||||
+ServeHTTP|monitors|cavwrapperlib.github.httphandler.ServeHTTP|||||
+RoundTrip|monitorser|http.RoundTripper.RoundTrip|||||

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+HeapDump="/home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump"
+nsu_server_admin -s 10.10.70.38 -c 'rm /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump/NodeJS10/dump2.hprof'
+
+nsu_server_admin -s 10.10.30.5 -c 'rm /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump/NodeJS14/dump2.hprof'
+
+#nsu_server_admin -s 10.10.70.40 -c 'rm /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump/Kube_NodeJS_10/dump2.hprof'
+
+#nsu_server_admin -s 10.10.70.40 -c 'rm /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump/Kube_NodeJS_12/dump2.hprof'
+
+#nsu_server_admin -s 10.10.70.40 -c 'rm /home/cavisson/workspace/netjsagent/smoke/testcases/NDSmoke017/HeapDump/Kube_NodeJS_14/dump2.hprof'
+
+exit 0

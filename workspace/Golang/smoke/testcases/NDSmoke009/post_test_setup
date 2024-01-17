@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mv /home/cavisson/workspace/Golang/smoke/testcases/NDSmoke009/NdcLogs/ndc_trace.log /home/cavisson/workspace/Golang/smoke/testcases/NDSmoke009/NdcLogs/ndc_trace.log_bkp
+rm /home/cavisson/workspace/Golang/smoke/testcases/NDSmoke009/NdcLogs/ndc_trace.log
+exit 0

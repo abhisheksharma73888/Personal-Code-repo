@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "Going to restart NDC"
+
+/etc/init.d/ndc restart
+
+sleep 60
+
+echo "NDC restarted Successfully"
+
+ndi_send_msg_ex 10.10.70.39 7892 "ndc_req:action=discover_loaded_classes;classFilters=;methodFilters=;Tier=Golang;Server=GoSer;Instance=GoInst;AgentType=GO;
+"
+
+sleep 10
+
+exit 0

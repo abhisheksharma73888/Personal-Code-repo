@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+host=10.10.70.38
+user=root
+passwd=abeona
+user_Cav=cavisson
+passwd_Cav=cavisson
+            
+host_5=10.10.30.5
+user_5=root
+passwd_5=automation5
+user_Cav_5=cavisson
+passwd_Cav_5=cavisson
+                   
+cmd_stop_nod="pkill -9 -f pm2"
+cmd_stop_nod_5="pkill -9 -f pm2"
+
+echo "[RMON] Stop Agent 70.38"
+rmon -h $host -u $user_Cav -p $passwd_Cav -c "$cmd_stop_nod"
+sleep 5                 
+echo "[RMON] Stop Agent 30.5"
+rmon -h $host_5 -u $user_5 -p $passwd_5 -c "$cmd_stop_nod_5"
+
+cmd_copy_nod="cp /root/scripts/webapp/nsecom/Original/ndsettings.conf /root/scripts/webapp/nsecom/ndsettings.conf"
+sleep 5
+cmd_copy_nod_5="cp /root/scripts/webapp/nsecom/Original/ndsettings.conf /root/scripts/webapp/nsecom/ndsettings.conf"
+   
+echo "[RMON] Ndsettings file Copy 70.38"
+rmon -h $host -u $user_Cav -p $passwd_Cav -c "$cmd_copy_nod"
+sleep 5      
+echo "[RMON] Ndsettings file copy 30.5"
+rmon -h $host_5 -u $user_5 -p $passwd_5 -c "$cmd_copy_nod_5"
+         
+cmd_start_nod="pm2 start /root/scripts/webapp/nsecom/bin/www -i 1"
+sleep 5
+cmd_start_nod_5="pm2 start /root/scripts/webapp/nsecom/bin/www -i 1"
+               
+echo "[RMON] Start Agent 70.38"
+rmon -h $host -u $user_Cav -p $passwd_Cav -c "$cmd_start_nod"
+sleep 5                 
+echo "[RMON] Start Agent 30.5"
+rmon -h $host_5 -u $user_5 -p $passwd_5 -c "$cmd_start_nod_5"
+
+exit 0
