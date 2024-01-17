@@ -1,0 +1,713 @@
+#!/bin/bash
+###############################################################
+# Author- Abhishek Kumar Sharma                  	      #
+# Date-31st July 2023                            	      #
+# Script for Download all the bugs related data "NdDebugTool" #
+###############################################################
+
+# Get the controller names using the command
+	controller_names=$(nsi_get_controller_name)
+
+# Count the number of controllers
+	num_controllers=$(echo "$controller_names" | wc -l)
+
+if [ "$num_controllers" -eq 1 ]; then
+    	# If there's only one controller, set the default and run
+    	default_controller=$(echo "$controller_names" | head -n 1)
+    	echo "Setting default controller to: $default_controller"
+    	# Construct the absolute path of the default controller
+    	controller_path="/home/cavisson/$default_controller"
+else
+    	# If more than one controller is present, provide options to choose
+    	echo "Multiple controllers found. Choose a controller:"
+    	IFS=$'\n' read -r -d '' -a controller_array <<< "$controller_names"
+    	for index in "${!controller_array[@]}"; do
+		echo "$((index + 1)). ${controller_array[$index]}"
+    	done
+
+    # Read the user's choice
+    read -p "Enter the Number of the controller (Exp- 1,2... ) : " choice
+
+    # Validate user's choice    
+    if [[ $choice =~ ^[1-${#controller_array[@]}]$ ]]; then
+    	    selected_controller=${controller_array[$((choice - 1))]}
+    	    echo "Selected controller: $selected_controller"
+
+	    # Construct the absolute path of the selected controller	    
+	    controller_path="/home/cavisson/$selected_controller"
+    else
+    	    echo "Invalid Controller, Choose from Exixting Controllers"
+    fi
+fi
+
+# Create a directory and copy all the relevant data into the same directory
+infodir="$controller_path/NDDebugLogs"
+
+# Check if the "NDDebugLogs" exists
+if [ -d "$infodir" ]; then
+    	echo "The NDDebugLogs already exists. Skipping..."
+else
+    	# If the "NDDebugLogs" does not exist, create it
+    	mkdir -p "$infodir"
+    	echo "Created NDDebugLogs at $infodir"
+fi
+
+
+function_without_Testrun ()
+{
+	# Copy the "configUI-Error.log" from this "NS_WDIR/.productLogs/.configUILogs" path.
+	configUIError_log="$controller_path/.productLogs/.configUILogs/configUI-Error.log"
+	if [ -f "$configUIError_log" ]; then
+		cp -r "$configUIError_log" $controller_path/NDDebugLogs/
+	else
+		echo "configUI-Error.log file is not found in the specified Testrun path=$controller_path/.productLogs/.configUILogs"
+	fi
+
+	# Copy the "ddr-Error.log" from this "NS_WDIR/.productLogs/.configUILogs" path.
+	ddrError_log="$controller_path/.productLogs/.ddrLogs/ddr-Error.log"
+	if [ -f "$ddrError_log" ]; then
+		cp -r "$ddrError_log" $controller_path/NDDebugLogs/
+	else
+		echo "ddr-Error.log file is not found in the specified Testrun path=$controller_path/.productLogs/.ddrLogs"
+	fi
+
+	# Go to tomcat path and Find desired tomcat
+	tomcat_version=$(echo $TOMCAT_HOME)
+	path_tomcat_logs=$(cd "$tomcat_version/logs" && pwd)
+	cd "$path_tomcat_logs"
+	current_date=$(date +%Y-%m-%d)
+
+	#Download Report of "UI Request to Tomcat"
+	start_line=$(grep -n '/flowpathreport?' localhost_access_log.$current_date.txt | tail -n 1 | awk -F ":" '{print $1}' | xargs -I{} expr {} - 30)
+	end_line=$(grep -n '/flowpathreport?' localhost_access_log.$current_date.txt | tail -n 1 | awk -F ":" '{print $1}')
+
+	fpquery=$(sed -n "${start_line},${end_line}p" localhost_access_log.$current_date.txt)
+	echo "$fpquery" > UiReqToTomcat.txt
+	cp UiReqToTomcat.txt "$controller_path/NDDebugLogs/"
+
+}
+
+function_with_TestRun()
+{
+	# Copy the "TestRunOutput.log" from "NS_WDIR/logs/TRXXXX/<Partition>"
+	local TestRunOutput_log="$controller_path/logs/TR$Testrun_Number/TestRunOutput.log"
+
+	if [ -f "$TestRunOutput_log" ]; then
+    		cp -r "$TestRunOutput_log" "$controller_path/NDDebugLogs/"
+	else
+    		echo "TestRunOutput.log file is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number"
+	fi
+
+	# Copy the "summary.top" from "NS_WDIR/logs/TRXXXX/<Partition>"
+	Summary_top="$controller_path/logs/TR$Testrun_Number/summary.top"
+
+	if [ -f "$Summary_top" ]; then
+		cp "$Summary_top" "$controller_path/NDDebugLogs/"
+	else
+		echo "summary.top file is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number"
+	fi
+
+	# Copy the "tsdb_metrics.txt" from "NS_WDIR/logs/TRXXXX/<Partition>"
+	tsdb_metrics="$controller_path/logs/TR$Testrun_Number/tsdb/tsdb_metrics.txt"
+	if [ -f "$tsdb_metrics" ]; then
+		cp "$tsdb_metrics" "$controller_path/NDDebugLogs/"
+	else
+		echo "tsdb_metrics.txt file is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number/tsdb"
+	fi
+}
+
+function_Flowpath_with_TestRun()
+{
+	Rawdata=$(grep -s "^2,$flowpath_Instance" $controller_path/logs/TR$Testrun_Number/202*/nd/raw_data/* > "$controller_path/NDDebugLogs/SearchedbyfpRawdata.txt")
+	Tier_name=$(cat "$controller_path"/NDDebugLogs/SearchedbyfpRawdata.txt | cut -d "," -f1 | cut -d "/" -f10 | cut -d "_" -f1 | head -1)
+	Server_name=$(cat "$controller_path"/NDDebugLogs/SearchedbyfpRawdata.txt | cut -d "," -f1 | cut -d "/" -f10 | cut -d "_" -f2 | head -1)
+	Instance_name=$(cat "$controller_path"/NDDebugLogs/SearchedbyfpRawdata.txt | cut -d "," -f1 | cut -d "/" -f10 | cut -d "_" -f3 | cut -d ":" -f1 | cut -d "." -f1 | head -1)
+	Tier_Server_Instance=$(cat "$controller_path"/NDDebugLogs/SearchedbyfpRawdata.txt | awk -F ',' '{print $1}' | cut -d '/' -f10 | rev |cut -d '.' -f2 | rev)
+
+	# Set the path where the partition directory is expected to be present
+	partition_directory="$controller_path/logs/TR$Testrun_Number/"
+
+	if [ -s "$controller_path/NDDebugLogs/SearchedbyfpRawdata.txt" ]; then
+		# If Partitionsearchedbyfp is found correctly, set the value of "Partitions" to the searched partition
+		Partition=$(cat "$controller_path"/NDDebugLogs/SearchedbyfpRawdata.txt | cut -d "," -f1 | cut -d "/" -f7 | head -1)
+	else
+		# If Partitionsearchedbyfp is not found correctly, grep the current partition .curPartition and extract the value of CurPartitionIdx
+		cd "$controller_path/logs/TR$Testrun_Number/"
+		Partition=$(cat .curPartition | tail -1 | grep -oP 'CurPartitionIdx=\K\d*')
+	fi
+
+	grep "$flowpath_Instance" $controller_path/logs/TR$Testrun_Number/$Partition/nd/raw_data/$Tier_name* > "$controller_path/NDDebugLogs/${Tier_Server_Instance}.txt"
+
+	# Copy the "monitor.log" from "NS_WDIR/logs/TRXXXX/<Partition>"
+	monitor_log="$controller_path/logs/TR$Testrun_Number/$Partition/monitor.log"
+	if [ -f "$monitor_log" ]; then
+		cp "$monitor_log" "$controller_path/NDDebugLogs/"
+	else
+		echo "monitor.log file is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number/$Partition"
+	fi
+
+	# Copy the "ns_trace.log" from "NS_WDIR/logs/TRXXXX/<Partition>"/ns_logs
+	ns_trace_log="$controller_path/logs/TR$Testrun_Number/$Partition/ns_logs/ns_trace.log"
+	if [ -f "$ns_trace_log" ]; then
+		cp "$ns_trace_log" "$controller_path/NDDebugLogs/"
+	else
+		echo "ns_trace.log file is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number/$Partition/ns_logs"
+	fi
+
+	# Copy the logs from "NS_WDIR/logs/TRXXXX/<Partition>/nd/logs/"
+	nd_logs="$controller_path/logs/TR$Testrun_Number/$Partition/nd/logs"
+	if [ -d "$nd_logs" ]; then
+		cp -r "$nd_logs" "$controller_path/NDDebugLogs/"
+	else
+		echo "logs directory is not found in the specified Testrun path=$controller_path/logs/TR$Testrun_Number/$Partition/nd/logs"
+	fi
+
+	# Copy the csv logs from "NS_WDIR/logs/TRXXXX/<Partition>/nd/"
+	#Tier_Server_Instance="${Tier_name}_${Server_name}_${Instance_name}"
+	csv_logs="$controller_path/logs/TR$Testrun_Number/$Partition/nd/csv"
+	# Check if the CSV logs directory exists
+	if [ -d "$csv_logs" ]; then
+		cd "$csv_logs"
+		found_dir=$(find . -type d -name "$Tier_Server_Instance")
+		if [ -n "$found_dir" ]; then
+			cp -r "$found_dir" "$controller_path/NDDebugLogs/csv"
+		else
+			echo "Error: '$Tier_Server_Instance' not found at the specified path $controller_path/logs/TR$Testrun_Number/$Partition/nd/csv"
+		fi
+	else
+		echo "Error: CSV directory is not found in the specified Testrun path."
+	fi
+
+
+	#Step of Getting filed for Flowpath Wrapper for FPI
+        cd "$controller_path/NDDebugLogs"
+        abs_starttime=$(grep -oP 'strStartTime=\K\d*' UiReqToTomcat.txt)
+        abs_endtime=$(grep -oP 'strEndTime=\K\d*' UiReqToTomcat.txt)
+        tierid=$(grep "^0," "$controller_path/logs/TR$Testrun_Number/$Partition/nd/raw_data/$Tier_name"* | tail -1 | cut -d "," -f5)
+        serverid=$(grep "^0," "$controller_path/logs/TR$Testrun_Number/$Partition/nd/raw_data/$Tier_name"* | tail -1 | cut -d "," -f6)
+        appid=$(grep "^0," "$controller_path/logs/TR$Testrun_Number/$Partition/nd/raw_data/$Tier_name"* | tail -1 | cut -d "," -f7)
+        btCategory=$(grep "^4," "$Tier_name"* | cut -d "," -f4)
+        cd $path_tomcat_logs
+        urlIndex=$(grep "methodTimingReport" "localhost_access_log.$current_date.txt" | tail -1 | grep -oP 'urlIndex=\K\d*')
+	mkdir -p "$controller_path/NDDebugLogs/sqb"
+
+# Run ndu_get_seq_blob_tool command and get the data of sqb for all sqb, sqg and callout.
+        sqb_data=$(ndu_get_seq_blob_tool --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" --appindex "$appid" --file_directory_type sqb)
+
+# Echo the command for Sqb_data and write it to sqbdata.txt
+        echo -e "#Command for Sqb data :- " > $controller_path/NDDebugLogs/sqb/sqbData.log
+        echo "ndu_get_seq_blob_tool --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" --appindex "$appid" --file_directory_type sqb " >> $controller_path/NDDebugLogs/sqb/sqbData.log
+
+        echo -e "\n########################" >> $controller_path/NDDebugLogs/sqb/sqbData.log
+        echo "### Logs of Sqb Data ###"  >> $controller_path/NDDebugLogs/sqb/sqbData.log
+        echo -e "########################\n" >> $controller_path/NDDebugLogs/sqb/sqbData.log
+
+# Append output of ndu_get_seq_blob_tool command to sqbdata.txt
+        ndu_get_seq_blob_tool --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" --appindex "$appid" --file_directory_type sqb  >> $controller_path/NDDebugLogs/sqb/sqbData.log
+
+
+        seg_data=$(ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T seg)
+
+# Echo the command for Sqb_data and write it to segData.log
+	echo -e "#Command for Segment(sqb) data :- " > $controller_path/NDDebugLogs/sqb/segData.log
+        echo "ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T seg " >> $controller_path/NDDebugLogs/sqb/segData.log
+
+        echo -e "\n#################################" >> $controller_path/NDDebugLogs/sqb/segData.log
+	echo "### Logs of Segment(sqb) Data ###"  >> $controller_path/NDDebugLogs/sqb/segData.log
+        echo -e "#################################\n" >> $controller_path/NDDebugLogs/sqb/segData.log
+
+# Append output of ndu_get_seq_blob_tool command to segData.log
+        ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T seg  >> $controller_path/NDDebugLogs/sqb/segData.log
+
+
+        callout_data=$(ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T callout)
+
+# Echo the command for Sqb_data and write it to calloutData.log
+	echo -e "#Command for callout(sqb) data :- " > $controller_path/NDDebugLogs/sqb/calloutData.log
+        echo "ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T callout " >> $controller_path/NDDebugLogs/sqb/calloutData.log
+
+        echo -e "\n#################################" >> $controller_path/NDDebugLogs/sqb/calloutData.log
+        echo "### Logs of callout(sqb) Data ###"  >> $controller_path/NDDebugLogs/sqb/calloutData.log
+        echo -e "#################################\n" >> $controller_path/NDDebugLogs/sqb/calloutData.log
+
+# Append output of ndu_get_seq_blob_tool command to calloutData.log
+        ndu_get_seq_blob_tool_ex --testrun "$Testrun_Number" --flowpathinstance "$flowpath_Instance" -T callout >> $controller_path/NDDebugLogs/sqb/calloutData.log
+
+
+}
+
+	read -p "Enter Your Testrun Number(*):- " Testrun_Number
+
+# Get the list of Testrun Numbers from directory names
+	Testrun_Numbers=$(ls -ltr "$controller_path/logs/" | grep -oP '(?<=TR)\d+')
+
+# Flag to track if an exact match is found
+	match_found=false
+
+# Check if Testrun_Number matches any of the extracted numbers
+	for number in $Testrun_Numbers; do
+    		if [ "$Testrun_Number" = "$number" ]; then
+			match_found=true
+			break
+	    	fi
+	done
+
+	if $match_found; then
+
+		echo "Entered Testrun is Correct"
+	else
+		function_without_Testrun
+	    	echo "Entered Testrun is Invalid, Please Enter Correct Testrun Number"
+	    	exit 1
+	fi
+
+# Switch case to handle Testrun Number & Flowpath Instance input
+case "$Testrun_Number" in
+        "")
+                function_without_Testrun
+                echo "Testrun is not Entered , Please Enter Correct Testrun Number"
+                exit 1
+                ;;
+        *)
+                # Prompt for Flowpath Instance
+                read -p "Enter Your Flowpath Instance(*):- " flowpath_Instance
+
+        # Switch case to handle Flowpath Instance input
+        case "$flowpath_Instance" in
+                "")
+                        if [ -n "$Testrun_Number" ]; then
+                                function_with_TestRun
+                                function_without_Testrun
+                                echo "You didn't Entered FlowPath Instance, So you will get only Basic Logs"
+                                exit 1
+                        fi
+                        ;;
+                *)
+                        if [ -n "$Testrun_Number" ] && [ -n "$flowpath_Instance" ]; then
+                                function_with_TestRun
+                                function_without_Testrun
+                                function_Flowpath_with_TestRun
+                        else
+                                echo "Entered flowpath is incorrect."
+                        fi
+                        ;;
+        esac
+        ;;
+esac
+
+function get_flowpath_report() {
+	# Find the latest ndi_db_get_flowpath_data.data_tomcat file
+	fpQueryWrapperfile=$(ls -ltr "$controller_path/webapps/netstorm/temp/" | grep 'ndi_db_get_flowpath_data.data_tomcat' | tail -1 | rev | cut -d " " -f 1 | rev)
+	# Extract the wrapper command
+	fpQueryWrapper=$(cat "$controller_path/webapps/netstorm/temp/$fpQueryWrapperfile" | awk 'NR==5, NR==5 {print}' | sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+	# Print a comment line "Command Flowpath Wrapper"
+	echo "#Command of Flowpath Wrapper :- " > "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+	# Write the wrapper command to FPWraperForFPI.txt
+	echo "$fpQueryWrapper" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+
+	# Add a separator and some highlighting to the log
+	echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+	echo "### Logs of Flowpath Wrapper ###" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+	echo "################################" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+
+	# Execute the wrapper command and append output to FPWrapperForFPI.txt
+	$fpQueryWrapper >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+}
+
+function get_hotspot_report() {
+	# Find the latest ndi_db_get_thread_hotspot_data.tomcat file
+	hpQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_thread_hotspot_data.tomcat. | tail -1 | rev | cut -d " " -f 1 | rev)
+
+	# Extract the wrapper command
+	hpQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$hpQueryWrapperfile | awk 'NR==5, NR==5 {print}' | sed 's/\(--only_query 1\| 2>&1\)//g')
+
+	# Print a comment line "Command of Hotspot Wrapper and dump into HotspotWrapper.txt file"
+	echo "#Command of Hotspot Wrapper :- " > "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+
+	# Write the wrapper command to HotspotWrapper.txt
+	echo "$hpQueryWrapper" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+
+	# Add a separator and some highlighting to the log
+	echo -e "\n\n###############################" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+	echo "### Logs of Hotspot Wrapper ###" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+	echo "###############################" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+
+	# Execute the wrapper command and append output to HotspotWrapper.txt
+	$hpQueryWrapper >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+}
+
+function get_DBQuery_report() {
+        # Find the latest ndi_db_get_sql_timing.tomcat. file
+        DbQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_sql_timing.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+        # Extract the wrapper command
+        DbQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$DbQueryWrapperfile | awk 'NR==5, NR==5 {print}'| sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of DBQuery Wrapper and dump into HotspotWrapper.txt file"
+        echo "#Command of DBQuery Wrapper :- " > "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+
+        # Write the wrapper command to DBQueryWrapper.txt
+        echo "$DbQueryWrapper" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n###############################" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+        echo "### Logs of DBQuery Wrapper ###" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+        echo "###############################" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+
+        # Execute the wrapper command and append output to DBQueryWrapper.txt
+        $DbQueryWrapper >> $controller_path/NDDebugLogs/DBQueryWrapper.txt
+}
+
+function get_Exceptions_report() {
+        # Find the latest ndi_db_get_exception_data.tomcat. file
+        ExpQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_exception_data.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+        # Extract the wrapper command
+        ExpQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$ExpQueryWrapperfile | awk 'NR==5, NR==5 {print}' | sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of Exception Wrapper and dump into HotspotWrapper.txt file"
+        echo "#Command of Exception Query Wrapper :- " > "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+
+        # Write the wrapper command to ExceptionWrapper.txt
+        echo "$ExpQueryWrapper" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n#######################################" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+        echo "### Logs of Exception Query Wrapper ###" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+        echo "#######################################" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+
+        # Execute the wrapper command and append output to ExceptionWrapper.txt
+        $ExpQueryWrapper >> $controller_path/NDDebugLogs/ExceptionWrapper.txt
+
+}
+
+function get_Method_Timing_report() {
+        # Find the latest ndi_get_entity_time_ex.tomcat. file
+        MethodQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_get_entity_time_ex.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+        # Extract the wrapper command
+        MethodQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$MethodQueryWrapperfile | awk 'NR==5, NR==5 {print}' |sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of Method Timing Wrapper and dump into HotspotWrapper.txt file"
+        echo "#Command of Method Query Wrapper :- " > "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+
+        # Write the wrapper command to MethodTimingWrapper.txt
+        echo "$MethodQueryWrapper" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n####################################" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+        echo "### Logs of Method Query Wrapper ###" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+        echo "####################################" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+
+        # Execute the wrapper command and append output to MethodTimingWrapper.txt
+        $MethodQueryWrapper >> $controller_path/NDDebugLogs/MethodTimingWrapper.txt
+
+}
+
+function get_Method_Calling_Tree_report() {
+        # Find the latest ndi_db_get_fp_data.tomcat. file
+        MCTQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_fp_data.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+         # Extract the wrapper command
+        MCTQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$MCTQueryWrapperfile | awk 'NR==5, NR==5 {print}' |sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of MCT Wrapper and dump into MCTWrapper.txt file"
+        echo "#Command of MCT Query Wrapper :- " > "$controller_path/NDDebugLogs/MCTWrapper.txt"
+
+        # Write the wrapper command to MCTWrapper.txt
+        echo "$MCTQueryWrapper" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n#################################" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+        echo "### Logs of MCT Query Wrapper ###" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+        echo "#################################" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+
+        # Execute the wrapper command and append output to MCTWrapper.txt
+        $MCTQueryWrapper >> $controller_path/NDDebugLogs/MCTWrapper.txt
+}
+
+function get_Sequence_Diagram_report() {
+        # Find the latest ndi_db_get_fp_data.tomcat. file
+        SqDQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_fp_data.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+        # Extract the wrapper command
+        SqDQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$SqDQueryWrapperfile | awk 'NR==5, NR==5 {print}' |sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of Seq Diagram Wrapper and dump into SeqDWrapper.txt file"
+        echo "#Command of Seq Diagram Wrapper :- " > "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+        # Write the wrapper command to SeqDWrapper.txt
+        echo "$SqDQueryWrapper" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n####################################" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+        echo "### Logs of Seq Diagram Wrapper ###" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+        echo "####################################" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+        # Execute the wrapper command and append output to SeqDWrapper.txt
+        $SqDQueryWrapper >> $controller_path/NDDebugLogs/SeqDWrapper.txt
+}
+
+function get_IP_Summary_report() {
+        # Find the latest ndi_db_get_fp_data.tomcat. file
+        IPSQueryWrapperfile=$(ls -ltr $controller_path/webapps/netstorm/temp/ | grep ndi_db_get_fp_data.tomcat. | tail -1 | rev |cut -d " " -f 1 | rev)
+        # Extract the wrapper command
+        IPSQueryWrapper=$(cat $controller_path/webapps/netstorm/temp/$IPSQueryWrapperfile | awk 'NR==5, NR==5 {print}' |sed 's/\(--only_query 1\|--get_count 1\| 2>&1\)//g')
+
+        # Print a comment line "Command of DBQuery Wrapper and dump into HotspotWrapper.txt file"
+        echo "#Command of IP Summary Query Wrapper :- " > "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+        # Write the wrapper command to DBQueryWrapper.txt
+        echo "$IPSQueryWrapper" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+        # Add a separator and some highlighting to the log
+        echo -e "\n\n##################################" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+        echo "### Logs of IP Summary Wrapper ###" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+        echo "##################################" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+        #Automatically wrapper will be created and dumped into file by after executing below command
+        $IPSQueryWrapper >> $controller_path/NDDebugLogs/IPSummaryWrapper.txt
+}
+
+# Define the path to the config.ini file
+	config_file="$controller_path/webapps/sys/config.ini"
+
+function main() {
+	echo "Select a report to Generate Wrapper for Below Reports :"
+	echo "1. Flowpath Report"
+	echo "2. Hotspot Report"
+	echo "3. DBQuery Report"
+    	echo "4. Exceptions Report"
+    	echo "5. Method Timing Report"
+    	echo "6. Method Calling Tree Report"
+    	echo "7. Sequence Diagram"
+    	echo "8. IP Summary"
+	
+	read -p "Enter the Number corresponding to the report (Exp - 1, 2, ...): " report_choice
+
+	case "$report_choice" in
+
+		1)	
+			if [ -e "$config_file" ]; then
+			    	# Check if debugFlag is set to "on"
+				if grep -q "debugFlag = on" "$config_file"; then
+					get_flowpath_report
+				else
+					# If debugFlag is off, run ndi_db_get_flowpath_data directly
+					flowpath_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_flowpath_data --testrun $Testrun_Number --fpinstance $flowpath_Instance --thread_fp 0 --tierid $tierid --correlation_mode VIEW --object 4 --status -2 --order fpduration_desc --limit 50 --offset 0"
+					# Store the command in a variable and write it to the file
+					echo "#Command of Flowpath Wrapper :- " > "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					echo "$flowpath_debugmodeoff" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					
+					# Add a separator and some highlighting to the log
+					echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					echo "### Logs of Flowpath Wrapper ###" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					echo "################################" >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					
+					 # Execute the wrapper command and append output to FPWrapperForFPI.txt
+					$flowpath_debugmodeoff >> "$controller_path/NDDebugLogs/FPWraperForFPI.txt"
+					echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+			    	fi
+			fi 
+	    		;;
+
+
+		2)
+	    		if [ -e "$config_file" ]; then
+				# Check if debugFlag is set to "on"
+				if grep -q "debugFlag = on" "$config_file"; then
+		    			get_hotspot_report
+				else
+					# If debugFlag is off, run ndi_db_get_thread_hotspot_data directly
+					hotspot_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_thread_hotspot_data --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --limit 50 --offset 0"
+					# Store the command in a variable and write it to the file
+					echo "#Command of Hostpot Wrapper :- " > "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+					echo "$hotspot_debugmodeoff" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n###############################" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+                                        echo "### Logs of Hostpot Wrapper ###" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+                                        echo "###############################" >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+
+                                         # Execute the wrapper command and append output to HotspotWrapper.txt
+                                        $hotspot_debugmodeoff >> "$controller_path/NDDebugLogs/HotspotWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+			;;
+
+
+		3)
+			if [ -e "$config_file" ]; then
+				# Check if debugFlag is set to "on"
+				if grep -q "debugFlag = on" "$config_file"; then
+					get_DBQuery_report
+				else
+					# If debugFlag is off, run ndi_db_get_sql_timing directly
+					DBQuery_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_sql_timing --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid"
+					# Store the command in a variable and write it to the file
+                                        echo "#Command of DBQuery Wrapper :- " > "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+                                        echo "$DBQuery_debugmodeoff" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n###############################" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+                                        echo "### Logs of DBQuery Wrapper ###" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+                                        echo "###############################" >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+
+                                         # Execute the wrapper command and append output to DBQueryWrapper.txt
+                                        $DBQuery_debugmodeoff >> "$controller_path/NDDebugLogs/DBQueryWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+
+
+		4)
+                        if [ -e "$config_file" ]; then
+                                # Check if debugFlag is set to "on"
+                                if grep -q "debugFlag = on" "$config_file"; then
+                                        get_Exceptions_report
+                                else
+                                        # If debugFlag is off, run ndi_db_get_exception_data directly
+                                        Exceptions_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_exception_data  --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --group excthrowingclass,excthrowingmethod,excclass"
+                                        # Store the command in a variable and write it to the file
+                                        echo "#Command of Exceptions Wrapper :- " > "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+                                        echo "$Exceptions_debugmodeoff" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n##################################" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+                                        echo "### Logs of Exceptions Wrapper ###" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+                                        echo "##################################" >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+
+                                         # Execute the wrapper command and append output to DBQueryWrapper.txt
+                                        $Exceptions_debugmodeoff >> "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+			
+
+		5)
+                        if [ -e "$config_file" ]; then
+                                # Check if debugFlag is set to "on"
+                                if grep -q "debugFlag = on" "$config_file"; then
+                                        get_Method_Timing_report
+                                else
+                                        # If debugFlag is off, run ndi_get_entity_time_ex directly
+                                        Method_Timing_debugmodeoff="/home/cavisson/work/bin/ndi_get_entity_time_ex  --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --urlidx $urlIndex --btcategory $btCategory --entity  0 --status -2 > $controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+ 					# Store the command in a variable and write it to the file
+                                        echo "#Command of Method_Timing Wrapper :- " > "$controller_path/NDDebugLogs/ExceptionWrapper.txt"
+                                        echo "$Method_Timing_debugmodeoff" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+                                        echo "### Logs of Method_Timing Wrapper ###" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+                                        echo "################################" >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+
+                                         # Execute the wrapper command and append output to MethodTimingWrapper.txt
+                                        $Method_Timing_debugmodeoff >> "$controller_path/NDDebugLogs/MethodTimingWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+
+
+		6)
+			if [ -e "$config_file" ]; then
+                                # Check if debugFlag is set to "on"
+                                if grep -q "debugFlag = on" "$config_file"; then
+                                        get_Method_Calling_Tree_report
+                                else
+                                        # If debugFlag is off, run ndi_db_get_fp_data directly
+                                        MCT_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_fp_data --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --outputmode 3 --get_fp_seg_bsn 1 > $controller_path/NDDebugLogs/MCTWrapper.txt"
+ 
+				       # Store the command in a variable and write it to the file
+                                        echo "#Command of MCT Wrapper :- " > "$controller_path/NDDebugLogs/MCTWrapper.txt"
+                                        echo "$MCT_debugmodeoff" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+                                        echo "### Logs of MCT Wrapper ###" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+                                        echo "################################" >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+
+                                         # Execute the wrapper command and append output to MCTWrapper.txt
+                                        $MCT_debugmodeoff >> "$controller_path/NDDebugLogs/MCTWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+
+
+		7)
+                        if [ -e "$config_file" ]; then
+                                # Check if debugFlag is set to "on"
+                                if grep -q "debugFlag = on" "$config_file"; then
+                                        get_Sequence_Diagram_report
+                                else
+                                        # If debugFlag is off, run ndi_db_get_fp_data directly
+                                        SeqD_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_fp_data --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --outputmode 3 --get_fp_seg_bsn 1 > $controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+                                       # Store the command in a variable and write it to the file
+                                        echo "#Command of Seq Diagram Wrapper :- " > "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+                                        echo "$SeqD_debugmodeoff" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+                                        echo "### Logs of Seq Diagram Wrapper ###" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+                                        echo "################################" >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+
+                                         # Execute the wrapper command and append output to MCTWrapper.txt
+                                        $SeqD_debugmodeoff >> "$controller_path/NDDebugLogs/SeqDWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+
+
+		8)
+                        if [ -e "$config_file" ]; then
+                                # Check if debugFlag is set to "on"
+                                if grep -q "debugFlag = on" "$config_file"; then
+                                        get_IP_Summary_report
+                                else
+                                        # If debugFlag is off, run ndi_db_get_fp_data directly
+                                        IPS_debugmodeoff="/home/cavisson/work/bin/ndi_db_get_fp_data --testrun $Testrun_Number --fpinstance $flowpath_Instance --tierid $tierid --outputmode 3 --get_fp_seg_bsn 1 > $controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+                                       # Store the command in a variable and write it to the file
+                                        echo "#Command of IP Summar Wrapper :- " > "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+                                        echo "$IPS_debugmodeoff" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+                                        # Add a separator and some highlighting to the log
+                                        echo -e "\n\n################################" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+                                        echo "### Logs of IP Summar Wrapper ###" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+                                        echo "################################" >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+
+                                         # Execute the wrapper command and append output to IPSummaryWrapper.txt
+                                        $IPS_debugmodeoff >> "$controller_path/NDDebugLogs/IPSummaryWrapper.txt"
+                                        echo "DebugFlag mode keyword is disabled at $controller_path/webapps/sys/config.ini path. Before running Wrapper Command please enable debugFlag=on keyword, Then Restart your Tomcat"
+                                fi
+                        fi
+                        ;;
+
+		*)
+	    		echo "You have Entered Invalid report choice."
+	    		;;
+    	esac
+	
+	
+	source_directory="NDDebugLogs_${Testrun_Number}_${Partition}"
+	tar_filename="NDDebugLogs_${Testrun_Number}_${Partition}.tar.gz"
+	cd $controller_path
+	# Create the tar archive without printing the progress
+	tar -cvzf "$tar_filename" "$source_directory" > /dev/null 2>&1
+#	mv  $controller_path/NDDebugLogs $controller_path/NDDebugLogs_${Testrun_Number}_${Partition}
+	# ANSI escape code for bold text
+	bold="\033[1m"
+	# ANSI escape code for stylish text (red color in this example)
+	stylish="\033[31m"
+	# ANSI escape code to reset formatting
+	reset="\033[0m"
+
+	controller_stylish="$(tput setaf 2)$(tput bold)$controller_path$(tput sgr0)"
+	tar_filename_stylish="$(tput setaf 4)$(tput bold)$tar_filename$(tput sgr0)"
+
+	echo -e "Tar file is created at $controller_stylish path with this : $tar_filename_stylish name${reset}"
+
+}
+main
+
